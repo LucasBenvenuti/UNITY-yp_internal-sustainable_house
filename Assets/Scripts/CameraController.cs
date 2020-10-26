@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public LeanTweenType inOutType;
+
     public static CameraController instance;
-    public Transform cameraTransform;
+    public GameObject cameraTransform;
     public Transform itemZoomPosition;
     public Vector3 itemZoomOffset;
     public Vector3 cameraBasePosition;
@@ -15,6 +17,7 @@ public class CameraController : MonoBehaviour
     public LeanDragCamera leanDrag;
     public LeanTwistRotateAxis leanTwist;
     public LeanPinchScale leanPinch;
+    public float tweenDuration = 0.5f;
 
     private void Awake()
     {
@@ -31,27 +34,19 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        cameraBasePosition = cameraTransform.position;
+        cameraBasePosition = cameraTransform.transform.position;
     }
 
-    private void LateUpdate()
-    {
-        if (zoomControl)
-        {
-            LerpToZoomPosition(GameController.instance.itemHolder);
-        }
-        else if (!zoomControl && zoomTeste)
-        {
-            ReturnToBasePosition();
-        }
-    }
     public void LerpToZoomPosition(GameObject itemSelected)
     {
         leanDrag.enabled = false;
         leanTwist.enabled = false;
         leanPinch.enabled = false;
         Vector3 itemZoomPosition = itemSelected.transform.position + itemZoomOffset;
-        cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, itemZoomPosition, Time.deltaTime * 5);
+
+        LeanTween.move(cameraTransform, itemZoomPosition, tweenDuration).setEase(inOutType);
+
+        // cameraTransform.transform.localPosition = Vector3.Lerp(cameraTransform.transform.localPosition, itemZoomPosition, Time.deltaTime * 5);
         zoomTeste = true;
 
 
@@ -61,7 +56,9 @@ public class CameraController : MonoBehaviour
         leanDrag.enabled = true;
         leanTwist.enabled = true;
         leanPinch.enabled = true;
-        cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, cameraBasePosition, Time.deltaTime * 5);
+
+        LeanTween.move(cameraTransform, cameraBasePosition, tweenDuration);
+
         GameController.instance.panelItem.SetActive(false);
     }
 

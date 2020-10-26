@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
                     itemHolder = hit.transform.parent.gameObject;
                     CheckItemValues(hit.transform.gameObject);
 
-                    CameraController.instance.ChangeZoomControl();
+                    CameraController.instance.LerpToZoomPosition(itemHolder);
                     panelItem.SetActive(true);
 
                     if (backBtn != null)

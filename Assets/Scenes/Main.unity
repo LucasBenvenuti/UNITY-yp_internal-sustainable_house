@@ -553,7 +553,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1864133009}
         m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
-        m_MethodName: ChangeZoomControl
+        m_MethodName: ReturnToBasePosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3088,15 +3088,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82959b0f5d236e4f86bbd78ef507304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 1864133004}
+  inOutType: 0
+  cameraTransform: {fileID: 1864133001}
   itemZoomPosition: {fileID: 0}
-  itemZoomOffset: {x: 0, y: 20, z: 0}
+  itemZoomOffset: {x: 0, y: 20, z: -5}
   cameraBasePosition: {x: 0, y: 0, z: 0}
   zoomControl: 0
   zoomTeste: 0
   leanDrag: {fileID: 1864133007}
   leanTwist: {fileID: 1864133006}
   leanPinch: {fileID: 2095836631}
+  tweenDuration: 0.5
 --- !u!1 &1866957730
 GameObject:
   m_ObjectHideFlags: 0
