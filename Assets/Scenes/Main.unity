@@ -470,12 +470,12 @@ GameObject:
   - component: {fileID: 307862842}
   - component: {fileID: 307862841}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &307862840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -543,6 +543,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
         m_MethodName: ChangeZoomControl
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 307862839}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1122,6 +1134,7 @@ MonoBehaviour:
   - {fileID: 67526276}
   panelItem: {fileID: 1089376614}
   itemHolder: {fileID: 0}
+  backBtn: {fileID: 307862839}
   indexItemType: 0
   destroyOriginalItem: 0
   itemPanelActive: 0
@@ -1583,7 +1596,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1864133003}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1607,6 +1620,7 @@ RectTransform:
   m_Children:
   - {fileID: 355769838}
   - {fileID: 1853285168}
+  - {fileID: 2087612050}
   - {fileID: 1089376615}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1996,9 +2010,8 @@ RectTransform:
   m_Children:
   - {fileID: 368165815}
   - {fileID: 1549710851}
-  - {fileID: 2087612050}
   m_Father: {fileID: 844160250}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -3863,12 +3876,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 307862840}
-  m_Father: {fileID: 1089376615}
+  m_Father: {fileID: 844160250}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -50.000004, y: 2963.3335}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2143102213

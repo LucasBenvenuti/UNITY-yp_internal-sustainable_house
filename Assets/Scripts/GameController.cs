@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public GameObject[] itemType;
     public GameObject panelItem;
     public GameObject itemHolder;
+    public GameObject backBtn;
     public int indexItemType;
     public bool destroyOriginalItem;
     public bool itemPanelActive;
@@ -41,9 +42,18 @@ public class GameController : MonoBehaviour
                 {
                     itemHolder = hit.transform.parent.gameObject;
                     CheckItemValues(hit.transform.gameObject);
-                       
+
                     CameraController.instance.ChangeZoomControl();
                     panelItem.SetActive(true);
+
+                    if (backBtn != null)
+                    {
+                        backBtn.SetActive(true);
+                    }
+                    else
+                    {
+                        Debug.Log("Need to set Back Button on Game Controller");
+                    }
                 }
             }
         }
