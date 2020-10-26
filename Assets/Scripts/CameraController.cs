@@ -15,8 +15,11 @@ public class CameraController : MonoBehaviour
     public bool zoomControl;
     public bool zoomTeste;
     public LeanDragCamera leanDrag;
-    public LeanTwistRotateAxis leanTwist;
+    // public LeanTwistRotateAxis leanTwist;
     public LeanPinchScale leanPinch;
+
+    public ClampTransform clampTransform;
+
     public float tweenDuration = 0.5f;
 
     private void Awake()
@@ -39,8 +42,10 @@ public class CameraController : MonoBehaviour
 
     public void LerpToZoomPosition(GameObject itemSelected)
     {
+        clampTransform.enabled = false;
+
         leanDrag.enabled = false;
-        leanTwist.enabled = false;
+        // leanTwist.enabled = false;
         leanPinch.enabled = false;
         Vector3 itemZoomPosition = itemSelected.transform.position + itemZoomOffset;
 
@@ -53,13 +58,34 @@ public class CameraController : MonoBehaviour
     }
     public void ReturnToBasePosition()
     {
+        StartCoroutine(ReturnToBasePositionNew());
+
+        // leanDrag.enabled = true;
+        // // leanTwist.enabled = true;
+        // leanPinch.enabled = true;
+
+        // LeanTween.move(cameraTransform, cameraBasePosition, tweenDuration);
+
+        // GameController.instance.panelItem.SetActive(false);
+
+
+
+        // clampTransform.enabled = true;
+    }
+
+    public IEnumerator ReturnToBasePositionNew()
+    {
         leanDrag.enabled = true;
-        leanTwist.enabled = true;
+        // leanTwist.enabled = true;
         leanPinch.enabled = true;
 
-        LeanTween.move(cameraTransform, cameraBasePosition, tweenDuration);
+        LeanTween.move(cameraTransform, cameraBasePosition, tweenDuration).setEase(inOutType);
 
         GameController.instance.panelItem.SetActive(false);
+
+        yield return new WaitForSeconds(tweenDuration);
+
+        clampTransform.enabled = true;
     }
 
     public void ChangeZoomControl()
