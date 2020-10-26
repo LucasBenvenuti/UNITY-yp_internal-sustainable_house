@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public ItemTemplate itemSelected;
     public GameObject[] refrigerator;
-    public GameObject[] shower;
+    public GameObject[] acs;
+    public GameObject[] tvs;
     public GameObject[] itemType;
     public GameObject panelItem;
     public GameObject itemHolder;
@@ -83,7 +84,7 @@ public class GameController : MonoBehaviour
             itemSelectedPrice = itemSelected.itemPrice;
             itemType[0].SetActive(true);
         }
-        if (itemSelected.itemType == "Chuveiro")
+        if (itemSelected.itemType == "AC")
         {
             //for (int i = 0; i < shower.Length; i++)
             //{
@@ -92,6 +93,10 @@ public class GameController : MonoBehaviour
 
             itemType[1].SetActive(true);
 
+        }
+        if(itemSelected.itemType == "TV")
+        {
+            itemType[2].SetActive(true);
         }
     }
 
