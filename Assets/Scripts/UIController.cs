@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public static UIController instance;
+
     public Image fillMoneyImage;
     public Image fillSustainabilityImage;
     public Text fillSustainabilityText;
@@ -64,7 +65,7 @@ public class UIController : MonoBehaviour
             fillMoneyText.text = "Money: " + fillMoneyImage.fillAmount;
             fillSustainabilityText.text = "Sustainability: " + fillSustainabilityImage.fillAmount;
         }
-        
+
     }
 
     public void CheckBaseValues()
