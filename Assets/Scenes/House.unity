@@ -4215,7 +4215,7 @@ MonoBehaviour:
   totalTime: 600
   timeIsRunning: 0
   timeText: {fileID: 1850737052}
-  monthText: {fileID: 0}
+  monthText: {fileID: 1313376790}
 --- !u!1 &2096915192
 GameObject:
   m_ObjectHideFlags: 0
