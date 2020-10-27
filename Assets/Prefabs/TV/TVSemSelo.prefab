@@ -112,6 +112,6 @@ MonoBehaviour:
   isSelectable: 0
   itemName: TVSemSelo
   itemType: TV
-  itemPrice: 2
-  itemSustainability: 1
+  itemPrice: 25
+  itemSustainability: 20
   itemSprite: {fileID: 21300000, guid: 0b8821df10d67a444bbbe49bca32e8f6, type: 3}

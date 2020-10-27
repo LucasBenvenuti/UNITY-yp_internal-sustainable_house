@@ -113,8 +113,8 @@ MonoBehaviour:
   isSelectable: 0
   itemName: GeladeiraRosa
   itemType: Geladeira
-  itemPrice: 4
-  itemSustainability: 4
+  itemPrice: 50
+  itemSustainability: 50
   itemSprite: {fileID: 21300000, guid: ad4bced7439a5804184a3e43345704e3, type: 3}
 --- !u!1 &4865135467411061118
 GameObject:

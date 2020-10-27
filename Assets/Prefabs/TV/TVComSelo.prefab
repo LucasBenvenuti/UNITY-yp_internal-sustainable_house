@@ -113,6 +113,6 @@ MonoBehaviour:
   isSelectable: 0
   itemName: TVComSelo
   itemType: TV
-  itemPrice: 5
-  itemSustainability: 4
+  itemPrice: 50
+  itemSustainability: 50
   itemSprite: {fileID: 21300000, guid: b357b704694474e459b8a416046012ac, type: 3}

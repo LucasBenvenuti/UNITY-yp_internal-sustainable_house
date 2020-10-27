@@ -8,8 +8,10 @@ public class SelectItem : MonoBehaviour
 
     public GameObject itemPrefab;
     public Transform itemPosition;
+    public ItemTemplate itemSelectedTemplate;
     public float itemPrice;
     public float itemSustainability;
+    public float itemCostPerMonth;
 
     void Awake()
     {
@@ -35,5 +37,14 @@ public class SelectItem : MonoBehaviour
             UIController.instance.updateValues = true;
 
         }
+    }
+
+    void ShowItemValues()
+    {
+        itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();
+        itemPrice = itemSelectedTemplate.itemPrice;
+        itemSustainability = itemSelectedTemplate.itemSustainability;
+        itemCostPerMonth = itemSelectedTemplate.itemCostPerMonth;
+        
     }
 }

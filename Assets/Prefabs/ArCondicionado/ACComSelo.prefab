@@ -114,6 +114,6 @@ MonoBehaviour:
   isSelectable: 0
   itemName: ACComSelo
   itemType: AC
-  itemPrice: 7
-  itemSustainability: 5
+  itemPrice: 50
+  itemSustainability: 50
   itemSprite: {fileID: 21300000, guid: a42e45e9f845d6a4ab9e61bdd0d9ce74, type: 3}

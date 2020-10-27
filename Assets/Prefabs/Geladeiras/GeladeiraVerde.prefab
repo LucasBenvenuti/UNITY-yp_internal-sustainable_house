@@ -112,6 +112,6 @@ MonoBehaviour:
   isSelectable: 0
   itemName: GeladeiraVerde
   itemType: Geladeira
-  itemPrice: 1
-  itemSustainability: 1
+  itemPrice: 70
+  itemSustainability: 80
   itemSprite: {fileID: 0}

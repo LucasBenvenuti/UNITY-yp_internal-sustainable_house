@@ -9,6 +9,7 @@ public class ItemTemplate : MonoBehaviour
     public string itemType;
     public float itemPrice;
     public float itemSustainability;
+    public float itemCostPerMonth;
     public Sprite itemSprite;
 
     void Start()
@@ -32,6 +33,10 @@ public class ItemTemplate : MonoBehaviour
         if (itemSustainability < 0.1)
         {
             itemSustainability = 0;
+        }
+        if(itemCostPerMonth < 0.1)
+        {
+            itemCostPerMonth = 0;
         }
     }
 

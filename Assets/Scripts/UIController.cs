@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public static UIController instance;
-
-    public Image fillMoneyImage;
-    public Image fillSustainabilityImage;
+    //sliders
+    public Slider moneySlider;
+    public Slider sustainabilitySlider;
+    //public Image fillMoneyImage;
+    //public Image fillSustainabilityImage;
+    //sliders text
     public Text fillSustainabilityText;
     public Text fillMoneyText;
     public float moneyBaseValue;
@@ -16,6 +19,8 @@ public class UIController : MonoBehaviour
     public bool updateValues;
     float newMoneyValue;
     float newSustainabilityValue;
+    float moneyMaxValue;
+    float sustainabilityMaxValue;
 
     public GameObject[] itemsSelectables;
 
@@ -30,13 +35,20 @@ public class UIController : MonoBehaviour
         {
             Destroy(this);
         }
+        moneyMaxValue = moneySlider.maxValue;
+        sustainabilityMaxValue = sustainabilitySlider.maxValue;
     }
     private void Start()
     {
-        fillMoneyImage.fillAmount = 0.5f;
-        fillSustainabilityImage.fillAmount = 0.5f;
-        fillMoneyText.text = "Money: " + fillMoneyImage.fillAmount;
-        fillSustainabilityText.text = "Sustainability: " + fillSustainabilityImage.fillAmount;
+        //fillMoneyImage.fillAmount = 0.5f;
+        //fillSustainabilityImage.fillAmount = 0.5f;
+        //fillMoneyText.text = "Money: " + fillMoneyImage.fillAmount;
+        //fillSustainabilityText.text = "Sustainability: " + fillSustainabilityImage.fillAmount;
+        CheckBaseValues();
+        moneySlider.value = moneyMaxValue - moneyBaseValue;
+        sustainabilitySlider.value = sustainabilityBaseValue;
+        fillMoneyText.text = "Money: " + moneySlider.value;
+        fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
     }
     private void LateUpdate()
     {
@@ -53,17 +65,19 @@ public class UIController : MonoBehaviour
         newSustainabilityValue = 0;
         for (int i = 0; i < itemsSelectables.Length; i++)
         {
-            newMoneyValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice / 20);
-            newSustainabilityValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability / 20);
+            newMoneyValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
+            newSustainabilityValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
             print("new money:" + newMoneyValue);
             print("new sus:" + newSustainabilityValue);
         }
         if (newMoneyValue != moneyBaseValue || newSustainabilityValue != sustainabilityBaseValue)
         {
-            fillMoneyImage.fillAmount = newMoneyValue;
-            fillSustainabilityImage.fillAmount = newSustainabilityValue;
-            fillMoneyText.text = "Money: " + fillMoneyImage.fillAmount;
-            fillSustainabilityText.text = "Sustainability: " + fillSustainabilityImage.fillAmount;
+            //fillMoneyImage.fillAmount = newMoneyValue;
+            //fillSustainabilityImage.fillAmount = newSustainabilityValue;
+            moneySlider.value = moneyMaxValue - newMoneyValue;
+            sustainabilitySlider.value = newSustainabilityValue;
+            fillMoneyText.text = "Money: " + moneySlider.value;
+            fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
         }
 
     }
@@ -74,8 +88,8 @@ public class UIController : MonoBehaviour
         sustainabilityBaseValue = 0;
         for (int i = 0; i < itemsSelectables.Length; i++)
         {
-            moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice / 20);
-            sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability / 20);
+            moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
+            sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
             print("checked money value:" + moneyBaseValue);
             print("checked sustainability value:" + sustainabilityBaseValue);
             print("/////////");
