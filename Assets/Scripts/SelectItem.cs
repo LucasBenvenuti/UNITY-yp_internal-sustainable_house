@@ -29,6 +29,7 @@ public class SelectItem : MonoBehaviour
         {
             GameObject prefab = Instantiate(itemPrefab);
             prefab.transform.parent = GameController.instance.itemHolder.transform;
+            prefab.transform.SetAsFirstSibling();
             prefab.transform.position = itemPosition.position;
             GameController.instance.destroyOriginalItem = false;
             UIController.instance.updateValues = true;

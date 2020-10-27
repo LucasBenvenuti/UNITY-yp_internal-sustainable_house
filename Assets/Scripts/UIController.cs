@@ -53,8 +53,8 @@ public class UIController : MonoBehaviour
         newSustainabilityValue = 0;
         for (int i = 0; i < itemsSelectables.Length; i++)
         {
-            newMoneyValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice / 10);
-            newSustainabilityValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability / 10);
+            newMoneyValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice / 20);
+            newSustainabilityValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability / 20);
             print("new money:" + newMoneyValue);
             print("new sus:" + newSustainabilityValue);
         }
@@ -74,8 +74,8 @@ public class UIController : MonoBehaviour
         sustainabilityBaseValue = 0;
         for (int i = 0; i < itemsSelectables.Length; i++)
         {
-            moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice / 10);
-            sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability / 10);
+            moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice / 20);
+            sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability / 20);
             print("checked money value:" + moneyBaseValue);
             print("checked sustainability value:" + sustainabilityBaseValue);
             print("/////////");

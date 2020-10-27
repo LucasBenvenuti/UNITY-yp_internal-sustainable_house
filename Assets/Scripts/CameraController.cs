@@ -42,35 +42,26 @@ public class CameraController : MonoBehaviour
 
     public void LerpToZoomPosition(GameObject itemSelected)
     {
+        cameraBasePosition = cameraTransform.transform.position;
+
         clampTransform.enabled = false;
 
         leanDrag.enabled = false;
         // leanTwist.enabled = false;
         leanPinch.enabled = false;
-        Vector3 itemZoomPosition = itemSelected.transform.position + itemZoomOffset;
+
+        int childCount = itemSelected.transform.childCount;
+
+        //GET FIRST CHILD POSITION - CAMERA POINT
+        Vector3 itemZoomPosition = itemSelected.transform.GetChild(childCount - 1).position;
 
         LeanTween.move(cameraTransform, itemZoomPosition, tweenDuration).setEase(inOutType);
 
-        // cameraTransform.transform.localPosition = Vector3.Lerp(cameraTransform.transform.localPosition, itemZoomPosition, Time.deltaTime * 5);
         zoomTeste = true;
-
-
     }
     public void ReturnToBasePosition()
     {
         StartCoroutine(ReturnToBasePositionNew());
-
-        // leanDrag.enabled = true;
-        // // leanTwist.enabled = true;
-        // leanPinch.enabled = true;
-
-        // LeanTween.move(cameraTransform, cameraBasePosition, tweenDuration);
-
-        // GameController.instance.panelItem.SetActive(false);
-
-
-
-        // clampTransform.enabled = true;
     }
 
     public IEnumerator ReturnToBasePositionNew()

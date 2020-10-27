@@ -94,7 +94,7 @@ public class GameController : MonoBehaviour
             itemType[1].SetActive(true);
 
         }
-        if(itemSelected.itemType == "TV")
+        if (itemSelected.itemType == "TV")
         {
             itemType[2].SetActive(true);
         }
