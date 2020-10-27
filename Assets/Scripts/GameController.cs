@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public int indexItemType;
     public bool destroyOriginalItem;
     public bool itemPanelActive;
+    public bool canGoToObject = true;
     public float itemSelectedPrice;
     private void Awake()
     {
@@ -30,33 +31,36 @@ public class GameController : MonoBehaviour
             Destroy(this);
         }
     }
-    void Update()
+
+    public void onTap()
     {
-        if (Input.GetMouseButtonDown(0))
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 100f))
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, 100f))
+            if (hit.transform.gameObject.tag == "Item")
             {
-                if (hit.transform.gameObject.tag == "Item")
-                {
-                    itemHolder = hit.transform.parent.gameObject;
-                    CheckItemValues(hit.transform.gameObject);
-
-                    CameraController.instance.LerpToZoomPosition(itemHolder);
-                    panelItem.SetActive(true);
-
-                    if (backBtn != null)
-                    {
-                        backBtn.SetActive(true);
-                    }
-                    else
-                    {
-                        Debug.Log("Need to set Back Button on Game Controller");
-                    }
-                }
+                selectItem(hit.transform.gameObject);
             }
+        }
+    }
+
+    public void selectItem(GameObject hitObject)
+    {
+        itemHolder = hitObject.transform.parent.gameObject;
+        CheckItemValues(hitObject);
+
+        CameraController.instance.LerpToZoomPosition(itemHolder);
+        panelItem.SetActive(true);
+
+        if (backBtn != null)
+        {
+            backBtn.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Need to set Back Button on Game Controller");
         }
     }
 

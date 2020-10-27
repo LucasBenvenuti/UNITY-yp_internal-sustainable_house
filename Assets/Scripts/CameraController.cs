@@ -42,13 +42,18 @@ public class CameraController : MonoBehaviour
 
     public void LerpToZoomPosition(GameObject itemSelected)
     {
+        if (!GameController.instance.canGoToObject)
+        {
+            return;
+        }
+
         cameraBasePosition = cameraTransform.transform.position;
+        GameController.instance.canGoToObject = false;
 
-        clampTransform.enabled = false;
-
+        // clampTransform.enabled = false;
         leanDrag.enabled = false;
         // leanTwist.enabled = false;
-        leanPinch.enabled = false;
+        // leanPinch.enabled = false;
 
         int childCount = itemSelected.transform.childCount;
 
@@ -68,7 +73,7 @@ public class CameraController : MonoBehaviour
     {
         leanDrag.enabled = true;
         // leanTwist.enabled = true;
-        leanPinch.enabled = true;
+        // leanPinch.enabled = true;
 
         LeanTween.move(cameraTransform, cameraBasePosition, tweenDuration).setEase(inOutType);
 
@@ -76,7 +81,8 @@ public class CameraController : MonoBehaviour
 
         yield return new WaitForSeconds(tweenDuration);
 
-        clampTransform.enabled = true;
+        GameController.instance.canGoToObject = true;
+        // clampTransform.enabled = true;
     }
 
     public void ChangeZoomControl()
