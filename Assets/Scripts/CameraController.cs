@@ -7,18 +7,28 @@ public class CameraController : MonoBehaviour
 {
     public LeanTweenType inOutType;
 
+    [HideInInspector]
     public static CameraController instance;
-    public GameObject cameraTransform;
+
+    [HideInInspector]
     public Transform itemZoomPosition;
-    public Vector3 itemZoomOffset;
+    [HideInInspector]
     public Vector3 cameraBasePosition;
-    public bool zoomControl;
-    public bool zoomTeste;
+
+    public LeanPitchYaw leanTwist;
+    public LeanMaintainDistance leanDistance;
+    public LeanMultiPinch leanMultiPinch;
     public LeanDragCamera leanDrag;
     // public LeanTwistRotateAxis leanTwist;
-    public LeanPinchScale leanPinch;
-
-    public ClampTransform clampTransform;
+    // public  leanPinch;
+    [HideInInspector]
+    public float yawAngle;
+    [HideInInspector]
+    public float yawSensitivity;
+    [HideInInspector]
+    public float rotationDampening;
+    [HideInInspector]
+    public float dragSensitivity;
 
     public float tweenDuration = 0.5f;
 
@@ -37,7 +47,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        cameraBasePosition = cameraTransform.transform.position;
+        cameraBasePosition = this.gameObject.transform.position;
     }
 
     public void LerpToZoomPosition(GameObject itemSelected)
@@ -47,11 +57,9 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        cameraBasePosition = cameraTransform.transform.position;
+        cameraBasePosition = this.gameObject.transform.position;
         GameController.instance.canGoToObject = false;
-
-        // clampTransform.enabled = false;
-        leanDrag.enabled = false;
+        // leanDrag.enabled = false;
         // leanTwist.enabled = false;
         // leanPinch.enabled = false;
 
@@ -60,9 +68,23 @@ public class CameraController : MonoBehaviour
         //GET FIRST CHILD POSITION - CAMERA POINT
         Vector3 itemZoomPosition = itemSelected.transform.GetChild(childCount - 1).position;
 
-        LeanTween.move(cameraTransform, itemZoomPosition, tweenDuration).setEase(inOutType);
+        dragSensitivity = leanDrag.Sensitivity;
+        yawSensitivity = leanTwist.YawSensitivity;
+        rotationDampening = leanTwist.Dampening;
+        yawAngle = this.transform.parent.eulerAngles.y;
 
-        zoomTeste = true;
+        leanTwist.Dampening = 7f;
+        leanDrag.Sensitivity = 0f;
+        leanTwist.YawSensitivity = 0f;
+        leanTwist.SetYaw(45);
+
+        leanDrag.enabled = false;
+        leanDistance.enabled = false;
+        leanMultiPinch.enabled = false;
+
+        LeanTween.move(this.gameObject, itemZoomPosition, tweenDuration).setEase(inOutType);
+
+        // zoomTeste = true;
     }
     public void ReturnToBasePosition()
     {
@@ -71,22 +93,34 @@ public class CameraController : MonoBehaviour
 
     public IEnumerator ReturnToBasePositionNew()
     {
-        leanDrag.enabled = true;
+        // leanDrag.enabled = true;
         // leanTwist.enabled = true;
         // leanPinch.enabled = true;
 
-        LeanTween.move(cameraTransform, cameraBasePosition, tweenDuration).setEase(inOutType);
+
+        leanTwist.SetYaw(yawAngle);
+        leanTwist.Dampening = rotationDampening;
+
+        LeanTween.move(this.gameObject, cameraBasePosition, tweenDuration / 1f).setEase(inOutType);
 
         GameController.instance.panelItem.SetActive(false);
 
         yield return new WaitForSeconds(tweenDuration);
 
+        leanTwist.Dampening = rotationDampening;
+
+        leanDrag.Sensitivity = dragSensitivity;
+        leanTwist.YawSensitivity = yawSensitivity;
+
+        leanDrag.enabled = true;
+        leanDistance.enabled = true;
+        leanMultiPinch.enabled = true;
+
         GameController.instance.canGoToObject = true;
-        // clampTransform.enabled = true;
     }
 
-    public void ChangeZoomControl()
-    {
-        zoomControl = !zoomControl;
-    }
+    // public void ChangeZoomControl()
+    // {
+    //     zoomControl = !zoomControl;
+    // }
 }
