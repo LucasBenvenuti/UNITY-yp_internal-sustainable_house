@@ -35,4 +35,14 @@ public class SelectItem : MonoBehaviour
 
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    void ShowItemValues()
+    {
+        itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();
+        itemPrice = itemSelectedTemplate.itemPrice;
+        itemSustainability = itemSelectedTemplate.itemSustainability;      
+    }
+>>>>>>> Stashed changes
 }

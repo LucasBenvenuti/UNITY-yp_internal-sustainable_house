@@ -28,16 +28,25 @@ public class ItemTemplate : MonoBehaviour
         if(itemPrice < 0.1)
         {
             itemPrice = 0;
+<<<<<<< Updated upstream
         } 
         if(itemSustainability < 0.1)
-        {
-            itemSustainability = 0;
+=======
         }
+        if (itemSustainability < -5.1)
+>>>>>>> Stashed changes
+        {
+            itemSustainability = -5;
+        }
+<<<<<<< Updated upstream
     }
 
 
     void Update()
     {
         
+=======
+>>>>>>> Stashed changes
     }
+  
 }
