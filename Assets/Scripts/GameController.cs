@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour
     public ItemTemplate itemSelected;
     public ActionTemplate actionSelected;
     public GameObject[] refrigerator;
-    public GameObject[] shower;
+    public GameObject[] acs;
+    public GameObject[] tvs;
     public GameObject[] itemType;
     public GameObject[] actionType;
     public GameObject panelItem;
@@ -19,6 +20,7 @@ public class GameController : MonoBehaviour
     public int indexItemType;
     public bool destroyOriginalItem;
     public bool itemPanelActive;
+    public bool canGoToObject = true;
     public float itemSelectedPrice;
     private void Awake()
     {
@@ -32,21 +34,14 @@ public class GameController : MonoBehaviour
             Destroy(this);
         }
     }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-<<<<<<< Updated upstream
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 100f))
-            {
-                if (hit.transform.gameObject.tag == "Item")
-                {
-                    itemHolder = hit.transform.parent.gameObject;
-                    CheckItemValues(hit.transform.gameObject);
-=======
+    public void onTap()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 100f))
+        {
             if (hit.transform.gameObject.tag == "Item")
             {
                 selectItem(hit.transform.gameObject);
@@ -63,21 +58,17 @@ public class GameController : MonoBehaviour
     {
         itemHolder = hitObject.transform.parent.gameObject;
         DisplayItemTypeUI(hitObject);
->>>>>>> Stashed changes
 
-                    CameraController.instance.LerpToZoomPosition(itemHolder);
-                    panelItem.SetActive(true);
+        CameraController.instance.LerpToZoomPosition(itemHolder);
+        panelItem.SetActive(true);
 
-                    if (backBtn != null)
-                    {
-                        backBtn.SetActive(true);
-                    }
-                    else
-                    {
-                        Debug.Log("Need to set Back Button on Game Controller");
-                    }
-                }
-            }
+        if (backBtn != null)
+        {
+            backBtn.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Need to set Back Button on Game Controller");
         }
     }
 
@@ -96,9 +87,13 @@ public class GameController : MonoBehaviour
             itemSelectedPrice = itemSelected.itemPrice;
             itemType[0].SetActive(true);
         }
-        if (itemSelected.itemType == "Chuveiro")
+        if (itemSelected.itemType == "AC")
         {
             itemType[1].SetActive(true);
+        }
+        if (itemSelected.itemType == "TV")
+        {
+            itemType[2].SetActive(true);
         }
     }
 
@@ -130,14 +125,6 @@ public class GameController : MonoBehaviour
         }
         int indexSelected = actionSelected.actionIndex;
         actionType[indexSelected].SetActive(true);
-        //if(actionSelected.actionIndex == 0)
-        //{
-        //    actionType[0].SetActive(true);
-        //}
-        //if(actionSelected.actionIndex == 1)
-        //{
-        //    actionType[1].SetActive(true);
-        //}
     }
 
 
