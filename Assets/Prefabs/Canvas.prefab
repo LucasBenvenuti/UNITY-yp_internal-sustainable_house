@@ -275,11 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 321791889288796614, guid: 56dfaaebf8ad11b4eaa503744b2f2b0e, type: 3}
   itemPosition: {fileID: 0}
-  itemSelectedTemplate: {fileID: 0}
   itemPrice: 0
   itemSustainability: 0
-  itemCostPerMonth: 0
-  itemPriceText: {fileID: 0}
 --- !u!114 &5873244552715358741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,11 +423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1139687706688619286, guid: 9f30d4b6c8724404db81b9f7e4e24fc9, type: 3}
   itemPosition: {fileID: 0}
-  itemSelectedTemplate: {fileID: 0}
   itemPrice: 0
   itemSustainability: 0
-  itemCostPerMonth: 0
-  itemPriceText: {fileID: 0}
 --- !u!114 &5873244552796540683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1601,11 +1595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 3562119595242231362, guid: c9e7b510be107874bb3ce60ce9da63df, type: 3}
   itemPosition: {fileID: 0}
-  itemSelectedTemplate: {fileID: 0}
   itemPrice: 0
   itemSustainability: 0
-  itemCostPerMonth: 0
-  itemPriceText: {fileID: 0}
 --- !u!114 &5873244553569241830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,11 +1743,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 5823702903725919063, guid: f3304b3b1c0aa6a40bfb3a89ad0a7bd9, type: 3}
   itemPosition: {fileID: 0}
-  itemSelectedTemplate: {fileID: 0}
   itemPrice: 0
   itemSustainability: 0
-  itemCostPerMonth: 0
-  itemPriceText: {fileID: 0}
 --- !u!114 &5873244553621636032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,11 +1927,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 343918184450859677, guid: 5feb186eec136ee46bf114660118708b, type: 3}
   itemPosition: {fileID: 0}
-  itemSelectedTemplate: {fileID: 0}
   itemPrice: 0
   itemSustainability: 0
-  itemCostPerMonth: 0
-  itemPriceText: {fileID: 0}
 --- !u!114 &5873244553692174420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3158,11 +3143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 9132401522252491217, guid: 13d42f38e1e675f4eac092a8425240f4, type: 3}
   itemPosition: {fileID: 0}
-  itemSelectedTemplate: {fileID: 0}
   itemPrice: 0
   itemSustainability: 0
-  itemCostPerMonth: 0
-  itemPriceText: {fileID: 0}
 --- !u!114 &5873244554364090217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3235,7 +3217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5873244554544662333
 RectTransform:
   m_ObjectHideFlags: 0

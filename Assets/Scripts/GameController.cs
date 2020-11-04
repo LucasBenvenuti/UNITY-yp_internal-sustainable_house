@@ -95,6 +95,10 @@ public class GameController : MonoBehaviour
         {
             itemType[2].SetActive(true);
         }
+        if (itemSelected.itemType == "TV")
+        {
+            itemType[2].SetActive(true);
+        }
     }
 
     public void DestroyInGameItem()
