@@ -352,6 +352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionIndex: 3
   actionCost: 0
+  haveDoneAction: 0
+  actionSprite: {fileID: 848268504}
 --- !u!65 &92351868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -675,6 +677,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionIndex: 0
   actionCost: 0
+  haveDoneAction: 0
+  actionSprite: {fileID: 265698328}
 --- !u!65 &170007778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -804,7 +808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265698326}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.005, y: 0, z: -0.005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170007776}
@@ -2539,6 +2543,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionIndex: 1
   actionCost: 0
+  haveDoneAction: 0
+  actionSprite: {fileID: 156243773}
 --- !u!65 &897815464
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4537,6 +4543,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionIndex: 4
   actionCost: 0
+  haveDoneAction: 0
+  actionSprite: {fileID: 1502256303}
 --- !u!65 &1696312591
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5931,6 +5939,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionIndex: 2
   actionCost: 0
+  haveDoneAction: 0
+  actionSprite: {fileID: 471800840}
 --- !u!65 &2038065338
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6170,11 +6180,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13735ff82ea85cf4a8f38287f5c518ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 600
+  totalTime: 720
+  monthTime: 60
   timeText: {fileID: 1850737052}
   monthText: {fileID: 1313376790}
   timeIsRunning: 0
   monthCheck: 0
+  actions:
+  - {fileID: 170007777}
+  - {fileID: 897815463}
+  - {fileID: 2038065337}
+  - {fileID: 92351867}
+  - {fileID: 1696312590}
 --- !u!1 &2096915192
 GameObject:
   m_ObjectHideFlags: 0

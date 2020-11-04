@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActionTemplate : MonoBehaviour
 {
     public int actionIndex;
     public int actionCost;
-    bool haveDoneAction;
+    public bool haveDoneAction;
+    public SpriteRenderer actionSprite;
 
     void Start()
     {
@@ -19,24 +21,26 @@ public class ActionTemplate : MonoBehaviour
             actionCost = 0;
         }
     }
-    private void Update()
-    {
-        if (TimerController.instance.monthCheck)
-        {
-            haveDoneAction = false;
-        }
-    }
 
     public void DoneAction()
     {
         if (!haveDoneAction)
         {
-            haveDoneAction = true;
+            actionSprite.color = Color.gray;
+            //actionSprite.enabled = false;
             Debug.Log("you finished this action with sucess");
+            haveDoneAction = true;
         }
         else
         {
             Debug.Log("u alredy done this action try again next month");
         }
+    }
+
+    public void EnableAction()
+    {
+        actionSprite.color = Color.cyan;
+        //actionSprite.enabled = true;
+        haveDoneAction = false;
     }
 }

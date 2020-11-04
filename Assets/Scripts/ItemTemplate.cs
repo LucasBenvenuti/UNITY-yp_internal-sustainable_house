@@ -26,12 +26,10 @@ public class ItemTemplate : MonoBehaviour
         {
             itemType = "Default";
         }
-        if (itemPrice < 0.1)
-        {
-            itemPrice = 0;
         if (itemSustainability < -5.1)
         {
             itemSustainability = -5;
         }
     }
+}
 

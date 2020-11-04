@@ -127,6 +127,7 @@ public class GameController : MonoBehaviour
         {
             actionSelected = go.GetComponent<ActionTemplate>();
         }
+        actionSelected.DoneAction();
         int indexSelected = actionSelected.actionIndex;
         actionType[indexSelected].SetActive(true);
     }

@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class TimerController : MonoBehaviour
 {
     public static TimerController instance;
-    public float totalTime = 720; //sets 12 minutes for timer
+    public float totalTime; //sets 12 minutes for timer
+    public float monthTime;
     public Text timeText;
     public Text monthText;
     public bool timeIsRunning;
     public bool monthCheck;
+
+    public ActionTemplate[] actions;
 
     float timeBaseMonth;
     int months;
@@ -40,6 +43,7 @@ public class TimerController : MonoBehaviour
             if (totalTime > 0)
             {
                 totalTime -= Time.deltaTime;
+                MonthsCounter();
             }
             else
             {
@@ -47,7 +51,6 @@ public class TimerController : MonoBehaviour
             }
         }
         DisplayTimeMinAndSec(totalTime);
-        MonthsCounter();
     }
 
     void DisplayTimeMinAndSec(float timeToDisplay){
@@ -72,21 +75,26 @@ public class TimerController : MonoBehaviour
     }
     public void MonthsCounter()
     {
+        monthTime -= Time.deltaTime;
         timeBaseMonth += Time.deltaTime;
-        if(timeBaseMonth >= 59.9f)
+        if(monthTime < 0.1f)
         {
             months++;
-            monthCheck = true;
-            timeBaseMonth = 0;
             PaySalary();
+            monthCheck = true;
+            monthTime = 10;
+            for(int i = 0; i < actions.Length; i++)
+            {
+                actions[i].EnableAction();
+            }
         }
+        monthCheck = false;
         monthText.text = "Month: " + months;
     }
 
     void PaySalary()
     {
         Debug.Log("function to pay a salary");
-        monthCheck = false;
     }
 
 }
