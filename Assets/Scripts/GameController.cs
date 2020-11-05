@@ -115,6 +115,7 @@ public class GameController : MonoBehaviour
     {
         DisplayActionTypeUI(hitAction);
         panelAction.SetActive(true);
+        Debug.Log("teste");
     }
 
     void DisplayActionTypeUI(GameObject go)
