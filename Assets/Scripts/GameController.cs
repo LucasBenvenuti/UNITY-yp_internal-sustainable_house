@@ -27,7 +27,9 @@ public class GameController : MonoBehaviour
     //public GameObject[] refrigerator;
     //public GameObject[] tvs;
     public GameObject[] itemType;
+    public GameObject[] actionType;
     public GameObject panelItem;
+    public GameObject panelAction;
     public GameObject itemHolder;
     public GameObject backBtn;
     public GameObject confirmBox;
