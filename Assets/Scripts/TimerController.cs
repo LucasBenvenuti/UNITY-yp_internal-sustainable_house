@@ -6,17 +6,21 @@ using UnityEngine.UI;
 public class TimerController : MonoBehaviour
 {
     public static TimerController instance;
-    public float totalTime = 600;
-    public bool timeIsRunning;
+    public float totalTime; //sets 12 minutes for timer
+    public float monthTime;
     public Text timeText;
     public Text monthText;
+    public bool timeIsRunning;
+    public bool monthCheck;
 
-    float timeBaseMonth;
+    public ActionTemplate[] actions;
+
+    public float timeBaseMonth;
     int months;
 
     private void Awake()
     {
-        if(!instance)
+        if (!instance)
         {
             instance = this;
         }
@@ -28,7 +32,7 @@ public class TimerController : MonoBehaviour
     }
     void Start()
     {
-        timeIsRunning = true;
+        WaitForTutorial();
     }
 
     // Update is called once per frame
@@ -39,33 +43,59 @@ public class TimerController : MonoBehaviour
             if (totalTime > 0)
             {
                 totalTime -= Time.deltaTime;
+                MonthsCounter();
             }
             else
             {
-                totalTime = 0;
-                timeIsRunning = false;
+                FinishGame();
             }
         }
         DisplayTimeMinAndSec(totalTime);
-        MonthsCounter();
     }
 
-    void DisplayTimeMinAndSec(float timeToDisplay){
+    void DisplayTimeMinAndSec(float timeToDisplay)
+    {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void MonthsCounter()
+
+    void WaitForTutorial()
     {
-        timeBaseMonth += Time.deltaTime;
-        if(timeBaseMonth >= 59.9f)
+        Debug.Log("Function for wait finish tutorial and start timer");
+        timeIsRunning = true;
+    }
+
+    void FinishGame()
+    {
+        Debug.Log("Function called when the timer is over for finish the game");
+        totalTime = 0;
+        timeIsRunning = false;
+    }
+    public void MonthsCounter()
+    {
+        monthTime -= Time.deltaTime;
+        if (monthTime < 0.1f)
         {
             months++;
-            timeBaseMonth = 0;
+            SalaryFunction();
+            monthCheck = true;
+            monthTime = timeBaseMonth;
+            for (int i = 0; i < actions.Length; i++)
+            {
+                actions[i].EnableAction();
+            }
         }
+        monthCheck = false;
         monthText.text = "Month: " + months;
+    }
+
+    void SalaryFunction()
+    {
+        UIController.instance.salaryCheck = true;
+        Debug.Log("function to pay a salary");
     }
 
 }

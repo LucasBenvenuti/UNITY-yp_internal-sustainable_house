@@ -179,6 +179,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Need to set Confirm Button on Select Item");
         }
+        confirmBtn.onClick.RemoveListener(() => { Teste(item); });
     }
     public void Teste(SelectItem item)
     {

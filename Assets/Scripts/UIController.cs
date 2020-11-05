@@ -17,10 +17,15 @@ public class UIController : MonoBehaviour
     public float moneyBaseValue;
     public float sustainabilityBaseValue;
     public bool updateValues;
+    public bool salaryCheck;
     float newMoneyValue;
     float newSustainabilityValue;
     float moneyMaxValue;
     float sustainabilityMaxValue;
+    float controlMoney;
+    float controlSustainability;
+    float baseSalary;
+
 
     public GameObject[] itemsSelectables;
 
