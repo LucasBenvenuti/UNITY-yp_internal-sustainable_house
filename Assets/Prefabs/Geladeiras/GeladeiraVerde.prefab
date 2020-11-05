@@ -113,5 +113,6 @@ MonoBehaviour:
   itemName: GeladeiraVerde
   itemType: Geladeira
   itemPrice: 70
-  itemSustainability: 80
+  itemSustainability: -5
+  itemCostPerMonth: 0
   itemSprite: {fileID: 0}

@@ -7,11 +7,14 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public ItemTemplate itemSelected;
+    public ActionTemplate actionSelected;
     public GameObject[] refrigerator;
     public GameObject[] acs;
     public GameObject[] tvs;
     public GameObject[] itemType;
+    public GameObject[] actionType;
     public GameObject panelItem;
+    public GameObject panelAction;
     public GameObject itemHolder;
     public GameObject backBtn;
     public int indexItemType;
@@ -42,14 +45,19 @@ public class GameController : MonoBehaviour
             if (hit.transform.gameObject.tag == "Item")
             {
                 selectItem(hit.transform.gameObject);
+            }           
+            if (hit.transform.gameObject.tag == "Action")
+            {
+                SelectAction(hit.transform.gameObject);
             }
+            
         }
     }
 
     public void selectItem(GameObject hitObject)
     {
         itemHolder = hitObject.transform.parent.gameObject;
-        CheckItemValues(hitObject);
+        DisplayItemTypeUI(hitObject);
 
         CameraController.instance.LerpToZoomPosition(itemHolder);
         panelItem.SetActive(true);
@@ -64,12 +72,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void PrintName(GameObject go)
-    {
-        print(go.GetComponent<ItemTemplate>().itemName);
-    }
-
-    void CheckItemValues(GameObject go)
+    void DisplayItemTypeUI(GameObject go)
     {
         for (int i = 0; i < itemType.Length; i++)
         {
@@ -81,22 +84,16 @@ public class GameController : MonoBehaviour
         }
         if (itemSelected.itemType == "Geladeira")
         {
-            //for (int i = 0; i < refrigerator.Length; i++)
-            //{
-            //    print("nome da geladeira" + i + ":" + refrigerator[i].GetComponent<ItemTemplate>().itemName);
-            //}
             itemSelectedPrice = itemSelected.itemPrice;
             itemType[0].SetActive(true);
         }
         if (itemSelected.itemType == "AC")
         {
-            //for (int i = 0; i < shower.Length; i++)
-            //{
-            //    print("nome da chuveiro" + i + ":" + shower[i].GetComponent<ItemTemplate>().itemName);
-            //}
-
             itemType[1].SetActive(true);
-
+        }
+        if (itemSelected.itemType == "TV")
+        {
+            itemType[2].SetActive(true);
         }
         if (itemSelected.itemType == "TV")
         {
@@ -114,12 +111,32 @@ public class GameController : MonoBehaviour
         }
     }
 
-    //public IEnumerator ZoomItemAnimation()
-    //{
-    //    if (!CameraController.instance.isOnZoomPosition)
-    //    {
-    //        CameraController.instance.LerpToZoomPosition(itemHolder);
-    //        yield return null;
-    //    }
-    //}
+    public void SelectAction(GameObject hitAction)
+    {
+        DisplayActionTypeUI(hitAction);
+        panelAction.SetActive(true);
+    }
+
+    void DisplayActionTypeUI(GameObject go)
+    {
+        for (int i = 0; i < actionType.Length; i++)
+        {
+            actionType[i].SetActive(false);
+        }
+        if (actionSelected != go.GetComponent<ActionTemplate>())
+        {
+            actionSelected = go.GetComponent<ActionTemplate>();
+        }
+        actionSelected.DoneAction();
+        int indexSelected = actionSelected.actionIndex;
+        actionType[indexSelected].SetActive(true);
+    }
+
+
+    void PrintName(GameObject go)
+    {
+        print(go.GetComponent<ItemTemplate>().itemName);
+    }
+
+
 }

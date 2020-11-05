@@ -5,25 +5,33 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    //singleton
     public static UIController instance;
     //sliders
     public Slider moneySlider;
     public Slider sustainabilitySlider;
-    //public Image fillMoneyImage;
-    //public Image fillSustainabilityImage;
     //sliders text
     public Text fillSustainabilityText;
     public Text fillMoneyText;
+    //bools to control actions for update values and receive month salary
+    public bool updateValues;
+    public bool salaryCheck;
+    //floats to set the max values
+    public float moneyMaxValue;
+    public float sustainabilityMaxValue;
+    //floats to check itens values in scene 
     public float moneyBaseValue;
     public float sustainabilityBaseValue;
-    public bool updateValues;
+    //floats to check new values when update itens
     float newMoneyValue;
     float newSustainabilityValue;
-    float moneyMaxValue;
-    float sustainabilityMaxValue;
-
+    //floats to control (max value - value of itens in scene)
+    float controlMoney;
+    float controlSustainability;
+    //list of itens that can be modified
     public GameObject[] itemsSelectables;
 
+    public float baseSalary;
     private void Awake()
     {
         if (!instance)
@@ -35,17 +43,13 @@ public class UIController : MonoBehaviour
         {
             Destroy(this);
         }
-        moneyMaxValue = moneySlider.maxValue;
-        sustainabilityMaxValue = sustainabilitySlider.maxValue;
+        moneySlider.maxValue = moneyMaxValue;
+        sustainabilitySlider.maxValue = sustainabilityMaxValue;
     }
     private void Start()
     {
-        //fillMoneyImage.fillAmount = 0.5f;
-        //fillSustainabilityImage.fillAmount = 0.5f;
-        //fillMoneyText.text = "Money: " + fillMoneyImage.fillAmount;
-        //fillSustainabilityText.text = "Sustainability: " + fillSustainabilityImage.fillAmount;
         CheckBaseValues();
-        moneySlider.value = moneyMaxValue - moneyBaseValue;
+        moneySlider.value = controlMoney;
         sustainabilitySlider.value = sustainabilityBaseValue;
         fillMoneyText.text = "Money: " + moneySlider.value;
         fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
@@ -54,8 +58,15 @@ public class UIController : MonoBehaviour
     {
         if (updateValues)
         {
-            UpdateFillIndicators();
+            //CheckBaseValues();
+            //UpdateFillIndicators();
+
             updateValues = false;
+        }
+        if (salaryCheck)
+        {
+            PaySalary();
+            salaryCheck = false;
         }
     }
 
@@ -72,14 +83,11 @@ public class UIController : MonoBehaviour
         }
         if (newMoneyValue != moneyBaseValue || newSustainabilityValue != sustainabilityBaseValue)
         {
-            //fillMoneyImage.fillAmount = newMoneyValue;
-            //fillSustainabilityImage.fillAmount = newSustainabilityValue;
-            moneySlider.value = moneyMaxValue - newMoneyValue;
+            moneySlider.value = controlMoney - Mathf.Abs(moneyBaseValue - newMoneyValue);
             sustainabilitySlider.value = newSustainabilityValue;
             fillMoneyText.text = "Money: " + moneySlider.value;
             fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
         }
-
     }
 
     public void CheckBaseValues()
@@ -90,9 +98,27 @@ public class UIController : MonoBehaviour
         {
             moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
             sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
-            print("checked money value:" + moneyBaseValue);
-            print("checked sustainability value:" + sustainabilityBaseValue);
-            print("/////////");
         }
+        //amount of money availiable 
+        controlMoney = moneyMaxValue - moneyBaseValue;
+    }
+
+    public void PaySalary()
+    {
+        controlMoney = moneySlider.value;
+        moneySlider.value = controlMoney + baseSalary;
+        fillMoneyText.text = "Money: " + moneySlider.value;
+    }
+
+    public void NewUpdateValues(float price, float sustainability)
+    {
+        controlMoney = moneySlider.value;
+        moneySlider.value = controlMoney - price;
+        fillMoneyText.text = "Money: " + moneySlider.value;
+
+            sustainabilitySlider.value = sustainabilityBaseValue + sustainability;
+        
+        fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
+        CheckBaseValues();
     }
 }

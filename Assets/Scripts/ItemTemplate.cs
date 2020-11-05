@@ -26,25 +26,10 @@ public class ItemTemplate : MonoBehaviour
         {
             itemType = "Default";
         }
-        if (itemPrice < 0.1)
+        if (itemSustainability < -5.1)
         {
-            itemPrice = 0;
+            itemSustainability = -5;
         }
-        if (itemSustainability < 0.1)
-        {
-            itemSustainability = 0;
-        }
-        if(itemCostPerMonth < 0.1)
-        {
-            itemCostPerMonth = 0;
-        }
-    }
-
-
-    public void onTapObject()
-    {
-        GameController.instance.selectItem(this.gameObject);
-
-        Debug.Log("Object Tapped - " + this.gameObject);
     }
 }
+
