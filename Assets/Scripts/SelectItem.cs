@@ -9,13 +9,16 @@ public class SelectItem : MonoBehaviour
     public GameObject itemPrefab;
     public Transform itemPosition;
     public ItemTemplate itemSelectedTemplate;
-    public float itemPrice;
-    public float itemSustainability;
-    public float itemCostPerMonth;
+    //public float itemPrice;
+    //public float itemSustainability;
+    //public float itemCostPerMonth;
+
 
     void Awake()
     {
-
+        itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();
+        //itemPrice = itemSelectedTemplate.itemPrice;
+        //itemSustainability = itemSelectedTemplate.itemSustainability;
     }
 
     // Update is called once per frame
@@ -25,8 +28,7 @@ public class SelectItem : MonoBehaviour
     }
     public void NewItemInstance()
     {
-        UIController.instance.CheckBaseValues();
-        GameController.instance.DestroyInGameItem();
+        GameController.instance.CheckAndDestroyItem(itemPrefab);
         if (GameController.instance.destroyOriginalItem)
         {
             GameObject prefab = Instantiate(itemPrefab);
@@ -34,17 +36,10 @@ public class SelectItem : MonoBehaviour
             prefab.transform.SetAsFirstSibling();
             prefab.transform.position = itemPosition.position;
             GameController.instance.destroyOriginalItem = false;
-            UIController.instance.updateValues = true;
-
         }
     }
-
-    void ShowItemValues()
+    public void ClickOnItem()
     {
-        itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();
-        itemPrice = itemSelectedTemplate.itemPrice;
-        itemSustainability = itemSelectedTemplate.itemSustainability;
-        itemCostPerMonth = itemSelectedTemplate.itemCostPerMonth;
-        
+        GameController.instance.ChangeRequest(this);
     }
 }

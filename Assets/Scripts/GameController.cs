@@ -7,13 +7,31 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public ItemTemplate itemSelected;
-    public GameObject[] refrigerator;
-    public GameObject[] acs;
-    public GameObject[] tvs;
+    public ActionTemplate actionSelected;
+    /*
+      public GameObject[] dryCloths;
+      public GameObject[] lamps;
+      public GameObject[] windows;
+      public GameObject[] energy;
+      public GameObject[] water;
+      public GameObject[] sanatary;
+      public GameObject[] shower;
+      public GameObject[] flush;
+      public GameObject[] sink;
+      public GameObject[] garbage;
+      public GameObject[] reuseWater;
+      public GameObject[] laundry;
+     
+     */
+    //public GameObject[] acs;
+    //public GameObject[] refrigerator;
+    //public GameObject[] tvs;
     public GameObject[] itemType;
     public GameObject panelItem;
     public GameObject itemHolder;
     public GameObject backBtn;
+    public GameObject confirmBox;
+    public Button confirmBtn;
     public int indexItemType;
     public bool destroyOriginalItem;
     public bool itemPanelActive;
@@ -43,6 +61,11 @@ public class GameController : MonoBehaviour
             {
                 selectItem(hit.transform.gameObject);
             }
+            if (hit.transform.gameObject.tag == "Action")
+            {
+                SelectAction(hit.transform.gameObject);
+            }
+
         }
     }
 
@@ -79,47 +102,85 @@ public class GameController : MonoBehaviour
         {
             itemSelected = go.GetComponent<ItemTemplate>();
         }
-        if (itemSelected.itemType == "Geladeira")
-        {
-            //for (int i = 0; i < refrigerator.Length; i++)
-            //{
-            //    print("nome da geladeira" + i + ":" + refrigerator[i].GetComponent<ItemTemplate>().itemName);
-            //}
-            itemSelectedPrice = itemSelected.itemPrice;
-            itemType[0].SetActive(true);
-        }
-        if (itemSelected.itemType == "AC")
-        {
-            //for (int i = 0; i < shower.Length; i++)
-            //{
-            //    print("nome da chuveiro" + i + ":" + shower[i].GetComponent<ItemTemplate>().itemName);
-            //}
-
-            itemType[1].SetActive(true);
-
-        }
-        if (itemSelected.itemType == "TV")
-        {
-            itemType[2].SetActive(true);
-        }
+        indexItemType = itemSelected.itemType;
+        itemType[indexItemType].SetActive(true);
     }
-
-    public void DestroyInGameItem()
+    public void CheckAndDestroyItem(GameObject newPrefab)
     {
+        int newOption = newPrefab.GetComponent<ItemTemplate>().itemOption;
+        float newItemPrice = newPrefab.GetComponent<ItemTemplate>().itemPrice;
+        float newItemSus = newPrefab.GetComponent<ItemTemplate>().itemSustainability;
         if (itemHolder != null)
         {
             GameObject prefab = itemHolder.transform.GetChild(0).gameObject;
-            Destroy(prefab);
-            destroyOriginalItem = true;
+            int optionInScene = prefab.GetComponent<ItemTemplate>().itemOption;
+            if (newOption != optionInScene)
+            {
+                bool priceControl = UIController.instance.NewUpdateValues(newItemPrice, newItemSus);
+                if (priceControl)
+                {
+                    Destroy(prefab);
+                    destroyOriginalItem = true;
+                }
+                else
+                {
+                    destroyOriginalItem = false;
+                }
+            }
+            else
+            {
+                Debug.Log("item igual nao foi substituido");
+                destroyOriginalItem = false;
+            }
         }
     }
 
-    //public IEnumerator ZoomItemAnimation()
-    //{
-    //    if (!CameraController.instance.isOnZoomPosition)
-    //    {
-    //        CameraController.instance.LerpToZoomPosition(itemHolder);
-    //        yield return null;
-    //    }
-    //}
+    public void SelectAction(GameObject hitAction)
+    {
+        DisplayActionTypeUI(hitAction);
+        panelAction.SetActive(true);
+        StopCoroutine(PanelOff());
+        StartCoroutine(PanelOff());
+    }
+
+    IEnumerator PanelOff()
+    {
+        yield return new WaitForSeconds(3f);
+        panelAction.SetActive(false);
+        StopCoroutine(PanelOff()); 
+    }
+
+    void DisplayActionTypeUI(GameObject go)
+    {
+        for (int i = 0; i < actionType.Length; i++)
+        {
+            actionType[i].SetActive(false);
+        }
+        if (actionSelected != go.GetComponent<ActionTemplate>())
+        {
+            actionSelected = go.GetComponent<ActionTemplate>();
+        }
+        actionSelected.DoneAction();
+        int indexSelected = actionSelected.actionIndex;
+        actionType[indexSelected].SetActive(true);
+    }
+
+    public void ChangeRequest(SelectItem item)
+    {
+        if (confirmBtn != null)
+        {
+            //panelItem.SetActive(false);
+            confirmBtn.onClick.AddListener(() => { Teste(item); });
+            confirmBox.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Need to set Confirm Button on Select Item");
+        }
+    }
+    public void Teste(SelectItem item)
+    {
+        item.NewItemInstance();
+        confirmBtn.onClick.RemoveListener(() => { Teste(item); });
+    }
 }

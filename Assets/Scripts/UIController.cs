@@ -52,35 +52,32 @@ public class UIController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (updateValues)
+        if (salaryCheck)
         {
-            UpdateFillIndicators();
-            updateValues = false;
+            PaySalary();
+            salaryCheck = false;
         }
     }
 
-    public void UpdateFillIndicators()
-    {
-        newMoneyValue = 0;
-        newSustainabilityValue = 0;
-        for (int i = 0; i < itemsSelectables.Length; i++)
-        {
-            newMoneyValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
-            newSustainabilityValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
-            print("new money:" + newMoneyValue);
-            print("new sus:" + newSustainabilityValue);
-        }
-        if (newMoneyValue != moneyBaseValue || newSustainabilityValue != sustainabilityBaseValue)
-        {
-            //fillMoneyImage.fillAmount = newMoneyValue;
-            //fillSustainabilityImage.fillAmount = newSustainabilityValue;
-            moneySlider.value = moneyMaxValue - newMoneyValue;
-            sustainabilitySlider.value = newSustainabilityValue;
-            fillMoneyText.text = "Money: " + moneySlider.value;
-            fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
-        }
-
-    }
+    //public void UpdateFillIndicators()
+    //{
+    //    newMoneyValue = 0;
+    //    newSustainabilityValue = 0;
+    //    for (int i = 0; i < itemsSelectables.Length; i++)
+    //    {
+    //        newMoneyValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
+    //        newSustainabilityValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
+    //        print("new money:" + newMoneyValue);
+    //        print("new sus:" + newSustainabilityValue);
+    //    }
+    //    if (newMoneyValue != moneyBaseValue || newSustainabilityValue != sustainabilityBaseValue)
+    //    {
+    //        moneySlider.value = controlMoney - Mathf.Abs(moneyBaseValue - newMoneyValue);
+    //        sustainabilitySlider.value = newSustainabilityValue;
+    //        fillMoneyText.text = "Money: " + moneySlider.value;
+    //        fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
+    //    }
+    //}
 
     public void CheckBaseValues()
     {
@@ -93,6 +90,45 @@ public class UIController : MonoBehaviour
             print("checked money value:" + moneyBaseValue);
             print("checked sustainability value:" + sustainabilityBaseValue);
             print("/////////");
+        }
+        //amount of money availiable 
+        controlMoney = moneyMaxValue - moneyBaseValue;
+    }
+
+    public void PaySalary()
+    {
+        controlMoney = moneySlider.value;
+        moneySlider.value = controlMoney + baseSalary;
+        fillMoneyText.text = "Money: " + moneySlider.value;
+    }
+
+    public bool NewUpdateValues(float price, float sustainability)
+    {
+        controlMoney = moneySlider.value;
+        controlSustainability = sustainabilitySlider.value;
+        Debug.Log("PRICE: " + price);
+        if (controlMoney < price)
+        {
+            Debug.Log("VOCE NAO TEM DINHEIRO SUFICIENTE");
+            return false;
+        }
+        else
+        {
+
+            moneySlider.value = controlMoney - price;
+            fillMoneyText.text = "Money: " + moneySlider.value;
+            float newSusValue = controlSustainability + sustainability;
+            if(newSusValue < 0)
+            {
+                sustainabilitySlider.value = 0;
+                Debug.Log("SUSTENTABILIDADE NEGATIVA");
+            }
+            else
+            {
+                sustainabilitySlider.value = newSusValue;
+            }
+            fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
+            return true;
         }
     }
 }

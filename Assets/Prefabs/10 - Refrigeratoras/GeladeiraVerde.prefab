@@ -111,7 +111,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 0
   itemName: GeladeiraVerde
-  itemType: Geladeira
-  itemPrice: 70
-  itemSustainability: 80
+  itemType: 10
+  itemPrice: 25
+  itemSustainability: -5
+  itemCostPerMonth: 0
+  itemOption: 2
   itemSprite: {fileID: 0}
