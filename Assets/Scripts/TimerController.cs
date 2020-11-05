@@ -13,6 +13,8 @@ public class TimerController : MonoBehaviour
     public bool timeIsRunning;
     public bool monthCheck;
 
+    public ReportGenerator report;
+
     public ActionTemplate[] actions;
 
     public float timeBaseMonth;
@@ -20,7 +22,7 @@ public class TimerController : MonoBehaviour
 
     private void Awake()
     {
-        if(!instance)
+        if (!instance)
         {
             instance = this;
         }
@@ -53,7 +55,8 @@ public class TimerController : MonoBehaviour
         DisplayTimeMinAndSec(totalTime);
     }
 
-    void DisplayTimeMinAndSec(float timeToDisplay){
+    void DisplayTimeMinAndSec(float timeToDisplay)
+    {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
@@ -69,6 +72,8 @@ public class TimerController : MonoBehaviour
 
     void FinishGame()
     {
+        report.PrintScene();
+
         Debug.Log("Function called when the timer is over for finish the game");
         totalTime = 0;
         timeIsRunning = false;
@@ -76,13 +81,13 @@ public class TimerController : MonoBehaviour
     public void MonthsCounter()
     {
         monthTime -= Time.deltaTime;
-        if(monthTime < 0.1f)
+        if (monthTime < 0.1f)
         {
             months++;
             SalaryFunction();
             monthCheck = true;
             monthTime = timeBaseMonth;
-            for(int i = 0; i < actions.Length; i++)
+            for (int i = 0; i < actions.Length; i++)
             {
                 actions[i].EnableAction();
             }
