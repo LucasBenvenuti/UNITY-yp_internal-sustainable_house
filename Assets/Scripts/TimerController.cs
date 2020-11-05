@@ -15,7 +15,7 @@ public class TimerController : MonoBehaviour
 
     public ActionTemplate[] actions;
 
-    float timeBaseMonth;
+    public float timeBaseMonth;
     int months;
 
     private void Awake()
@@ -76,13 +76,12 @@ public class TimerController : MonoBehaviour
     public void MonthsCounter()
     {
         monthTime -= Time.deltaTime;
-        timeBaseMonth += Time.deltaTime;
         if(monthTime < 0.1f)
         {
             months++;
-            PaySalary();
+            SalaryFunction();
             monthCheck = true;
-            monthTime = 10;
+            monthTime = timeBaseMonth;
             for(int i = 0; i < actions.Length; i++)
             {
                 actions[i].EnableAction();
@@ -92,8 +91,9 @@ public class TimerController : MonoBehaviour
         monthText.text = "Month: " + months;
     }
 
-    void PaySalary()
+    void SalaryFunction()
     {
+        UIController.instance.salaryCheck = true;
         Debug.Log("function to pay a salary");
     }
 

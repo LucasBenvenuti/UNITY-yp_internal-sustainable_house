@@ -21,7 +21,7 @@ public class UIController : MonoBehaviour
     public float sustainabilityMaxValue;
     //floats to check itens values in scene 
     public float moneyBaseValue;
-    public float sustainabilityBaseValue;  
+    public float sustainabilityBaseValue;
     //floats to check new values when update itens
     float newMoneyValue;
     float newSustainabilityValue;
@@ -31,6 +31,7 @@ public class UIController : MonoBehaviour
     //list of itens that can be modified
     public GameObject[] itemsSelectables;
 
+    public float baseSalary;
     private void Awake()
     {
         if (!instance)
@@ -42,8 +43,8 @@ public class UIController : MonoBehaviour
         {
             Destroy(this);
         }
-        moneyMaxValue = moneySlider.maxValue;
-        sustainabilityMaxValue = sustainabilitySlider.maxValue;
+        moneySlider.maxValue = moneyMaxValue;
+        sustainabilitySlider.maxValue = sustainabilityMaxValue;
     }
     private void Start()
     {
@@ -57,13 +58,15 @@ public class UIController : MonoBehaviour
     {
         if (updateValues)
         {
-            CheckBaseValues();
-            UpdateFillIndicators();
+            //CheckBaseValues();
+            //UpdateFillIndicators();
+
             updateValues = false;
         }
         if (salaryCheck)
         {
-
+            PaySalary();
+            salaryCheck = false;
         }
     }
 
@@ -80,7 +83,7 @@ public class UIController : MonoBehaviour
         }
         if (newMoneyValue != moneyBaseValue || newSustainabilityValue != sustainabilityBaseValue)
         {
-            moneySlider.value = moneyMaxValue - newMoneyValue;
+            moneySlider.value = controlMoney - Mathf.Abs(moneyBaseValue - newMoneyValue);
             sustainabilitySlider.value = newSustainabilityValue;
             fillMoneyText.text = "Money: " + moneySlider.value;
             fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
@@ -96,8 +99,26 @@ public class UIController : MonoBehaviour
             moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
             sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
         }
+        //amount of money availiable 
         controlMoney = moneyMaxValue - moneyBaseValue;
-        controlSustainability = sustainabilityMaxValue - sustainabilityBaseValue;
     }
 
+    public void PaySalary()
+    {
+        controlMoney = moneySlider.value;
+        moneySlider.value = controlMoney + baseSalary;
+        fillMoneyText.text = "Money: " + moneySlider.value;
+    }
+
+    public void NewUpdateValues(float price, float sustainability)
+    {
+        controlMoney = moneySlider.value;
+        moneySlider.value = controlMoney - price;
+        fillMoneyText.text = "Money: " + moneySlider.value;
+
+            sustainabilitySlider.value = sustainabilityBaseValue + sustainability;
+        
+        fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
+        CheckBaseValues();
+    }
 }

@@ -1231,6 +1231,18 @@ PrefabInstance:
       propertyPath: sustainabilitySlider
       value: 
       objectReference: {fileID: 1872038670}
+    - target: {fileID: 6462295808076454351, guid: 4115e72f5320e2e43855cbc464455b13, type: 3}
+      propertyPath: baseSalary
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462295808076454351, guid: 4115e72f5320e2e43855cbc464455b13, type: 3}
+      propertyPath: moneyMaxValue
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462295808076454351, guid: 4115e72f5320e2e43855cbc464455b13, type: 3}
+      propertyPath: sustainabilityMaxValue
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4115e72f5320e2e43855cbc464455b13, type: 3}
 --- !u!1 &417719042
@@ -6181,7 +6193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalTime: 720
-  monthTime: 60
+  monthTime: 10
   timeText: {fileID: 1850737052}
   monthText: {fileID: 1313376790}
   timeIsRunning: 0
@@ -6192,6 +6204,7 @@ MonoBehaviour:
   - {fileID: 2038065337}
   - {fileID: 92351867}
   - {fileID: 1696312590}
+  timeBaseMonth: 10
 --- !u!1 &2096915192
 GameObject:
   m_ObjectHideFlags: 0
