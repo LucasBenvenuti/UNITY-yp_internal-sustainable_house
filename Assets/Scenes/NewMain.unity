@@ -1235,6 +1235,14 @@ PrefabInstance:
       propertyPath: itemsSelectables.Array.data[2]
       value: 
       objectReference: {fileID: 195115303}
+    - target: {fileID: 2195369376515025727, guid: e5c3b7c7a4ca54944acb230cedba474e, type: 3}
+      propertyPath: moneyMaxValue
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195369376515025727, guid: e5c3b7c7a4ca54944acb230cedba474e, type: 3}
+      propertyPath: sustainabilityMaxValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5177216649814452498, guid: e5c3b7c7a4ca54944acb230cedba474e, type: 3}
       propertyPath: timeText
       value: 

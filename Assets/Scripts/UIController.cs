@@ -22,12 +22,8 @@ public class UIController : MonoBehaviour
     //floats to check itens values in scene 
     public float moneyBaseValue;
     public float sustainabilityBaseValue;
-    public bool updateValues;
-    public bool salaryCheck;
     float newMoneyValue;
     float newSustainabilityValue;
-    float moneyMaxValue;
-    float sustainabilityMaxValue;
     float controlMoney;
     float controlSustainability;
     public float baseSalary;
@@ -35,7 +31,6 @@ public class UIController : MonoBehaviour
 
     public GameObject[] itemsSelectables;
 
-    public float baseSalary;
     private void Awake()
     {
         if (!instance)
