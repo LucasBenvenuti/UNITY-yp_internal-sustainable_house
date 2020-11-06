@@ -51,13 +51,9 @@ public class ItemTemplate : MonoBehaviour
         {
             itemPrice = 0;
         }
-        if (itemSustainability < 0.1)
+        if (itemSustainability < -5.1)
         {
-            itemSustainability = 0;
-        }
-        if(itemCostPerMonth < 0.1)
-        {
-            itemCostPerMonth = 0;
+            itemSustainability = -5;
         }
     }
 

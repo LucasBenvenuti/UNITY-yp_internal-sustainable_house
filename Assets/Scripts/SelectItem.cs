@@ -13,7 +13,6 @@ public class SelectItem : MonoBehaviour
     //public float itemSustainability;
     //public float itemCostPerMonth;
 
-
     void Awake()
     {
         itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();

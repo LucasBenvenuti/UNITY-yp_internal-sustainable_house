@@ -89,11 +89,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void PrintName(GameObject go)
-    {
-        print(go.GetComponent<ItemTemplate>().itemName);
-    }
-
     void CheckItemValues(GameObject go)
     {
         for (int i = 0; i < itemType.Length; i++)
@@ -163,12 +158,14 @@ public class GameController : MonoBehaviour
             actionSelected = go.GetComponent<ActionTemplate>();
         }
         actionSelected.DoneAction();
+        ActionsAnimations.instance.CallFirstCoroutine();
         int indexSelected = actionSelected.actionIndex;
         actionType[indexSelected].SetActive(true);
     }
 
     public void ChangeRequest(SelectItem item)
     {
+        confirmBtn.onClick.RemoveAllListeners();
         if (confirmBtn != null)
         {
             //panelItem.SetActive(false);
@@ -179,7 +176,6 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Need to set Confirm Button on Select Item");
         }
-        confirmBtn.onClick.RemoveListener(() => { Teste(item); });
     }
     public void Teste(SelectItem item)
     {

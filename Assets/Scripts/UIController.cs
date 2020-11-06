@@ -24,7 +24,7 @@ public class UIController : MonoBehaviour
     float sustainabilityMaxValue;
     float controlMoney;
     float controlSustainability;
-    float baseSalary;
+    public float baseSalary;
 
 
     public GameObject[] itemsSelectables;
@@ -45,10 +45,6 @@ public class UIController : MonoBehaviour
     }
     private void Start()
     {
-        //fillMoneyImage.fillAmount = 0.5f;
-        //fillSustainabilityImage.fillAmount = 0.5f;
-        //fillMoneyText.text = "Money: " + fillMoneyImage.fillAmount;
-        //fillSustainabilityText.text = "Sustainability: " + fillSustainabilityImage.fillAmount;
         CheckBaseValues();
         moneySlider.value = moneyMaxValue - moneyBaseValue;
         sustainabilitySlider.value = sustainabilityBaseValue;
@@ -57,11 +53,11 @@ public class UIController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (salaryCheck)
-        {
-            PaySalary();
-            salaryCheck = false;
-        }
+        //if (salaryCheck)
+        //{
+        //    PaySalary();
+        //    salaryCheck = false;
+        //}
     }
 
     //public void UpdateFillIndicators()
@@ -100,12 +96,12 @@ public class UIController : MonoBehaviour
         controlMoney = moneyMaxValue - moneyBaseValue;
     }
 
-    public void PaySalary()
-    {
-        controlMoney = moneySlider.value;
-        moneySlider.value = controlMoney + baseSalary;
-        fillMoneyText.text = "Money: " + moneySlider.value;
-    }
+    //public void PaySalary()
+    //{
+    //    controlMoney = moneySlider.value;
+    //    moneySlider.value = controlMoney + baseSalary;
+    //    fillMoneyText.text = "Money: " + moneySlider.value;
+    //}
 
     public bool NewUpdateValues(float price, float sustainability)
     {

@@ -26,8 +26,8 @@ public class ActionTemplate : MonoBehaviour
     {
         if (!haveDoneAction)
         {
-            actionSprite.color = Color.gray;
-            //actionSprite.enabled = false;
+            actionSprite.enabled = false;
+            actionSprite.gameObject.SetActive(false);
             Debug.Log("you finished this action with sucess");
             haveDoneAction = true;
         }
@@ -39,8 +39,7 @@ public class ActionTemplate : MonoBehaviour
 
     public void EnableAction()
     {
-        actionSprite.color = Color.cyan;
-        //actionSprite.enabled = true;
+        actionSprite.enabled = true;
         haveDoneAction = false;
     }
 }

@@ -8,14 +8,17 @@ public class TimerController : MonoBehaviour
     public static TimerController instance;
     public float totalTime; //sets 12 minutes for timer
     public float monthTime;
+    public float timeBaseMonth;
+    public float actionTimer;
+    public float actionBaseTime;
     public Text timeText;
     public Text monthText;
     public bool timeIsRunning;
     public bool monthCheck;
+    public int indexAction;
 
     public ActionTemplate[] actions;
 
-    public float timeBaseMonth;
     int months;
 
     private void Awake()
@@ -44,6 +47,7 @@ public class TimerController : MonoBehaviour
             {
                 totalTime -= Time.deltaTime;
                 MonthsCounter();
+                ActionsDisplay();
             }
             else
             {
@@ -80,22 +84,41 @@ public class TimerController : MonoBehaviour
         if (monthTime < 0.1f)
         {
             months++;
-            SalaryFunction();
             monthCheck = true;
             monthTime = timeBaseMonth;
-            for (int i = 0; i < actions.Length; i++)
-            {
-                actions[i].EnableAction();
-            }
         }
         monthCheck = false;
         monthText.text = "Month: " + months;
     }
 
-    void SalaryFunction()
+    public void ActionsDisplay()
     {
-        UIController.instance.salaryCheck = true;
-        Debug.Log("function to pay a salary");
+        actionTimer -= Time.deltaTime;
+        if (indexAction == actions.Length)
+        {
+            return;
+        }
+        else
+        {
+            bool controlAction = actions[indexAction].haveDoneAction;
+            if (actionTimer < 0.1f)
+            {
+                actions[indexAction].EnableAction();
+                if (controlAction)
+                {
+                    actionTimer = actionBaseTime;
+                    actions[indexAction].enabled = false;
+                    indexAction++;
+                }
+            }
+        }
     }
+
+
+    //void SalaryFunction()
+    //{
+    //    UIController.instance.salaryCheck = true;
+    //    Debug.Log("function to pay a salary");
+    //}
 
 }
