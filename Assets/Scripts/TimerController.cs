@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class TimerController : MonoBehaviour
 {
     public static TimerController instance;
+
+    public GameObject EndCanvas;
+
     public float totalTime; //sets 12 minutes for timer
     public float monthTime;
     public float timeBaseMonth;
@@ -32,6 +35,8 @@ public class TimerController : MonoBehaviour
         {
             Destroy(this);
         }
+
+        EndCanvas.SetActive(false);
     }
     void Start()
     {
@@ -77,6 +82,8 @@ public class TimerController : MonoBehaviour
         Debug.Log("Function called when the timer is over for finish the game");
         totalTime = 0;
         timeIsRunning = false;
+
+        EndCanvas.SetActive(true);
     }
     public void MonthsCounter()
     {
