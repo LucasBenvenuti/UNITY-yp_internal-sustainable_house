@@ -26,7 +26,7 @@ public class ActionTemplate : MonoBehaviour
     {
         if (!haveDoneAction)
         {
-            actionSprite.enabled = false;
+            //actionSprite.enabled = false;
             actionSprite.gameObject.SetActive(false);
             Debug.Log("you finished this action with sucess");
             haveDoneAction = true;
