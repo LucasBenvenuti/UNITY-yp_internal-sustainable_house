@@ -67,10 +67,6 @@ public class GameController : MonoBehaviour
             {
                 SelectAction(hit.transform.gameObject);
             }
-            if (hit.transform.gameObject.tag == "Action")
-            {
-                SelectAction(hit.transform.gameObject);
-            }
 
         }
     }
