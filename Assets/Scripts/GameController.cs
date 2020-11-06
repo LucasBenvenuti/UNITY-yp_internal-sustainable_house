@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public ItemTemplate itemSelected;
     public ActionTemplate actionSelected;
+<<<<<<< HEAD
     /*
       public GameObject[] dryCloths;
       public GameObject[] lamps;
@@ -26,6 +27,11 @@ public class GameController : MonoBehaviour
     //public GameObject[] acs;
     //public GameObject[] refrigerator;
     //public GameObject[] tvs;
+=======
+    public GameObject[] refrigerator;
+    public GameObject[] acs;
+    public GameObject[] tvs;
+>>>>>>> ffa0f1077111eaa823495a2f2a6605070120069f
     public GameObject[] itemType;
     public GameObject[] actionType;
     public GameObject panelItem;
@@ -62,19 +68,27 @@ public class GameController : MonoBehaviour
             if (hit.transform.gameObject.tag == "Item")
             {
                 selectItem(hit.transform.gameObject);
+            }           
+            if (hit.transform.gameObject.tag == "Action")
+            {
+                SelectAction(hit.transform.gameObject);
             }
+<<<<<<< HEAD
             if (hit.transform.gameObject.tag == "Action")
             {
                 SelectAction(hit.transform.gameObject);
             }
 
+=======
+            
+>>>>>>> ffa0f1077111eaa823495a2f2a6605070120069f
         }
     }
 
     public void selectItem(GameObject hitObject)
     {
         itemHolder = hitObject.transform.parent.gameObject;
-        CheckItemValues(hitObject);
+        DisplayItemTypeUI(hitObject);
 
         CameraController.instance.LerpToZoomPosition(itemHolder);
         panelItem.SetActive(true);
@@ -89,7 +103,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void CheckItemValues(GameObject go)
+    void DisplayItemTypeUI(GameObject go)
     {
         for (int i = 0; i < itemType.Length; i++)
         {

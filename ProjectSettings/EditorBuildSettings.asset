@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/TesteCamera.unity
     guid: b60b28f7db4e06f4b86ead6227eb8653
   - enabled: 1
+    path: Assets/Scenes/QRCode.unity
+    guid: fb3e033dc983ceb49a91ac8b808fb69c
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 56374f57b2045dd4395bad13b57ef51c
+  - enabled: 1
     path: Assets/Scenes/House.unity
     guid: 5c4d1b56e72a0e741a9bcdd65dd43131
   m_configObjects: {}

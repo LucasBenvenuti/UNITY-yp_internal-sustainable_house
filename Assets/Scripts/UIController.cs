@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    //singleton
     public static UIController instance;
     //sliders
     public Slider moneySlider;
     public Slider sustainabilitySlider;
-    //public Image fillMoneyImage;
-    //public Image fillSustainabilityImage;
     //sliders text
     public Text fillSustainabilityText;
     public Text fillMoneyText;
+    //bools to control actions for update values and receive month salary
+    public bool updateValues;
+    public bool salaryCheck;
+    //floats to set the max values
+    public float moneyMaxValue;
+    public float sustainabilityMaxValue;
+    //floats to check itens values in scene 
     public float moneyBaseValue;
     public float sustainabilityBaseValue;
     public bool updateValues;
@@ -29,6 +35,7 @@ public class UIController : MonoBehaviour
 
     public GameObject[] itemsSelectables;
 
+    public float baseSalary;
     private void Awake()
     {
         if (!instance)
@@ -40,13 +47,13 @@ public class UIController : MonoBehaviour
         {
             Destroy(this);
         }
-        moneyMaxValue = moneySlider.maxValue;
-        sustainabilityMaxValue = sustainabilitySlider.maxValue;
+        moneySlider.maxValue = moneyMaxValue;
+        sustainabilitySlider.maxValue = sustainabilityMaxValue;
     }
     private void Start()
     {
         CheckBaseValues();
-        moneySlider.value = moneyMaxValue - moneyBaseValue;
+        moneySlider.value = controlMoney;
         sustainabilitySlider.value = sustainabilityBaseValue;
         fillMoneyText.text = "Money: " + moneySlider.value;
         fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
@@ -88,9 +95,6 @@ public class UIController : MonoBehaviour
         {
             moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
             sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
-            print("checked money value:" + moneyBaseValue);
-            print("checked sustainability value:" + sustainabilityBaseValue);
-            print("/////////");
         }
         //amount of money availiable 
         controlMoney = moneyMaxValue - moneyBaseValue;
