@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 100f))
+        if (Physics.Raycast(ray, out hit, 500f))
         {
             if (hit.transform.gameObject.tag == "Item")
             {

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 73593b9b1377e544cbfe2a81faa18ba2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.43907937, g: 0.35392374, b: 0.2221612, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4739d0e443692bc4f8860f2c77279395, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1349,10 +1349,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2237794048365589497, guid: 8d75307a0a1bcc740b1bafd196e6d983, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2237794048365589498, guid: 8d75307a0a1bcc740b1bafd196e6d983, type: 3}
       propertyPath: Collider
       value: 
       objectReference: {fileID: 1501546332}
+    - target: {fileID: 2237794048365589499, guid: 8d75307a0a1bcc740b1bafd196e6d983, type: 3}
+      propertyPath: YawSensitivity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2237794048365589502, guid: 8d75307a0a1bcc740b1bafd196e6d983, type: 3}
       propertyPath: m_Name
       value: CameraPivot
@@ -1579,6 +1587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraConstraint
       objectReference: {fileID: 0}
+    - target: {fileID: 7268680775996374362, guid: ddc289e8dec91da4f94402a5976eba6b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddc289e8dec91da4f94402a5976eba6b, type: 3}
 --- !u!1 &1621795251
@@ -1610,7 +1622,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
