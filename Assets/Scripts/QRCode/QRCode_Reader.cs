@@ -44,8 +44,7 @@ public class QRCode_Reader : MonoBehaviour
     Vector3 defaultScale = new Vector3(1f, 1f, 1f);
     Vector3 fixedScale = new Vector3(-1f, 1f, 1f);
 
-
-
+    bool cameraInitialized;
     // void Start()
     // {
     //     // screenRect = new Rect(0, 0, Screen.width, Screen.height);
@@ -75,8 +74,10 @@ public class QRCode_Reader : MonoBehaviour
         frontCameraDevice = WebCamTexture.devices.Last();
         backCameraDevice = WebCamTexture.devices.First();
 
-        frontCameraTexture = new WebCamTexture(frontCameraDevice.name);
-        backCameraTexture = new WebCamTexture(backCameraDevice.name);
+        //frontCameraTexture = new WebCamTexture();
+        //backCameraTexture = new WebCamTexture();
+        frontCameraTexture = new WebCamTexture(frontCameraDevice.name, 1280, 720, 30);
+        backCameraTexture = new WebCamTexture(backCameraDevice.name, 1280, 720, 30);
 
         // Set camera filter modes for a smoother looking image
         frontCameraTexture.filterMode = FilterMode.Trilinear;
@@ -102,6 +103,7 @@ public class QRCode_Reader : MonoBehaviour
         image.material.mainTexture = activeCameraTexture;
 
         activeCameraTexture.Play();
+        cameraInitialized = true;
     }
 
     // Switch between the device's front and back camera
@@ -138,34 +140,38 @@ public class QRCode_Reader : MonoBehaviour
         // Mirror front-facing camera's image horizontally to look more natural
         imageParent.localScale =
             activeCameraDevice.isFrontFacing ? fixedScale : defaultScale;
+
+        if (cameraInitialized)
+        {
+            try
+            {
+                IBarcodeReader barcodeReader = new BarcodeReader();
+                // decode the current frame
+                // var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
+                var result = barcodeReader.Decode(activeCameraTexture.GetPixels32(), activeCameraTexture.width, activeCameraTexture.height);
+                if (result != null)
+                {
+                    if (result.Text == acceptText)
+                    {
+                        Debug.Log("CORRECT TEXT! QR Code text: " + result.Text);
+                        Debug.Log("REDIRECTING TO REGISTER...");
+
+                        // camTexture = null;
+                        activeCameraTexture = null;
+
+                        SceneManager.LoadScene(SceneToGo, LoadSceneMode.Single);
+                    }
+                    else
+                    {
+                        Debug.Log("WRONG TEXT FROM QR CODE! QR Code text is: " + result.Text + ", it MUST be " + acceptText);
+                    }
+                }
+            }
+            catch (UnityException ex) { Debug.LogWarning(ex.Message); }
+        }
     }
 
     void OnGUI()
     {
-        try
-        {
-            IBarcodeReader barcodeReader = new BarcodeReader();
-            // decode the current frame
-            // var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
-            var result = barcodeReader.Decode(activeCameraTexture.GetPixels32(), activeCameraTexture.width, activeCameraTexture.height);
-            if (result != null)
-            {
-                if (result.Text == acceptText)
-                {
-                    Debug.Log("CORRECT TEXT! QR Code text: " + result.Text);
-                    Debug.Log("REDIRECTING TO REGISTER...");
-
-                    // camTexture = null;
-                    activeCameraTexture = null;
-
-                    SceneManager.LoadScene(SceneToGo, LoadSceneMode.Single);
-                }
-                else
-                {
-                    Debug.Log("WRONG TEXT FROM QR CODE! QR Code text is: " + result.Text + ", it MUST be " + acceptText);
-                }
-            }
-        }
-        catch (UnityException ex) { Debug.LogWarning(ex.Message); }
     }
 }
