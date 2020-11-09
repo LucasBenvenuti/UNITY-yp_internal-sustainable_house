@@ -11,6 +11,8 @@ public class ReportGenerator : MonoBehaviour
 
     public ScreenShotHighRes screenShot;
 
+    public PDF_Generator pdfGenerator;
+
     public void Start()
     {
     }
@@ -35,7 +37,7 @@ public class ReportGenerator : MonoBehaviour
 
         yield return new WaitForSeconds(CameraController.instance.tweenDuration);
 
-        screenShot.ActiveScreenShot();
+        pdfGenerator.Click();
     }
 
 }

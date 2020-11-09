@@ -8,30 +8,31 @@ public class ScreenShotHighRes : MonoBehaviour
     public int resWidth = 1280;
     public int resHeight = 800;
 
+    public PDF_Generator MainGO;
+
     public Camera mainCamera;
     private Texture2D _screenShot;
     public Image canvasImage;
 
-    public void ActiveScreenShot()
-    {
-        StartCoroutine(TakeScreenShot());
-    }
+    [HideInInspector]
+    public byte[] byteTest;
 
     public static string ScreenShotName(int width, int height)
     {
-        return string.Format("{0}/screenshots/screen_{1}x{2}_{3}.png",
+        return string.Format(System.Environment.CurrentDirectory + @"\Assets\screenshots\screen_{1}x{2}_{3}.png",
                              Application.dataPath,
                              width, height,
                              System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
     }
 
-    private IEnumerator TakeScreenShot()
+    public IEnumerator TakeScreenShot()
     {
         yield return new WaitForEndOfFrame();
 
         RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
         mainCamera.targetTexture = rt;
         _screenShot = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
+
         mainCamera.Render();
         RenderTexture.active = rt;
         _screenShot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
@@ -44,13 +45,15 @@ public class ScreenShotHighRes : MonoBehaviour
 
         string filename = ScreenShotName(resWidth, resHeight);
 
-        //byte[] bytes = _screenShot.EncodeToPNG();
-        //System.IO.File.WriteAllBytes(filename, bytes);
+        // byte[] bytes = _screenShot.EncodeToPNG();
+        byteTest = _screenShot.EncodeToPNG();
+        // System.IO.File.WriteAllBytes(filename, byteTest);
 
         Debug.Log(string.Format("Took screenshot to: {0}", filename));
 
         Sprite tempSprite = Sprite.Create(_screenShot, new Rect(0, 0, resWidth, resHeight), new Vector2(0, 0));
-
         canvasImage.sprite = tempSprite;
+
+        Debug.Log("Ended TAKESCREENSHOT");
     }
 }
