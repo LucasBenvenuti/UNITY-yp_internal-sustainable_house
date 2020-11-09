@@ -170,8 +170,4 @@ public class QRCode_Reader : MonoBehaviour
             catch (UnityException ex) { Debug.LogWarning(ex.Message); }
         }
     }
-
-    void OnGUI()
-    {
-    }
 }
