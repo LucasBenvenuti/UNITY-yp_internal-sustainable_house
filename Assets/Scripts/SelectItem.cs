@@ -21,11 +21,6 @@ public class SelectItem : MonoBehaviour
         itemSustainability = itemSelectedTemplate.itemSustainability;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void NewItemInstance()
     {
         // UIController.instance.CheckBaseValues();

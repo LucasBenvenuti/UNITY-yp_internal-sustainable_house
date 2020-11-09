@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
     public bool itemPanelActive;
     public bool canGoToObject = true;
     public float itemSelectedPrice;
+
     private void Awake()
     {
         if (!instance)
@@ -102,6 +103,7 @@ public class GameController : MonoBehaviour
         indexItemType = itemSelected.itemType;
         itemType[indexItemType].SetActive(true);
     }
+
     public void CheckAndDestroyItem(GameObject newPrefab)
     {
         int newOption = newPrefab.GetComponent<ItemTemplate>().itemOption;
