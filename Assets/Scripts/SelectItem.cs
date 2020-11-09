@@ -28,8 +28,8 @@ public class SelectItem : MonoBehaviour
     }
     public void NewItemInstance()
     {
-        UIController.instance.CheckBaseValues();
-        GameController.instance.DestroyInGameItem();
+        // UIController.instance.CheckBaseValues();
+        GameController.instance.CheckAndDestroyItem(itemPrefab);
         if (GameController.instance.destroyOriginalItem)
         {
             GameObject prefab = Instantiate(itemPrefab);
@@ -38,7 +38,7 @@ public class SelectItem : MonoBehaviour
             prefab.transform.position = itemPosition.position;
             GameController.instance.destroyOriginalItem = false;
             // UIController.instance.updateValues = true;
-            UIController.instance.NewUpdateValues(itemPrice, itemSustainability);
+            // UIController.instance.NewUpdateValues(itemPrice, itemSustainability);
         }
     }
 

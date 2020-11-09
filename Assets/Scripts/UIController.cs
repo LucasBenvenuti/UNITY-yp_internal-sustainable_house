@@ -110,15 +110,33 @@ public class UIController : MonoBehaviour
         fillMoneyText.text = "Money: " + moneySlider.value;
     }
 
-    public void NewUpdateValues(float price, float sustainability)
+    public bool NewUpdateValues(float price, float sustainability)
     {
         controlMoney = moneySlider.value;
-        moneySlider.value = controlMoney - price;
-        fillMoneyText.text = "Money: " + moneySlider.value;
+        controlSustainability = sustainabilitySlider.value;
+        Debug.Log("PRICE: " + price);
+        if (controlMoney < price)
+        {
+            Debug.Log("VOCE NAO TEM DINHEIRO SUFICIENTE");
+            return false;
+        }
+        else
+        {
 
-            sustainabilitySlider.value = sustainabilityBaseValue + sustainability;
-        
-        fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
-        CheckBaseValues();
+            moneySlider.value = controlMoney - price;
+            fillMoneyText.text = "Money: " + moneySlider.value;
+            float newSusValue = controlSustainability + sustainability;
+            if (newSusValue < 0)
+            {
+                sustainabilitySlider.value = 0;
+                Debug.Log("SUSTENTABILIDADE NEGATIVA");
+            }
+            else
+            {
+                sustainabilitySlider.value = newSusValue;
+            }
+            fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
+            return true;
+        }
     }
 }

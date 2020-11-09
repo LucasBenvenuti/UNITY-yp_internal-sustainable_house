@@ -8,15 +8,32 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public ItemTemplate itemSelected;
     public ActionTemplate actionSelected;
-    public GameObject[] refrigerator;
-    public GameObject[] acs;
-    public GameObject[] tvs;
+    /*
+      public GameObject[] dryCloths;
+      public GameObject[] lamps;
+      public GameObject[] windows;
+      public GameObject[] energy;
+      public GameObject[] water;
+      public GameObject[] sanatary;
+      public GameObject[] shower;
+      public GameObject[] flush;
+      public GameObject[] sink;
+      public GameObject[] garbage;
+      public GameObject[] reuseWater;
+      public GameObject[] laundry;
+     
+     */
+    //public GameObject[] acs;
+    //public GameObject[] refrigerator;
+    //public GameObject[] tvs;
     public GameObject[] itemType;
     public GameObject[] actionType;
     public GameObject panelItem;
     public GameObject panelAction;
     public GameObject itemHolder;
     public GameObject backBtn;
+    public GameObject confirmBox;
+    public Button confirmBtn;
     public int indexItemType;
     public bool destroyOriginalItem;
     public bool itemPanelActive;
@@ -40,7 +57,7 @@ public class GameController : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 100f))
+        if (Physics.Raycast(ray, out hit, 500f))
         {
             if (hit.transform.gameObject.tag == "Item")
             {
@@ -82,32 +99,36 @@ public class GameController : MonoBehaviour
         {
             itemSelected = go.GetComponent<ItemTemplate>();
         }
-        if (itemSelected.itemType == "Geladeira")
-        {
-            itemSelectedPrice = itemSelected.itemPrice;
-            itemType[0].SetActive(true);
-        }
-        if (itemSelected.itemType == "AC")
-        {
-            itemType[1].SetActive(true);
-        }
-        if (itemSelected.itemType == "TV")
-        {
-            itemType[2].SetActive(true);
-        }
-        if (itemSelected.itemType == "TV")
-        {
-            itemType[2].SetActive(true);
-        }
+        indexItemType = itemSelected.itemType;
+        itemType[indexItemType].SetActive(true);
     }
-
-    public void DestroyInGameItem()
+    public void CheckAndDestroyItem(GameObject newPrefab)
     {
+        int newOption = newPrefab.GetComponent<ItemTemplate>().itemOption;
+        float newItemPrice = newPrefab.GetComponent<ItemTemplate>().itemPrice;
+        float newItemSus = newPrefab.GetComponent<ItemTemplate>().itemSustainability;
         if (itemHolder != null)
         {
             GameObject prefab = itemHolder.transform.GetChild(0).gameObject;
-            Destroy(prefab);
-            destroyOriginalItem = true;
+            int optionInScene = prefab.GetComponent<ItemTemplate>().itemOption;
+            if (newOption != optionInScene)
+            {
+                bool priceControl = UIController.instance.NewUpdateValues(newItemPrice, newItemSus);
+                if (priceControl)
+                {
+                    Destroy(prefab);
+                    destroyOriginalItem = true;
+                }
+                else
+                {
+                    destroyOriginalItem = false;
+                }
+            }
+            else
+            {
+                Debug.Log("item igual nao foi substituido");
+                destroyOriginalItem = false;
+            }
         }
     }
 
@@ -115,6 +136,15 @@ public class GameController : MonoBehaviour
     {
         DisplayActionTypeUI(hitAction);
         panelAction.SetActive(true);
+        StopCoroutine(PanelOff());
+        StartCoroutine(PanelOff());
+    }
+
+    IEnumerator PanelOff()
+    {
+        yield return new WaitForSeconds(3f);
+        panelAction.SetActive(false);
+        StopCoroutine(PanelOff());
     }
 
     void DisplayActionTypeUI(GameObject go)
@@ -128,14 +158,29 @@ public class GameController : MonoBehaviour
             actionSelected = go.GetComponent<ActionTemplate>();
         }
         actionSelected.DoneAction();
+        // ActionsAnimations.instance.CallFirstCoroutine();
         int indexSelected = actionSelected.actionIndex;
         actionType[indexSelected].SetActive(true);
     }
 
-
-    void PrintName(GameObject go)
+    public void ChangeRequest(SelectItem item)
     {
-        print(go.GetComponent<ItemTemplate>().itemName);
+        confirmBtn.onClick.RemoveAllListeners();
+        if (confirmBtn != null)
+        {
+            //panelItem.SetActive(false);
+            confirmBtn.onClick.AddListener(() => { Teste(item); });
+            confirmBox.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Need to set Confirm Button on Select Item");
+        }
     }
-
+    public void Teste(SelectItem item)
+    {
+        item.NewItemInstance();
+        confirmBtn.onClick.RemoveListener(() => { Teste(item); });
+    }
 }
+

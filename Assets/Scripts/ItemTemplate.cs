@@ -5,8 +5,9 @@ using UnityEngine;
 public class ItemTemplate : MonoBehaviour
 {
     public bool isSelectable;
+    public int itemOption;
     public string itemName;
-    public string itemType;
+    public int itemType;
     public float itemPrice;
     public float itemSustainability;
     public float itemCostPerMonth;
@@ -22,13 +23,17 @@ public class ItemTemplate : MonoBehaviour
         {
             itemName = "Default";
         }
-        if (itemType == null)
+        if (itemType < 0)
         {
-            itemType = "Default";
+            itemType = 0;
         }
         if (itemSustainability < -5.1)
         {
             itemSustainability = -5;
+        }
+        if (itemOption < 0)
+        {
+            itemOption = 0;
         }
     }
 }
