@@ -44,23 +44,7 @@ public class QRCode_Reader : MonoBehaviour
     Vector3 defaultScale = new Vector3(1f, 1f, 1f);
     Vector3 fixedScale = new Vector3(-1f, 1f, 1f);
 
-
-
-    // void Start()
-    // {
-    //     // screenRect = new Rect(0, 0, Screen.width, Screen.height);
-    //     camTexture = new WebCamTexture();
-    //     camTexture.requestedHeight = Screen.height / 2;
-    //     camTexture.requestedWidth = Screen.width / 2;
-    //     if (camTexture != null)
-    //     {
-    //         cameraSpace.material.mainTexture = camTexture;
-
-    //         camTexture.requestedFPS = 60;
-
-    //         camTexture.Play();
-    //     }
-    // }
+    bool cameraInitialized;
 
     void Start()
     {
@@ -75,8 +59,8 @@ public class QRCode_Reader : MonoBehaviour
         frontCameraDevice = WebCamTexture.devices.Last();
         backCameraDevice = WebCamTexture.devices.First();
 
-        frontCameraTexture = new WebCamTexture(frontCameraDevice.name);
-        backCameraTexture = new WebCamTexture(backCameraDevice.name);
+        frontCameraTexture = new WebCamTexture(frontCameraDevice.name, 1280, 720, 30);
+        backCameraTexture = new WebCamTexture(backCameraDevice.name, 1280, 720, 30);
 
         // Set camera filter modes for a smoother looking image
         frontCameraTexture.filterMode = FilterMode.Trilinear;
@@ -102,6 +86,7 @@ public class QRCode_Reader : MonoBehaviour
         image.material.mainTexture = activeCameraTexture;
 
         activeCameraTexture.Play();
+        cameraInitialized = true;
     }
 
     // Switch between the device's front and back camera
@@ -138,34 +123,34 @@ public class QRCode_Reader : MonoBehaviour
         // Mirror front-facing camera's image horizontally to look more natural
         imageParent.localScale =
             activeCameraDevice.isFrontFacing ? fixedScale : defaultScale;
-    }
 
-    void OnGUI()
-    {
-        try
+        if (cameraInitialized)
         {
-            IBarcodeReader barcodeReader = new BarcodeReader();
-            // decode the current frame
-            // var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
-            var result = barcodeReader.Decode(activeCameraTexture.GetPixels32(), activeCameraTexture.width, activeCameraTexture.height);
-            if (result != null)
+            try
             {
-                if (result.Text == acceptText)
+                IBarcodeReader barcodeReader = new BarcodeReader();
+                // decode the current frame
+                // var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
+                var result = barcodeReader.Decode(activeCameraTexture.GetPixels32(), activeCameraTexture.width, activeCameraTexture.height);
+                if (result != null)
                 {
-                    Debug.Log("CORRECT TEXT! QR Code text: " + result.Text);
-                    Debug.Log("REDIRECTING TO REGISTER...");
+                    if (result.Text == acceptText)
+                    {
+                        Debug.Log("CORRECT TEXT! QR Code text: " + result.Text);
+                        Debug.Log("REDIRECTING TO REGISTER...");
 
-                    // camTexture = null;
-                    activeCameraTexture = null;
+                        // camTexture = null;
+                        activeCameraTexture = null;
 
-                    SceneManager.LoadScene(SceneToGo, LoadSceneMode.Single);
-                }
-                else
-                {
-                    Debug.Log("WRONG TEXT FROM QR CODE! QR Code text is: " + result.Text + ", it MUST be " + acceptText);
+                        SceneManager.LoadScene(SceneToGo, LoadSceneMode.Single);
+                    }
+                    else
+                    {
+                        Debug.Log("WRONG TEXT FROM QR CODE! QR Code text is: " + result.Text + ", it MUST be " + acceptText);
+                    }
                 }
             }
+            catch (UnityException ex) { Debug.LogWarning(ex.Message); }
         }
-        catch (UnityException ex) { Debug.LogWarning(ex.Message); }
     }
 }
