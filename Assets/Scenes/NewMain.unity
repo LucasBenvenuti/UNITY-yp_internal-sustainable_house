@@ -317,7 +317,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 3407407937973854155, guid: e11c872c4d2b70d46a6bf86885ad36d0, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -782,7 +782,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399245595}
-  - component: {fileID: 399245596}
   m_Layer: 5
   m_Name: SusBar
   m_TagString: Untagged
@@ -811,14 +810,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &399245596
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399245594}
-  m_CullTransparentMesh: 0
 --- !u!1 &429070609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1125,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -9082522202953180133, guid: bedfbbd6a69503647a2e394873566676, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2358,7 +2349,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -7754988575891523622, guid: 9a6aaa03323f9874d8d63bb3b7c1cd19, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2731,7 +2722,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 6220565122306193397, guid: d6e7a03b916169942a07e45dc790cedf, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3094,7 +3085,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1452034800}
-  - component: {fileID: 1452034801}
   m_Layer: 5
   m_Name: MoneyBar
   m_TagString: Untagged
@@ -3123,14 +3113,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1452034801
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452034799}
-  m_CullTransparentMesh: 0
 --- !u!1 &1467769812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6872974061524405635, guid: 6162ea0a9099617449931abb62a0afb2, type: 3}
@@ -3756,7 +3738,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 7042847911465117151, guid: 5baa03059a1c2804783d4d90c1c9cf51, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4199,7 +4181,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 5701425118369952447, guid: bc671cc5528d88c4fa65d9aa34425d37, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
