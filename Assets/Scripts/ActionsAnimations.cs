@@ -6,25 +6,26 @@ using UnityEngine.AI;
 public class ActionsAnimations : MonoBehaviour
 {
     public static ActionsAnimations instance;
-     Animator washingAnimator;
+    Animator animatorTemplate;
     public NavMeshAgent myAgent;
-    public Transform washingPosition;
+    public Transform finalPosition;
+    public Transform finalPositionBathroom; 
     public Transform basePosition;
 
-    private void Awake()
-    {
-        if (!instance)
-        {
-            instance = this;
-        }
-        if (instance != this)
-        {
-            Destroy(this);
-        }
-    }
+    // private void Awake()
+    // {
+    //     if (!instance)
+    //     {
+    //         instance = this;
+    //     }
+    //     if (instance != this)
+    //     {
+    //         Destroy(this);
+    //     }
+    // }
     void Start()
     {
-        washingAnimator = gameObject.GetComponent<Animator>();
+        animatorTemplate = gameObject.GetComponent<Animator>();
         myAgent = GetComponent<NavMeshAgent>();
 
     }
@@ -34,35 +35,83 @@ public class ActionsAnimations : MonoBehaviour
     {
     }
 
-    public void CallFirstCoroutine()
+    public void CallFirstCoroutine(int index)
     {
-        StartCoroutine(DoWashingAnimation());
+        if (index == 0)
+        {
+            StartCoroutine(DoTextingAnimation());
+        }
+        if (index == 1)
+        {
+            DoReadingAnimation();
+        }
+        if (index == 2)
+        {
+            StartCoroutine(DoBrushingAnimation());
+        }
+        if (index == 3)
+        {
+            StartCoroutine(DoWashingAnimation());
+        }
+        if (index == 4)
+        {
+            StartCoroutine(DoWashingAnimation());
+        }
     }
-    IEnumerator DoWashingAnimation()
+    IEnumerator DoTextingAnimation()
     {
-        washingAnimator.SetTrigger("WalkTrigger");
-        myAgent.SetDestination(new Vector3(washingPosition.position.x, 0.135f, washingPosition.position.z));
+        animatorTemplate.SetTrigger("WalkTrigger");
+        myAgent.SetDestination(finalPosition.position);
         while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
         {
             yield return null;
         }
-        washingAnimator.SetTrigger("WashTrigger");
+        animatorTemplate.SetTrigger("TextTrigger");
 
     }
-
-    public void EndFunction()
+    void DoReadingAnimation()
     {
-        StartCoroutine(CallEndCoroutine());
+        animatorTemplate.SetTrigger("ReadTrigger");
+
     }
 
-    IEnumerator CallEndCoroutine()
+
+    IEnumerator DoBrushingAnimation()
+    {
+        animatorTemplate.SetTrigger("WalkTrigger");
+        myAgent.SetDestination(finalPositionBathroom.position);
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
+        {
+            yield return null;
+        }
+        animatorTemplate.SetTrigger("BrushTrigger");
+
+    }
+    IEnumerator DoWashingAnimation()
+    {
+        animatorTemplate.SetTrigger("WalkTrigger");
+        myAgent.SetDestination(finalPosition.position);
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
+        {
+            yield return null;
+        }
+        animatorTemplate.SetTrigger("WashTrigger");
+
+    }
+
+    public void CallEndCoroutine()
+    {
+        StartCoroutine(EndCoroutine());
+    }
+
+    IEnumerator EndCoroutine()
     {
         myAgent.SetDestination(basePosition.position);
         while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
         {
             yield return null;
         }
-        washingAnimator.SetTrigger("ReturnToIdleTrigger");
+        animatorTemplate.SetTrigger("ReturnToIdleTrigger");
     }
 }
 

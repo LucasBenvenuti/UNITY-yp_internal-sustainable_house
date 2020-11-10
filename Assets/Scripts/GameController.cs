@@ -39,6 +39,8 @@ public class GameController : MonoBehaviour
     public bool itemPanelActive;
     public bool canGoToObject = true;
     public float itemSelectedPrice;
+
+    public ActionsAnimations[] actionsAnimations;
     private void Awake()
     {
         if (!instance)
@@ -62,7 +64,7 @@ public class GameController : MonoBehaviour
             if (hit.transform.gameObject.tag == "Item")
             {
                 selectItem(hit.transform.gameObject);
-            }           
+            }
             if (hit.transform.gameObject.tag == "Action")
             {
                 SelectAction(hit.transform.gameObject);
@@ -144,7 +146,7 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         panelAction.SetActive(false);
-        StopCoroutine(PanelOff()); 
+        StopCoroutine(PanelOff());
     }
 
     void DisplayActionTypeUI(GameObject go)
@@ -158,9 +160,10 @@ public class GameController : MonoBehaviour
             actionSelected = go.GetComponent<ActionTemplate>();
         }
         actionSelected.DoneAction();
-        ActionsAnimations.instance.CallFirstCoroutine();
         int indexSelected = actionSelected.actionIndex;
         actionType[indexSelected].SetActive(true);
+        // ActionsAnimations.instance.CallFirstCoroutine();
+        actionsAnimations[indexSelected].CallFirstCoroutine(indexSelected);
     }
 
     public void ChangeRequest(SelectItem item)
