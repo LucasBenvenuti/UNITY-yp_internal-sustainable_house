@@ -442,6 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ec6594124ecb54fa156c314228fe6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraSpace: {fileID: 0}
   acceptText: YellowPanda
   SceneToGo: MainMenu
   image: {fileID: 1227376356}

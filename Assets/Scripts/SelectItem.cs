@@ -20,13 +20,9 @@ public class SelectItem : MonoBehaviour
         //itemSustainability = itemSelectedTemplate.itemSustainability;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void NewItemInstance()
     {
+        // UIController.instance.CheckBaseValues();
         GameController.instance.CheckAndDestroyItem(itemPrefab);
         if (GameController.instance.destroyOriginalItem)
         {
@@ -35,6 +31,8 @@ public class SelectItem : MonoBehaviour
             prefab.transform.SetAsFirstSibling();
             prefab.transform.position = itemPosition.position;
             GameController.instance.destroyOriginalItem = false;
+            // UIController.instance.updateValues = true;
+            // UIController.instance.NewUpdateValues(itemPrice, itemSustainability);
         }
     }
     public void ClickOnItem()

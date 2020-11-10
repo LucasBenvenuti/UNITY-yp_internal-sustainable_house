@@ -21,12 +21,12 @@ public class ItemTemplate : MonoBehaviour
                    14: televisão                    
      */
     public bool isSelectable;
+    public int itemOption;
     public string itemName;
     public int itemType;
     public float itemPrice;
     public float itemSustainability;
     public float itemCostPerMonth;
-    public int itemOption;
     public Sprite itemSprite;
 
     void Start()
@@ -42,14 +42,14 @@ public class ItemTemplate : MonoBehaviour
         if (itemType < 0)
         {
             itemType = 0;
-        } 
-        if (itemOption < 0)
-        {
-            itemType = 0;
         }
         if (itemSustainability < -5.1)
         {
             itemSustainability = -5;
+        }
+        if (itemOption < 0)
+        {
+            itemOption = 0;
         }
     }
 }

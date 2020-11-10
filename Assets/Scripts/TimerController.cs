@@ -20,6 +20,8 @@ public class TimerController : MonoBehaviour
     public bool monthCheck;
     public int indexAction;
 
+    public ReportGenerator report;
+
     public ActionTemplate[] actions;
 
     int months;
@@ -79,6 +81,8 @@ public class TimerController : MonoBehaviour
 
     void FinishGame()
     {
+        report.PrintScene();
+
         Debug.Log("Function called when the timer is over for finish the game");
         totalTime = 0;
         timeIsRunning = false;
@@ -93,6 +97,10 @@ public class TimerController : MonoBehaviour
             months++;
             monthCheck = true;
             monthTime = timeBaseMonth;
+            for (int i = 0; i < actions.Length; i++)
+            {
+                actions[i].EnableAction();
+            }
         }
         monthCheck = false;
         monthText.text = "Month: " + months;

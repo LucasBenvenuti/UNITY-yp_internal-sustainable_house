@@ -19,8 +19,7 @@ public class CameraController : MonoBehaviour
     public LeanMaintainDistance leanDistance;
     public LeanMultiPinch leanMultiPinch;
     public LeanDragCamera leanDrag;
-    // public LeanTwistRotateAxis leanTwist;
-    // public  leanPinch;
+
     [HideInInspector]
     public float yawAngle;
     [HideInInspector]
@@ -59,14 +58,8 @@ public class CameraController : MonoBehaviour
 
         cameraBasePosition = this.gameObject.transform.position;
         GameController.instance.canGoToObject = false;
-        // leanDrag.enabled = false;
-        // leanTwist.enabled = false;
-        // leanPinch.enabled = false;
 
-        int childCount = itemSelected.transform.childCount;
 
-        //GET FIRST CHILD POSITION - CAMERA POINT
-        Vector3 itemZoomPosition = itemSelected.transform.GetChild(childCount - 1).position;
 
         dragSensitivity = leanDrag.Sensitivity;
         yawSensitivity = leanTwist.YawSensitivity;
@@ -82,9 +75,22 @@ public class CameraController : MonoBehaviour
         leanDistance.enabled = false;
         leanMultiPinch.enabled = false;
 
-        LeanTween.move(this.gameObject, itemZoomPosition, tweenDuration).setEase(inOutType);
+        int childCount = itemSelected.transform.childCount;
+        Vector3 itemZoomPosition = new Vector3(0, 0, 0);
 
-        // zoomTeste = true;
+        if (childCount > 0)
+        {
+            //GET FIRST CHILD POSITION - CAMERA POINT
+            itemZoomPosition = itemSelected.transform.GetChild(childCount - 1).position;
+            LeanTween.move(this.gameObject, itemZoomPosition, tweenDuration).setEase(inOutType);
+        }
+        else
+        {
+            tweenDuration = tweenDuration * 1.3f;
+
+            itemZoomPosition = itemSelected.transform.position;
+            LeanTween.move(this.gameObject.transform.parent.gameObject, itemZoomPosition, tweenDuration).setEase(inOutType);
+        }
     }
     public void ReturnToBasePosition()
     {
@@ -93,10 +99,10 @@ public class CameraController : MonoBehaviour
 
     public IEnumerator ReturnToBasePositionNew()
     {
-        // leanDrag.enabled = true;
-        // leanTwist.enabled = true;
-        // leanPinch.enabled = true;
-
+        if (GameController.instance.backBtn.activeInHierarchy)
+        {
+            GameController.instance.backBtn.SetActive(false);
+        }
 
         leanTwist.SetYaw(yawAngle);
         leanTwist.Dampening = rotationDampening;
@@ -118,9 +124,4 @@ public class CameraController : MonoBehaviour
 
         GameController.instance.canGoToObject = true;
     }
-
-    // public void ChangeZoomControl()
-    // {
-    //     zoomControl = !zoomControl;
-    // }
 }

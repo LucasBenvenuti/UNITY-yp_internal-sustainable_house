@@ -118,7 +118,7 @@ public class UIController : MonoBehaviour
             moneySlider.value = controlMoney - price;
             fillMoneyText.text = "Money: " + moneySlider.value;
             float newSusValue = controlSustainability + sustainability;
-            if(newSusValue < 0)
+            if (newSusValue < 0)
             {
                 sustainabilitySlider.value = 0;
                 Debug.Log("SUSTENTABILIDADE NEGATIVA");
