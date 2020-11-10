@@ -14,6 +14,8 @@ public class QRCode_Reader : MonoBehaviour
 {
     // private WebCamTexture camTexture;
     // public Image cameraSpace;
+    public LeanTweenType inOutType;
+    public CanvasGroup centerIcon;
 
     public string acceptText = "YellowPanda";
     public string SceneToGo = "MainMenu";
@@ -48,6 +50,8 @@ public class QRCode_Reader : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(CenterIconAnimation());
+
         // Check for device cameras
         if (WebCamTexture.devices.Length == 0)
         {
@@ -151,6 +155,20 @@ public class QRCode_Reader : MonoBehaviour
                 }
             }
             catch (UnityException ex) { Debug.LogWarning(ex.Message); }
+        }
+    }
+
+    IEnumerator CenterIconAnimation()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(4f);
+
+            LeanTween.alphaCanvas(centerIcon, 0f, 1f).setEase(inOutType);
+
+            yield return new WaitForSeconds(10f);
+
+            LeanTween.alphaCanvas(centerIcon, 1f, 1f).setEase(inOutType);
         }
     }
 }
