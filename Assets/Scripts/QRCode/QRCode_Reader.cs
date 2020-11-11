@@ -58,8 +58,6 @@ public class QRCode_Reader : MonoBehaviour
     }
     IEnumerator Start()
     {
-        StartCoroutine(CenterIconAnimation());
-
         while (!Application.HasUserAuthorization(UserAuthorization.WebCam))
         {
             yield return null;
@@ -151,8 +149,10 @@ public class QRCode_Reader : MonoBehaviour
                 var result = barcodeReader.Decode(activeCameraTexture.GetPixels32(), activeCameraTexture.width, activeCameraTexture.height);
                 if (result != null)
                 {
+                    LeanTween.alphaCanvas(centerIcon, 1f, 0f).setEase(inOutType);
                     if (result.Text == acceptText)
                     {
+
                         Debug.Log("CORRECT TEXT! QR Code text: " + result.Text);
                         Debug.Log("REDIRECTING TO REGISTER...");
 
@@ -166,23 +166,14 @@ public class QRCode_Reader : MonoBehaviour
                         Debug.Log("WRONG TEXT FROM QR CODE! QR Code text is: " + result.Text + ", it MUST be " + acceptText);
                     }
                 }
+                else
+                {
+                    LeanTween.alphaCanvas(centerIcon, 0f, 1f).setEase(inOutType);
+
+                }
             }
             catch (UnityException ex) { Debug.LogWarning(ex.Message); }
         }
 
-    }
-
-    IEnumerator CenterIconAnimation()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(4f);
-
-            LeanTween.alphaCanvas(centerIcon, 0f, 1f).setEase(inOutType);
-
-            yield return new WaitForSeconds(10f);
-
-            LeanTween.alphaCanvas(centerIcon, 1f, 1f).setEase(inOutType);
-        }
     }
 }

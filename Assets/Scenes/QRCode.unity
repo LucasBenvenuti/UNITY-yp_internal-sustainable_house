@@ -649,6 +649,7 @@ MonoBehaviour:
   image: {fileID: 1227376356}
   imageParent: {fileID: 1628968672}
   imageFitter: {fileID: 1227376358}
+  icon: {fileID: 1234196842}
 --- !u!4 &1549426436
 Transform:
   m_ObjectHideFlags: 0
