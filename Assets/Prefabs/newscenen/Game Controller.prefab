@@ -80,6 +80,12 @@ MonoBehaviour:
   itemPanelActive: 0
   canGoToObject: 1
   itemSelectedPrice: 0
+  actionsAnimations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &2195369376515025727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,10 +102,12 @@ MonoBehaviour:
   sustainabilitySlider: {fileID: 0}
   fillSustainabilityText: {fileID: 0}
   fillMoneyText: {fileID: 0}
-  moneyBaseValue: 0
-  sustainabilityBaseValue: 0
   updateValues: 0
   salaryCheck: 0
+  moneyMaxValue: 500
+  sustainabilityMaxValue: 100
+  moneyBaseValue: 0
+  sustainabilityBaseValue: 0
   baseSalary: 100
   itemsSelectables:
   - {fileID: 0}
@@ -117,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13735ff82ea85cf4a8f38287f5c518ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EndCanvas: {fileID: 0}
   totalTime: 720
   monthTime: 60
   timeBaseMonth: 60
@@ -127,6 +136,7 @@ MonoBehaviour:
   timeIsRunning: 0
   monthCheck: 0
   indexAction: 0
+  report: {fileID: 0}
   actions:
   - {fileID: 0}
   - {fileID: 0}
