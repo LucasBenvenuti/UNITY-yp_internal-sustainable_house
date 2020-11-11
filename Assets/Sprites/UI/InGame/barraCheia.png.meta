@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e4289cee9f86b4b468a13fa889e9289e
+guid: eb15e4ca643db454aa66006d4680f249
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8173807580779132652
-    second: barraCheia_0
+      213: -3472422929035494385
+    second: _arraCheia_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -140,22 +140,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: barraCheia_0
+      name: _arraCheia_0
       rect:
         serializedVersion: 2
-        x: 74
-        y: 196
-        width: 352
-        height: 108
+        x: 76
+        y: 180
+        width: 350
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 419c34ddf4dc09e80800000000000000
-      internalID: -8173807580779132652
+      spriteID: f0cfae46eb97fcfc0800000000000000
+      internalID: -3472422929035494385
       vertices: []
       indices: 
       edges: []

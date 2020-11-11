@@ -15,9 +15,11 @@ public class CameraController : MonoBehaviour
     [HideInInspector]
     public Vector3 cameraBasePosition;
 
+    public Camera mainCamera;
+    float cameraBaseSize;
+
     public LeanPitchYaw leanTwist;
-    public LeanMaintainDistance leanDistance;
-    public LeanMultiPinch leanMultiPinch;
+    public LeanPinchCamera leanPinch;
     public LeanDragCamera leanDrag;
 
     [HideInInspector]
@@ -49,7 +51,7 @@ public class CameraController : MonoBehaviour
         cameraBasePosition = this.gameObject.transform.position;
     }
 
-    public void LerpToZoomPosition(GameObject itemSelected)
+    public void LerpToZoomPosition(GameObject itemSelected, float cameraZoom)
     {
         if (!GameController.instance.canGoToObject)
         {
@@ -57,9 +59,8 @@ public class CameraController : MonoBehaviour
         }
 
         cameraBasePosition = this.gameObject.transform.position;
+        cameraBaseSize = mainCamera.orthographicSize;
         GameController.instance.canGoToObject = false;
-
-
 
         dragSensitivity = leanDrag.Sensitivity;
         yawSensitivity = leanTwist.YawSensitivity;
@@ -72,8 +73,7 @@ public class CameraController : MonoBehaviour
         leanTwist.SetYaw(45);
 
         leanDrag.enabled = false;
-        leanDistance.enabled = false;
-        leanMultiPinch.enabled = false;
+        leanPinch.enabled = false;
 
         int childCount = itemSelected.transform.childCount;
         Vector3 itemZoomPosition = new Vector3(0, 0, 0);
@@ -83,6 +83,10 @@ public class CameraController : MonoBehaviour
             //GET FIRST CHILD POSITION - CAMERA POINT
             itemZoomPosition = itemSelected.transform.GetChild(childCount - 1).position;
             LeanTween.move(this.gameObject, itemZoomPosition, tweenDuration).setEase(inOutType);
+            LeanTween.value(this.gameObject, mainCamera.orthographicSize, cameraZoom, tweenDuration).setEase(inOutType).setOnUpdate((float flt) =>
+            {
+                mainCamera.orthographicSize = flt;
+            });
         }
         else
         {
@@ -108,6 +112,10 @@ public class CameraController : MonoBehaviour
         leanTwist.Dampening = rotationDampening;
 
         LeanTween.move(this.gameObject, cameraBasePosition, tweenDuration / 1f).setEase(inOutType);
+        LeanTween.value(this.gameObject, mainCamera.orthographicSize, cameraBaseSize, tweenDuration).setEase(inOutType).setOnUpdate((float flt) =>
+            {
+                mainCamera.orthographicSize = flt;
+            });
 
         GameController.instance.panelItem.SetActive(false);
 
@@ -119,8 +127,7 @@ public class CameraController : MonoBehaviour
         leanTwist.YawSensitivity = yawSensitivity;
 
         leanDrag.enabled = true;
-        leanDistance.enabled = true;
-        leanMultiPinch.enabled = true;
+        leanPinch.enabled = true;
 
         GameController.instance.canGoToObject = true;
     }

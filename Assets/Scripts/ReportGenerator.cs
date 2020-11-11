@@ -13,6 +13,8 @@ public class ReportGenerator : MonoBehaviour
 
     public PDF_Generator pdfGenerator;
 
+    public float printCameraZoom = 15f;
+
     public void Start()
     {
     }
@@ -33,7 +35,7 @@ public class ReportGenerator : MonoBehaviour
 
         Debug.Log(printPoint.transform.position);
 
-        CameraController.instance.LerpToZoomPosition(printPoint);
+        CameraController.instance.LerpToZoomPosition(printPoint, printCameraZoom);
 
         yield return new WaitForSeconds(CameraController.instance.tweenDuration);
 

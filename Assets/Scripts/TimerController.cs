@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TimerController : MonoBehaviour
 {
@@ -10,14 +11,10 @@ public class TimerController : MonoBehaviour
     public GameObject EndCanvas;
 
     public float totalTime; //sets 12 minutes for timer
-    public float monthTime;
-    public float timeBaseMonth;
     public float actionTimer;
     public float actionBaseTime;
-    public Text timeText;
-    public Text monthText;
+    public TMP_Text timeText;
     public bool timeIsRunning;
-    public bool monthCheck;
     public int indexAction;
 
     public ReportGenerator report;
@@ -53,7 +50,6 @@ public class TimerController : MonoBehaviour
             if (totalTime > 0)
             {
                 totalTime -= Time.deltaTime;
-                MonthsCounter();
                 ActionsDisplay();
             }
             else
@@ -89,22 +85,6 @@ public class TimerController : MonoBehaviour
 
         EndCanvas.SetActive(true);
     }
-    public void MonthsCounter()
-    {
-        monthTime -= Time.deltaTime;
-        if (monthTime < 0.1f)
-        {
-            months++;
-            monthCheck = true;
-            monthTime = timeBaseMonth;
-            for (int i = 0; i < actions.Length; i++)
-            {
-                actions[i].EnableAction();
-            }
-        }
-        monthCheck = false;
-        monthText.text = "Month: " + months;
-    }
 
     public void ActionsDisplay()
     {
@@ -128,12 +108,4 @@ public class TimerController : MonoBehaviour
             }
         }
     }
-
-
-    //void SalaryFunction()
-    //{
-    //    UIController.instance.salaryCheck = true;
-    //    Debug.Log("function to pay a salary");
-    //}
-
 }

@@ -29,6 +29,8 @@ public class ItemTemplate : MonoBehaviour
     public float itemCostPerMonth;
     public Sprite itemSprite;
 
+    public float zoomSize = 5f;
+
     void Start()
     {
         if (!isSelectable)

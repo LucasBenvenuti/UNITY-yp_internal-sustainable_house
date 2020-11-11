@@ -56,20 +56,23 @@ public class GameController : MonoBehaviour
 
     public void onTap()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit, 500f))
+        if (canGoToObject)
         {
-            if (hit.transform.gameObject.tag == "Item")
-            {
-                selectItem(hit.transform.gameObject);
-            }
-            if (hit.transform.gameObject.tag == "Action")
-            {
-                SelectAction(hit.transform.gameObject);
-            }
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+            if (Physics.Raycast(ray, out hit, 500f))
+            {
+                if (hit.transform.gameObject.tag == "Item")
+                {
+                    selectItem(hit.transform.gameObject);
+                }
+                if (hit.transform.gameObject.tag == "Action")
+                {
+                    SelectAction(hit.transform.gameObject);
+                }
+
+            }
         }
     }
 
@@ -78,7 +81,9 @@ public class GameController : MonoBehaviour
         itemHolder = hitObject.transform.parent.gameObject;
         DisplayItemTypeUI(hitObject);
 
-        CameraController.instance.LerpToZoomPosition(itemHolder);
+        float zoomValue = hitObject.GetComponent<ItemTemplate>().zoomSize;
+
+        CameraController.instance.LerpToZoomPosition(itemHolder, zoomValue);
         panelItem.SetActive(true);
 
         if (backBtn != null)
