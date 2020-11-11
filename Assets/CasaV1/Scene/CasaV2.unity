@@ -3291,31 +3291,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8003418102289725831, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.18477508
+      value: 0.000000081460335
       objectReference: {fileID: 0}
     - target: {fileID: -8003418102289725831, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.47880322
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8003418102289725831, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.105131954
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8003418102289725831, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.85179394
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8003418102289725831, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -128.36139
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8003418102289725831, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.474445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8003418102289725831, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.459412
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7944426705222469305, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_CastShadows
@@ -4687,7 +4687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -245474492207817872, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -245474492207817872, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5235,7 +5235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2625486032540054347, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2669759090563693780, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
       propertyPath: m_Materials.Array.data[0]
