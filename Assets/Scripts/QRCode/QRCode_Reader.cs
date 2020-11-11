@@ -10,6 +10,10 @@ using System.Linq;
 
 using UnityEngine.SceneManagement;
 
+#if PLATFORM_ANDROID
+using UnityEngine.Android;
+#endif
+
 public class QRCode_Reader : MonoBehaviour
 {
     // private WebCamTexture camTexture;
@@ -61,13 +65,21 @@ public class QRCode_Reader : MonoBehaviour
     //     }
     // }
 
-    void Start()
+    void Awake()
     {
+        image.material.color = new Color(1f, 1f, 1f, 0f);
+    }
+    IEnumerator Start()
+    {
+        while (!Application.HasUserAuthorization(UserAuthorization.WebCam))
+        {
+            yield return null;
+        }
         // Check for device cameras
         if (WebCamTexture.devices.Length == 0)
         {
             Debug.Log("No devices cameras found");
-            return;
+            yield return null;
         }
 
         // Get the device's cameras and create WebCamTextures with them
@@ -101,6 +113,7 @@ public class QRCode_Reader : MonoBehaviour
 
         image.texture = activeCameraTexture;
         image.material.mainTexture = activeCameraTexture;
+        image.material.color = new Color(1f, 1f, 1f, 1f);
 
         activeCameraTexture.Play();
         cameraInitialized = true;
@@ -169,5 +182,6 @@ public class QRCode_Reader : MonoBehaviour
             }
             catch (UnityException ex) { Debug.LogWarning(ex.Message); }
         }
+
     }
 }
