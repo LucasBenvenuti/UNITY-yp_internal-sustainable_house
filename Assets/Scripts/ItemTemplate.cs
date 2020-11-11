@@ -4,40 +4,53 @@ using UnityEngine;
 
 public class ItemTemplate : MonoBehaviour
 {
+    /*item type -> 0: climatização
+                   1: secagem de roupa
+                   2: lampada
+                   3: janelas 
+                   4: abastecimento de energia eletrica
+                   5: abastecimento de agua
+                   6: esgotamento sanitario
+                   7: chuveiro
+                   8: vaso sanitario    
+                   9: torneira de pia  
+                   10: geladeira 
+                   11: lixeiras 
+                   12: maquina de lavar roupa 
+                   13: agua de reuso 
+                   14: televisão                    
+     */
     public bool isSelectable;
+    public int itemOption;
     public string itemName;
-    public string itemType;
+    public int itemType;
     public float itemPrice;
     public float itemSustainability;
+    public float itemCostPerMonth;
     public Sprite itemSprite;
-    
+
     void Start()
     {
         if (!isSelectable)
         {
             isSelectable = true;
         }
-        if(itemName == null)
+        if (itemName == null)
         {
             itemName = "Default";
-        } 
-        if(itemType == null)
+        }
+        if (itemType < 0)
         {
-            itemType = "Default";
-        } 
-        if(itemPrice < 0.1)
+            itemType = 0;
+        }
+        if (itemSustainability < -5.1)
         {
-            itemPrice = 0;
-        } 
-        if(itemSustainability < 0.1)
+            itemSustainability = -5;
+        }
+        if (itemOption < 0)
         {
-            itemSustainability = 0;
+            itemOption = 0;
         }
     }
-
-
-    void Update()
-    {
-        
-    }
 }
+

@@ -5,17 +5,29 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    //singleton
     public static UIController instance;
-
-    public Image fillMoneyImage;
-    public Image fillSustainabilityImage;
+    //sliders
+    public Slider moneySlider;
+    public Slider sustainabilitySlider;
+    //sliders text
     public Text fillSustainabilityText;
     public Text fillMoneyText;
+    //bools to control actions for update values and receive month salary
+    public bool updateValues;
+    public bool salaryCheck;
+    //floats to set the max values
+    public float moneyMaxValue;
+    public float sustainabilityMaxValue;
+    //floats to check itens values in scene 
     public float moneyBaseValue;
     public float sustainabilityBaseValue;
-    public bool updateValues;
     float newMoneyValue;
     float newSustainabilityValue;
+    float controlMoney;
+    float controlSustainability;
+    public float baseSalary;
+
 
     public GameObject[] itemsSelectables;
 
@@ -30,43 +42,45 @@ public class UIController : MonoBehaviour
         {
             Destroy(this);
         }
+        moneySlider.maxValue = moneyMaxValue;
+        sustainabilitySlider.maxValue = sustainabilityMaxValue;
     }
     private void Start()
     {
-        fillMoneyImage.fillAmount = 0.5f;
-        fillSustainabilityImage.fillAmount = 0.5f;
-        fillMoneyText.text = "Money: " + fillMoneyImage.fillAmount;
-        fillSustainabilityText.text = "Sustainability: " + fillSustainabilityImage.fillAmount;
+        CheckBaseValues();
+        moneySlider.value = controlMoney;
+        sustainabilitySlider.value = sustainabilityBaseValue;
+        fillMoneyText.text = "Money: " + moneySlider.value;
+        fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
     }
     private void LateUpdate()
     {
-        if (updateValues)
-        {
-            UpdateFillIndicators();
-            updateValues = false;
-        }
+        //if (salaryCheck)
+        //{
+        //    PaySalary();
+        //    salaryCheck = false;
+        //}
     }
 
-    public void UpdateFillIndicators()
-    {
-        newMoneyValue = 0;
-        newSustainabilityValue = 0;
-        for (int i = 0; i < itemsSelectables.Length; i++)
-        {
-            newMoneyValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice / 10);
-            newSustainabilityValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability / 10);
-            print("new money:" + newMoneyValue);
-            print("new sus:" + newSustainabilityValue);
-        }
-        if (newMoneyValue != moneyBaseValue || newSustainabilityValue != sustainabilityBaseValue)
-        {
-            fillMoneyImage.fillAmount = newMoneyValue;
-            fillSustainabilityImage.fillAmount = newSustainabilityValue;
-            fillMoneyText.text = "Money: " + fillMoneyImage.fillAmount;
-            fillSustainabilityText.text = "Sustainability: " + fillSustainabilityImage.fillAmount;
-        }
-
-    }
+    //public void UpdateFillIndicators()
+    //{
+    //    newMoneyValue = 0;
+    //    newSustainabilityValue = 0;
+    //    for (int i = 0; i < itemsSelectables.Length; i++)
+    //    {
+    //        newMoneyValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
+    //        newSustainabilityValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
+    //        print("new money:" + newMoneyValue);
+    //        print("new sus:" + newSustainabilityValue);
+    //    }
+    //    if (newMoneyValue != moneyBaseValue || newSustainabilityValue != sustainabilityBaseValue)
+    //    {
+    //        moneySlider.value = controlMoney - Mathf.Abs(moneyBaseValue - newMoneyValue);
+    //        sustainabilitySlider.value = newSustainabilityValue;
+    //        fillMoneyText.text = "Money: " + moneySlider.value;
+    //        fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
+    //    }
+    //}
 
     public void CheckBaseValues()
     {
@@ -74,11 +88,47 @@ public class UIController : MonoBehaviour
         sustainabilityBaseValue = 0;
         for (int i = 0; i < itemsSelectables.Length; i++)
         {
-            moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice / 10);
-            sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability / 10);
-            print("checked money value:" + moneyBaseValue);
-            print("checked sustainability value:" + sustainabilityBaseValue);
-            print("/////////");
+            moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
+            sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
+        }
+        //amount of money availiable 
+        controlMoney = moneyMaxValue - moneyBaseValue;
+    }
+
+    //public void PaySalary()
+    //{
+    //    controlMoney = moneySlider.value;
+    //    moneySlider.value = controlMoney + baseSalary;
+    //    fillMoneyText.text = "Money: " + moneySlider.value;
+    //}
+
+    public bool NewUpdateValues(float price, float sustainability)
+    {
+        controlMoney = moneySlider.value;
+        controlSustainability = sustainabilitySlider.value;
+        Debug.Log("PRICE: " + price);
+        if (controlMoney < price)
+        {
+            Debug.Log("VOCE NAO TEM DINHEIRO SUFICIENTE");
+            return false;
+        }
+        else
+        {
+
+            moneySlider.value = controlMoney - price;
+            fillMoneyText.text = "Money: " + moneySlider.value;
+            float newSusValue = controlSustainability + sustainability;
+            if (newSusValue < 0)
+            {
+                sustainabilitySlider.value = 0;
+                Debug.Log("SUSTENTABILIDADE NEGATIVA");
+            }
+            else
+            {
+                sustainabilitySlider.value = newSusValue;
+            }
+            fillSustainabilityText.text = "Sustainability: " + sustainabilitySlider.value;
+            return true;
         }
     }
 }
