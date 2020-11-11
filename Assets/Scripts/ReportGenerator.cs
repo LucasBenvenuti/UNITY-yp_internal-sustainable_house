@@ -15,10 +15,6 @@ public class ReportGenerator : MonoBehaviour
 
     public float printCameraZoom = 15f;
 
-    public void Start()
-    {
-    }
-
     public void PrintScene()
     {
         StartCoroutine(PrintFunc());
