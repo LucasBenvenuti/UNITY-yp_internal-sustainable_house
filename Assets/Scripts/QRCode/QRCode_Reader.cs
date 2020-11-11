@@ -24,6 +24,8 @@ public class QRCode_Reader : MonoBehaviour
     public string acceptText = "YellowPanda";
     public string SceneToGo = "MainMenu";
 
+    bool canLerp;
+
     //NEW
 
     public RawImage image;
@@ -55,6 +57,8 @@ public class QRCode_Reader : MonoBehaviour
     void Awake()
     {
         image.material.color = new Color(1f, 1f, 1f, 0f);
+
+        canLerp = true;
     }
     IEnumerator Start()
     {
@@ -149,7 +153,14 @@ public class QRCode_Reader : MonoBehaviour
                 var result = barcodeReader.Decode(activeCameraTexture.GetPixels32(), activeCameraTexture.width, activeCameraTexture.height);
                 if (result != null)
                 {
-                    LeanTween.alphaCanvas(centerIcon, 1f, 0f).setEase(inOutType);
+                    StopCoroutine(ReturnIcon());
+
+                    if (canLerp && centerIcon.alpha == 1)
+                    {
+                        canLerp = false;
+                        LeanTween.alphaCanvas(centerIcon, 0f, 0.5f).setEase(inOutType);
+                    }
+
                     if (result.Text == acceptText)
                     {
 
@@ -168,12 +179,35 @@ public class QRCode_Reader : MonoBehaviour
                 }
                 else
                 {
-                    LeanTween.alphaCanvas(centerIcon, 0f, 1f).setEase(inOutType);
-
+                    if (centerIcon.alpha == 0)
+                    {
+                        StopCoroutine(ReturnIcon());
+                        StartCoroutine(ReturnIcon());
+                    }
                 }
             }
             catch (UnityException ex) { Debug.LogWarning(ex.Message); }
         }
 
+    }
+
+    IEnumerator ReturnIcon()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (canLerp == false)
+        {
+            Debug.Log(canLerp);
+
+            LeanTween.alphaCanvas(centerIcon, 1f, 0.5f).setEase(inOutType);
+
+            canLerp = true;
+
+            StopCoroutine(ReturnIcon());
+        }
+        else
+        {
+            yield return null;
+        }
     }
 }
