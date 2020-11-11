@@ -49,21 +49,6 @@ public class QRCode_Reader : MonoBehaviour
     Vector3 fixedScale = new Vector3(-1f, 1f, 1f);
 
     bool cameraInitialized;
-    // void Start()
-    // {
-    //     // screenRect = new Rect(0, 0, Screen.width, Screen.height);
-    //     camTexture = new WebCamTexture();
-    //     camTexture.requestedHeight = Screen.height / 2;
-    //     camTexture.requestedWidth = Screen.width / 2;
-    //     if (camTexture != null)
-    //     {
-    //         cameraSpace.material.mainTexture = camTexture;
-
-    //         camTexture.requestedFPS = 60;
-
-    //         camTexture.Play();
-    //     }
-    // }
 
     void Awake()
     {
@@ -86,8 +71,6 @@ public class QRCode_Reader : MonoBehaviour
         frontCameraDevice = WebCamTexture.devices.Last();
         backCameraDevice = WebCamTexture.devices.First();
 
-        //frontCameraTexture = new WebCamTexture();
-        //backCameraTexture = new WebCamTexture();
         frontCameraTexture = new WebCamTexture(frontCameraDevice.name, 1280, 720, 30);
         backCameraTexture = new WebCamTexture(backCameraDevice.name, 1280, 720, 30);
 
