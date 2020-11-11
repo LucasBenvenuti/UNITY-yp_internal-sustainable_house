@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour
     public bool canGoToObject = true;
     public float itemSelectedPrice;
 
+    public ActionsAnimations[] actionsAnimations;
     private void Awake()
     {
         if (!instance)
@@ -159,9 +160,10 @@ public class GameController : MonoBehaviour
             actionSelected = go.GetComponent<ActionTemplate>();
         }
         actionSelected.DoneAction();
-        // ActionsAnimations.instance.CallFirstCoroutine();
         int indexSelected = actionSelected.actionIndex;
         actionType[indexSelected].SetActive(true);
+        // ActionsAnimations.instance.CallFirstCoroutine();
+        actionsAnimations[indexSelected].CallFirstCoroutine(indexSelected);
     }
 
     public void ChangeRequest(SelectItem item)
