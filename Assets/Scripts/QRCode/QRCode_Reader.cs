@@ -24,6 +24,8 @@ public class QRCode_Reader : MonoBehaviour
     public string acceptText = "YellowPanda";
     public string SceneToGo = "MainMenu";
 
+    bool canLerp;
+
     //NEW
 
     public RawImage image;
@@ -55,11 +57,11 @@ public class QRCode_Reader : MonoBehaviour
     void Awake()
     {
         image.material.color = new Color(1f, 1f, 1f, 0f);
+
+        canLerp = true;
     }
     IEnumerator Start()
     {
-        StartCoroutine(CenterIconAnimation());
-
         while (!Application.HasUserAuthorization(UserAuthorization.WebCam))
         {
             yield return null;
@@ -151,8 +153,17 @@ public class QRCode_Reader : MonoBehaviour
                 var result = barcodeReader.Decode(activeCameraTexture.GetPixels32(), activeCameraTexture.width, activeCameraTexture.height);
                 if (result != null)
                 {
+                    StopCoroutine(ReturnIcon());
+
+                    if (canLerp && centerIcon.alpha == 1)
+                    {
+                        canLerp = false;
+                        LeanTween.alphaCanvas(centerIcon, 0f, 0.5f).setEase(inOutType);
+                    }
+
                     if (result.Text == acceptText)
                     {
+
                         Debug.Log("CORRECT TEXT! QR Code text: " + result.Text);
                         Debug.Log("REDIRECTING TO REGISTER...");
 
@@ -166,23 +177,37 @@ public class QRCode_Reader : MonoBehaviour
                         Debug.Log("WRONG TEXT FROM QR CODE! QR Code text is: " + result.Text + ", it MUST be " + acceptText);
                     }
                 }
+                else
+                {
+                    if (centerIcon.alpha == 0)
+                    {
+                        StopCoroutine(ReturnIcon());
+                        StartCoroutine(ReturnIcon());
+                    }
+                }
             }
             catch (UnityException ex) { Debug.LogWarning(ex.Message); }
         }
 
     }
 
-    IEnumerator CenterIconAnimation()
+    IEnumerator ReturnIcon()
     {
-        while (true)
+        yield return new WaitForSeconds(3f);
+
+        if (canLerp == false)
         {
-            yield return new WaitForSeconds(4f);
+            Debug.Log(canLerp);
 
-            LeanTween.alphaCanvas(centerIcon, 0f, 1f).setEase(inOutType);
+            LeanTween.alphaCanvas(centerIcon, 1f, 0.5f).setEase(inOutType);
 
-            yield return new WaitForSeconds(10f);
+            canLerp = true;
 
-            LeanTween.alphaCanvas(centerIcon, 1f, 1f).setEase(inOutType);
+            StopCoroutine(ReturnIcon());
+        }
+        else
+        {
+            yield return null;
         }
     }
 }
