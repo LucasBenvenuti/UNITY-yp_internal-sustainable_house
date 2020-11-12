@@ -14,6 +14,7 @@ public class RegisterController : MonoBehaviour
     public GameObject RegisterCanvas;
     public GameObject StartMenuCanvas;
 
+    public MainRegister_Manager mainRegisterManager;
 
     public void Awake()
     {
@@ -33,8 +34,7 @@ public class RegisterController : MonoBehaviour
 
             Debug.Log("Saved First Name - " + PlayerPrefs.GetString("Player_Name"));
 
-            RegisterCanvas.SetActive(false);
-            StartMenuCanvas.SetActive(true);
+            mainRegisterManager.RegisterToPlay();
         }
     }
 
