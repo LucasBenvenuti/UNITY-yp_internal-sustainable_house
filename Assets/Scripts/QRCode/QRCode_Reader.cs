@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 using System.Linq;
 
-using UnityEngine.SceneManagement;
-
 #if PLATFORM_ANDROID
 using UnityEngine.Android;
 #endif
@@ -60,8 +58,18 @@ public class QRCode_Reader : MonoBehaviour
 
         canLerp = true;
     }
+
     IEnumerator Start()
     {
+        if (SceneController.instance)
+        {
+            SceneController.instance.StartScene();
+        }
+        else
+        {
+            Debug.Log("SceneController doesnt exist!");
+        }
+
         while (!Application.HasUserAuthorization(UserAuthorization.WebCam))
         {
             yield return null;
@@ -120,9 +128,16 @@ public class QRCode_Reader : MonoBehaviour
     void Update()
     {
         // Skip making adjustment for incorrect camera data
-        if (activeCameraTexture.width < 100)
+        if (activeCameraTexture)
         {
-            Debug.Log("Still waiting another frame for correct info...");
+            if (activeCameraTexture.width < 100)
+            {
+                Debug.Log("Still waiting another frame for correct info...");
+                return;
+            }
+        }
+        else
+        {
             return;
         }
 
@@ -170,7 +185,7 @@ public class QRCode_Reader : MonoBehaviour
                         // camTexture = null;
                         activeCameraTexture = null;
 
-                        SceneManager.LoadScene(SceneToGo, LoadSceneMode.Single);
+                        SceneController.instance.ChangeScene("MainMenu");
                     }
                     else
                     {

@@ -54,6 +54,18 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if (SceneController.instance)
+        {
+            SceneController.instance.StartScene();
+        }
+        else
+        {
+            Debug.Log("SceneController doesnt exist!");
+        }
+    }
+
     public void onTap()
     {
         if (canGoToObject)
@@ -177,7 +189,7 @@ public class GameController : MonoBehaviour
         if (confirmBtn != null)
         {
             //panelItem.SetActive(false);
-            confirmBtn.onClick.AddListener(() => { Teste(item); });
+            confirmBtn.onClick.AddListener(() => { ChangeItem(item); });
             confirmBox.SetActive(true);
         }
         else
@@ -185,10 +197,22 @@ public class GameController : MonoBehaviour
             Debug.Log("Need to set Confirm Button on Select Item");
         }
     }
-    public void Teste(SelectItem item)
+    public void ChangeItem(SelectItem item)
     {
         item.NewItemInstance();
-        confirmBtn.onClick.RemoveListener(() => { Teste(item); });
+        confirmBtn.onClick.RemoveListener(() => { ChangeItem(item); });
+    }
+
+    public void changeScene(string changeSceneName)
+    {
+        if (SceneController.instance)
+        {
+            SceneController.instance.ChangeScene(changeSceneName);
+        }
+        else
+        {
+            Debug.Log("SceneController doesnt exist!");
+        }
     }
 }
 

@@ -16,12 +16,24 @@ public class RegisterController : MonoBehaviour
 
     public MainRegister_Manager mainRegisterManager;
 
-    public void Awake()
+    void Awake()
     {
         PlayerPrefs.DeleteKey("Player_Name");
 
         RegisterCanvas.SetActive(true);
         StartMenuCanvas.SetActive(false);
+    }
+
+    void Start()
+    {
+        if (SceneController.instance)
+        {
+            SceneController.instance.StartScene();
+        }
+        else
+        {
+            Debug.Log("SceneController doesnt exist!");
+        }
     }
 
     public void RegisterUser()
@@ -53,5 +65,17 @@ public class RegisterController : MonoBehaviour
 
         Debug.Log("Input OK!");
         return true;
+    }
+
+    public void changeScene(string changeSceneName)
+    {
+        if (SceneController.instance)
+        {
+            SceneController.instance.ChangeScene(changeSceneName);
+        }
+        else
+        {
+            Debug.Log("SceneController doesnt exist!");
+        }
     }
 }
