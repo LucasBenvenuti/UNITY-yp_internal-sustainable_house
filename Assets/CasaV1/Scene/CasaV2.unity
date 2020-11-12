@@ -123,55 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 1e1ad15306d24214cb2d2b764b4653e5, type: 2}
---- !u!1 &3920255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3920256}
-  - component: {fileID: 3920257}
-  m_Layer: 0
-  m_Name: SceneController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3920256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3920255}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3920257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3920255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2dc286e5409148489c63d267e5266a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadePanel: {fileID: 0}
-  fadeMaterial: {fileID: 6238105324622055756}
-  easeInOut: 0
-  tweenDuration: 0
-  fadeInDuration: 0
-  fadeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &117554975
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 395786018046724869, guid: 9f0faf667e6a2fb4d80e79cb1460cbd1, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 395786018046724869, guid: 9f0faf667e6a2fb4d80e79cb1460cbd1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1638,7 +1589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228681896556247438, guid: 1a618bce8790c3e41ae596ac62524c36, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3228681896556247438, guid: 1a618bce8790c3e41ae596ac62524c36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2026,7 +1977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695643536638, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695643536638, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
