@@ -9,7 +9,7 @@ public class ActionsAnimations : MonoBehaviour
     Animator animatorTemplate;
     public NavMeshAgent myAgent;
     public Transform finalPosition;
-    public Transform finalPositionBathroom; 
+    public Transform finalPositionBathroom;
     public Transform basePosition;
 
     // private void Awake()
@@ -66,6 +66,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             yield return null;
         }
+        myAgent.transform.LeanRotateY(180f, 1f);
         animatorTemplate.SetTrigger("TextTrigger");
 
     }
