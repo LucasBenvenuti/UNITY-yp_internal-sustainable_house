@@ -69,6 +69,7 @@ public class GameController : MonoBehaviour
                 }
                 if (hit.transform.gameObject.tag == "Action")
                 {
+                    hit.transform.gameObject.SetActive(false);
                     SelectAction(hit.transform.gameObject);
                 }
 

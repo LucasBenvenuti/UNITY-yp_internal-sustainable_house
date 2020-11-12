@@ -51,13 +51,13 @@ public class TimerController : MonoBehaviour
             {
                 totalTime -= Time.deltaTime;
                 ActionsDisplay();
+                DisplayTimeMinAndSec(totalTime);
             }
             else
             {
                 FinishGame();
             }
         }
-        DisplayTimeMinAndSec(totalTime);
     }
 
     void DisplayTimeMinAndSec(float timeToDisplay)
@@ -80,7 +80,7 @@ public class TimerController : MonoBehaviour
         report.PrintScene();
 
         Debug.Log("Function called when the timer is over for finish the game");
-        totalTime = 0;
+        timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
         timeIsRunning = false;
 
         EndCanvas.SetActive(true);
