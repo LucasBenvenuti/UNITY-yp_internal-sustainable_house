@@ -12,6 +12,8 @@ public class ActionsAnimations : MonoBehaviour
     public Transform finalPositionBathroom;
     public Transform basePosition;
 
+    public GameObject cellPhone;
+
     // private void Awake()
     // {
     //     if (!instance)
@@ -23,6 +25,15 @@ public class ActionsAnimations : MonoBehaviour
     //         Destroy(this);
     //     }
     // }
+
+    void Awake()
+    {
+        if(cellPhone)
+        {   
+            cellPhone.SetActive(false);
+        }
+    }
+
     void Start()
     {
         animatorTemplate = gameObject.GetComponent<Animator>();
@@ -113,6 +124,17 @@ public class ActionsAnimations : MonoBehaviour
             yield return null;
         }
         animatorTemplate.SetTrigger("ReturnToIdleTrigger");
+    }
+
+    public void GrabCellPhone(int active)
+    {
+        if(active == 1)
+        {
+        cellPhone.SetActive(true);
+        }
+        else{
+            cellPhone.SetActive(false);
+        }
     }
 }
 
