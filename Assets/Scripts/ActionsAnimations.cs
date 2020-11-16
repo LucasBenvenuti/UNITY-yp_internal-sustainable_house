@@ -13,6 +13,11 @@ public class ActionsAnimations : MonoBehaviour
     public Transform basePosition;
 
     public GameObject cellPhone;
+    public GameObject toothbrush;
+    public GameObject book;
+    public GameObject plate;
+    public GameObject cloth;
+    int loopCounter;
 
     // private void Awake()
     // {
@@ -28,9 +33,26 @@ public class ActionsAnimations : MonoBehaviour
 
     void Awake()
     {
-        if(cellPhone)
-        {   
+        if (cellPhone)
+        {
             cellPhone.SetActive(false);
+        }
+        if (toothbrush)
+        {
+            toothbrush.SetActive(false);
+        }
+        if (book)
+        {
+            book.SetActive(false);
+            loopCounter = 0;
+        }
+        if (plate)
+        {
+            plate.SetActive(false);
+        }
+        if (cloth)
+        {
+            cloth.SetActive(false);
         }
     }
 
@@ -90,6 +112,7 @@ public class ActionsAnimations : MonoBehaviour
 
     IEnumerator DoBrushingAnimation()
     {
+        cellPhone.SetActive(false);
         animatorTemplate.SetTrigger("WalkTrigger");
         myAgent.SetDestination(finalPositionBathroom.position);
         while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
@@ -107,6 +130,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             yield return null;
         }
+        myAgent.transform.LeanRotateY(70f, 1f);
         animatorTemplate.SetTrigger("WashTrigger");
 
     }
@@ -128,15 +152,85 @@ public class ActionsAnimations : MonoBehaviour
 
     public void GrabCellPhone(int active)
     {
-        if(active == 1)
+        if (active == 1)
         {
-        cellPhone.SetActive(true);
+            cellPhone.SetActive(true);
         }
-        else{
+        else
+        {
             cellPhone.SetActive(false);
         }
     }
+    public void GrabToothbrush(int active)
+    {
+        if (active == 1)
+        {
+            toothbrush.SetActive(true);
+        }
+        else
+        {
+            toothbrush.SetActive(false);
+        }
+    }
+    public void ReadBook(int active)
+    {
+
+        if (active == 1)
+        {
+            if (loopCounter == 0)
+            {
+                Debug.Log("entrou");
+                book.SetActive(true);
+            }
+        }
+        else if (active == 0)
+        {
+
+            Debug.Log("loop warning");
+            loopCounter++;
+            Debug.Log("loop value:" + loopCounter);
+        }
+        else
+        {
+            if (loopCounter >= 3)
+            {
+                book.SetActive(false);
+            }
+        }
+
+    }
+    public void Wash(int active)
+    {
+        if (active == 1)
+        {
+            if (plate)
+            {
+
+                plate.SetActive(true);
+            }
+            else if (cloth)
+            {
+
+                cloth.SetActive(true);
+            }
+        }
+        else
+        {
+            if (plate)
+            {
+
+                plate.SetActive(false);
+            }
+            else if (cloth)
+            {
+
+                cloth.SetActive(false);
+            }
+
+        }
+    }
 }
+
 
 
 
