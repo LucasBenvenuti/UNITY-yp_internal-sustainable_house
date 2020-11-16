@@ -28,8 +28,8 @@ public class ActionsAnimations : MonoBehaviour
 
     void Awake()
     {
-        if(cellPhone)
-        {   
+        if (cellPhone)
+        {
             cellPhone.SetActive(false);
         }
     }
@@ -79,7 +79,6 @@ public class ActionsAnimations : MonoBehaviour
         }
         myAgent.transform.LeanRotateY(180f, 1f);
         animatorTemplate.SetTrigger("TextTrigger");
-
     }
     void DoReadingAnimation()
     {
@@ -128,11 +127,12 @@ public class ActionsAnimations : MonoBehaviour
 
     public void GrabCellPhone(int active)
     {
-        if(active == 1)
+        if (active == 1)
         {
-        cellPhone.SetActive(true);
+            cellPhone.SetActive(true);
         }
-        else{
+        else
+        {
             cellPhone.SetActive(false);
         }
     }
