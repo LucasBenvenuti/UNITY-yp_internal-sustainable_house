@@ -9,6 +9,8 @@ public class TV_Screen : MonoBehaviour
     public float imageDuration = 4f;
     int currentIndex;
 
+    bool alreadyAnimated;
+
     // int teste1 = -8;
     // int teste2 = 1;
     // int teste3 = 2;
@@ -18,15 +20,33 @@ public class TV_Screen : MonoBehaviour
 
     void Start()
     {
+        alreadyAnimated = false;
+
         currentIndex = 0;
         screenMat.mainTexture = imagesList[currentIndex];
+        screenMat.color = new Color(1f, 1f, 1f, 1f);
 
         StartCoroutine(changeMatSprite());
     }
 
+    void Update()
+    {
+        if (!GameController.instance.tvOn)
+        {
+            if (!alreadyAnimated)
+            {
+                alreadyAnimated = true;
+
+                ScreenOff();
+            }
+        }
+    }
+
+
+
     IEnumerator changeMatSprite()
     {
-        while (true)
+        while (GameController.instance.tvOn)
         {
             yield return new WaitForSeconds(imageDuration);
 
@@ -41,5 +61,11 @@ public class TV_Screen : MonoBehaviour
 
             screenMat.mainTexture = imagesList[currentIndex];
         }
+    }
+
+    public void ScreenOff()
+    {
+        screenMat.mainTexture = null;
+        screenMat.color = new Color(0, 0, 0, 1f);
     }
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4150044024892360343}
   - component: {fileID: 3285244004068608137}
   - component: {fileID: 14782762204069879}
-  - component: {fileID: 8976757777700298550}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -97,25 +96,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &8976757777700298550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5542533747082970124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97145ecf84fa47f438a1785a1ce1de88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screenMat: {fileID: 2100000, guid: 5852f3da6bc457b468db3491d7abe10d, type: 2}
-  imagesList:
-  - {fileID: 2800000, guid: 95483190c8fea684d8fd37a4d5e601e8, type: 3}
-  - {fileID: 2800000, guid: ad4bced7439a5804184a3e43345704e3, type: 3}
-  - {fileID: 2800000, guid: ba67db9ef1df7f248a7e2b34c1d29d88, type: 3}
-  - {fileID: 2800000, guid: cea2c9bf87b0c4dfdafb697a3ff00959, type: 3}
-  imageDuration: 4
 --- !u!1 &5823702903725919063
 GameObject:
   m_ObjectHideFlags: 0

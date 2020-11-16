@@ -41,6 +41,9 @@ public class GameController : MonoBehaviour
     public float itemSelectedPrice;
 
     public ActionsAnimations[] actionsAnimations;
+
+    [HideInInspector]
+    public bool tvOn = true;
     private void Awake()
     {
         if (!instance)
