@@ -84,6 +84,7 @@ public class ActionsAnimations : MonoBehaviour
     {
         animatorTemplate.SetTrigger("ReadTrigger");
 
+        GameController.instance.tvOn = false;
     }
 
 

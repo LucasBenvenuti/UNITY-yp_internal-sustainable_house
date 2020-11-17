@@ -44,6 +44,8 @@ public class GameController : MonoBehaviour
 
     public List<string> reportList = new List<string>();
 
+    [HideInInspector]
+    public bool tvOn = true;
     private void Awake()
     {
         if (!instance)
