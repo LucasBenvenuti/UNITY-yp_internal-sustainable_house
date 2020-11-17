@@ -113,7 +113,7 @@ Transform:
   m_Children:
   - {fileID: 4941376695913225659}
   m_Father: {fileID: 4941376695643536638}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4941376695593843728
 BoxCollider:
@@ -140,10 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404104cde19c646418d14e03734efadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionName: 
   actionIndex: 3
   actionCost: 0
   haveDoneAction: 0
   actionSprite: {fileID: 4941376695913225652}
+  zoomSize: 5
 --- !u!1 &4941376695643536637
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,11 +173,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4941376695593843734}
   - {fileID: 4941376695788670348}
   - {fileID: 4941376695862100682}
-  - {fileID: 4941376697145031124}
-  - {fileID: 4941376695593843734}
   - {fileID: 4941376697214254177}
+  - {fileID: 4941376697145031124}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -292,7 +294,7 @@ Transform:
   m_Children:
   - {fileID: 4941376695691423099}
   m_Father: {fileID: 4941376695643536638}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4941376695788670350
 BoxCollider:
@@ -319,10 +321,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404104cde19c646418d14e03734efadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionName: 
   actionIndex: 0
   actionCost: 0
   haveDoneAction: 0
   actionSprite: {fileID: 4941376695691423092}
+  zoomSize: 5
 --- !u!1 &4941376695800333911
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +440,7 @@ Transform:
   m_Children:
   - {fileID: 4941376695800333904}
   m_Father: {fileID: 4941376695643536638}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4941376695862100676
 BoxCollider:
@@ -463,10 +467,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404104cde19c646418d14e03734efadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionName: 
   actionIndex: 1
   actionCost: 0
   haveDoneAction: 0
   actionSprite: {fileID: 4941376695800333905}
+  zoomSize: 5
 --- !u!1 &4941376695913225658
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,7 +668,7 @@ Transform:
   m_Children:
   - {fileID: 4941376695486483819}
   m_Father: {fileID: 4941376695643536638}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4941376697145031126
 BoxCollider:
@@ -689,10 +695,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404104cde19c646418d14e03734efadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionName: 
   actionIndex: 2
   actionCost: 0
   haveDoneAction: 0
   actionSprite: {fileID: 4941376695486483812}
+  zoomSize: 5
 --- !u!1 &4941376697214254176
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +732,7 @@ Transform:
   m_Children:
   - {fileID: 4941376696600759746}
   m_Father: {fileID: 4941376695643536638}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4941376697214254179
 BoxCollider:
@@ -751,7 +759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404104cde19c646418d14e03734efadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionName: 
   actionIndex: 4
   actionCost: 0
   haveDoneAction: 0
   actionSprite: {fileID: 4941376696600759747}
+  zoomSize: 5

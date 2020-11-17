@@ -17,7 +17,8 @@ public class ActionsAnimations : MonoBehaviour
     public GameObject book;
     public GameObject plate;
     public GameObject cloth;
-    int loopCounter;
+    int laundryCounter;
+    int kitchenCounter;
 
     // private void Awake()
     // {
@@ -44,15 +45,16 @@ public class ActionsAnimations : MonoBehaviour
         if (book)
         {
             book.SetActive(false);
-            loopCounter = 0;
         }
         if (plate)
         {
             plate.SetActive(false);
+            kitchenCounter = 0;
         }
         if (cloth)
         {
             cloth.SetActive(false);
+            laundryCounter = 0;
         }
     }
 
@@ -72,15 +74,15 @@ public class ActionsAnimations : MonoBehaviour
     {
         if (index == 0)
         {
-            StartCoroutine(DoTextingAnimation());
+            StartCoroutine(DoWashingAnimation());
         }
         if (index == 1)
         {
-            StartCoroutine(DoReadingAnimation());
+            StartCoroutine(DoTextingAnimation());
         }
         if (index == 2)
         {
-            StartCoroutine(DoBrushingAnimation());
+            StartCoroutine(DoReadingAnimation());
         }
         if (index == 3)
         {
@@ -88,7 +90,7 @@ public class ActionsAnimations : MonoBehaviour
         }
         if (index == 4)
         {
-            StartCoroutine(DoWashingAnimation());
+            StartCoroutine(DoBrushingAnimation());
         }
     }
     IEnumerator DoTextingAnimation()
@@ -101,17 +103,17 @@ public class ActionsAnimations : MonoBehaviour
         }
         myAgent.transform.LeanRotateY(180f, 1f);
         animatorTemplate.SetTrigger("TextTrigger");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(6f);
         CameraController.instance.ReturnToBasePosition();
 
     }
     IEnumerator DoReadingAnimation()
     {
+        GameController.instance.tvOn = false;
         animatorTemplate.SetTrigger("ReadTrigger");
         yield return new WaitForSeconds(5f);
         CameraController.instance.ReturnToBasePosition();
 
-        GameController.instance.tvOn = false;
     }
 
 
@@ -125,7 +127,7 @@ public class ActionsAnimations : MonoBehaviour
             yield return null;
         }
         animatorTemplate.SetTrigger("BrushTrigger");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         CameraController.instance.ReturnToBasePosition();
 
     }
@@ -137,7 +139,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             yield return null;
         }
-        myAgent.transform.LeanRotateY(70f, 1f);
+        myAgent.transform.LeanRotateY(90f, 0.7f);
         animatorTemplate.SetTrigger("WashTrigger");
         yield return new WaitForSeconds(5f);
         CameraController.instance.ReturnToBasePosition();
@@ -185,26 +187,26 @@ public class ActionsAnimations : MonoBehaviour
 
         if (active == 1)
         {
-            if (loopCounter == 0)
-            {
-                Debug.Log("entrou");
-                book.SetActive(true);
-            }
+            // if (loopCounter == 0)
+            // {
+            Debug.Log("entrou");
+            book.SetActive(true);
+            //}
         }
-        else if (active == 0)
-        {
+        // else(active == 0)
+        // {
 
-            Debug.Log("loop warning");
-            loopCounter++;
-            Debug.Log("loop value:" + loopCounter);
-        }
-        else
-        {
-            if (loopCounter >= 3)
-            {
-                book.SetActive(false);
-            }
-        }
+        //     Debug.Log("loop warning");
+        //     loopCounter++;
+        //     Debug.Log("loop value:" + loopCounter);
+        // }
+        // else
+        // {
+        //     if (loopCounter >= 3)
+        //     {
+        //         book.SetActive(false);
+        //     }
+        // }
 
     }
     public void Wash(int active)
@@ -222,7 +224,7 @@ public class ActionsAnimations : MonoBehaviour
                 cloth.SetActive(true);
             }
         }
-        else
+        else if (active == 2)
         {
             if (plate)
             {
@@ -234,7 +236,26 @@ public class ActionsAnimations : MonoBehaviour
 
                 cloth.SetActive(false);
             }
+        }
+        else
+        {
+            if (plate)
+            {
 
+                kitchenCounter++;
+                if (kitchenCounter >= 2)
+                {
+                    StartCoroutine(EndCoroutine());
+                }
+            }
+            else if (cloth)
+            {
+                laundryCounter++;
+                if (laundryCounter >= 2)
+                {
+                    StartCoroutine(EndCoroutine());
+                }
+            }
         }
     }
 }
