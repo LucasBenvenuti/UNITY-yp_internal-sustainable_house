@@ -155,6 +155,7 @@ public class GameController : MonoBehaviour
     public void SelectAction(GameObject hitAction)
     {
         DisplayActionTypeUI(hitAction);
+        StartCoroutine(ZoomToActionAndReturn(hitAction));
         panelAction.SetActive(true);
         StopCoroutine(PanelOff());
         StartCoroutine(PanelOff());
@@ -214,6 +215,17 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("SceneController doesnt exist!");
         }
+    }
+
+    IEnumerator ZoomToActionAndReturn(GameObject actionObject)
+    {
+        float zoomAction = actionObject.GetComponent<ActionTemplate>().zoomSize;
+
+        CameraController.instance.LerpToZoomPosition(actionObject, zoomAction);
+        yield return true;
+        // yield return new WaitForSeconds(5f);
+        // CameraController.instance.ReturnToBasePosition();
+
     }
 }
 

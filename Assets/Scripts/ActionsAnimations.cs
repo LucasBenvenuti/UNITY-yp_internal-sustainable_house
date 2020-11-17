@@ -76,7 +76,7 @@ public class ActionsAnimations : MonoBehaviour
         }
         if (index == 1)
         {
-            DoReadingAnimation();
+            StartCoroutine(DoReadingAnimation());
         }
         if (index == 2)
         {
@@ -101,11 +101,15 @@ public class ActionsAnimations : MonoBehaviour
         }
         myAgent.transform.LeanRotateY(180f, 1f);
         animatorTemplate.SetTrigger("TextTrigger");
+        yield return new WaitForSeconds(5f);
+        CameraController.instance.ReturnToBasePosition();
 
     }
-    void DoReadingAnimation()
+    IEnumerator DoReadingAnimation()
     {
         animatorTemplate.SetTrigger("ReadTrigger");
+        yield return new WaitForSeconds(5f);
+        CameraController.instance.ReturnToBasePosition();
 
     }
 
@@ -120,6 +124,8 @@ public class ActionsAnimations : MonoBehaviour
             yield return null;
         }
         animatorTemplate.SetTrigger("BrushTrigger");
+        yield return new WaitForSeconds(5f);
+        CameraController.instance.ReturnToBasePosition();
 
     }
     IEnumerator DoWashingAnimation()
@@ -132,7 +138,8 @@ public class ActionsAnimations : MonoBehaviour
         }
         myAgent.transform.LeanRotateY(70f, 1f);
         animatorTemplate.SetTrigger("WashTrigger");
-
+        yield return new WaitForSeconds(5f);
+        CameraController.instance.ReturnToBasePosition();
     }
 
     public void CallEndCoroutine()

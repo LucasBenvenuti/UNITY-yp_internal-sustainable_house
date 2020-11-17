@@ -131,4 +131,6 @@ public class CameraController : MonoBehaviour
 
         GameController.instance.canGoToObject = true;
     }
+
+
 }
