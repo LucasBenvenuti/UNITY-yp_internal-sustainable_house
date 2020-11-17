@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
+[System.Serializable]
+public class ListItems
+{
+    public List<ItemTemplate> prefabsList;
+}
 
 public class GameController : MonoBehaviour
 {
@@ -28,10 +35,13 @@ public class GameController : MonoBehaviour
     //public GameObject[] tvs;
     public GameObject[] itemType;
     public GameObject[] actionType;
-    public GameObject panelItem;
+
+    public CanvasGroup panelItem;
+    public TMP_Text titlePanel;
+    public List<ItemOption> uiItemList;
+
     public GameObject panelAction;
     public GameObject itemHolder;
-    public GameObject backBtn;
     public GameObject confirmBox;
     public Button confirmBtn;
     public int indexItemType;
@@ -40,9 +50,14 @@ public class GameController : MonoBehaviour
     public bool canGoToObject = true;
     public float itemSelectedPrice;
 
+    public List<ListItems> prefabsList = new List<ListItems>();
+
     public ActionsAnimations[] actionsAnimations;
 
     public List<string> reportList = new List<string>();
+
+    public float tweenDuration = 0.3f;
+    public LeanTweenType easeInOut;
 
     [HideInInspector]
     public bool tvOn = true;
@@ -56,6 +71,15 @@ public class GameController : MonoBehaviour
         if (instance != this)
         {
             Destroy(this);
+        }
+
+        panelItem.alpha = 0;
+        panelItem.interactable = false;
+        panelItem.blocksRaycasts = false;
+
+        for (int i = 0; i < uiItemList.Count; i++)
+        {
+            uiItemList[i].gameObject.SetActive(false);
         }
     }
 
@@ -97,21 +121,60 @@ public class GameController : MonoBehaviour
     public void selectItem(GameObject hitObject)
     {
         itemHolder = hitObject.transform.parent.gameObject;
-        DisplayItemTypeUI(hitObject);
 
-        float zoomValue = hitObject.GetComponent<ItemTemplate>().zoomSize;
+        ItemTemplate hitItem = hitObject.GetComponent<ItemTemplate>();
+        float zoomValue = hitItem.zoomSize;
+
+        //DO HERE PANEL APPEAR
+        showPanel(hitItem);
 
         CameraController.instance.LerpToZoomPosition(itemHolder, zoomValue);
-        panelItem.SetActive(true);
 
-        if (backBtn != null)
+    }
+
+    public void showPanel(ItemTemplate item)
+    {
+        for (int i = 0; i < prefabsList[item.itemType].prefabsList.Count; i++)
         {
-            backBtn.SetActive(true);
+            uiItemList[i].gameObject.SetActive(true);
+
+            uiItemList[i].icon.sprite = prefabsList[item.itemType].prefabsList[i].itemSprite;
+            uiItemList[i].itemName.text = prefabsList[item.itemType].prefabsList[i].itemName;
+            uiItemList[i].itemCost.text = prefabsList[item.itemType].prefabsList[i].itemPrice.ToString();
+            uiItemList[i].itemSus.text = prefabsList[item.itemType].prefabsList[i].itemSustainability.ToString();
+
+            uiItemList[i].selectItem.itemPrefab = prefabsList[item.itemType].prefabsList[i].gameObject;
+            uiItemList[i].selectItem.itemPosition = item.transform.parent;
+
+            Debug.Log(uiItemList[i].selectItem);
+
+            uiItemList[i].button.onClick.RemoveAllListeners();
+            uiItemList[i].button.onClick.AddListener(() => { ChangeItem(uiItemList[i].selectItem); });
         }
-        else
+
+        LeanTween.alphaCanvas(panelItem, 1f, tweenDuration).setEase(easeInOut).setOnStart(() =>
         {
-            Debug.Log("Need to set Back Button on Game Controller");
-        }
+            titlePanel.text = item.categoryName;
+        }).setOnComplete(() =>
+        {
+            panelItem.interactable = true;
+            panelItem.blocksRaycasts = true;
+        });
+    }
+
+    public void closePanel()
+    {
+        LeanTween.alphaCanvas(panelItem, 0f, tweenDuration).setEase(easeInOut).setOnStart(() =>
+        {
+            panelItem.interactable = false;
+            panelItem.blocksRaycasts = false;
+        }).setOnComplete(() =>
+        {
+            for (int i = 0; i < uiItemList.Count; i++)
+            {
+                uiItemList[i].gameObject.SetActive(false);
+            }
+        });
     }
 
     void DisplayItemTypeUI(GameObject go)
@@ -138,7 +201,7 @@ public class GameController : MonoBehaviour
             int optionInScene = prefab.GetComponent<ItemTemplate>().itemOption;
             if (newOption != optionInScene)
             {
-                GameController.instance.addReportLine("Adicionado item " + item.itemSelectedTemplate.itemName);
+                // GameController.instance.addReportLine("Adicionado item " + item.itemSelectedTemplate.itemName);
                 bool priceControl = UIController.instance.NewUpdateValues(newItemPrice, newItemSus);
 
                 if (priceControl)
@@ -198,7 +261,6 @@ public class GameController : MonoBehaviour
         confirmBtn.onClick.RemoveAllListeners();
         if (confirmBtn != null)
         {
-            //panelItem.SetActive(false);
             confirmBtn.onClick.AddListener(() => { ChangeItem(item); });
             confirmBox.SetActive(true);
         }
@@ -209,8 +271,7 @@ public class GameController : MonoBehaviour
     }
     public void ChangeItem(SelectItem item)
     {
-        item.NewItemInstance(item);
-        confirmBtn.onClick.RemoveListener(() => { ChangeItem(item); });
+        item.NewItemInstance();
     }
 
     public void changeScene(string changeSceneName)
