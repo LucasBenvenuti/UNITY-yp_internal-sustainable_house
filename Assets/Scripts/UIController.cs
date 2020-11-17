@@ -45,6 +45,10 @@ public class UIController : MonoBehaviour
         CheckBaseValues();
         moneySlider.value = controlMoney;
         sustainabilitySlider.value = sustainabilityBaseValue;
+
+        GameController.instance.addReportLine("Jogo iniciado.");
+        GameController.instance.addReportLine("Recursos iniciais: " + controlMoney + ".");
+        GameController.instance.addReportLine("Sustentabilidade inicial: " + sustainabilityBaseValue + ".");
     }
 
     public void CheckBaseValues()
@@ -57,7 +61,12 @@ public class UIController : MonoBehaviour
             sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
         }
         //amount of money availiable 
-        controlMoney = moneyMaxValue - moneyBaseValue;
+
+        float newMoney = moneyMaxValue - moneyBaseValue;
+
+        // GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + newMoney + ".");
+
+        controlMoney = newMoney;
     }
 
     public bool NewUpdateValues(float price, float sustainability)
@@ -72,6 +81,8 @@ public class UIController : MonoBehaviour
         }
         else
         {
+            GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + (controlMoney - price) + ".");
+            GameController.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + (controlSustainability + sustainability) + ".");
 
             moneySlider.value = controlMoney - price;
             float newSusValue = controlSustainability + sustainability;

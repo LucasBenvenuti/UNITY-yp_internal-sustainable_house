@@ -41,6 +41,11 @@ public class GameController : MonoBehaviour
     public float itemSelectedPrice;
 
     public ActionsAnimations[] actionsAnimations;
+
+    public List<string> reportList = new List<string>();
+
+    [HideInInspector]
+    public bool tvOn = true;
     private void Awake()
     {
         if (!instance)
@@ -122,7 +127,7 @@ public class GameController : MonoBehaviour
         indexItemType = itemSelected.itemType;
         itemType[indexItemType].SetActive(true);
     }
-    public void CheckAndDestroyItem(GameObject newPrefab)
+    public void CheckAndDestroyItem(GameObject newPrefab, SelectItem item)
     {
         int newOption = newPrefab.GetComponent<ItemTemplate>().itemOption;
         float newItemPrice = newPrefab.GetComponent<ItemTemplate>().itemPrice;
@@ -133,7 +138,9 @@ public class GameController : MonoBehaviour
             int optionInScene = prefab.GetComponent<ItemTemplate>().itemOption;
             if (newOption != optionInScene)
             {
+                GameController.instance.addReportLine("Adicionado item " + item.itemSelectedTemplate.itemName);
                 bool priceControl = UIController.instance.NewUpdateValues(newItemPrice, newItemSus);
+
                 if (priceControl)
                 {
                     Destroy(prefab);
@@ -183,6 +190,8 @@ public class GameController : MonoBehaviour
         actionType[indexSelected].SetActive(true);
         // ActionsAnimations.instance.CallFirstCoroutine();
         actionsAnimations[indexSelected].CallFirstCoroutine(indexSelected);
+
+        GameController.instance.addReportLine("Ação iniciada: " + actionSelected.actionName + ".");
     }
 
     public void ChangeRequest(SelectItem item)
@@ -201,7 +210,7 @@ public class GameController : MonoBehaviour
     }
     public void ChangeItem(SelectItem item)
     {
-        item.NewItemInstance();
+        item.NewItemInstance(item);
         confirmBtn.onClick.RemoveListener(() => { ChangeItem(item); });
     }
 
@@ -226,6 +235,10 @@ public class GameController : MonoBehaviour
         // yield return new WaitForSeconds(5f);
         // CameraController.instance.ReturnToBasePosition();
 
+    }
+    public void addReportLine(string reportString)
+    {
+        reportList.Add(reportString);
     }
 }
 

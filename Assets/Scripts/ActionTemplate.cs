@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ActionTemplate : MonoBehaviour
 {
+    public string actionName;
     public int actionIndex;
     public int actionCost;
     public bool haveDoneAction;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     // Start is called before the first frame update
-    SpriteRenderer sprite;
+    public SpriteRenderer sprite;
     Vector3 zoomScale;
     Vector3 minScale;
     public Vector3 maxScale;
@@ -13,10 +13,8 @@ public class Billboard : MonoBehaviour
     public float speed;
     public float duration;
 
-
     IEnumerator Start()
     {
-        sprite = gameObject.GetComponent<SpriteRenderer>();
         minScale = sprite.transform.localScale;
         while (repeatable)
         {
@@ -26,10 +24,9 @@ public class Billboard : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        transform.LookAt(Camera.main.transform.position, Vector3.up);
-
+        // transform.LookAt(Camera.main.transform.position, Vector3.up);
     }
 
     IEnumerator RepeatLerp(Vector3 a, Vector3 b, float time)

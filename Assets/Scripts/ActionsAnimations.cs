@@ -111,6 +111,7 @@ public class ActionsAnimations : MonoBehaviour
         yield return new WaitForSeconds(5f);
         CameraController.instance.ReturnToBasePosition();
 
+        GameController.instance.tvOn = false;
     }
 
 

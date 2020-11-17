@@ -13,6 +13,8 @@ public class SelectItem : MonoBehaviour
     //public float itemSustainability;
     //public float itemCostPerMonth;
 
+    public string itemName;
+
     void Awake()
     {
         itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();
@@ -20,10 +22,10 @@ public class SelectItem : MonoBehaviour
         //itemSustainability = itemSelectedTemplate.itemSustainability;
     }
 
-    public void NewItemInstance()
+    public void NewItemInstance(SelectItem item)
     {
         // UIController.instance.CheckBaseValues();
-        GameController.instance.CheckAndDestroyItem(itemPrefab);
+        GameController.instance.CheckAndDestroyItem(itemPrefab, item);
         if (GameController.instance.destroyOriginalItem)
         {
             GameObject prefab = Instantiate(itemPrefab);
