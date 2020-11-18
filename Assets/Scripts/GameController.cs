@@ -54,6 +54,8 @@ public class GameController : MonoBehaviour
 
     public ActionsAnimations[] actionsAnimations;
 
+    SelectItem itemSelect;
+
     public List<string> reportList = new List<string>();
 
     public float tweenDuration = 0.3f;
@@ -146,10 +148,7 @@ public class GameController : MonoBehaviour
             uiItemList[i].selectItem.itemPrefab = prefabsList[item.itemType].prefabsList[i].gameObject;
             uiItemList[i].selectItem.itemPosition = item.transform.parent;
 
-            Debug.Log(uiItemList[i].selectItem);
-
-            uiItemList[i].button.onClick.RemoveAllListeners();
-            uiItemList[i].button.onClick.AddListener(() => { ChangeItem(uiItemList[i].selectItem); });
+            itemSelect = uiItemList[i].selectItem;
         }
 
         LeanTween.alphaCanvas(panelItem, 1f, tweenDuration).setEase(easeInOut).setOnStart(() =>
@@ -261,7 +260,7 @@ public class GameController : MonoBehaviour
         confirmBtn.onClick.RemoveAllListeners();
         if (confirmBtn != null)
         {
-            confirmBtn.onClick.AddListener(() => { ChangeItem(item); });
+            // confirmBtn.onClick.AddListener(() => { ChangeItem(item); });
             confirmBox.SetActive(true);
         }
         else
