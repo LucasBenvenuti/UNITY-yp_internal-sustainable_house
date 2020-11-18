@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SelectItem : MonoBehaviour
 {
-
     public GameObject itemPrefab;
     public Transform itemPosition;
     public ItemTemplate itemSelectedTemplate;
@@ -17,15 +16,17 @@ public class SelectItem : MonoBehaviour
 
     void Awake()
     {
-        itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();
+        // itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();
         //itemPrice = itemSelectedTemplate.itemPrice;
         //itemSustainability = itemSelectedTemplate.itemSustainability;
     }
 
-    public void NewItemInstance(SelectItem item)
+    public void NewItemInstance()
     {
+        Debug.Log("STARTED NEW ITEM INSTANCE");
+
         // UIController.instance.CheckBaseValues();
-        GameController.instance.CheckAndDestroyItem(itemPrefab, item);
+        GameController.instance.CheckAndDestroyItem(itemPrefab, itemName);
         if (GameController.instance.destroyOriginalItem)
         {
             GameObject prefab = Instantiate(itemPrefab);

@@ -13,6 +13,12 @@ public class ActionsAnimations : MonoBehaviour
     public Transform basePosition;
 
     public GameObject cellPhone;
+    public GameObject toothbrush;
+    public GameObject book;
+    public GameObject plate;
+    public GameObject cloth;
+    int laundryCounter;
+    int kitchenCounter;
 
     // private void Awake()
     // {
@@ -32,6 +38,24 @@ public class ActionsAnimations : MonoBehaviour
         {
             cellPhone.SetActive(false);
         }
+        if (toothbrush)
+        {
+            toothbrush.SetActive(false);
+        }
+        if (book)
+        {
+            book.SetActive(false);
+        }
+        if (plate)
+        {
+            plate.SetActive(false);
+            kitchenCounter = 0;
+        }
+        if (cloth)
+        {
+            cloth.SetActive(false);
+            laundryCounter = 0;
+        }
     }
 
     void Start()
@@ -50,15 +74,15 @@ public class ActionsAnimations : MonoBehaviour
     {
         if (index == 0)
         {
-            StartCoroutine(DoTextingAnimation());
+            StartCoroutine(DoWashingAnimation());
         }
         if (index == 1)
         {
-            DoReadingAnimation();
+            StartCoroutine(DoTextingAnimation());
         }
         if (index == 2)
         {
-            StartCoroutine(DoBrushingAnimation());
+            StartCoroutine(DoReadingAnimation());
         }
         if (index == 3)
         {
@@ -66,7 +90,7 @@ public class ActionsAnimations : MonoBehaviour
         }
         if (index == 4)
         {
-            StartCoroutine(DoWashingAnimation());
+            StartCoroutine(DoBrushingAnimation());
         }
     }
     IEnumerator DoTextingAnimation()
@@ -79,17 +103,23 @@ public class ActionsAnimations : MonoBehaviour
         }
         myAgent.transform.LeanRotateY(180f, 1f);
         animatorTemplate.SetTrigger("TextTrigger");
-    }
-    void DoReadingAnimation()
-    {
-        animatorTemplate.SetTrigger("ReadTrigger");
+        yield return new WaitForSeconds(6f);
+        CameraController.instance.ReturnToBasePosition();
 
+    }
+    IEnumerator DoReadingAnimation()
+    {
         GameController.instance.tvOn = false;
+        animatorTemplate.SetTrigger("ReadTrigger");
+        yield return new WaitForSeconds(5f);
+        CameraController.instance.ReturnToBasePosition();
+
     }
 
 
     IEnumerator DoBrushingAnimation()
     {
+        cellPhone.SetActive(false);
         animatorTemplate.SetTrigger("WalkTrigger");
         myAgent.SetDestination(finalPositionBathroom.position);
         while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
@@ -97,6 +127,8 @@ public class ActionsAnimations : MonoBehaviour
             yield return null;
         }
         animatorTemplate.SetTrigger("BrushTrigger");
+        yield return new WaitForSeconds(7f);
+        CameraController.instance.ReturnToBasePosition();
 
     }
     IEnumerator DoWashingAnimation()
@@ -107,8 +139,10 @@ public class ActionsAnimations : MonoBehaviour
         {
             yield return null;
         }
+        myAgent.transform.LeanRotateY(90f, 0.7f);
         animatorTemplate.SetTrigger("WashTrigger");
-
+        yield return new WaitForSeconds(5f);
+        CameraController.instance.ReturnToBasePosition();
     }
 
     public void CallEndCoroutine()
@@ -137,7 +171,95 @@ public class ActionsAnimations : MonoBehaviour
             cellPhone.SetActive(false);
         }
     }
+    public void GrabToothbrush(int active)
+    {
+        if (active == 1)
+        {
+            toothbrush.SetActive(true);
+        }
+        else
+        {
+            toothbrush.SetActive(false);
+        }
+    }
+    public void ReadBook(int active)
+    {
+
+        if (active == 1)
+        {
+            // if (loopCounter == 0)
+            // {
+            Debug.Log("entrou");
+            book.SetActive(true);
+            //}
+        }
+        // else(active == 0)
+        // {
+
+        //     Debug.Log("loop warning");
+        //     loopCounter++;
+        //     Debug.Log("loop value:" + loopCounter);
+        // }
+        // else
+        // {
+        //     if (loopCounter >= 3)
+        //     {
+        //         book.SetActive(false);
+        //     }
+        // }
+
+    }
+    public void Wash(int active)
+    {
+        if (active == 1)
+        {
+            if (plate)
+            {
+
+                plate.SetActive(true);
+            }
+            else if (cloth)
+            {
+
+                cloth.SetActive(true);
+            }
+        }
+        else if (active == 2)
+        {
+            if (plate)
+            {
+
+                plate.SetActive(false);
+            }
+            else if (cloth)
+            {
+
+                cloth.SetActive(false);
+            }
+        }
+        else
+        {
+            if (plate)
+            {
+
+                kitchenCounter++;
+                if (kitchenCounter >= 2)
+                {
+                    StartCoroutine(EndCoroutine());
+                }
+            }
+            else if (cloth)
+            {
+                laundryCounter++;
+                if (laundryCounter >= 2)
+                {
+                    StartCoroutine(EndCoroutine());
+                }
+            }
+        }
+    }
 }
+
 
 
 

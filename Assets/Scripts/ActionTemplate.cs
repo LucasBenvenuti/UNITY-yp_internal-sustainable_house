@@ -11,6 +11,9 @@ public class ActionTemplate : MonoBehaviour
     public bool haveDoneAction;
     public SpriteRenderer actionSprite;
 
+    public float zoomSize = 5f;
+
+
     void Start()
     {
         if (actionIndex <= 0)

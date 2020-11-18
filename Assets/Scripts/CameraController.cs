@@ -103,11 +103,6 @@ public class CameraController : MonoBehaviour
 
     public IEnumerator ReturnToBasePositionNew()
     {
-        if (GameController.instance.backBtn.activeInHierarchy)
-        {
-            GameController.instance.backBtn.SetActive(false);
-        }
-
         leanTwist.SetYaw(yawAngle);
         leanTwist.Dampening = rotationDampening;
 
@@ -116,8 +111,6 @@ public class CameraController : MonoBehaviour
             {
                 mainCamera.orthographicSize = flt;
             });
-
-        GameController.instance.panelItem.SetActive(false);
 
         yield return new WaitForSeconds(tweenDuration);
 
@@ -131,4 +124,6 @@ public class CameraController : MonoBehaviour
 
         GameController.instance.canGoToObject = true;
     }
+
+
 }
