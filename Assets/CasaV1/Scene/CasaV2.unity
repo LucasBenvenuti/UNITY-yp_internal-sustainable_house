@@ -19954,7 +19954,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1102267645}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: changeScene
         m_Mode: 5
