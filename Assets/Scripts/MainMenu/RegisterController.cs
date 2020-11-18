@@ -18,7 +18,7 @@ public class RegisterController : MonoBehaviour
 
     void Awake()
     {
-        PlayerPrefs.DeleteKey("Player_Name");
+        // PlayerPrefs.DeleteKey("Player_Name");
 
         RegisterCanvas.SetActive(true);
         StartMenuCanvas.SetActive(false);
