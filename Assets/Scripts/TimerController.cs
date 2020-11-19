@@ -14,12 +14,15 @@ public class TimerController : MonoBehaviour
     public float actionTimer;
     public float actionBaseTime;
     public TMP_Text timeText;
-    public bool timeIsRunning;
+    public bool tutorialMode = true;
+    public bool inGame = true;
     public int indexAction;
 
     public ReportGenerator report;
 
     public ActionTemplate[] actions;
+
+    public Tutorial tutorial;
 
     int months;
 
@@ -39,13 +42,15 @@ public class TimerController : MonoBehaviour
     }
     void Start()
     {
-        WaitForTutorial();
+        // WaitForTutorial();
+
+        tutorial.StartTutorial();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timeIsRunning)
+        if (!tutorialMode && inGame)
         {
             if (totalTime > 0)
             {
@@ -72,16 +77,18 @@ public class TimerController : MonoBehaviour
     void WaitForTutorial()
     {
         Debug.Log("Function for wait finish tutorial and start timer");
-        timeIsRunning = true;
+        // tutorialMode = false;
     }
 
     void FinishGame()
     {
+        inGame = false;
+
         report.PrintScene();
 
         Debug.Log("Function called when the timer is over for finish the game");
         timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
-        timeIsRunning = false;
+        // tutorialMode = false;
 
         EndCanvas.SetActive(true);
     }
