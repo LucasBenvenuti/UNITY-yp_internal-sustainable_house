@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3744885265988648498}
   - component: {fileID: 1449162952707410680}
   - component: {fileID: 3671958062798775346}
+  - component: {fileID: 2507827222968262661}
   m_Layer: 0
   m_Name: ChuveiroHibrido
   m_TagString: Untagged
@@ -103,4 +104,19 @@ MonoBehaviour:
   itemSustainability: 12
   itemCostPerMonth: 0
   itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  categoryName: 
   zoomSize: 5
+--- !u!65 &2507827222968262661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088897454686317357}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04820177, y: 0.02, z: 0.05012142}
+  m_Center: {x: -0.024100885, y: 0, z: -0.011265691}

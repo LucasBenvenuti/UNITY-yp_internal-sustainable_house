@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6847997903652401779}
   - component: {fileID: 8713355349081638585}
   - component: {fileID: 8011229906608347710}
+  - component: {fileID: 4837182972692388115}
   m_Layer: 0
   m_Name: Tratamento Esgoto
   m_TagString: Untagged
@@ -106,4 +107,19 @@ MonoBehaviour:
   itemSustainability: 3
   itemCostPerMonth: 0
   itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  categoryName: 
   zoomSize: 5
+--- !u!65 &4837182972692388115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200397044671670124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03988886, y: 0.05985295, z: 0.02288169}
+  m_Center: {x: 0.000000081025064, y: -0.0058656605, z: 0.002442107}

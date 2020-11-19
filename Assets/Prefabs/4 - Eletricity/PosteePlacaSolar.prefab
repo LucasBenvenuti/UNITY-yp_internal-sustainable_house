@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 266175105412625132}
   - component: {fileID: 8709778788378074751}
   - component: {fileID: 8752793120179445810}
+  - component: {fileID: 743081877041173222}
   m_Layer: 0
   m_Name: PosteePlacaSolar
   m_TagString: Untagged
@@ -55,6 +56,8 @@ MonoBehaviour:
   itemSustainability: 6
   itemCostPerMonth: 0
   itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  categoryName: 
   zoomSize: 5
 --- !u!65 &8752793120179445810
 BoxCollider:
@@ -67,8 +70,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.06687611, y: 0.03549317, z: 0.025151782}
-  m_Center: {x: -0.014604203, y: 0.05000004, z: 0.009537707}
+  m_Size: {x: 0.06728543, y: 0.024645984, z: 0.017433293}
+  m_Center: {x: -0.017674163, y: 0.049897708, z: 0.0056784637}
+--- !u!65 &743081877041173222
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887437482711902511}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020416103, y: 0.015411712, z: 0.09413197}
+  m_Center: {x: -0.04135969, y: 0.00061185285, z: 0.044489253}
 --- !u!1001 &635457613922068271
 PrefabInstance:
   m_ObjectHideFlags: 0

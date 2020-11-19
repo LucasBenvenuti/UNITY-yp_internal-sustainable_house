@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5992695143485318775}
   - component: {fileID: 8416844191173595837}
   - component: {fileID: 7137983940502277690}
+  - component: {fileID: 381828687223368587}
   m_Layer: 0
   m_Name: Lixeira
   m_TagString: Untagged
@@ -96,10 +97,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 0
-  itemName: Lixeira
+  itemName: "Lixeira \xFAnica sem separa\xE7\xE3o de res\xEDduos"
   itemType: 11
-  itemPrice: -6
-  itemSustainability: 0
+  itemPrice: 0
+  itemSustainability: -6
   itemCostPerMonth: 0
   itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 8056481523271594856}
+  categoryName: Lixeiras
   zoomSize: 5
+--- !u!65 &381828687223368587
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8056481523271594856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.012416717, y: 0.011883327, z: 0.020705443}
+  m_Center: {x: -0.000020049978, y: 0, z: 0.010352725}

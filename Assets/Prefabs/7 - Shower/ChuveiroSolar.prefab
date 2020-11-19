@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2382512733177944149}
   - component: {fileID: 501190371464342687}
   - component: {fileID: 2169592716971453334}
+  - component: {fileID: 6797526545060390186}
   m_Layer: 0
   m_Name: ChuveiroSolar
   m_TagString: Untagged
@@ -102,4 +103,19 @@ MonoBehaviour:
   itemSustainability: -8
   itemCostPerMonth: 0
   itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  categoryName: 
   zoomSize: 5
+--- !u!65 &6797526545060390186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2158466175482580298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04792224, y: 0.018208634, z: 0.0066403695}
+  m_Center: {x: -0.02396112, y: 0, z: -0.002280527}

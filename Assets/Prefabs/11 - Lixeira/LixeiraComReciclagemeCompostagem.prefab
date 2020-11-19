@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2943525215999345548}
   - component: {fileID: 1098165685103310662}
   - component: {fileID: 7144815995762055273}
+  - component: {fileID: 5502424116521725430}
   m_Layer: 0
   m_Name: LixeiraComReciclagemeCompostagem
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1458475440148878995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,10 +97,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 2
-  itemName: LixeiraComReciclagemeCompostagem
+  itemName: 3 lixeiras sendo uma com reciclagem e  uma composteira
   itemType: 11
   itemPrice: 0
   itemSustainability: 6
   itemCostPerMonth: 0
   itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 1458475440148878995}
+  categoryName: Lixeiras
   zoomSize: 5
+--- !u!65 &5502424116521725430
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458475440148878995}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.013378533, y: 0.039226595, z: 0.020705447}
+  m_Center: {x: 0.00021542818, y: 0.005392768, z: 0.010352723}

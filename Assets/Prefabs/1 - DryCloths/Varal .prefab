@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 6154221150422075729}
   - component: {fileID: 8254210597647449499}
   - component: {fileID: 7299575712802464026}
+  - component: {fileID: 154808470660644779}
   m_Layer: 0
   m_Name: 'Varal '
   m_TagString: Untagged
@@ -189,4 +190,19 @@ MonoBehaviour:
   itemSustainability: 2
   itemCostPerMonth: 0
   itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  categoryName: 
   zoomSize: 5
+--- !u!65 &154808470660644779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605494271208447054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020576477, y: 0.030530697, z: 0.020000165}
+  m_Center: {x: 0, y: 0, z: 0.009999917}
