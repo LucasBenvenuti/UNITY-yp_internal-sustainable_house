@@ -42,6 +42,11 @@ public class SelectItem : MonoBehaviour
             prefab.transform.SetAsFirstSibling();
             prefab.transform.position = itemPosition.position;
             GameController.instance.destroyOriginalItem = false;
+
+            GameController.instance.uiItemList[GameController.instance.currentOption].button.interactable = true;
+            GameController.instance.currentOption = itemSelectedTemplate.itemOption;
+            GameController.instance.uiItemList[GameController.instance.currentOption].button.interactable = false;
+
             // UIController.instance.updateValues = true;
             // UIController.instance.NewUpdateValues(itemPrice, itemSustainability);
         }

@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 0
+  itemOption: 2
   itemName: Ar condicionado sem selo Procel
   itemType: 0
   itemPrice: -6

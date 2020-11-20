@@ -7433,6 +7433,7 @@ MonoBehaviour:
   reportList: []
   tweenDuration: 0.2
   easeInOut: 7
+  currentOption: 0
   tvOn: 1
 --- !u!114 &1102267646
 MonoBehaviour:
@@ -11891,7 +11892,7 @@ MonoBehaviour:
   itemName: {fileID: 127023952721758230}
   itemCost: {fileID: 0}
   itemSus: {fileID: 0}
-  button: {fileID: 0}
+  button: {fileID: 127023952182078690}
   selectItem: {fileID: 127023952182078693}
 --- !u!114 &127023952182078693
 MonoBehaviour:
@@ -12064,7 +12065,7 @@ MonoBehaviour:
   itemName: {fileID: 127023952711331345}
   itemCost: {fileID: 0}
   itemSus: {fileID: 0}
-  button: {fileID: 0}
+  button: {fileID: 127023952185017041}
   selectItem: {fileID: 127023952185017040}
 --- !u!222 &127023952185017045
 CanvasRenderer:
@@ -13879,7 +13880,7 @@ MonoBehaviour:
   itemName: {fileID: 127023952644157035}
   itemCost: {fileID: 0}
   itemSus: {fileID: 0}
-  button: {fileID: 0}
+  button: {fileID: 127023952724251194}
   selectItem: {fileID: 127023952724251197}
 --- !u!114 &127023952724251197
 MonoBehaviour:
@@ -21584,7 +21585,7 @@ MonoBehaviour:
   itemName: {fileID: 1040084473892373257}
   itemCost: {fileID: 0}
   itemSus: {fileID: 0}
-  button: {fileID: 0}
+  button: {fileID: 1040084474204423719}
   selectItem: {fileID: 1040084474204423720}
 --- !u!222 &1040084474204423722
 CanvasRenderer:

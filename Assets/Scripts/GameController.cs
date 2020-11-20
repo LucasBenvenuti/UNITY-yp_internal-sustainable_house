@@ -68,6 +68,10 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     float newMoneyValue;
     float newSusValue;
+
+    [HideInInspector]
+    public int currentOption;
+
     public bool tvOn = true;
     private void Awake()
     {
@@ -162,10 +166,22 @@ public class GameController : MonoBehaviour
 
     public void showPanel(ItemTemplate item)
     {
+        currentOption = item.itemOption;
+
         Debug.Log(item);
 
         for (int i = 0; i < prefabsList[item.itemType].prefabsList.Count; i++)
         {
+            if (currentOption == i)
+            {
+                uiItemList[i].button.interactable = false;
+            }
+            else
+            {
+                uiItemList[i].button.interactable = true;
+            }
+
+
             uiItemList[i].gameObject.SetActive(true);
 
             uiItemList[i].icon.sprite = prefabsList[item.itemType].prefabsList[i].itemSprite;
@@ -176,6 +192,8 @@ public class GameController : MonoBehaviour
             uiItemList[i].selectItem.itemPrefab = prefabsList[item.itemType].prefabsList[i].gameObject;
             uiItemList[i].selectItem.itemName = prefabsList[item.itemType].prefabsList[i].itemName;
             uiItemList[i].selectItem.itemPosition = item.transform.parent;
+
+            uiItemList[i].selectItem.itemSelectedTemplate = prefabsList[item.itemType].prefabsList[i];
         }
 
         LeanTween.alphaCanvas(panelItem, 1f, tweenDuration).setEase(easeInOut).setOnStart(() =>
