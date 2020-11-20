@@ -77,17 +77,12 @@ public class TimerController : MonoBehaviour
         Tutorial.instance.closeStoreBtn.enabled = true;
     }
 
-
     void WaitForTutorial()
     {
         Debug.Log("Function for wait finish tutorial and start timer");
 
-        tutorialMode = true;
-        // Tutorial.instance.StartTutorial();
-
+        Tutorial.instance.StartTutorial();
         Tutorial.instance.SkipTutorial();
-
-        //TO DISABLE TUTORIAL, JUST COMMENT STARTTUTORIAL FUNCTION CALL AND CHANGE TUTORIALMODE TO FALSE
     }
 
     void FinishGame()
