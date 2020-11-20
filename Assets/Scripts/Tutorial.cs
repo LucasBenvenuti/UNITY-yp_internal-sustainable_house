@@ -45,6 +45,8 @@ public class Tutorial : MonoBehaviour
 
     public Transform goToObjectPosition;
 
+    int tutorialCanvasLean;
+
     void Awake()
     {
         if (!instance)
@@ -84,11 +86,15 @@ public class Tutorial : MonoBehaviour
     {
         Debug.Log("OPA");
 
+        TutorialBoxShow(false);
+
         TimerController.instance.tutorialMode = false;
 
-        StopCoroutine(TutorialCoroutine());
+        Coroutine startCoroutine = null;
 
-        TutorialBoxShow(false);
+        startCoroutine = StartCoroutine(TutorialCoroutine());
+
+        StopCoroutine(startCoroutine);
 
         closeStoreBtn.enabled = true;
 
@@ -104,6 +110,8 @@ public class Tutorial : MonoBehaviour
 
     public void StartTutorial()
     {
+        TimerController.instance.tutorialMode = true;
+
         StartCoroutine(TutorialCoroutine());
     }
 
@@ -116,6 +124,11 @@ public class Tutorial : MonoBehaviour
         LeanTouch.OnGesture += HandleGesture;
 
         yield return new WaitForSeconds(delayToShow);
+
+        if (!TimerController.instance.tutorialMode)
+        {
+            yield break;
+        }
 
         TutorialBoxShow(true);
 
@@ -367,11 +380,15 @@ public class Tutorial : MonoBehaviour
     {
         if (show)
         {
-            LeanTween.alphaCanvas(tutorialCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvas.blocksRaycasts = true; tutorialCanvas.interactable = true; });
+            LeanTween.cancel(tutorialCanvasLean);
+
+            tutorialCanvasLean = LeanTween.alphaCanvas(tutorialCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvas.blocksRaycasts = true; tutorialCanvas.interactable = true; }).id;
         }
         else
         {
-            LeanTween.alphaCanvas(tutorialCanvas, 0f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvas.blocksRaycasts = false; tutorialCanvas.interactable = false; });
+            LeanTween.cancel(tutorialCanvasLean);
+
+            tutorialCanvasLean = LeanTween.alphaCanvas(tutorialCanvas, 0f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvas.blocksRaycasts = false; tutorialCanvas.interactable = false; }).id;
         }
     }
 
