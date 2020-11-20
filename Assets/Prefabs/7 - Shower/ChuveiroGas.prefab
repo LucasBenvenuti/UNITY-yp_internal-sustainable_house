@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6427952658245439410}
   - component: {fileID: 3655472587890052333}
   - component: {fileID: 8350315644700146383}
-  - component: {fileID: 4912247984917663277}
   - component: {fileID: 897673072864858336}
+  - component: {fileID: 713815090196690827}
   m_Layer: 0
   m_Name: ChuveiroGas
   m_TagString: Item
@@ -103,11 +103,24 @@ MonoBehaviour:
   itemPrice: -4
   itemSustainability: -20
   itemCostPerMonth: 0
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 805459c68a9a2404d9479639542c5b45, type: 3}
   itemPrefab: {fileID: 5224740847026846994}
   categoryName: Chuveiro
   zoomSize: 3
---- !u!114 &4912247984917663277
+--- !u!65 &897673072864858336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224740847026846994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020042934, y: 0.0073151197, z: 0.011046275}
+  m_Center: {x: -0.01002148, y: -0.0000000031432141, z: -0.003268902}
+--- !u!114 &713815090196690827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,16 +171,3 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
---- !u!65 &897673072864858336
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5224740847026846994}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.020042934, y: 0.0073151197, z: 0.011046275}
-  m_Center: {x: -0.01002148, y: -0.0000000031432141, z: -0.003268902}

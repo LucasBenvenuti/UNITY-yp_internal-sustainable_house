@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8382611482929180620}
   - component: {fileID: 4246336621493759676}
   - component: {fileID: 919626845072637080}
-  - component: {fileID: -3823124095379367376}
   - component: {fileID: 1979019036273821563}
   - component: {fileID: 8981376109979220253}
+  - component: {fileID: 1195011687243683848}
   m_Layer: 0
   m_Name: TorneiraConvencional
   m_TagString: Item
@@ -84,7 +84,43 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-3823124095379367376
+--- !u!114 &1979019036273821563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967943392402169520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a048a9964e502d4d8adce4b4b61c7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelectable: 1
+  itemOption: 0
+  itemName: Torneira Convencional
+  itemType: 9
+  itemPrice: -1
+  itemSustainability: -3
+  itemCostPerMonth: 0
+  itemSprite: {fileID: 21300000, guid: 211d2353882acd8419485ccac2ae1e90, type: 3}
+  itemPrefab: {fileID: 6967943392402169520}
+  categoryName: Torneira
+  zoomSize: 2
+--- !u!65 &8981376109979220253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967943392402169520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.012033359, y: 0.002512138, z: 0.022170914}
+  m_Center: {x: -0.0042308425, y: -0.000005557202, z: 0.011048366}
+--- !u!114 &1195011687243683848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,7 +138,7 @@ MonoBehaviour:
   - edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
     backEdgeDilateAmount: 5
-    Renderer: {fileID: 919626845072637080}
+    Renderer: {fileID: 0}
     SubmeshIndex: 0
     ForceRecalculateBounds: 0
     CutoutDescriptionType: 0
@@ -135,39 +171,3 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
---- !u!114 &1979019036273821563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6967943392402169520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a048a9964e502d4d8adce4b4b61c7b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSelectable: 1
-  itemOption: 0
-  itemName: Torneira Convencional
-  itemType: 9
-  itemPrice: -1
-  itemSustainability: -3
-  itemCostPerMonth: 0
-  itemSprite: {fileID: 0}
-  itemPrefab: {fileID: 6967943392402169520}
-  categoryName: Torneira
-  zoomSize: 2
---- !u!65 &8981376109979220253
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6967943392402169520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.012033359, y: 0.002512138, z: 0.022170914}
-  m_Center: {x: -0.0042308425, y: -0.000005557202, z: 0.011048366}

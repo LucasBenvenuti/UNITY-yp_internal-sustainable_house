@@ -103,7 +103,7 @@ MonoBehaviour:
   itemPrice: -2
   itemSustainability: -8
   itemCostPerMonth: 0
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 34e05635a8411c349991ae563679ad65, type: 3}
   itemPrefab: {fileID: 6601088719713024001}
   categoryName: Chuveiro
   zoomSize: 3

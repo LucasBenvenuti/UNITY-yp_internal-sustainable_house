@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 1
+  itemOption: 0
   itemName: "Secadora El\xE9trica"
   itemType: 1
   itemPrice: -2

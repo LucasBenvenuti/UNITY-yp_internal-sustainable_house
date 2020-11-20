@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5019396360746158076}
   - component: {fileID: 5847078365856479968}
   - component: {fileID: -344838062406173741}
-  - component: {fileID: -639497688616204730}
+  - component: {fileID: -2515631770493588841}
   m_Layer: 0
   m_Name: Poste
   m_TagString: Item
@@ -120,7 +120,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 4325232231843245438}
   categoryName: "Abastecimento de energia el\xE9trica"
   zoomSize: 7
---- !u!114 &-639497688616204730
+--- !u!114 &-2515631770493588841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   - edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
     backEdgeDilateAmount: 5
-    Renderer: {fileID: 5019396360746158076}
+    Renderer: {fileID: 0}
     SubmeshIndex: 0
     ForceRecalculateBounds: 0
     CutoutDescriptionType: 0

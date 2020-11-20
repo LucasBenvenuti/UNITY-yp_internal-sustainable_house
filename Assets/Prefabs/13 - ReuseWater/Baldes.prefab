@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5790270294912687151}
   - component: {fileID: 5144900321448138429}
   - component: {fileID: 7583573843891779533}
-  - component: {fileID: 309775032642022942}
   - component: {fileID: 3209790337026447571}
+  - component: {fileID: 385190013541993492}
   m_Layer: 0
   m_Name: Baldes
   m_TagString: Item
@@ -103,11 +103,24 @@ MonoBehaviour:
   itemPrice: 0
   itemSustainability: 3
   itemCostPerMonth: 0
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: d3f0efa749c96c84f87fd5a6186fdd51, type: 3}
   itemPrefab: {fileID: 8050020586551510064}
   categoryName: "\xC1gua de Reuso"
   zoomSize: 5
---- !u!114 &309775032642022942
+--- !u!65 &3209790337026447571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050020586551510064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.033925798, y: 0.01662653, z: 0.0145058045}
+  m_Center: {x: -0.016724786, y: -0.00022863277, z: 0.004762622}
+--- !u!114 &385190013541993492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +138,7 @@ MonoBehaviour:
   - edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
     backEdgeDilateAmount: 5
-    Renderer: {fileID: 5144900321448138429}
+    Renderer: {fileID: 0}
     SubmeshIndex: 0
     ForceRecalculateBounds: 0
     CutoutDescriptionType: 0
@@ -158,16 +171,3 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
---- !u!65 &3209790337026447571
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8050020586551510064}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.033925798, y: 0.01662653, z: 0.0145058045}
-  m_Center: {x: -0.016724786, y: -0.00022863277, z: 0.004762622}

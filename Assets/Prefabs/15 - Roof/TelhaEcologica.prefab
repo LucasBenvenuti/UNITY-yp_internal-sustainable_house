@@ -103,7 +103,7 @@ MonoBehaviour:
   itemPrice: 1
   itemSustainability: 0
   itemCostPerMonth: 0
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: eb543d885b93c024496c4f427f2a058f, type: 3}
   itemPrefab: {fileID: 8815537526925894160}
   categoryName: Telhado
   zoomSize: 6

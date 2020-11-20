@@ -104,7 +104,7 @@ MonoBehaviour:
   itemPrice: -2
   itemSustainability: -3
   itemCostPerMonth: 0
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 9f42849bc359d424186dd92dc3884e67, type: 3}
   itemPrefab: {fileID: 373086131806046513}
   categoryName: "M\xE1quina de Lavar"
   zoomSize: 5
