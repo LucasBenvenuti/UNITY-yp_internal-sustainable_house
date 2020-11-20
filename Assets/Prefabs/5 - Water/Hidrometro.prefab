@@ -107,7 +107,7 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 87f77c00fdd9dda42adcc46c16902d00, type: 3}
   itemPrefab: {fileID: 7460106646142409091}
   categoryName: "Abastecimento de \xE1gua"
-  zoomSize: 9
+  zoomSize: 10
 --- !u!65 &5123827188644426504
 BoxCollider:
   m_ObjectHideFlags: 0
