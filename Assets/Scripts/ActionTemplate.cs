@@ -11,6 +11,7 @@ public class ActionTemplate : MonoBehaviour
     public bool haveDoneAction;
     public SpriteRenderer actionSprite;
 
+    public BoxCollider boxCollider;
     public float zoomSize = 5f;
 
 
@@ -43,6 +44,7 @@ public class ActionTemplate : MonoBehaviour
 
     public void EnableAction()
     {
+        boxCollider.enabled = true;
         actionSprite.enabled = true;
         haveDoneAction = false;
     }
