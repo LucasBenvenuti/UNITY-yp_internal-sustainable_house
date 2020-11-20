@@ -8,8 +8,10 @@ public class ItemOption : MonoBehaviour
 {
     public Image icon;
     public TMP_Text itemName;
-    public TMP_Text itemCost;
-    public TMP_Text itemSus;
+    public Slider itemCostPos;
+    public Slider itemCostNeg;
+    public Slider itemSusPos;
+    public Slider itemSusNeg;
     public Button button;
 
     public SelectItem selectItem;

@@ -189,6 +189,28 @@ public class GameController : MonoBehaviour
             // uiItemList[i].itemCost.text = prefabsList[item.itemType].prefabsList[i].itemPrice.ToString();
             // uiItemList[i].itemSus.text = prefabsList[item.itemType].prefabsList[i].itemSustainability.ToString();
 
+            if (prefabsList[item.itemType].prefabsList[i].baseSustainability >= 0)
+            {
+                uiItemList[i].itemSusPos.value = prefabsList[item.itemType].prefabsList[i].baseSustainability;
+                uiItemList[i].itemSusNeg.value = 0f;
+            }
+            else
+            {
+                uiItemList[i].itemSusNeg.value = -1 * prefabsList[item.itemType].prefabsList[i].baseSustainability;
+                uiItemList[i].itemSusPos.value = 0f;
+
+            }
+            if (prefabsList[item.itemType].prefabsList[i].basePrice >= 0)
+            {
+                uiItemList[i].itemCostPos.value = prefabsList[item.itemType].prefabsList[i].basePrice;
+                uiItemList[i].itemCostNeg.value = 0f;
+            }
+            else
+            {
+                uiItemList[i].itemCostNeg.value = -1 * prefabsList[item.itemType].prefabsList[i].basePrice;
+                uiItemList[i].itemCostPos.value = 0f;
+            }
+
             uiItemList[i].selectItem.itemPrefab = prefabsList[item.itemType].prefabsList[i].gameObject;
             uiItemList[i].selectItem.itemName = prefabsList[item.itemType].prefabsList[i].itemName;
             uiItemList[i].selectItem.itemPosition = item.transform.parent;
