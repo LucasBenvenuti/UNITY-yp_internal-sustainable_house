@@ -170,8 +170,8 @@ public class GameController : MonoBehaviour
 
             uiItemList[i].icon.sprite = prefabsList[item.itemType].prefabsList[i].itemSprite;
             uiItemList[i].itemName.text = prefabsList[item.itemType].prefabsList[i].itemName;
-            uiItemList[i].itemCost.text = prefabsList[item.itemType].prefabsList[i].itemPrice.ToString();
-            uiItemList[i].itemSus.text = prefabsList[item.itemType].prefabsList[i].itemSustainability.ToString();
+            // uiItemList[i].itemCost.text = prefabsList[item.itemType].prefabsList[i].itemPrice.ToString();
+            // uiItemList[i].itemSus.text = prefabsList[item.itemType].prefabsList[i].itemSustainability.ToString();
 
             uiItemList[i].selectItem.itemPrefab = prefabsList[item.itemType].prefabsList[i].gameObject;
             uiItemList[i].selectItem.itemName = prefabsList[item.itemType].prefabsList[i].itemName;
