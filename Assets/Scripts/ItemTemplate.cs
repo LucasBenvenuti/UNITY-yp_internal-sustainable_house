@@ -29,7 +29,8 @@ public class ItemTemplate : MonoBehaviour
     public int itemType;
     public float itemPrice;
     public float itemSustainability;
-    public float itemCostPerMonth;
+    public float basePrice;
+    public float baseSustainability;
     public Sprite itemSprite;
     public GameObject itemPrefab;
 

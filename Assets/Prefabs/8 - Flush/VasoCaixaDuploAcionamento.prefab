@@ -102,7 +102,8 @@ MonoBehaviour:
   itemType: 8
   itemPrice: 1
   itemSustainability: 6
-  itemCostPerMonth: 0
+  basePrice: 1
+  baseSustainability: 3
   itemSprite: {fileID: 21300000, guid: dcfa446bb5e24c44bb95857075730da9, type: 3}
   itemPrefab: {fileID: 1148297527425814428}
   categoryName: Descarga

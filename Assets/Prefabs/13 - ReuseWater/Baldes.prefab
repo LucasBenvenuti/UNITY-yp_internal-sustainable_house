@@ -102,7 +102,8 @@ MonoBehaviour:
   itemType: 13
   itemPrice: 0
   itemSustainability: 3
-  itemCostPerMonth: 0
+  basePrice: 1
+  baseSustainability: 3
   itemSprite: {fileID: 21300000, guid: d3f0efa749c96c84f87fd5a6186fdd51, type: 3}
   itemPrefab: {fileID: 8050020586551510064}
   categoryName: "\xC1gua de Reuso"
