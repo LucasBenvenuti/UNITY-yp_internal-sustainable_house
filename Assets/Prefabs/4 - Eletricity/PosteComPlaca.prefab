@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 3254318605274688484}
   - component: {fileID: 5619048008263066333}
   - component: {fileID: 246792036079151502}
+  - component: {fileID: 5319822910982117241}
+  - component: {fileID: 1711852920457105323}
   m_Layer: 0
   m_Name: PosteComPlaca
   m_TagString: Item
@@ -262,6 +264,32 @@ MonoBehaviour:
   itemPrefab: {fileID: 7342282037617019599}
   categoryName: "Abastecimento de energia el\xE9trica"
   zoomSize: 7
+--- !u!65 &5319822910982117241
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342282037617019599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016429678, y: 0.016852202, z: 0.115739755}
+  m_Center: {x: -0.00014176001, y: 0.00042339024, z: 0.056947913}
+--- !u!65 &1711852920457105323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342282037617019599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03626919, y: 0.06479334, z: 0.02085067}
+  m_Center: {x: 0.015667878, y: 0.05583001, z: 0.009503358}
 --- !u!1 &7846718028398805475
 GameObject:
   m_ObjectHideFlags: 0
