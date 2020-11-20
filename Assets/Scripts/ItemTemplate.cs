@@ -52,10 +52,10 @@ public class ItemTemplate : MonoBehaviour
         {
             itemType = 0;
         }
-        // if (itemSustainability < -5.1)
-        // {
-        //     itemSustainability = -5;
-        // }
+        if (itemSustainability < -5.1)
+        {
+            itemSustainability = -5;
+        }
         if (itemOption < 0)
         {
             itemOption = 0;

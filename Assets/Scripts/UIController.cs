@@ -43,7 +43,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         CheckBaseValues();
-        moneySlider.value = moneyBaseValue;
+        moneySlider.value = controlMoney;
         sustainabilitySlider.value = sustainabilityBaseValue;
 
         GameController.instance.addReportLine("Jogo iniciado.");
@@ -69,34 +69,33 @@ public class UIController : MonoBehaviour
         controlMoney = newMoney;
     }
 
-    public void NewUpdateValues(float price, float sustainability)
+    public bool NewUpdateValues(float price, float sustainability)
     {
         controlMoney = moneySlider.value;
         controlSustainability = sustainabilitySlider.value;
         Debug.Log("PRICE: " + price);
-        // if (controlMoney < price)
-        // {
-        //     Debug.Log("VOCE NAO TEM DINHEIRO SUFICIENTE");
-        //     return false;
-        // }
-        // else
-        // {
-        GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + (controlMoney - price) + ".");
-        GameController.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + (controlSustainability + sustainability) + ".");
+        if (controlMoney < price)
+        {
+            Debug.Log("VOCE NAO TEM DINHEIRO SUFICIENTE");
+            return false;
+        }
+        else
+        {
+            GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + (controlMoney - price) + ".");
+            GameController.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + (controlSustainability + sustainability) + ".");
 
-        float newSusValue = controlSustainability + sustainability;
-        float newMoneyValue = controlMoney + price;
-        // if (newSusValue < 0)
-        // {
-        //     sustainabilitySlider.value = 0;
-        //     Debug.Log("SUSTENTABILIDADE NEGATIVA");
-        // }
-        // else
-        //{
-        sustainabilitySlider.value = newSusValue;
-        moneySlider.value = newMoneyValue;
-        //}
-        //return true;
+            moneySlider.value = controlMoney - price;
+            float newSusValue = controlSustainability + sustainability;
+            if (newSusValue < 0)
+            {
+                sustainabilitySlider.value = 0;
+                Debug.Log("SUSTENTABILIDADE NEGATIVA");
+            }
+            else
+            {
+                sustainabilitySlider.value = newSusValue;
+            }
+            return true;
+        }
     }
 }
-//}

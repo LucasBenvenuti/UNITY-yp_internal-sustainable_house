@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4325232231843245438
+--- !u!1 &1257702276107166632
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5524342629177373265}
-  - component: {fileID: 7059233737278161079}
-  - component: {fileID: 5019396360746158076}
-  - component: {fileID: 5847078365856479968}
-  - component: {fileID: -344838062406173741}
-  - component: {fileID: -2515631770493588841}
+  - component: {fileID: 1891389947527641362}
+  - component: {fileID: 3283206280947054263}
+  - component: {fileID: 753435937609794173}
+  - component: {fileID: 2140661588999036669}
+  - component: {fileID: 2140661588999036668}
   m_Layer: 0
   m_Name: Poste
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5524342629177373265
+--- !u!4 &1891389947527641362
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325232231843245438}
-  m_LocalRotation: {x: -0.50000006, y: -0.4999999, z: -0.5, w: 0.5}
+  m_GameObject: {fileID: 1257702276107166632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7059233737278161079
+--- !u!33 &3283206280947054263
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325232231843245438}
-  m_Mesh: {fileID: 985472821302921024, guid: bf8be975313c4244098286fbcf2edba5, type: 3}
---- !u!23 &5019396360746158076
+  m_GameObject: {fileID: 1257702276107166632}
+  m_Mesh: {fileID: 4745011319970006128, guid: c1426f63118b9214bbd965f329c03242, type: 3}
+--- !u!23 &753435937609794173
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325232231843245438}
+  m_GameObject: {fileID: 1257702276107166632}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +61,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d0d7947038ce372499ba5b9d49098b73, type: 2}
+  - {fileID: 7737096488734820382, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
+  - {fileID: -3435636606984337923, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
+  - {fileID: -4986879881301547931, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
+  - {fileID: -8428944982919178257, guid: c9f25dcbb0c202443a2a299b7aa7fd59, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,26 +86,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5847078365856479968
+--- !u!65 &2140661588999036669
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325232231843245438}
+  m_GameObject: {fileID: 1257702276107166632}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.016429678, y: 0.016852202, z: 0.115739755}
-  m_Center: {x: -0.00014176001, y: 0.00042339024, z: 0.056947913}
---- !u!114 &-344838062406173741
+  m_Size: {x: 0.0064278496, y: 0.006593158, z: 0.045281354}
+  m_Center: {x: -0.00005546189, y: 0.00016564403, z: 0.022279974}
+--- !u!114 &2140661588999036668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325232231843245438}
+  m_GameObject: {fileID: 1257702276107166632}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a048a9964e502d4d8adce4b4b61c7b5, type: 3}
@@ -111,63 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 0
-  itemName: "Poste de rede p\xFAblica"
+  itemName: Poste
   itemType: 4
   itemPrice: -2
   itemSustainability: 0
   itemCostPerMonth: 0
-  itemSprite: {fileID: 21300000, guid: 492f990c558095046a6d2e09e3c1cbcd, type: 3}
-  itemPrefab: {fileID: 4325232231843245438}
-  categoryName: "Abastecimento de energia el\xE9trica"
-  zoomSize: 7
---- !u!114 &-2515631770493588841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325232231843245438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drawingMode: 1
-  outlineLayer: 0
-  outlineTargets:
-  - edgeDilateAmount: 5
-    frontEdgeDilateAmount: 5
-    backEdgeDilateAmount: 5
-    Renderer: {fileID: 0}
-    SubmeshIndex: 0
-    ForceRecalculateBounds: 0
-    CutoutDescriptionType: 0
-    CutoutThreshold: 0.5
-    CullMode: 2
-    cutoutTextureName: 
-    DilateRenderingMode: 0
-  renderStyle: 2
-  outlineParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  backParameters:
-    enabled: 1
-    color: {r: 2.828427, g: 2.828427, b: 2.828427, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  frontParameters:
-    enabled: 1
-    color: {r: 2.828427, g: 2.828427, b: 2.828427, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
+  itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  categoryName: 
+  zoomSize: 5

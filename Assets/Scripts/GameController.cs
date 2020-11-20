@@ -60,8 +60,6 @@ public class GameController : MonoBehaviour
     public LeanTweenType easeInOut;
 
     [HideInInspector]
-    float newMoneyValue;
-    float newSusValue;
     public bool tvOn = true;
     private void Awake()
     {
@@ -199,68 +197,22 @@ public class GameController : MonoBehaviour
         {
             GameObject prefab = itemHolder.transform.GetChild(0).gameObject;
             int optionInScene = prefab.GetComponent<ItemTemplate>().itemOption;
-            float oldItemPrice = prefab.GetComponent<ItemTemplate>().itemPrice;
-            float oldItemSus = prefab.GetComponent<ItemTemplate>().itemSustainability;
             if (newOption != optionInScene)
             {
-                if (Mathf.Abs(newItemPrice) != Mathf.Abs(oldItemPrice))
-                {
-                    if (oldItemPrice < newItemPrice)
-                    {
-                        newMoneyValue = Mathf.Abs(oldItemPrice) + Mathf.Abs(newItemPrice);
-                    }
-                    else
-                    {
-                        newMoneyValue = (Mathf.Abs(oldItemPrice) + Mathf.Abs(newItemPrice)) * -1;
-                    }
-                }
-                else
-                {
-                    if (oldItemPrice < newItemPrice)
-                    {
-                        newMoneyValue = Mathf.Abs(newItemPrice) * 2;
-                    }
-                    else if (oldItemPrice > newItemPrice)
-                    {
-                        newMoneyValue = Mathf.Abs(newItemPrice) * -2;
-                    }
-                    else
-                    {
-                        newMoneyValue = 0;
-                    }
-                }
-                if (Mathf.Abs(newItemSus) != Mathf.Abs(oldItemSus))
-                {
-                    if (oldItemSus < newItemSus)
-                    {
-                        newSusValue = Mathf.Abs(oldItemSus) + Mathf.Abs(newItemSus);
-                    }
-                    else
-                    {
-                        newSusValue = (Mathf.Abs(oldItemSus) + Mathf.Abs(newItemSus)) * -1;
-                    }
-                }
-                else
-                {
-                    if (oldItemSus < newItemSus)
-                    {
-                        newSusValue = Mathf.Abs(newItemSus) * 2;
-                    }
-                    else if (oldItemSus > newItemSus)
-                    {
-                        newSusValue = Mathf.Abs(newItemSus) * -2;
-                    }
-                    else
-                    {
-                        newSusValue = 0;
-                    }
-                }
-
                 Debug.Log(name);
+
                 GameController.instance.addReportLine("Adicionado item " + name);
-                UIController.instance.NewUpdateValues(newMoneyValue, newSusValue);
-                Destroy(prefab);
-                destroyOriginalItem = true;
+                bool priceControl = UIController.instance.NewUpdateValues(newItemPrice, newItemSus);
+
+                if (priceControl)
+                {
+                    Destroy(prefab);
+                    destroyOriginalItem = true;
+                }
+                else
+                {
+                    destroyOriginalItem = false;
+                }
             }
             else
             {
@@ -349,6 +301,5 @@ public class GameController : MonoBehaviour
     {
         reportList.Add(reportString);
     }
-
 }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6601088719713024001
+--- !u!1 &8234082948519335558
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8492834116267356586}
-  - component: {fileID: 4046675733604854724}
-  - component: {fileID: 6731854229464084032}
-  - component: {fileID: 1274538739307942203}
-  - component: {fileID: 3137340671816236129}
-  - component: {fileID: 1680682052437509650}
+  - component: {fileID: 8723057396859587644}
+  - component: {fileID: 5665913061805376409}
+  - component: {fileID: 7585656755761657683}
+  - component: {fileID: 8234082948519335559}
+  - component: {fileID: 5542952829479648996}
   m_Layer: 0
   m_Name: ChuveiroEletrico
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8492834116267356586
+--- !u!4 &8723057396859587644
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601088719713024001}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 32, y: 32, z: 32}
+  m_GameObject: {fileID: 8234082948519335558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!33 &4046675733604854724
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5665913061805376409
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601088719713024001}
-  m_Mesh: {fileID: -140295126281415749, guid: bf8be975313c4244098286fbcf2edba5, type: 3}
---- !u!23 &6731854229464084032
+  m_GameObject: {fileID: 8234082948519335558}
+  m_Mesh: {fileID: -5495902117074765545, guid: 5890b42f28864824987ff59b57270d71, type: 3}
+--- !u!23 &7585656755761657683
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601088719713024001}
+  m_GameObject: {fileID: 8234082948519335558}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +61,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d0d7947038ce372499ba5b9d49098b73, type: 2}
+  - {fileID: -6478536213147159724, guid: 5890b42f28864824987ff59b57270d71, type: 3}
+  - {fileID: -5944681513040833518, guid: 5890b42f28864824987ff59b57270d71, type: 3}
+  - {fileID: 3288894051615076330, guid: 5890b42f28864824987ff59b57270d71, type: 3}
+  - {fileID: -793448906068582628, guid: 5890b42f28864824987ff59b57270d71, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,90 +86,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1274538739307942203
+--- !u!114 &8234082948519335559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601088719713024001}
+  m_GameObject: {fileID: 8234082948519335558}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a048a9964e502d4d8adce4b4b61c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelectable: 1
+  isSelectable: 0
   itemOption: 1
-  itemName: "Chuveiro El\xE9trico"
+  itemName: "ChuveiroEl\xE9trico"
   itemType: 7
   itemPrice: -2
   itemSustainability: -8
   itemCostPerMonth: 0
-  itemSprite: {fileID: 21300000, guid: 34e05635a8411c349991ae563679ad65, type: 3}
-  itemPrefab: {fileID: 6601088719713024001}
-  categoryName: Chuveiro
-  zoomSize: 3
---- !u!65 &3137340671816236129
+  itemSprite: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  categoryName: 
+  zoomSize: 5
+--- !u!65 &5542952829479648996
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601088719713024001}
+  m_GameObject: {fileID: 8234082948519335558}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.061157696, y: 0.024546375, z: 0.04005804}
-  m_Center: {x: -0.030571882, y: 0, z: -0.012726139}
---- !u!114 &1680682052437509650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601088719713024001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drawingMode: 1
-  outlineLayer: 0
-  outlineTargets:
-  - edgeDilateAmount: 5
-    frontEdgeDilateAmount: 5
-    backEdgeDilateAmount: 5
-    Renderer: {fileID: 6731854229464084032}
-    SubmeshIndex: 0
-    ForceRecalculateBounds: 0
-    CutoutDescriptionType: 0
-    CutoutThreshold: 0.5
-    CullMode: 2
-    cutoutTextureName: 
-    DilateRenderingMode: 0
-  renderStyle: 2
-  outlineParameters:
-    enabled: 1
-    color: {r: 2.828427, g: 2.828427, b: 2.828427, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  backParameters:
-    enabled: 1
-    color: {r: 2.6793332, g: 2.828427, b: 0, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  frontParameters:
-    enabled: 1
-    color: {r: 2.1185474, g: 2.1185474, b: 2.1185474, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
+  m_Size: {x: 0.0611577, y: 0.02454637, z: 0.04037801}
+  m_Center: {x: -0.03056494, y: 0, z: -0.018246751}
