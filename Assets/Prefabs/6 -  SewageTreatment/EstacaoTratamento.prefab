@@ -265,7 +265,7 @@ MonoBehaviour:
           PropertyType: 3
   frontParameters:
     enabled: 1
-    color: {r: 2.828427, g: 2.828427, b: 2.828427, a: 1}
+    color: {r: 1, g: 0.3813261, b: 0, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:

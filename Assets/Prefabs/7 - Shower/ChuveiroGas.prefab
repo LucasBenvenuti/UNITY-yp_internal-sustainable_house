@@ -156,7 +156,7 @@ MonoBehaviour:
       shader: {fileID: 0}
       serializedProperties: []
   backParameters:
-    enabled: 1
+    enabled: 0
     color: {r: 2.6793332, g: 2.828427, b: 0, a: 1}
     dilateShift: 1
     blurShift: 1
@@ -165,7 +165,7 @@ MonoBehaviour:
       serializedProperties: []
   frontParameters:
     enabled: 1
-    color: {r: 2.1185474, g: 2.1185474, b: 2.1185474, a: 1}
+    color: {r: 1, g: 0.3813261, b: 0, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:

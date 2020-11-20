@@ -6,6 +6,7 @@ public class TV_Screen : MonoBehaviour
 {
     public Material screenMat;
     public Texture2D[] imagesList;
+    public Texture2D blackScreenTexture;
     public float imageDuration = 4f;
     int currentIndex;
 
@@ -37,12 +38,12 @@ public class TV_Screen : MonoBehaviour
             {
                 alreadyAnimated = true;
 
+                StopCoroutine(changeMatSprite());
+
                 ScreenOff();
             }
         }
     }
-
-
 
     IEnumerator changeMatSprite()
     {
@@ -59,13 +60,15 @@ public class TV_Screen : MonoBehaviour
                 currentIndex++;
             }
 
-            screenMat.mainTexture = imagesList[currentIndex];
+            if (!alreadyAnimated)
+            {
+                screenMat.mainTexture = imagesList[currentIndex];
+            }
         }
     }
 
     public void ScreenOff()
     {
-        screenMat.mainTexture = null;
-        screenMat.color = new Color(0, 0, 0, 1f);
+        screenMat.mainTexture = blackScreenTexture;
     }
 }

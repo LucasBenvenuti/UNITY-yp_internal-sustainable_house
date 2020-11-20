@@ -84,6 +84,8 @@ public class Tutorial : MonoBehaviour
     {
         Debug.Log("OPA");
 
+        TimerController.instance.tutorialMode = false;
+
         StopCoroutine(TutorialCoroutine());
 
         TutorialBoxShow(false);
@@ -97,7 +99,6 @@ public class Tutorial : MonoBehaviour
         leanPinch.enabled = true;
         currentTutorial = "final_1";
 
-        TimerController.instance.tutorialMode = false;
 
     }
 
@@ -288,7 +289,6 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
 
-        showUI = false;
         canContinue = true;
         LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
     }
@@ -299,7 +299,10 @@ public class Tutorial : MonoBehaviour
         {
             if (!showUI)
             {
-                TutorialBoxShow(false);
+                if (currentTutorial != "final_1")
+                {
+                    TutorialBoxShow(false);
+                }
 
                 if (currentTutorial == "drag")
                 {
@@ -337,24 +340,16 @@ public class Tutorial : MonoBehaviour
                     LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
                 }
 
-                if (currentTutorial == "final_1")
-                {
-
-                    LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut).setOnComplete(() =>
-                    {
-                        leanDrag.Sensitivity = storedDragSensivity;
-                        // leanDrag.enabled = true;
-                        // leanPinch.enabled = true;
-
-                        closeStoreBtn.enabled = true;
-
-                        TimerController.instance.tutorialMode = false;
-                    });
-                }
-
             }
             else
             {
+                if (currentTutorial == "final_1")
+                {
+                    EndTutorial();
+
+                    return;
+                }
+
                 Debug.Log("Continue Touched");
                 canContinue = false;
 
@@ -372,11 +367,11 @@ public class Tutorial : MonoBehaviour
     {
         if (show)
         {
-            LeanTween.alphaCanvas(tutorialCanvas, 1f, tweenDuration).setOnComplete(() => { tutorialCanvas.blocksRaycasts = true; tutorialCanvas.interactable = true; });
+            LeanTween.alphaCanvas(tutorialCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvas.blocksRaycasts = true; tutorialCanvas.interactable = true; });
         }
         else
         {
-            LeanTween.alphaCanvas(tutorialCanvas, 0f, tweenDuration).setOnComplete(() => { tutorialCanvas.blocksRaycasts = false; tutorialCanvas.interactable = false; });
+            LeanTween.alphaCanvas(tutorialCanvas, 0f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvas.blocksRaycasts = false; tutorialCanvas.interactable = false; });
         }
     }
 
@@ -486,5 +481,25 @@ public class Tutorial : MonoBehaviour
                 Debug.Log(flt);
                 Debug.Log(mainCamera.orthographicSize);
             });
+    }
+
+    public void EndTutorial()
+    {
+        StopCoroutine(TutorialCoroutine());
+
+        Debug.Log("FIM CONTINUE BUTTON");
+
+        LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut).setOnComplete(() =>
+        {
+            leanDrag.Sensitivity = storedDragSensivity;
+            // leanDrag.enabled = true;
+            // leanPinch.enabled = true;
+
+            closeStoreBtn.enabled = true;
+
+            TimerController.instance.tutorialMode = false;
+        });
+
+        LeanTween.alphaCanvas(tutorialCanvas, 0f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvas.blocksRaycasts = false; tutorialCanvas.interactable = false; Debug.Log("Ended Tutorial fade out!"); });
     }
 }
