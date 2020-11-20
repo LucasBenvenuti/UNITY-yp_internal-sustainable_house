@@ -1,7 +1,85 @@
 fileFormatVersion: 2
 guid: a45e1592ecce9de41ac4723cbfaa0476
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2725260492883921798
+    second: BarrinhaSustentabilidade_e_Dinheiro_0
+  - first:
+      213: 1470341972393648745
+    second: BarrinhaSustentabilidade_e_Dinheiro_1
+  - first:
+      213: -2318116165655904863
+    second: BarrinhaSustentabilidade_e_Dinheiro_2
+  - first:
+      213: -5580747889884232056
+    second: BarrinhaSustentabilidade_e_Dinheiro_3
+  - first:
+      213: -6677070350789557218
+    second: BarrinhaSustentabilidade_e_Dinheiro_4
+  - first:
+      213: 1358170321162909547
+    second: BarrinhaSustentabilidade_e_Dinheiro_5
+  - first:
+      213: 4208952625767386010
+    second: BarrinhaSustentabilidade_e_Dinheiro_6
+  - first:
+      213: -1908693865048863179
+    second: BarrinhaSustentabilidade_e_Dinheiro_7
+  - first:
+      213: 4825265004520935316
+    second: BarrinhaSustentabilidade_e_Dinheiro_8
+  - first:
+      213: -2477540282446911343
+    second: BarrinhaSustentabilidade_e_Dinheiro_9
+  - first:
+      213: 539549374971231395
+    second: BarrinhaSustentabilidade_e_Dinheiro_10
+  - first:
+      213: 1148552623547591986
+    second: BarrinhaSustentabilidade_e_Dinheiro_11
+  - first:
+      213: -9122147125366524609
+    second: BarrinhaSustentabilidade_e_Dinheiro_12
+  - first:
+      213: 5214664662977206678
+    second: BarrinhaSustentabilidade_e_Dinheiro_13
+  - first:
+      213: -2460156544397925268
+    second: BarrinhaSustentabilidade_e_Dinheiro_14
+  - first:
+      213: -4485884509947695570
+    second: BarrinhaSustentabilidade_e_Dinheiro_15
+  - first:
+      213: -5462534977425278252
+    second: BarrinhaSustentabilidade_e_Dinheiro_16
+  - first:
+      213: -4941285832357600968
+    second: BarrinhaSustentabilidade_e_Dinheiro_17
+  - first:
+      213: -1067656999650764002
+    second: BarrinhaSustentabilidade_e_Dinheiro_18
+  - first:
+      213: -8872313944854209251
+    second: BarrinhaSustentabilidade_e_Dinheiro_19
+  - first:
+      213: -1970762035050885099
+    second: BarrinhaSustentabilidade_e_Dinheiro_20
+  - first:
+      213: 3820426348437265865
+    second: BarrinhaSustentabilidade_e_Dinheiro_21
+  - first:
+      213: 2000006197948060910
+    second: BarrinhaSustentabilidade_e_Dinheiro_22
+  - first:
+      213: 7011448461223716783
+    second: BarrinhaSustentabilidade_e_Dinheiro_23
+  - first:
+      213: -2767764615345009263
+    second: BarrinhaSustentabilidade_e_Dinheiro_24
+  - first:
+      213: 6372762501914122322
+    second: BarrinhaSustentabilidade_e_Dinheiro_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -135,11 +213,200 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 527
+        width: 736
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23da56c968a70ff00800000000000000
+      internalID: 1148552623547591986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_13
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 143
+        width: 100
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699d98be1e53e5840800000000000000
+      internalID: 5214664662977206678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_23
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 143
+        width: 101
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa7e23c2a3bad4160800000000000000
+      internalID: 7011448461223716783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_0
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 756
+        width: 368
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b80ceaaf112d520800000000000000
+      internalID: 2725260492883921798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_2
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 511
+        width: 100
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad3df511a564dfd0800000000000000
+      internalID: -2318116165655904863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_3
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 511
+        width: 101
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 886807abc533d82b0800000000000000
+      internalID: -5580747889884232056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_4
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 756
+        width: 368
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1445e084e74653a0800000000000000
+      internalID: -6677070350789557218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_1
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 156
+        width: 368
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258558c2bb9907850800000000000000
+      internalID: 6372762501914122322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarrinhaSustentabilidade_e_Dinheiro_5
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 156
+        width: 368
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67b46116b039d210800000000000000
+      internalID: 1358170321162909547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ada12921861430b43b7d70159d5ceb0a
     internalID: 0
     vertices: []
     indices: 
