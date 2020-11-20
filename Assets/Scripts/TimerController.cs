@@ -85,6 +85,8 @@ public class TimerController : MonoBehaviour
         tutorialMode = true;
         Tutorial.instance.StartTutorial();
 
+        // Tutorial.instance.SkipTutorial();
+
         //TO DISABLE TUTORIAL, JUST COMMENT STARTTUTORIAL FUNCTION CALL AND CHANGE TUTORIALMODE TO FALSE
     }
 

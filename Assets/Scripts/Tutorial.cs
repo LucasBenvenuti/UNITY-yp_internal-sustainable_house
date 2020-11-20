@@ -63,6 +63,7 @@ public class Tutorial : MonoBehaviour
         tutorialCanvas.blocksRaycasts = false;
         tutorialCanvas.interactable = false;
 
+
         storedDragSensivity = leanDrag.Sensitivity;
 
         leanDrag.Sensitivity = 0f;
@@ -76,6 +77,28 @@ public class Tutorial : MonoBehaviour
         numberOfFingers = 0;
 
         closeStoreBtn.enabled = false;
+    }
+
+    //REVISION TO MAKE IT WORK
+    public void SkipTutorial()
+    {
+        Debug.Log("OPA");
+
+        StopCoroutine(TutorialCoroutine());
+
+        TutorialBoxShow(false);
+
+        closeStoreBtn.enabled = true;
+
+        leanDrag.Sensitivity = storedDragSensivity;
+        leanDrag.enabled = true;
+        mainCamera.orthographicSize = storedCameraSize;
+
+        leanPinch.enabled = true;
+        currentTutorial = "final_1";
+
+        TimerController.instance.tutorialMode = false;
+
     }
 
     public void StartTutorial()
