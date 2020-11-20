@@ -82,7 +82,7 @@ public class TimerController : MonoBehaviour
         Debug.Log("Function for wait finish tutorial and start timer");
 
         Tutorial.instance.StartTutorial();
-        Tutorial.instance.SkipTutorial();
+        //Tutorial.instance.SkipTutorial();
     }
 
     void FinishGame()

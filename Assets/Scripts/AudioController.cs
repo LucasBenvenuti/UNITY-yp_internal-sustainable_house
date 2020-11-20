@@ -24,7 +24,7 @@ public class AudioController : MonoBehaviour
         }
         else
         {
-            LeanTween.value(this.gameObject, this.audioSource.volume, 0.15f, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
+            LeanTween.value(this.gameObject, this.audioSource.volume, 0.1f, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
  {
      audioSource.volume = flt;
  });
