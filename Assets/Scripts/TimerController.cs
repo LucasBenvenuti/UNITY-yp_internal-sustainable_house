@@ -14,7 +14,6 @@ public class TimerController : MonoBehaviour
     public float actionTimer;
     public float actionBaseTime;
     public TMP_Text timeText;
-    public bool timeIsRunning;
     public int indexAction;
 
     public ReportGenerator report;
@@ -22,6 +21,11 @@ public class TimerController : MonoBehaviour
     public ActionTemplate[] actions;
 
     int months;
+
+    [HideInInspector]
+    public bool tutorialMode;
+    [HideInInspector]
+    public bool inGame = true;
 
     private void Awake()
     {
@@ -45,7 +49,7 @@ public class TimerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeIsRunning)
+        if (!tutorialMode && inGame)
         {
             if (totalTime > 0)
             {
@@ -68,20 +72,29 @@ public class TimerController : MonoBehaviour
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    void StartGame()
+    {
+        Tutorial.instance.closeStoreBtn.enabled = true;
+    }
+
 
     void WaitForTutorial()
     {
         Debug.Log("Function for wait finish tutorial and start timer");
-        timeIsRunning = true;
+
+        tutorialMode = true;
+        Tutorial.instance.StartTutorial();
+
+        //TO DISABLE TUTORIAL, JUST COMMENT STARTTUTORIAL FUNCTION CALL AND CHANGE TUTORIALMODE TO FALSE
     }
 
     void FinishGame()
     {
-        report.PrintScene();
+        // report.PrintScene();
 
         Debug.Log("Function called when the timer is over for finish the game");
         timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
-        timeIsRunning = false;
+        inGame = false;
 
         EndCanvas.SetActive(true);
     }

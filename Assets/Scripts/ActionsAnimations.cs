@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class ActionsAnimations : MonoBehaviour
 {
@@ -104,6 +105,12 @@ public class ActionsAnimations : MonoBehaviour
         myAgent.transform.LeanRotateY(180f, 1f);
         animatorTemplate.SetTrigger("TextTrigger");
         yield return new WaitForSeconds(6f);
+
+        //RETORNO AGORA
+        GameController.instance.actionCanvas.interactable = false;
+        GameController.instance.actionCanvas.blocksRaycasts = false;
+        LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
+
         CameraController.instance.ReturnToBasePosition();
 
     }
@@ -112,6 +119,12 @@ public class ActionsAnimations : MonoBehaviour
         GameController.instance.tvOn = false;
         animatorTemplate.SetTrigger("ReadTrigger");
         yield return new WaitForSeconds(5f);
+
+        //RETORNO AGORA
+        GameController.instance.actionCanvas.interactable = false;
+        GameController.instance.actionCanvas.blocksRaycasts = false;
+        LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
+
         CameraController.instance.ReturnToBasePosition();
 
     }
@@ -128,6 +141,12 @@ public class ActionsAnimations : MonoBehaviour
         }
         animatorTemplate.SetTrigger("BrushTrigger");
         yield return new WaitForSeconds(7f);
+
+        //RETORNO AGORA
+        GameController.instance.actionCanvas.interactable = false;
+        GameController.instance.actionCanvas.blocksRaycasts = false;
+        LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
+
         CameraController.instance.ReturnToBasePosition();
 
     }
@@ -142,6 +161,12 @@ public class ActionsAnimations : MonoBehaviour
         myAgent.transform.LeanRotateY(90f, 0.7f);
         animatorTemplate.SetTrigger("WashTrigger");
         yield return new WaitForSeconds(5f);
+
+        //RETORNO AGORA
+        GameController.instance.actionCanvas.interactable = false;
+        GameController.instance.actionCanvas.blocksRaycasts = false;
+        LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
+
         CameraController.instance.ReturnToBasePosition();
     }
 

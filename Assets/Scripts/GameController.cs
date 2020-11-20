@@ -15,6 +15,12 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public ItemTemplate itemSelected;
     public ActionTemplate actionSelected;
+
+    public CanvasGroup actionCanvas;
+    public TMP_Text actionText;
+    public LeanTweenType actionEaseInOut;
+    public float actionTweenDuration = 0.3f;
+
     /*
       public GameObject[] dryCloths;
       public GameObject[] lamps;
@@ -79,6 +85,10 @@ public class GameController : MonoBehaviour
         panelItem.interactable = false;
         panelItem.blocksRaycasts = false;
 
+        actionCanvas.alpha = 0;
+        actionCanvas.interactable = false;
+        actionCanvas.blocksRaycasts = false;
+
         for (int i = 0; i < uiItemList.Count; i++)
         {
             uiItemList[i].gameObject.SetActive(false);
@@ -122,6 +132,22 @@ public class GameController : MonoBehaviour
 
     public void selectItem(GameObject hitObject)
     {
+        if (TimerController.instance.tutorialMode)
+        {
+            if (hitObject.name != "ChuveiroEletrico")
+            {
+                return;
+            }
+            else
+            {
+                if (Tutorial.instance.currentTutorial == "interact")
+                {
+                    LeanTween.alphaCanvas(Tutorial.instance.handCanvas, 0f, Tutorial.instance.tweenDuration).setEase(Tutorial.instance.easeInOut);
+                    Tutorial.instance.canContinue = false;
+                }
+            }
+        }
+
         itemHolder = hitObject.transform.parent.gameObject;
 
         ItemTemplate hitItem = hitObject.GetComponent<ItemTemplate>();
@@ -274,9 +300,6 @@ public class GameController : MonoBehaviour
     {
         DisplayActionTypeUI(hitAction);
         StartCoroutine(ZoomToActionAndReturn(hitAction));
-        panelAction.SetActive(true);
-        StopCoroutine(PanelOff());
-        StartCoroutine(PanelOff());
     }
 
     IEnumerator PanelOff()
@@ -288,17 +311,24 @@ public class GameController : MonoBehaviour
 
     void DisplayActionTypeUI(GameObject go)
     {
-        for (int i = 0; i < actionType.Length; i++)
-        {
-            actionType[i].SetActive(false);
-        }
+        // for (int i = 0; i < actionType.Length; i++)
+        // {
+        //     actionType[i].SetActive(false);
+        // }
         if (actionSelected != go.GetComponent<ActionTemplate>())
         {
             actionSelected = go.GetComponent<ActionTemplate>();
         }
+        actionText.text = actionSelected.actionName;
+        LeanTween.alphaCanvas(actionCanvas, 1f, actionTweenDuration).setEase(actionEaseInOut).setOnComplete(() =>
+        {
+            actionCanvas.interactable = true;
+            actionCanvas.blocksRaycasts = true;
+        });
+
         actionSelected.DoneAction();
         int indexSelected = actionSelected.actionIndex;
-        actionType[indexSelected].SetActive(true);
+        // actionType[indexSelected].SetActive(true);
         // ActionsAnimations.instance.CallFirstCoroutine();
         actionsAnimations[indexSelected].CallFirstCoroutine(indexSelected);
 

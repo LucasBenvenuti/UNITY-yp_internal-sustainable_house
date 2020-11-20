@@ -29,6 +29,14 @@ public class SelectItem : MonoBehaviour
         GameController.instance.CheckAndDestroyItem(itemPrefab, itemName);
         if (GameController.instance.destroyOriginalItem)
         {
+            if (TimerController.instance.tutorialMode)
+            {
+                if (Tutorial.instance.currentTutorial == "choose")
+                {
+                    Tutorial.instance.canContinue = false;
+                }
+            }
+
             GameObject prefab = Instantiate(itemPrefab);
             prefab.transform.parent = GameController.instance.itemHolder.transform;
             prefab.transform.SetAsFirstSibling();
