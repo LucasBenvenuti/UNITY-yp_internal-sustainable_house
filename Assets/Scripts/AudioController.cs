@@ -7,10 +7,8 @@ public class AudioController : MonoBehaviour
     public AudioSource audioSource;
     public float animDuration;
     public LeanTweenType easeInOut;
-    void Start()
-    {
 
-    }
+    public float volume = 0.04f;
 
     // Update is called once per frame
     public void ToggleBackgroundAudio()
@@ -24,7 +22,7 @@ public class AudioController : MonoBehaviour
         }
         else
         {
-            LeanTween.value(this.gameObject, this.audioSource.volume, 0.1f, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
+            LeanTween.value(this.gameObject, this.audioSource.volume, volume, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
  {
      audioSource.volume = flt;
  });

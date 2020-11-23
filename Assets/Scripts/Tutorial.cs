@@ -11,6 +11,7 @@ public class Tutorial : MonoBehaviour
     public CanvasGroup[] textList;
     public float delayToShow = 0.3f;
     public float[] delaysToShowContinue;
+    public CanvasGroup tutorialCanvasParent;
     public CanvasGroup tutorialCanvas;
     public CanvasGroup continueCanvas;
     public CanvasGroup handCanvas;
@@ -61,6 +62,10 @@ public class Tutorial : MonoBehaviour
 
         handCanvas.alpha = 0;
 
+        tutorialCanvasParent.alpha = 1;
+        tutorialCanvasParent.blocksRaycasts = true;
+        tutorialCanvasParent.interactable = true;
+
         tutorialCanvas.alpha = 0;
         tutorialCanvas.blocksRaycasts = false;
         tutorialCanvas.interactable = false;
@@ -84,14 +89,14 @@ public class Tutorial : MonoBehaviour
     //REVISION TO MAKE IT WORK
     public void SkipTutorial()
     {
-        Debug.Log("OPA");
+        Debug.Log("SkipTutorial");
+        LeanTween.alphaCanvas(tutorialCanvasParent, 0f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvasParent.blocksRaycasts = false; tutorialCanvasParent.interactable = false; tutorialCanvasParent.gameObject.SetActive(false); });
 
         TutorialBoxShow(false);
 
         TimerController.instance.tutorialMode = false;
 
         Coroutine startCoroutine = null;
-
         startCoroutine = StartCoroutine(TutorialCoroutine());
 
         StopCoroutine(startCoroutine);
@@ -104,8 +109,6 @@ public class Tutorial : MonoBehaviour
 
         leanPinch.enabled = true;
         currentTutorial = "final_1";
-
-
     }
 
     public void StartTutorial()
@@ -358,7 +361,8 @@ public class Tutorial : MonoBehaviour
             {
                 if (currentTutorial == "final_1")
                 {
-                    EndTutorial();
+                    // EndTutorial();
+                    SkipTutorial();
 
                     return;
                 }

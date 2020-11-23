@@ -125,6 +125,10 @@ public class GameController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 500f))
             {
+                if (hit.transform.gameObject.tag == "BlockRaycast")
+                {
+                    return;
+                }
                 if (hit.transform.gameObject.tag == "Item")
                 {
                     selectItem(hit.transform.gameObject);
