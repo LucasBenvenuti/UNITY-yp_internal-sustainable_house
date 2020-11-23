@@ -81,7 +81,7 @@ public class UIController : MonoBehaviour
         // }
         // else
         // {
-        GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + (controlMoney - price) + ".");
+        GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + (controlMoney + price) + ".");
         GameController.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + (controlSustainability + sustainability) + ".");
 
         float newSusValue = controlSustainability + sustainability;

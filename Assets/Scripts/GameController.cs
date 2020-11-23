@@ -326,7 +326,6 @@ public class GameController : MonoBehaviour
                         newSusValue = 0;
                     }
                 }
-
                 Debug.Log(name);
                 GameController.instance.addReportLine("Adicionado item " + name);
                 UIController.instance.NewUpdateValues(newMoneyValue, newSusValue);

@@ -6788,7 +6788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258011993165916315, guid: 5f07ba3573e25ef448d7b9eaad13b6b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0038
+      value: -0.0074
       objectReference: {fileID: 0}
     - target: {fileID: 5258011993165916315, guid: 5f07ba3573e25ef448d7b9eaad13b6b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12552,7 +12552,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023953534004534}
   m_HandleRect: {fileID: 0}
@@ -13380,7 +13380,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023953385752614}
   m_HandleRect: {fileID: 0}
@@ -15380,7 +15380,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023952738545615}
   m_HandleRect: {fileID: 0}
@@ -15504,7 +15504,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023952444959885}
   m_HandleRect: {fileID: 0}
@@ -15580,7 +15580,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023952314334326}
   m_HandleRect: {fileID: 0}
@@ -15818,7 +15818,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023953451228254}
   m_HandleRect: {fileID: 0}
@@ -15942,7 +15942,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023952676322468}
   m_HandleRect: {fileID: 0}
@@ -16160,7 +16160,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023953397120884}
   m_HandleRect: {fileID: 0}
@@ -16556,7 +16556,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023952651447734}
   m_HandleRect: {fileID: 0}
@@ -16806,7 +16806,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023953156314385}
   m_HandleRect: {fileID: 0}
@@ -17306,7 +17306,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023952611172060}
   m_HandleRect: {fileID: 0}
@@ -17621,7 +17621,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023952012232578}
   m_HandleRect: {fileID: 0}
@@ -17952,7 +17952,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023953181907171}
   m_HandleRect: {fileID: 0}
@@ -18068,7 +18068,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023953982848891}
   m_HandleRect: {fileID: 0}
@@ -18316,7 +18316,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023952571673568}
   m_HandleRect: {fileID: 0}
@@ -18412,7 +18412,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 127023953034815828}
   m_HandleRect: {fileID: 0}
@@ -27604,7 +27604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805940778546403125}
   m_LocalRotation: {x: 0.21745133, y: 0.19020721, z: 0.72058916, w: 0.63030744}
-  m_LocalPosition: {x: -61.27711, y: 3.168099, z: 39.80105}
+  m_LocalPosition: {x: -60.921, y: 3.168099, z: 43.234}
   m_LocalScale: {x: 100.00001, y: 100.00001, z: 100}
   m_Children: []
   m_Father: {fileID: 543450653311411487}
@@ -33296,7 +33296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7941671932072692114}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -60.09383, y: 3.4292552, z: 40.33396}
+  m_LocalPosition: {x: -60.09383, y: 3.4292552, z: 43.87699}
   m_LocalScale: {x: 16.656893, y: 16.656893, z: 16.656893}
   m_Children: []
   m_Father: {fileID: 543450653311411487}
@@ -38776,7 +38776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4284265925963848687}
   m_LocalRotation: {x: -0.6528233, y: -0.27170148, z: -0.2717015, w: 0.6528233}
-  m_LocalPosition: {x: -60.094086, y: 3.1267116, z: 40.33097}
+  m_LocalPosition: {x: -60.094086, y: 3.1267116, z: 43.874}
   m_LocalScale: {x: 90.93017, y: 90.93017, z: 90.93017}
   m_Children: []
   m_Father: {fileID: 543450653311411487}
