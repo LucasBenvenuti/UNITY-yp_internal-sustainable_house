@@ -8,15 +8,19 @@ public class ActionsAnimations : MonoBehaviour
 {
     public static ActionsAnimations instance;
     Animator animatorTemplate;
+    Animator animatorWaterKitchen;
     public NavMeshAgent myAgent;
     public Transform finalPosition;
     public Transform finalPositionBathroom;
     public Transform basePosition;
 
     public GameObject cellPhone;
+    public GameObject chargingCellPhone;
     public GameObject toothbrush;
+    public GameObject waterBathroom;
     public GameObject book;
     public GameObject plate;
+    public GameObject waterKitchen;
     public GameObject cloth;
     int laundryCounter;
     int kitchenCounter;
@@ -35,21 +39,24 @@ public class ActionsAnimations : MonoBehaviour
 
     void Awake()
     {
-        if (cellPhone)
+        if (cellPhone && chargingCellPhone)
         {
             cellPhone.SetActive(false);
         }
-        if (toothbrush)
+        if (toothbrush && waterBathroom)
         {
             toothbrush.SetActive(false);
+            waterBathroom.SetActive(false);
         }
         if (book)
         {
             book.SetActive(false);
         }
-        if (plate)
+        if (plate && waterKitchen)
         {
             plate.SetActive(false);
+            animatorWaterKitchen = waterKitchen.GetComponent<Animator>();
+            // waterKitchen.SetActive(false);
             kitchenCounter = 0;
         }
         if (cloth)
@@ -102,7 +109,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             yield return null;
         }
-        myAgent.transform.LeanRotateY(180f, 1f);
+        myAgent.transform.LeanRotateY(-50f, 0.5f);
         animatorTemplate.SetTrigger("TextTrigger");
         yield return new WaitForSeconds(6f);
 
@@ -189,7 +196,9 @@ public class ActionsAnimations : MonoBehaviour
     {
         if (active == 1)
         {
+            chargingCellPhone.SetActive(false);
             cellPhone.SetActive(true);
+            myAgent.transform.LeanRotateY(-140f, 1f);
         }
         else
         {
@@ -200,10 +209,14 @@ public class ActionsAnimations : MonoBehaviour
     {
         if (active == 1)
         {
+            waterBathroom.SetActive(true);
+            LeanTween.scale(waterBathroom, new Vector3(91.87573f, 91.87573f, 91.87573f), 1f);
             toothbrush.SetActive(true);
         }
         else
         {
+            LeanTween.scale(waterBathroom, new Vector3(76.63722f, 76.63722f, 76.63722f), 1f);
+            LeanTween.moveY(waterBathroom, 2.50f, 1f);
             toothbrush.SetActive(false);
         }
     }
@@ -218,21 +231,6 @@ public class ActionsAnimations : MonoBehaviour
             book.SetActive(true);
             //}
         }
-        // else(active == 0)
-        // {
-
-        //     Debug.Log("loop warning");
-        //     loopCounter++;
-        //     Debug.Log("loop value:" + loopCounter);
-        // }
-        // else
-        // {
-        //     if (loopCounter >= 3)
-        //     {
-        //         book.SetActive(false);
-        //     }
-        // }
-
     }
     public void Wash(int active)
     {
@@ -240,8 +238,11 @@ public class ActionsAnimations : MonoBehaviour
         {
             if (plate)
             {
-
                 plate.SetActive(true);
+                if (kitchenCounter == 0)
+                {
+                    animatorWaterKitchen.SetTrigger("FillSinkTrigger");
+                }
             }
             else if (cloth)
             {
@@ -270,6 +271,7 @@ public class ActionsAnimations : MonoBehaviour
                 kitchenCounter++;
                 if (kitchenCounter >= 2)
                 {
+                    animatorWaterKitchen.SetTrigger("EmptySinkTrigger");
                     StartCoroutine(EndCoroutine());
                 }
             }
