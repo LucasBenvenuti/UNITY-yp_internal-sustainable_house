@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
     public GameObject[] itemType;
     public GameObject[] actionType;
 
+    public CanvasGroup inGameTutorial;
     public CanvasGroup panelItem;
     public TMP_Text titlePanel;
     public List<ItemOption> uiItemList;
@@ -92,6 +93,10 @@ public class GameController : MonoBehaviour
         actionCanvas.alpha = 0;
         actionCanvas.interactable = false;
         actionCanvas.blocksRaycasts = false;
+
+        inGameTutorial.alpha = 0;
+        inGameTutorial.interactable = false;
+        inGameTutorial.blocksRaycasts = false;
 
         for (int i = 0; i < uiItemList.Count; i++)
         {
@@ -415,6 +420,25 @@ public class GameController : MonoBehaviour
         // CameraController.instance.ReturnToBasePosition();
 
     }
+
+    public void showInGameTutorial()
+    {
+        LeanTween.alphaCanvas(inGameTutorial, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() =>
+        {
+            inGameTutorial.interactable = true;
+            inGameTutorial.blocksRaycasts = true;
+        });
+    }
+
+    public void hideInGameTutorial()
+    {
+        LeanTween.alphaCanvas(inGameTutorial, 0f, tweenDuration).setEase(easeInOut).setOnComplete(() =>
+        {
+            inGameTutorial.interactable = false;
+            inGameTutorial.blocksRaycasts = false;
+        });
+    }
+
     public void addReportLine(string reportString)
     {
         reportList.Add(reportString);
