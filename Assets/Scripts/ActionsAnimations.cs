@@ -9,6 +9,7 @@ public class ActionsAnimations : MonoBehaviour
     public static ActionsAnimations instance;
     Animator animatorTemplate;
     Animator animatorWaterKitchen;
+    Animator animatorWaterBathroom;
     public NavMeshAgent myAgent;
     public Transform finalPosition;
     public Transform finalPositionBathroom;
@@ -20,6 +21,7 @@ public class ActionsAnimations : MonoBehaviour
     public GameObject waterBathroom;
     public GameObject book;
     public GameObject plate;
+    public GameObject bubbleParticles;
     public GameObject waterKitchen;
     public GameObject cloth;
     int laundryCounter;
@@ -47,6 +49,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             toothbrush.SetActive(false);
             waterBathroom.SetActive(false);
+            animatorWaterBathroom = waterBathroom.GetComponent<Animator>();
         }
         if (book)
         {
@@ -55,6 +58,7 @@ public class ActionsAnimations : MonoBehaviour
         if (plate && waterKitchen)
         {
             plate.SetActive(false);
+            bubbleParticles.SetActive(false);
             animatorWaterKitchen = waterKitchen.GetComponent<Animator>();
             // waterKitchen.SetActive(false);
             kitchenCounter = 0;
@@ -209,14 +213,14 @@ public class ActionsAnimations : MonoBehaviour
     {
         if (active == 1)
         {
-            waterBathroom.SetActive(true);
-            LeanTween.scale(waterBathroom, new Vector3(91.87573f, 91.87573f, 91.87573f), 1f);
             toothbrush.SetActive(true);
+            waterBathroom.SetActive(true);
+            animatorWaterBathroom.SetTrigger("FillTrigger");
         }
         else
         {
-            LeanTween.scale(waterBathroom, new Vector3(76.63722f, 76.63722f, 76.63722f), 1f);
-            LeanTween.moveY(waterBathroom, 2.50f, 1f);
+
+            animatorWaterBathroom.SetTrigger("EmptyTrigger");
             toothbrush.SetActive(false);
         }
     }
@@ -254,8 +258,19 @@ public class ActionsAnimations : MonoBehaviour
         {
             if (plate)
             {
-
                 plate.SetActive(false);
+            }
+            else if (cloth)
+            {
+
+                cloth.SetActive(false);
+            }
+        }
+        else if (active == 3)
+        {
+            if (plate)
+            {
+                bubbleParticles.SetActive(true);
             }
             else if (cloth)
             {
@@ -269,6 +284,7 @@ public class ActionsAnimations : MonoBehaviour
             {
 
                 kitchenCounter++;
+                bubbleParticles.SetActive(false);
                 if (kitchenCounter >= 2)
                 {
                     animatorWaterKitchen.SetTrigger("EmptySinkTrigger");
@@ -285,6 +301,7 @@ public class ActionsAnimations : MonoBehaviour
             }
         }
     }
+
 }
 
 
