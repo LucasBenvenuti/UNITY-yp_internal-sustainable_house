@@ -54,9 +54,9 @@ public class ActionsAnimations : MonoBehaviour
         {
             book.SetActive(false);
         }
-        if (plate && waterKitchen)
+        if (waterKitchen)
         {
-            plate.SetActive(false);
+            // plate.SetActive(false);
             //bubbleParticles.SetActive(false);
             animatorWaterKitchen = waterKitchen.GetComponent<Animator>();
             // waterKitchen.SetActive(false);
@@ -233,9 +233,8 @@ public class ActionsAnimations : MonoBehaviour
     {
         if (active == 1)
         {
-            if (plate)
+            if (waterKitchen)
             {
-                plate.SetActive(true);
                 if (kitchenCounter == 0)
                 {
                     animatorWaterKitchen.SetTrigger("FillSinkTrigger");
@@ -253,10 +252,6 @@ public class ActionsAnimations : MonoBehaviour
         }
         else if (active == 2)
         {
-            if (plate)
-            {
-                plate.SetActive(false);
-            }
             // else if (cloth)
             // {
 
@@ -265,7 +260,7 @@ public class ActionsAnimations : MonoBehaviour
         }
         else
         {
-            if (plate)
+            if (waterKitchen)
             {
                 kitchenCounter++;
                 if (kitchenCounter >= 2)
