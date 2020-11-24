@@ -8429,6 +8429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndCanvas: {fileID: 6238105324322753635}
+  endTweenDuration: 0.3
+  easeInOutEnd: 0
   totalTime: 600
   actionTimer: 5
   actionBaseTime: 5
@@ -21517,8 +21519,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8578709096913724467}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -62.747803, y: 0.0016851425, z: 31.317636}
-  m_LocalScale: {x: 188.31802, y: 188.31802, z: 188.31802}
+  m_LocalPosition: {x: -63.14, y: 0.0016851425, z: 31.317636}
+  m_LocalScale: {x: 188.31802, y: 218.34175, z: 188.31802}
   m_Children: []
   m_Father: {fileID: 543450653311411487}
   m_RootOrder: 89
@@ -31450,9 +31452,11 @@ MonoBehaviour:
   - 2
   - 2
   - 2
+  tutorialCanvasParent: {fileID: 0}
   tutorialCanvas: {fileID: 2362277923087496709}
   continueCanvas: {fileID: 2362277922999759168}
   handCanvas: {fileID: 1067601771}
+  maskCircleCanvas: {fileID: 0}
   closeStoreBtn: {fileID: 1040084475373272149}
   tweenDuration: 0.3
   easeInOut: 7
@@ -37017,7 +37021,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702952855595931779}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -67.39366, y: 1.0016849, z: 31.236017}
+  m_LocalPosition: {x: -67.4, y: 1.0016849, z: 31.236017}
   m_LocalScale: {x: 100, y: 183.64973, z: 100}
   m_Children: []
   m_Father: {fileID: 543450653311411487}
@@ -38722,8 +38726,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7178114112922292188}
   m_LocalRotation: {x: -0.50000006, y: -0.4999999, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -55.424263, y: 0.0016852021, z: 7.573422}
-  m_LocalScale: {x: 188.31802, y: 188.31802, z: 188.31802}
+  m_LocalPosition: {x: -55.424263, y: 0.0016852021, z: 7.77}
+  m_LocalScale: {x: 168.72165, y: 173.32039, z: 188.31802}
   m_Children: []
   m_Father: {fileID: 543450653311411487}
   m_RootOrder: 68
