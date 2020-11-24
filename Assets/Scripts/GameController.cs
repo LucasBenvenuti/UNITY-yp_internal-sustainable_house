@@ -133,6 +133,8 @@ public class GameController : MonoBehaviour
                 }
                 if (hit.transform.gameObject.tag == "Item")
                 {
+                    Debug.Log("ITEM");
+
                     selectItem(hit.transform.gameObject);
                 }
                 if (hit.transform.gameObject.tag == "Action")

@@ -6791,7 +6791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5161059445810844190, guid: a79b7b7030de8d7498b5944cc5df25cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a79b7b7030de8d7498b5944cc5df25cb, type: 3}
@@ -30098,7 +30098,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.040093694, y: 0.0003, z: 0.008744379}
+  m_Size: {x: 0.040093694, y: 0.0007, z: 0.008744379}
   m_Center: {x: -0.0044519897, y: -0.02999, z: 0.0040203896}
 --- !u!33 &2199664820982300470
 MeshFilter:
