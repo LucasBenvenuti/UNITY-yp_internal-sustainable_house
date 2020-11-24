@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 897673072864858336}
   - component: {fileID: 713815090196690827}
   - component: {fileID: 4765775124538094122}
+  - component: {fileID: 1831267560903882242}
   m_Layer: 0
   m_Name: ChuveiroGas
   m_TagString: Item
@@ -185,8 +186,27 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.009529395, y: 0.007561137, z: 0.011525204}
-  m_Center: {x: -0.010503439, y: 0.0016985686, z: 0.015343558}
+  m_Size: {x: 0.0068037487, y: 0.0059689833, z: 0.006098218}
+  m_Center: {x: -0.011362492, y: 0.0024946458, z: 0.014644935}
+--- !u!95 &1831267560903882242
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224740847026846994}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 455d3a83e04599244b1062870ce4b84f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8736728153243552819
 GameObject:
   m_ObjectHideFlags: 0
