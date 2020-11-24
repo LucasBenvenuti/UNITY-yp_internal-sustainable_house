@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &156734549711521590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3513544989095978549}
+  m_Layer: 0
+  m_Name: HelicePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3513544989095978549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156734549711521590}
+  m_LocalRotation: {x: 0.0067174635, y: -0.030014059, z: -0.21830393, w: 0.97539604}
+  m_LocalPosition: {x: -0.005107269, y: 0.0008954239, z: 0.035581943}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4293695058869380115}
+  m_Father: {fileID: 1455673209905496568}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -3.525, z: -25.231}
 --- !u!1 &1013804435115272870
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,7 +63,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
-  - {fileID: 4293695058869380115}
+  - {fileID: 3513544989095978549}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -111,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 0
+  itemOption: 1
   itemName: Ventilador
   itemType: 0
   itemPrice: -2
@@ -195,6 +226,7 @@ GameObject:
   - component: {fileID: 4293695058869380115}
   - component: {fileID: 1306582408130351863}
   - component: {fileID: 515804882159158860}
+  - component: {fileID: 1653514450669126563}
   m_Layer: 0
   m_Name: Helice
   m_TagString: Untagged
@@ -209,11 +241,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5663206551303538606}
-  m_LocalRotation: {x: 0.07058751, y: -0.015648875, z: -0.21587318, w: 0.9737409}
-  m_LocalPosition: {x: -0.005107269, y: 0.0008954239, z: 0.035581943}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_LocalRotation: {x: -0.000000020954756, y: -0.0000000018626449, z: 0.000000020547303, w: 1}
+  m_LocalPosition: {x: -0, y: 0.00031, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1455673209905496568}
+  m_Father: {fileID: 3513544989095978549}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1306582408130351863
@@ -265,3 +297,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1653514450669126563
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663206551303538606}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d77b977a0b37d44abe4c9dacec39265, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

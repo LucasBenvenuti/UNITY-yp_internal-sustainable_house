@@ -18,6 +18,7 @@ public class Tutorial : MonoBehaviour
     public CanvasGroup maskCircleCanvas;
 
     public Button closeStoreBtn;
+    public Button tutorialButton;
 
     public float tweenDuration = 0.3f;
     public LeanTweenType easeInOut;
@@ -81,6 +82,8 @@ public class Tutorial : MonoBehaviour
 
         leanPinch.enabled = false;
 
+        tutorialButton.enabled = false;
+
         currentTutorial = "start";
 
         numberOfFingers = 0;
@@ -143,7 +146,7 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
 
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -160,7 +163,7 @@ public class Tutorial : MonoBehaviour
 
         showUI = false;
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -179,7 +182,7 @@ public class Tutorial : MonoBehaviour
 
         showUI = false;
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -204,7 +207,7 @@ public class Tutorial : MonoBehaviour
 
         showUI = false;
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -223,7 +226,7 @@ public class Tutorial : MonoBehaviour
 
         showUI = true;
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -240,7 +243,7 @@ public class Tutorial : MonoBehaviour
 
         showUI = false;
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -259,7 +262,7 @@ public class Tutorial : MonoBehaviour
 
         showUI = true;
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -275,7 +278,7 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
 
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -294,7 +297,7 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
 
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
 
@@ -310,13 +313,15 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
 
         canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
     }
 
     public void ContinueTouch()
     {
         if (canContinue)
         {
+            tutorialButton.enabled = false;
+
             if (!showUI)
             {
                 if (currentTutorial != "final_1")

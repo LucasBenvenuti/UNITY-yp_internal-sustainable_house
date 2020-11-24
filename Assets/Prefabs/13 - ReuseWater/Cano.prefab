@@ -102,7 +102,8 @@ MonoBehaviour:
   itemType: 13
   itemPrice: 0
   itemSustainability: 0
-  itemCostPerMonth: 0
+  basePrice: 0
+  baseSustainability: 0
   itemSprite: {fileID: 21300000, guid: 5cfc106feaca5564b9afc681bf97d2d3, type: 3}
   itemPrefab: {fileID: 6512354355215967309}
   categoryName: "\xC1gua de Reuso"
@@ -138,7 +139,7 @@ MonoBehaviour:
   - edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
     backEdgeDilateAmount: 5
-    Renderer: {fileID: 0}
+    Renderer: {fileID: 4567649342265124}
     SubmeshIndex: 0
     ForceRecalculateBounds: 0
     CutoutDescriptionType: 0
