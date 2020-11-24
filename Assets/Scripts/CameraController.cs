@@ -107,22 +107,29 @@ public class CameraController : MonoBehaviour
         leanTwist.Dampening = rotationDampening;
 
         LeanTween.move(this.gameObject, cameraBasePosition, tweenDuration / 1f).setEase(inOutType);
-        LeanTween.value(this.gameObject, mainCamera.orthographicSize, cameraBaseSize, tweenDuration).setEase(inOutType).setOnUpdate((float flt) =>
-            {
-                mainCamera.orthographicSize = flt;
-            });
 
-        yield return new WaitForSeconds(tweenDuration);
+        if (TimerController.instance.inGame)
+        {
+            Debug.Log("OPA");
 
-        leanTwist.Dampening = rotationDampening;
+            LeanTween.value(this.gameObject, mainCamera.orthographicSize, cameraBaseSize, tweenDuration).setEase(inOutType).setOnUpdate((float flt) =>
+                {
+                    mainCamera.orthographicSize = flt;
+                }).setOnComplete(() =>
+                {
+                    leanTwist.Dampening = rotationDampening;
 
-        leanDrag.Sensitivity = dragSensitivity;
-        leanTwist.YawSensitivity = yawSensitivity;
+                    leanDrag.Sensitivity = dragSensitivity;
+                    leanTwist.YawSensitivity = yawSensitivity;
 
-        leanDrag.enabled = true;
-        leanPinch.enabled = true;
+                    leanDrag.enabled = true;
+                    leanPinch.enabled = true;
 
-        GameController.instance.canGoToObject = true;
+                    GameController.instance.canGoToObject = true;
+                });
+        }
+
+        yield return null;
     }
 
 

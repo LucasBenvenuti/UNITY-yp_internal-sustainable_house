@@ -118,8 +118,10 @@ public class GameController : MonoBehaviour
 
     public void onTap()
     {
-        if (canGoToObject)
+        if (canGoToObject && TimerController.instance.inGame)
         {
+            Debug.Log(TimerController.instance.inGame);
+
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -156,7 +158,12 @@ public class GameController : MonoBehaviour
                 if (Tutorial.instance.currentTutorial == "interact")
                 {
                     LeanTween.alphaCanvas(Tutorial.instance.handCanvas, 0f, Tutorial.instance.tweenDuration).setEase(Tutorial.instance.easeInOut);
+                    LeanTween.alphaCanvas(Tutorial.instance.maskCircleCanvas, 0f, Tutorial.instance.tweenDuration).setEase(Tutorial.instance.easeInOut);
                     Tutorial.instance.canContinue = false;
+                }
+                else
+                {
+                    return;
                 }
             }
         }

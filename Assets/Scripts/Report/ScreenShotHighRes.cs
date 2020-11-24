@@ -51,8 +51,11 @@ public class ScreenShotHighRes : MonoBehaviour
 
         Debug.Log(string.Format("Took screenshot to: {0}", filename));
 
-        Sprite tempSprite = Sprite.Create(_screenShot, new Rect(0, 0, resWidth, resHeight), new Vector2(0, 0));
-        canvasImage.sprite = tempSprite;
+        if (canvasImage)
+        {
+            Sprite tempSprite = Sprite.Create(_screenShot, new Rect(0, 0, resWidth, resHeight), new Vector2(0, 0));
+            canvasImage.sprite = tempSprite;
+        }
 
         Debug.Log("Ended TAKESCREENSHOT");
     }

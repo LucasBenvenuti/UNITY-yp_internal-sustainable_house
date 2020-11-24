@@ -8,7 +8,9 @@ public class TimerController : MonoBehaviour
 {
     public static TimerController instance;
 
-    public GameObject EndCanvas;
+    public CanvasGroup EndCanvas;
+    public float endTweenDuration = 0.3f;
+    public LeanTweenType easeInOutEnd;
 
     public float totalTime; //sets 12 minutes for timer
     public float actionTimer;
@@ -39,7 +41,9 @@ public class TimerController : MonoBehaviour
             Destroy(this);
         }
 
-        EndCanvas.SetActive(false);
+        EndCanvas.alpha = 0;
+        EndCanvas.interactable = false;
+        EndCanvas.blocksRaycasts = false;
     }
     void Start()
     {
@@ -87,13 +91,24 @@ public class TimerController : MonoBehaviour
 
     void FinishGame()
     {
-        // report.PrintScene();
+        StartCoroutine(ReportCoroutine());
+    }
+
+    IEnumerator ReportCoroutine()
+    {
+        inGame = false;
+        report.GenerateReport();
 
         Debug.Log("Function called when the timer is over for finish the game");
         timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
-        inGame = false;
 
-        EndCanvas.SetActive(true);
+        yield return new WaitForSeconds(2f);
+
+        LeanTween.alphaCanvas(EndCanvas, 1f, endTweenDuration).setEase(easeInOutEnd).setOnComplete(() =>
+        {
+            EndCanvas.interactable = true;
+            EndCanvas.blocksRaycasts = true;
+        });
     }
 
     public void ActionsDisplay()

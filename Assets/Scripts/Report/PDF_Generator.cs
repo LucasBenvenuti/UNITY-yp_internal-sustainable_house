@@ -1,82 +1,26 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
-using UnityEngine.UI;
 using System.IO;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-
-struct Company
-{
-    public string m_company;
-    public string m_abn;
-    public string m_bsb;
-    public string m_accountNo;
-    public string m_accountName;
-    public string m_people;
-    public string m_address1;
-    public string m_address2;
-    public string m_website;
-    public string m_phone;
-    public string m_email;
-    public string m_logourl;
-}
+using UnityEngine.Networking;
 
 public class PDF_Generator : MonoBehaviour
 {
-    public Button SubmitButton;
-    public SendEmail sendEmail;
     public ScreenShotHighRes screenshotGO;
-    public Text label;
-    public Text label2;
 
     public iTextSharp.text.Image printImage;
 
     [HideInInspector]
     public byte[] imageByte;
 
+    [HideInInspector]
+    public byte[] pdfbytes;
+
     string fileName;
-
-    //公司
-    Company[] m_company = new Company[2];
-    //状态
-    string[] m_status = new string[3];
-    //装载信息
-    public void SetCompanyDetials()
-    {
-        //状态
-        m_status[0] = "QUOTE.png";
-        m_status[1] = "UNPAID.png";
-        m_status[2] = "PAID.png";
-
-        //smartidea
-        m_company[0].m_company = "SMART IDEA GROUP PTY LTD";
-        m_company[0].m_abn = "531 6651 4576";
-        m_company[0].m_bsb = "083-961";
-        m_company[0].m_accountNo = "3956 33979";
-        m_company[0].m_accountName = "SMART IDEA";
-        m_company[0].m_people = "SMART IDEA";
-        m_company[0].m_address1 = "Unit 2/34 Efficient Drive";
-        m_company[0].m_address2 = "Truganina VIC 3029 Australia";
-        m_company[0].m_website = "smartidea.net.au";
-        m_company[0].m_email = "sales@smartidea.net.au";
-        m_company[0].m_phone = "+61 (0)3 8353 2760";
-        m_company[0].m_logourl = "sm_logo.png";
-
-        //baoguo
-        m_company[1].m_company = "BAOGUO PTY LTD";
-        m_company[1].m_abn = "531 6651 4576";
-        m_company[1].m_bsb = "083-961";
-        m_company[1].m_accountNo = "3956 33979";
-        m_company[1].m_accountName = "SMART IDEA";
-        m_company[1].m_people = "SMART IDEA";
-        m_company[1].m_address1 = "Unit 2/34 Efficient Drive";
-        m_company[1].m_address2 = "Truganina VIC 3029 Australia";
-        m_company[1].m_website = "baoguo.com.au";
-        m_company[1].m_email = "sales@smartidea.net.au";
-        m_company[1].m_phone = "+61 (0)3 8353 2760";
-        m_company[1].m_logourl = "baoguo_Logo.png";
-    }
 
     public IEnumerator ClickCoroutine()
     {
@@ -92,11 +36,6 @@ public class PDF_Generator : MonoBehaviour
             BaseFont bold_text = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, false);
 
             Document doc = new Document(PageSize.LETTER, 10, 10, 30, 5);
-
-            // string pathToInstance = Path.Combine(Application.streamingAssetsPath, fileName);
-
-            Debug.Log(Application.streamingAssetsPath);
-            Debug.Log(Application.persistentDataPath);
 
             DateTime dt = DateTime.Now;
             fileName = "Report" + "_" + dt.Year + "_" + dt.Month + "_" + dt.Day + "_" + dt.Hour + dt.Minute + dt.Second + ".pdf";
@@ -119,15 +58,65 @@ public class PDF_Generator : MonoBehaviour
             WritePdf(doc, 0, 1, bold_18, simple_12, bold_12);
 
             doc.Close();
-            SendEmail.Send(fileName);
+
+            StartCoroutine(SendToServer(pathToInstance, fileName));
         }
         catch (Exception e)
         {
-            label2.text = e.Message;
+            Debug.Log(e.Message);
         }
     }
 
-    public void Click()
+    IEnumerator SendToServer(string file, string fileName)
+    {
+        pdfbytes = File.ReadAllBytes(file);
+
+        string fileNew = Convert.ToBase64String(pdfbytes);
+
+        WWWForm form = new WWWForm();
+
+        form.AddField("fileBytes", fileNew);
+        form.AddField("fileName", fileName);
+
+        Debug.Log("FOIFOI");
+
+        yield return ServerRequest(form);
+
+        Debug.Log("FOIFOI__@");
+    }
+
+    IEnumerator ServerRequest(WWWForm form)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Post("http://localhost:3000/upload-pdf", form))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
+            {
+                Debug.Log("Error: " + request.error);
+            }
+            else
+            {
+                Debug.Log("Received: " + request.downloadHandler.text);
+
+                foreach (var fileToDelete in Directory.GetFiles(Application.persistentDataPath))
+                {
+                    FileInfo file_info = new FileInfo(fileToDelete);
+                    try
+                    {
+                        Debug.Log(file_info);
+                        file_info.Delete();
+                    }
+                    catch
+                    {
+                        Debug.Log("File Delete Error! Probably is in use.");
+                    }
+                }
+            }
+        }
+    }
+
+    public void GeneratePDF()
     {
         StartCoroutine(ClickCoroutine());
     }
@@ -145,28 +134,87 @@ public class PDF_Generator : MonoBehaviour
         //GET IMAGE FROM CREATED PRINT
         iTextSharp.text.Image IMG = iTextSharp.text.Image.GetInstance(imageByte);
 
+        iTextSharp.text.pdf.PdfPCell imgCell1 = new iTextSharp.text.pdf.PdfPCell();
+        imgCell1.AddElement(new Chunk(IMG, 0, 0));
+        imgCell1.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
+
         IMG.ScalePercent(30f);
-        IMG.SetAbsolutePosition(doc.PageSize.Width - 500f, doc.PageSize.Height - 500f);
+
+        // IMG.ScalePercent(30f);
+        // IMG.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
+        // IMG.SetAbsolutePosition(doc.PageSize.Width - 500f, 0f);
 
         doc.Add(IMG);
 
-        // iTextSharp.text.Image IMG2 = iTextSharp.text.Image.GetInstance(System.Environment.CurrentDirectory + @"\Assets\PDF\Pic\" + m_status[statusnum]);
-        // IMG2.ScalePercent(20f);
-        // IMG2.SetAbsolutePosition(doc.PageSize.Width - 200f, doc.PageSize.Height - 200f);
-        // doc.Add(IMG2);
+        // actionsAnimations
 
-        Paragraph company_details = new Paragraph(m_company[logonum].m_company + "\n" +
-                                                  m_company[logonum].m_email + "\n" +
-                                                  m_company[logonum].m_phone + "\n" +
-                                                  m_company[logonum].m_website + "\n" +
-                                                  "------------------------------------" + "\n" +
-                                                  "ABN : " + m_company[logonum].m_abn + "\n" +
-                                                  "BSB : " + m_company[logonum].m_bsb + "\n" +
-                                                  "Account No : " + m_company[logonum].m_accountNo + "\n" +
-                                                  "Account Name : " + m_company[logonum].m_accountName + "\n"
-                                                  , simple_12);
-        company_details.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
-        doc.Add(company_details);
+        string reportParagraph = "";
+
+        foreach (string report in GameController.instance.reportList)
+        {
+            reportParagraph += (report + "\n");
+        }
+
+        Paragraph reportTexts = new Paragraph(reportParagraph);
+
+        // Paragraph reportTexts = new Paragraph(GameController.instance.reportList[0] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n" +
+        // reportArray[1] + "\n" +
+        // reportArray[2] + "\n" +
+        // reportArray[3] + "\n" +
+        // reportArray[4] + "\n");
+
+        reportTexts.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
+
+        doc.Add(reportTexts);
+
         AddBlank(doc);
 
         //账单基本信息
@@ -505,21 +553,9 @@ public class PDF_Generator : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        SetCompanyDetials();
-
         string pdfPath = Application.persistentDataPath;
-
         Debug.Log(pdfPath);
-        label.text = pdfPath;
 
         Directory.CreateDirectory(pdfPath);
-
-        SubmitButton.onClick.AddListener(Click);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

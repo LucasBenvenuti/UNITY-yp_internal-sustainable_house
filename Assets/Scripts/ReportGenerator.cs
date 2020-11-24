@@ -7,35 +7,37 @@ using UnityEngine.UI;
 public class ReportGenerator : MonoBehaviour
 {
     public GameObject printPoint;
-    public GameObject interfaceObject;
-
-    public ScreenShotHighRes screenShot;
-
     public PDF_Generator pdfGenerator;
-
     public float printCameraZoom = 15f;
+    public Camera mainCamera;
+    public Vector3 endCameraPosition;
+    public float tweenDuration = 0.5f;
+    public LeanTweenType easeInOut;
+    public LeanPinchCamera leanPinch;
 
-    public void PrintScene()
+    public void GenerateReport()
     {
         StartCoroutine(PrintFunc());
     }
 
     public IEnumerator PrintFunc()
     {
-        if (!GameController.instance.canGoToObject)
-        {
-            CameraController.instance.ReturnToBasePosition();
+        yield return new WaitUntil(() => TimerController.instance.inGame == false);
 
-            yield return new WaitForSeconds(CameraController.instance.tweenDuration);
-        }
+        GameController.instance.closePanel();
 
-        Debug.Log(printPoint.transform.position);
-
-        CameraController.instance.LerpToZoomPosition(printPoint, printCameraZoom);
-
-        yield return new WaitForSeconds(CameraController.instance.tweenDuration);
-
-        pdfGenerator.Click();
+        LeanTween.move(mainCamera.gameObject.transform.parent.gameObject, printPoint.transform.position, tweenDuration).setEase(easeInOut);
+        LeanTween.move(mainCamera.gameObject, printPoint.transform.position, tweenDuration).setEase(easeInOut);
+        LeanTween.value(mainCamera.gameObject, mainCamera.orthographicSize, printCameraZoom, tweenDuration).setEase(easeInOut).setOnUpdate((float flt) =>
+            {
+                if (!GameController.instance.canGoToObject)
+                {
+                    mainCamera.orthographicSize = flt;
+                }
+                else
+                {
+                    leanPinch.Zoom = flt;
+                }
+            }).setOnComplete(() => { pdfGenerator.GeneratePDF(); });
     }
-
 }

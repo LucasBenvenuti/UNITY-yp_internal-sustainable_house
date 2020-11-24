@@ -15,6 +15,7 @@ public class Tutorial : MonoBehaviour
     public CanvasGroup tutorialCanvas;
     public CanvasGroup continueCanvas;
     public CanvasGroup handCanvas;
+    public CanvasGroup maskCircleCanvas;
 
     public Button closeStoreBtn;
 
@@ -61,6 +62,7 @@ public class Tutorial : MonoBehaviour
         }
 
         handCanvas.alpha = 0;
+        maskCircleCanvas.alpha = 0;
 
         tutorialCanvasParent.alpha = 1;
         tutorialCanvasParent.blocksRaycasts = true;
@@ -190,13 +192,15 @@ public class Tutorial : MonoBehaviour
         Debug.Log("Fourth TEXT");
         LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
 
-        currentTutorial = "interact";
-
         goToObject();
 
         yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
 
         LeanTween.alphaCanvas(handCanvas, 1f, tweenDuration).setEase(easeInOut);
+        LeanTween.alphaCanvas(maskCircleCanvas, 0.6f, tweenDuration).setEase(easeInOut).setOnComplete(() =>
+        {
+            currentTutorial = "interact";
+        });
 
         showUI = false;
         canContinue = true;
