@@ -24,11 +24,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3774906761177204991}
-  m_LocalRotation: {x: 0.8372861, y: 0.4031399, z: 0.15378708, w: 0.335827}
-  m_LocalPosition: {x: -0.0199, y: 0.0157, z: 0.0451}
-  m_LocalScale: {x: 0.008, y: 0.008, z: 0.008}
+  m_LocalRotation: {x: 0.3545852, y: 0.39380687, z: -0.17631906, w: 0.82951623}
+  m_LocalPosition: {x: 0.1330934, y: 1.2165033, z: -0.29535928}
+  m_LocalScale: {x: 0.26400003, y: 0.26400006, z: 0.26400006}
   m_Children: []
-  m_Father: {fileID: 4173889583689414813}
+  m_Father: {fileID: 6393744577732233998}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 154, y: -36, z: -60}
 --- !u!212 &487316279263550533
@@ -82,6 +82,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3812095916302308373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6393744577732233998}
+  m_Layer: 0
+  m_Name: IconContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6393744577732233998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812095916302308373}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.02393313, y: 0.00674973, z: 0.008236289}
+  m_LocalScale: {x: 0.030303031, y: 0.030303022, z: 0.030303022}
+  m_Children:
+  - {fileID: 7342333921192297119}
+  - {fileID: 2177334712970824161}
+  m_Father: {fileID: 4173889583689414813}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4189244074260474911
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +129,7 @@ GameObject:
   - component: {fileID: 1666574572709670053}
   - component: {fileID: 1958242311897419562}
   - component: {fileID: 1508987167670653087}
+  - component: {fileID: 3035063789428188152}
   m_Layer: 0
   m_Name: ChuveiroHibrido
   m_TagString: Item
@@ -115,8 +148,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 33, y: 33, z: 33}
   m_Children:
-  - {fileID: 7342333921192297119}
-  - {fileID: 2177334712970824161}
+  - {fileID: 6393744577732233998}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -270,6 +302,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02750482, y: 0.030364666, z: 0.018725304}
   m_Center: {x: -0.027155213, y: 0.00831712, z: 0.046349872}
+--- !u!95 &3035063789428188152
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4189244074260474911}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b4d02580ef1498145830ff213432a214, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5119696728938550474
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,11 +345,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5119696728938550474}
-  m_LocalRotation: {x: 0.8372861, y: 0.4031399, z: 0.15378708, w: 0.335827}
-  m_LocalPosition: {x: -0.0324, y: 0.0001, z: 0.0454}
-  m_LocalScale: {x: 0.008, y: 0.008, z: 0.008}
+  m_LocalRotation: {x: 0.3545852, y: 0.39380687, z: -0.17631906, w: 0.82951623}
+  m_LocalPosition: {x: -0.27940658, y: 1.2264035, z: 0.1897411}
+  m_LocalScale: {x: 0.26400003, y: 0.26400006, z: 0.26400006}
   m_Children: []
-  m_Father: {fileID: 4173889583689414813}
+  m_Father: {fileID: 6393744577732233998}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 154, y: -36, z: -60}
 --- !u!212 &7733505729607929112

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -9117319704099233121}
   - component: {fileID: -6982917823841528801}
   - component: {fileID: 538009574442899209}
+  - component: {fileID: 2527094183701546082}
   m_Layer: 0
   m_Name: ChuveiroSolar
   m_TagString: Item
@@ -187,6 +188,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.049500752, y: 0.01820864, z: 0.0066403723}
   m_Center: {x: -0.023171872, y: -9.002087e-19, z: -0.0004421104}
+--- !u!95 &2527094183701546082
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449225763651215128}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d63731a649d1014aae04d7df6d4f959, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8015541440100440953
 GameObject:
   m_ObjectHideFlags: 0
