@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawingMode: 1
-  outlineLayer: 0
+  outlineLayer: 1
   outlineTargets:
   - edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -227,7 +227,7 @@ MonoBehaviour:
     ForceRecalculateBounds: 0
     CutoutDescriptionType: 0
     CutoutThreshold: 0.5
-    CullMode: 2
+    CullMode: 0
     cutoutTextureName: 
     DilateRenderingMode: 0
   - edgeDilateAmount: 5
@@ -238,7 +238,7 @@ MonoBehaviour:
     ForceRecalculateBounds: 0
     CutoutDescriptionType: 0
     CutoutThreshold: 0.5
-    CullMode: 2
+    CullMode: 0
     cutoutTextureName: 
     DilateRenderingMode: 0
   renderStyle: 2
