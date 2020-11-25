@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 373366930561864512}
   - component: {fileID: 4275642517818682798}
   - component: {fileID: 6985033244788823684}
+  - component: {fileID: -4639304137602605350}
   m_Layer: 0
   m_Name: ArSemSelo
   m_TagString: Item
@@ -122,7 +123,61 @@ MonoBehaviour:
   itemPrefab: {fileID: 28973879545082397}
   categoryName: "Climatiza\xE7\xE3o"
   zoomSize: 7
+  alreadyChanged: 1
+  outlineOrange: {fileID: 6985033244788823684}
+  outlineBlue: {fileID: -4639304137602605350}
 --- !u!114 &6985033244788823684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28973879545082397}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawingMode: 1
+  outlineLayer: 1
+  outlineTargets:
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 8468014110459253561}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+  renderStyle: 2
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 0
+    color: {r: 2.828427, g: 2.828427, b: 2.828427, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.3813261, b: 0, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+--- !u!114 &-4639304137602605350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +222,7 @@ MonoBehaviour:
       serializedProperties: []
   frontParameters:
     enabled: 1
-    color: {r: 1, g: 0.3813261, b: 0, a: 1}
+    color: {r: 0, g: 0.25490198, b: 1, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:

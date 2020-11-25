@@ -103,6 +103,21 @@ public class GameController : MonoBehaviour
         {
             uiItemList[i].gameObject.SetActive(false);
         }
+
+        for (int i = 0; i < prefabsList.Count; i++)
+        {
+            for (int j = 0; j < prefabsList[i].prefabsList.Count; j++)
+            {
+                if (prefabsList[i].prefabsList[j].outlineOrange && prefabsList[i].prefabsList[j].outlineBlue)
+                {
+
+                    prefabsList[i].prefabsList[j].outlineOrange.enabled = true;
+                    prefabsList[i].prefabsList[j].outlineBlue.enabled = false;
+                }
+
+                prefabsList[i].prefabsList[j].alreadyChanged = false;
+            }
+        }
     }
 
     void Start()

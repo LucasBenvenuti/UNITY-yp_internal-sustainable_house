@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4115911998736431685}
   - component: {fileID: 6202856108689097004}
   - component: {fileID: -3934311770835681313}
+  - component: {fileID: 387156017886959227}
   m_Layer: 0
   m_Name: Ventilador
   m_TagString: Item
@@ -154,6 +155,9 @@ MonoBehaviour:
   itemPrefab: {fileID: 1013804435115272870}
   categoryName: "Climatiza\xE7\xE3o"
   zoomSize: 6
+  alreadyChanged: 0
+  outlineOrange: {fileID: -3934311770835681313}
+  outlineBlue: {fileID: 387156017886959227}
 --- !u!114 &-3934311770835681313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +215,68 @@ MonoBehaviour:
   frontParameters:
     enabled: 1
     color: {r: 1, g: 0.3813261, b: 0, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+--- !u!114 &387156017886959227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013804435115272870}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawingMode: 1
+  outlineLayer: 1
+  outlineTargets:
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 7614202114738738747}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 515804882159158860}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+  renderStyle: 2
+  outlineParameters:
+    enabled: 1
+    color: {r: 4, g: 4, b: 4, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 0
+    color: {r: 2.828427, g: 2.828427, b: 2.828427, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 0, g: 0.25490198, b: 1, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:

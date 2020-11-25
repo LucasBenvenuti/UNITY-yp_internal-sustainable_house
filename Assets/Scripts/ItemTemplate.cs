@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EPOOutline;
 
 public class ItemTemplate : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class ItemTemplate : MonoBehaviour
     public string categoryName;
 
     public float zoomSize = 5f;
+
+    public bool alreadyChanged = false;
+
+    public Outlinable outlineOrange;
+    public Outlinable outlineBlue;
 
     void Start()
     {

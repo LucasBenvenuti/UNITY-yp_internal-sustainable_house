@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2327583587948852929}
   - component: {fileID: -5754917040789484030}
   - component: {fileID: -3319809552001743849}
+  - component: {fileID: -4700915117734350299}
   m_Layer: 0
   m_Name: TVSemSelo
   m_TagString: Item
@@ -140,6 +141,9 @@ MonoBehaviour:
   itemPrefab: {fileID: 6366219437627164390}
   categoryName: "Televis\xE3o"
   zoomSize: 5
+  alreadyChanged: 1
+  outlineOrange: {fileID: -3319809552001743849}
+  outlineBlue: {fileID: -4700915117734350299}
 --- !u!65 &-5754917040789484030
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,6 +158,68 @@ BoxCollider:
   m_Size: {x: 0.042335175, y: 0.0089524165, z: 0.032044828}
   m_Center: {x: -9.313226e-10, y: 0.0003205825, z: 0.0159933}
 --- !u!114 &-3319809552001743849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366219437627164390}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 9193545288433842385}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 9193545288433842385}
+    SubmeshIndex: 1
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+  renderStyle: 2
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 0
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.3813261, b: 0, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+--- !u!114 &-4700915117734350299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,7 +275,7 @@ MonoBehaviour:
       serializedProperties: []
   frontParameters:
     enabled: 1
-    color: {r: 1, g: 0.3813261, b: 0, a: 1}
+    color: {r: 0, g: 0.25490198, b: 1, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:

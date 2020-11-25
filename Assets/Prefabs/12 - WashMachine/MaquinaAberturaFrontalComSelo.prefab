@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2426303058077087568}
   - component: {fileID: 8301825776064278811}
   - component: {fileID: -5113450949620697371}
+  - component: {fileID: 2371374013645379196}
   m_Layer: 0
   m_Name: MaquinaAberturaFrontalComSelo
   m_TagString: Item
@@ -110,6 +111,9 @@ MonoBehaviour:
   itemPrefab: {fileID: 121966439491313772}
   categoryName: "M\xE1quina de Lavar"
   zoomSize: 7
+  alreadyChanged: 1
+  outlineOrange: {fileID: 8301825776064278811}
+  outlineBlue: {fileID: 2371374013645379196}
 --- !u!114 &8301825776064278811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121966439491313772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
@@ -185,6 +189,68 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020389508, y: 0.019999998, z: 0.024119688}
   m_Center: {x: -0.00019666506, y: 0, z: 0.012059844}
+--- !u!114 &2371374013645379196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121966439491313772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 362329659377900075}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 362329659377900075}
+    SubmeshIndex: 1
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+  renderStyle: 2
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 0
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 0, g: 0.25490198, b: 1, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
 --- !u!1 &6206810407102909386
 GameObject:
   m_ObjectHideFlags: 0

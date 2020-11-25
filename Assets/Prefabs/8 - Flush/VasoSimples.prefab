@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2312589180795854786}
   - component: {fileID: -7738610981427464122}
   - component: {fileID: -1920785664867219080}
+  - component: {fileID: 2604629421873955203}
   m_Layer: 0
   m_Name: VasoSimples
   m_TagString: Item
@@ -109,6 +110,9 @@ MonoBehaviour:
   itemPrefab: {fileID: 3932224250795877432}
   categoryName: Descarga
   zoomSize: 5
+  alreadyChanged: 0
+  outlineOrange: {fileID: -1920785664867219080}
+  outlineBlue: {fileID: 2604629421873955203}
 --- !u!65 &-7738610981427464122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168,6 +172,57 @@ MonoBehaviour:
   frontParameters:
     enabled: 1
     color: {r: 1, g: 0.3813261, b: 0, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+--- !u!114 &2604629421873955203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3932224250795877432}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawingMode: 1
+  outlineLayer: 1
+  outlineTargets:
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 1656306935303890672}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+  renderStyle: 2
+  outlineParameters:
+    enabled: 1
+    color: {r: 2.828427, g: 2.828427, b: 2.828427, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 0
+    color: {r: 2.828427, g: 2.828427, b: 2.828427, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 0, g: 0.25490198, b: 1, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:

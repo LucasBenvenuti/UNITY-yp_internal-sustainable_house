@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EPOOutline;
 
 public class SelectItem : MonoBehaviour
 {
@@ -35,6 +36,14 @@ public class SelectItem : MonoBehaviour
                 {
                     Tutorial.instance.canContinue = false;
                 }
+            }
+
+            if (!itemSelectedTemplate.alreadyChanged)
+            {
+                itemSelectedTemplate.outlineOrange.enabled = false;
+                itemSelectedTemplate.outlineBlue.enabled = true;
+
+                itemSelectedTemplate.alreadyChanged = true;
             }
 
             GameObject prefab = Instantiate(itemPrefab);
