@@ -4,31 +4,52 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource backgroundIngameSource;
     public AudioSource buttonSource;
     public float animDuration;
     public LeanTweenType easeInOut;
 
-    public float volume = 0.04f;
+    public float volumeBackgroundInGame = 0.04f;
+    public float volumeButtons = 0.1f;
+
+    public bool muted = false;
 
     // Update is called once per frame
+
+    public void Start()
+    {
+        StartSound();
+    }
+
+    public void StartSound()
+    {
+        backgroundIngameSource.volume = volumeBackgroundInGame;
+        buttonSource.volume = volumeButtons;
+    }
+
     public void ToggleBackgroundAudio()
     {
-        if (audioSource.volume != 0f)
+        if (!muted)
         {
-            LeanTween.value(this.gameObject, this.audioSource.volume, 0f, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
-            {
-                audioSource.volume = flt;
-            });
             buttonSource.volume = 0f;
+            LeanTween.value(this.gameObject, backgroundIngameSource.volume, 0f, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
+            {
+                backgroundIngameSource.volume = flt;
+            }).setOnComplete(() =>
+            {
+                muted = true;
+            });
         }
         else
         {
-            buttonSource.volume = 0.2f;
-            LeanTween.value(this.gameObject, this.audioSource.volume, volume, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
- {
-     audioSource.volume = flt;
- });
+            buttonSource.volume = volumeButtons;
+            LeanTween.value(this.gameObject, backgroundIngameSource.volume, volumeBackgroundInGame, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
+                {
+                    backgroundIngameSource.volume = flt;
+                }).setOnComplete(() =>
+                {
+                    muted = false;
+                });
         }
     }
 }

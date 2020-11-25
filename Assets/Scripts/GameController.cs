@@ -121,8 +121,6 @@ public class GameController : MonoBehaviour
     {
         if (canGoToObject && TimerController.instance.inGame)
         {
-            Debug.Log(TimerController.instance.inGame);
-
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -134,8 +132,6 @@ public class GameController : MonoBehaviour
                 }
                 if (hit.transform.gameObject.tag == "Item")
                 {
-                    Debug.Log("ITEM");
-
                     selectItem(hit.transform.gameObject);
                 }
                 if (hit.transform.gameObject.tag == "Action")
@@ -178,7 +174,6 @@ public class GameController : MonoBehaviour
 
         //DO HERE PANEL APPEAR
         showPanel(hitItem);
-        Debug.Log("teste hitobject: " + hitObject);
         CameraController.instance.LerpToZoomPosition(hitObject, zoomValue);
 
     }
@@ -186,8 +181,6 @@ public class GameController : MonoBehaviour
     public void showPanel(ItemTemplate item)
     {
         currentOption = item.itemOption;
-
-        Debug.Log(item);
 
         for (int i = 0; i < prefabsList[item.itemType].prefabsList.Count; i++)
         {
@@ -340,7 +333,6 @@ public class GameController : MonoBehaviour
                         newSusValue = 0;
                     }
                 }
-                Debug.Log(name);
                 GameController.instance.addReportLine("Adicionado item " + name);
                 UIController.instance.NewUpdateValues(newMoneyValue, newSusValue);
                 Destroy(prefab);
@@ -348,7 +340,6 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                Debug.Log("item igual nao foi substituido");
                 destroyOriginalItem = false;
             }
         }
