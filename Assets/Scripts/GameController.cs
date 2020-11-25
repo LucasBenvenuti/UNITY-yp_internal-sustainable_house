@@ -55,6 +55,7 @@ public class GameController : MonoBehaviour
     public bool destroyOriginalItem;
     public bool itemPanelActive;
     public bool canGoToObject = true;
+    public bool goToObjectShop = false;
     public float itemSelectedPrice;
 
     public List<ListItems> prefabsList = new List<ListItems>();
@@ -177,8 +178,8 @@ public class GameController : MonoBehaviour
 
         //DO HERE PANEL APPEAR
         showPanel(hitItem);
-
-        CameraController.instance.LerpToZoomPosition(itemHolder, zoomValue);
+        Debug.Log("teste hitobject: " + hitObject);
+        CameraController.instance.LerpToZoomPosition(hitObject, zoomValue);
 
     }
 

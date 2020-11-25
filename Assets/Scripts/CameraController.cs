@@ -55,6 +55,18 @@ public class CameraController : MonoBehaviour
     {
         if (!GameController.instance.canGoToObject)
         {
+            if (GameController.instance.goToObjectShop)
+            {
+                int childCountShop = itemSelected.transform.childCount;
+                Vector3 itemZoomPositionShop = new Vector3(0, 0, 0);
+                itemZoomPositionShop = itemSelected.transform.GetChild(childCountShop - 1).position;
+                LeanTween.move(this.gameObject, itemZoomPositionShop, tweenDuration).setEase(inOutType);
+                LeanTween.value(this.gameObject, mainCamera.orthographicSize, cameraZoom, tweenDuration).setEase(inOutType).setOnUpdate((float flt) =>
+                {
+                    mainCamera.orthographicSize = flt;
+                });
+                GameController.instance.goToObjectShop = false;
+            }
             return;
         }
 

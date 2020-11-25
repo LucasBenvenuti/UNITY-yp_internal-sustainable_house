@@ -47,6 +47,8 @@ public class SelectItem : MonoBehaviour
             GameController.instance.currentOption = itemSelectedTemplate.itemOption;
             GameController.instance.uiItemList[GameController.instance.currentOption].button.interactable = false;
 
+            GameController.instance.goToObjectShop = true;
+            CameraController.instance.LerpToZoomPosition(prefab, itemSelectedTemplate.zoomSize);
             // UIController.instance.updateValues = true;
             // UIController.instance.NewUpdateValues(itemPrice, itemSustainability);
         }
