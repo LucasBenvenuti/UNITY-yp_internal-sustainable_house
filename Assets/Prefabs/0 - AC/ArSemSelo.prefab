@@ -121,7 +121,7 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 4d3ecadab96008e44ad32dfe3be59c12, type: 3}
   itemPrefab: {fileID: 28973879545082397}
   categoryName: "Climatiza\xE7\xE3o"
-  zoomSize: 11
+  zoomSize: 7
 --- !u!114 &6985033244788823684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3585521815831370889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0468, y: 0.0022, z: 0.1095}
+  m_LocalPosition: {x: -0.0636, y: 0.0707, z: 0.1067}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7412290097657933386}
