@@ -195,7 +195,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 3032740169244322213}
   categoryName: Torneira
   zoomSize: 2
-  alreadyChanged: 1
+  alreadyChanged: 0
   outlineOrange: {fileID: -8295965258772798968}
   outlineBlue: {fileID: 4669887268131723726}
 --- !u!114 &-8295965258772798968
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3032740169244322213}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3032740169244322213}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 

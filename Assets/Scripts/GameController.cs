@@ -122,6 +122,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        AudioController.instance.backgroundIngameSource.Play();
         if (SceneController.instance)
         {
             SceneController.instance.StartScene();
@@ -181,7 +182,7 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-
+        AudioController.instance.PlayActionsAudio();
         itemHolder = hitObject.transform.parent.gameObject;
 
         ItemTemplate hitItem = hitObject.GetComponent<ItemTemplate>();
@@ -362,6 +363,7 @@ public class GameController : MonoBehaviour
 
     public void SelectAction(GameObject hitAction)
     {
+        AudioController.instance.PlayActionsAudio();
         DisplayActionTypeUI(hitAction);
         StartCoroutine(ZoomToActionAndReturn(hitAction));
     }

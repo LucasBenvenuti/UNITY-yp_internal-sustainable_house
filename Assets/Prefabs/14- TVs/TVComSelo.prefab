@@ -142,7 +142,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 5216068476058213927}
   categoryName: "Televis\xE3o"
   zoomSize: 5
-  alreadyChanged: 1
+  alreadyChanged: 0
   outlineOrange: {fileID: -3551034458158572499}
   outlineBlue: {fileID: -3221322264981825173}
 --- !u!65 &-5929465284194216653
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5216068476058213927}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5216068476058213927}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 

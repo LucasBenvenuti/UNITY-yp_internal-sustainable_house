@@ -192,7 +192,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 4210430666679851350}
   categoryName: "\xC1gua de Reuso"
   zoomSize: 5
-  alreadyChanged: 1
+  alreadyChanged: 0
   outlineOrange: {fileID: -6611870122735485671}
   outlineBlue: {fileID: 3690486092960378576}
 --- !u!65 &-2486509147241374381
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4210430666679851350}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4210430666679851350}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 

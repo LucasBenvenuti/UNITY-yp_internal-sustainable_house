@@ -26,6 +26,7 @@ public class RegisterController : MonoBehaviour
 
     void Start()
     {
+        AudioController.instance.menuBackgroundSource.Play();
         if (SceneController.instance)
         {
             SceneController.instance.StartScene();

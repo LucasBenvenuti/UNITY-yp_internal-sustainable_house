@@ -111,7 +111,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 373086131806046513}
   categoryName: "M\xE1quina de Lavar"
   zoomSize: 7
-  alreadyChanged: 1
+  alreadyChanged: 0
   outlineOrange: {fileID: 4402407772724846589}
   outlineBlue: {fileID: 2690900104309498911}
 --- !u!114 &4402407772724846589
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373086131806046513}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373086131806046513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 

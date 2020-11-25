@@ -29,6 +29,7 @@ public class TimerController : MonoBehaviour
     [HideInInspector]
     public bool inGame = true;
 
+
     private void Awake()
     {
         if (!instance)
@@ -58,6 +59,11 @@ public class TimerController : MonoBehaviour
             if (totalTime > 0)
             {
                 totalTime -= Time.deltaTime;
+                if (totalTime < 5.1f && !AudioController.instance.playedEndGame)
+                {
+                    AudioController.instance.PlayEndTimerAudio();
+                    AudioController.instance.playedEndGame = true;
+                }
                 ActionsDisplay();
                 DisplayTimeMinAndSec(totalTime);
             }
@@ -101,8 +107,8 @@ public class TimerController : MonoBehaviour
 
         Debug.Log("Function called when the timer is over for finish the game");
         timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
-
         yield return new WaitForSeconds(2f);
+        AudioController.instance.PlayOpenFinalScreenAudio();
 
         LeanTween.alphaCanvas(EndCanvas, 1f, endTweenDuration).setEase(easeInOutEnd).setOnComplete(() =>
         {
