@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     public AudioSource audioSource;
+    public AudioSource buttonSource;
     public float animDuration;
     public LeanTweenType easeInOut;
 
@@ -19,9 +20,11 @@ public class AudioController : MonoBehaviour
             {
                 audioSource.volume = flt;
             });
+            buttonSource.volume = 0f;
         }
         else
         {
+            buttonSource.volume = 0.2f;
             LeanTween.value(this.gameObject, this.audioSource.volume, volume, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
  {
      audioSource.volume = flt;
