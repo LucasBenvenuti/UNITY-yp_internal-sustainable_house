@@ -75,7 +75,7 @@ ModelImporter:
       name: Armature.002|BrushTeeth
       takeName: Armature.002|BrushTeeth
       internalID: 0
-      firstFrame: 0
+      firstFrame: 70
       lastFrame: 310
       wrapMode: 0
       orientationOffsetY: 0
@@ -96,14 +96,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
-        functionName: CallEndCoroutine
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: dbbf5cd8419ed2e41b900d5b4f4f417d, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.2431101
+      - time: 0.061379492
         functionName: GrabToothbrush
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: dbbf5cd8419ed2e41b900d5b4f4f417d, type: 3}
@@ -112,6 +105,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.9946607
         functionName: GrabToothbrush
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: dbbf5cd8419ed2e41b900d5b4f4f417d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: CallEndCoroutine
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: dbbf5cd8419ed2e41b900d5b4f4f417d, type: 3}
         floatParameter: 0

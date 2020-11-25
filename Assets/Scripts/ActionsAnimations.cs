@@ -18,6 +18,7 @@ public class ActionsAnimations : MonoBehaviour
     public GameObject cellPhone;
     public GameObject chargingCellPhone;
     public GameObject toothbrush;
+    public GameObject sinkToothbrush;
     public GameObject book;
     public GameObject plate;
 
@@ -45,9 +46,10 @@ public class ActionsAnimations : MonoBehaviour
         {
             cellPhone.SetActive(false);
         }
-        if (toothbrush)
+        if (toothbrush && sinkToothbrush)
         {
             toothbrush.SetActive(false);
+            sinkToothbrush.SetActive(true);
 
         }
         if (book)
@@ -213,6 +215,7 @@ public class ActionsAnimations : MonoBehaviour
     {
         if (active == 1)
         {
+            sinkToothbrush.SetActive(false);
             toothbrush.SetActive(true);
         }
         else
