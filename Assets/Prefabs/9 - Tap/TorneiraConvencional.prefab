@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8981376109979220253}
   - component: {fileID: 1195011687243683848}
   - component: {fileID: 8304837461604275390}
+  - component: {fileID: 4815776546150858608}
   m_Layer: 0
   m_Name: TorneiraConvencional
   m_TagString: Item
@@ -267,5 +268,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.012579024, y: 0.011295559, z: 0.014152865}
-  m_Center: {x: -0.0066271983, y: 0.0006993948, z: 0.034903806}
+  m_Size: {x: 0.012579024, y: 0.011295559, z: 0.01650613}
+  m_Center: {x: -0.0066271983, y: 0.0006993949, z: 0.03608043}
+--- !u!95 &4815776546150858608
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967943392402169520}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46ca43f13e2225a44a498cbd40e818bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

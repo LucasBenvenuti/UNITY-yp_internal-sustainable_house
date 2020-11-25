@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1288294341241414627}
   - component: {fileID: -8648320037662928424}
   - component: {fileID: 116594575062935633}
+  - component: {fileID: 8277858953622790521}
   m_Layer: 0
   m_Name: TorneiraSensor 1
   m_TagString: Item
@@ -185,8 +186,27 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.040337697, y: 0.024304451, z: 0.045041353}
-  m_Center: {x: 0.0018998802, y: 0.0002725919, z: 0.06438363}
+  m_Size: {x: 0.040337715, y: 0.024304451, z: 0.042237144}
+  m_Center: {x: 0.0018998802, y: 0.00027259192, z: 0.06629005}
+--- !u!95 &8277858953622790521
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4188268316715412838}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6dafb9671701a74eb38ccffbe2371ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7288043978490551408
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7288043978490551408}
   m_LocalRotation: {x: 0.46723717, y: 0.07625729, z: -0.29342845, w: -0.83052635}
-  m_LocalPosition: {x: 0, y: -0, z: 0.0636}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0636}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 3909336565402779068}
