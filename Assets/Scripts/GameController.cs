@@ -286,6 +286,7 @@ public class GameController : MonoBehaviour
     }
     public void CheckAndDestroyItem(GameObject newPrefab, string name)
     {
+
         int newOption = newPrefab.GetComponent<ItemTemplate>().itemOption;
         float newItemPrice = newPrefab.GetComponent<ItemTemplate>().itemPrice;
         float newItemSus = newPrefab.GetComponent<ItemTemplate>().itemSustainability;
@@ -297,60 +298,61 @@ public class GameController : MonoBehaviour
             float oldItemSus = prefab.GetComponent<ItemTemplate>().itemSustainability;
             if (newOption != optionInScene)
             {
-                if (Mathf.Abs(newItemPrice) != Mathf.Abs(oldItemPrice))
-                {
-                    if (oldItemPrice < newItemPrice)
-                    {
-                        newMoneyValue = Mathf.Abs(oldItemPrice) + Mathf.Abs(newItemPrice);
-                    }
-                    else
-                    {
-                        newMoneyValue = (Mathf.Abs(oldItemPrice) + Mathf.Abs(newItemPrice)) * -1;
-                    }
-                }
-                else
-                {
-                    if (oldItemPrice < newItemPrice)
-                    {
-                        newMoneyValue = Mathf.Abs(newItemPrice) * 2;
-                    }
-                    else if (oldItemPrice > newItemPrice)
-                    {
-                        newMoneyValue = Mathf.Abs(newItemPrice) * -2;
-                    }
-                    else
-                    {
-                        newMoneyValue = 0;
-                    }
-                }
-                if (Mathf.Abs(newItemSus) != Mathf.Abs(oldItemSus))
-                {
-                    if (oldItemSus < newItemSus)
-                    {
-                        newSusValue = Mathf.Abs(oldItemSus) + Mathf.Abs(newItemSus);
-                    }
-                    else
-                    {
-                        newSusValue = (Mathf.Abs(oldItemSus) + Mathf.Abs(newItemSus)) * -1;
-                    }
-                }
-                else
-                {
-                    if (oldItemSus < newItemSus)
-                    {
-                        newSusValue = Mathf.Abs(newItemSus) * 2;
-                    }
-                    else if (oldItemSus > newItemSus)
-                    {
-                        newSusValue = Mathf.Abs(newItemSus) * -2;
-                    }
-                    else
-                    {
-                        newSusValue = 0;
-                    }
-                }
+                // if (Mathf.Abs(newItemPrice) != Mathf.Abs(oldItemPrice))
+                // {
+                //     if (oldItemPrice < newItemPrice)
+                //     {
+                //         newMoneyValue = Mathf.Abs(oldItemPrice) + Mathf.Abs(newItemPrice);
+                //     }
+                //     else
+                //     {
+                //         newMoneyValue = (Mathf.Abs(oldItemPrice) + Mathf.Abs(newItemPrice)) * -1;
+                //     }
+                // }
+                // else
+                // {
+                //     if (oldItemPrice < newItemPrice)
+                //     {
+                //         newMoneyValue = Mathf.Abs(newItemPrice) * 2;
+                //     }
+                //     else if (oldItemPrice > newItemPrice)
+                //     {
+                //         newMoneyValue = Mathf.Abs(newItemPrice) * -2;
+                //     }
+                //     else
+                //     {
+                //         newMoneyValue = 0;
+                //     }
+                // }
+                // if (Mathf.Abs(newItemSus) != Mathf.Abs(oldItemSus))
+                // {
+                //     if (oldItemSus < newItemSus)
+                //     {
+                //         newSusValue = Mathf.Abs(oldItemSus) + Mathf.Abs(newItemSus);
+                //     }
+                //     else
+                //     {
+                //         newSusValue = (Mathf.Abs(oldItemSus) + Mathf.Abs(newItemSus)) * -1;
+                //     }
+                // }
+                // else
+                // {
+                //     if (oldItemSus < newItemSus)
+                //     {
+                //         newSusValue = Mathf.Abs(newItemSus) * 2;
+                //     }
+                //     else if (oldItemSus > newItemSus)
+                //     {
+                //         newSusValue = Mathf.Abs(newItemSus) * -2;
+                //     }
+                //     else
+                //     {
+                //         newSusValue = 0;
+                //     }
+                // }
                 GameController.instance.addReportLine("Adicionado item " + name);
-                UIController.instance.NewUpdateValues(newMoneyValue, newSusValue);
+                //UIController.instance.NewUpdateValues(newMoneyValue, newSusValue);
+                UIController.instance.NewUpdateValues(oldItemPrice, oldItemSus, newItemPrice, newItemSus);
                 Destroy(prefab);
                 destroyOriginalItem = true;
             }
