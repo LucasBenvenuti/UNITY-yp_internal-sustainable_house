@@ -143,6 +143,7 @@ MonoBehaviour:
   alreadyChanged: 0
   outlineOrange: {fileID: 385190013541993492}
   outlineBlue: {fileID: 6271750970114154435}
+  particleSystem: {fileID: 0}
 --- !u!65 &3209790337026447571
 BoxCollider:
   m_ObjectHideFlags: 0

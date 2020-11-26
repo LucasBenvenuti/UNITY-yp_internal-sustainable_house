@@ -45,6 +45,8 @@ public class ItemTemplate : MonoBehaviour
     public Outlinable outlineOrange;
     public Outlinable outlineBlue;
 
+    public ParticleSystem particleSystem;
+
     void Start()
     {
         if (!isSelectable)
