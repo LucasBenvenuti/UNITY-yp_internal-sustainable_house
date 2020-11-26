@@ -20,25 +20,6 @@ public class GameController : MonoBehaviour
     public TMP_Text actionText;
     public LeanTweenType actionEaseInOut;
     public float actionTweenDuration = 0.3f;
-
-    /*
-      public GameObject[] dryCloths;
-      public GameObject[] lamps;
-      public GameObject[] windows;
-      public GameObject[] energy;
-      public GameObject[] water;
-      public GameObject[] sanatary;
-      public GameObject[] shower;
-      public GameObject[] flush;
-      public GameObject[] sink;
-      public GameObject[] garbage;
-      public GameObject[] reuseWater;
-      public GameObject[] laundry;
-     
-     */
-    //public GameObject[] acs;
-    //public GameObject[] refrigerator;
-    //public GameObject[] tvs;
     public GameObject[] itemType;
     public GameObject[] actionType;
 
@@ -214,8 +195,6 @@ public class GameController : MonoBehaviour
 
             uiItemList[i].icon.sprite = prefabsList[item.itemType].prefabsList[i].itemSprite;
             uiItemList[i].itemName.text = prefabsList[item.itemType].prefabsList[i].itemName;
-            // uiItemList[i].itemCost.text = prefabsList[item.itemType].prefabsList[i].itemPrice.ToString();
-            // uiItemList[i].itemSus.text = prefabsList[item.itemType].prefabsList[i].itemSustainability.ToString();
 
             if (prefabsList[item.itemType].prefabsList[i].baseSustainability >= 0)
             {
@@ -298,60 +277,7 @@ public class GameController : MonoBehaviour
             float oldItemSus = prefab.GetComponent<ItemTemplate>().itemSustainability;
             if (newOption != optionInScene)
             {
-                // if (Mathf.Abs(newItemPrice) != Mathf.Abs(oldItemPrice))
-                // {
-                //     if (oldItemPrice < newItemPrice)
-                //     {
-                //         newMoneyValue = Mathf.Abs(oldItemPrice) + Mathf.Abs(newItemPrice);
-                //     }
-                //     else
-                //     {
-                //         newMoneyValue = (Mathf.Abs(oldItemPrice) + Mathf.Abs(newItemPrice)) * -1;
-                //     }
-                // }
-                // else
-                // {
-                //     if (oldItemPrice < newItemPrice)
-                //     {
-                //         newMoneyValue = Mathf.Abs(newItemPrice) * 2;
-                //     }
-                //     else if (oldItemPrice > newItemPrice)
-                //     {
-                //         newMoneyValue = Mathf.Abs(newItemPrice) * -2;
-                //     }
-                //     else
-                //     {
-                //         newMoneyValue = 0;
-                //     }
-                // }
-                // if (Mathf.Abs(newItemSus) != Mathf.Abs(oldItemSus))
-                // {
-                //     if (oldItemSus < newItemSus)
-                //     {
-                //         newSusValue = Mathf.Abs(oldItemSus) + Mathf.Abs(newItemSus);
-                //     }
-                //     else
-                //     {
-                //         newSusValue = (Mathf.Abs(oldItemSus) + Mathf.Abs(newItemSus)) * -1;
-                //     }
-                // }
-                // else
-                // {
-                //     if (oldItemSus < newItemSus)
-                //     {
-                //         newSusValue = Mathf.Abs(newItemSus) * 2;
-                //     }
-                //     else if (oldItemSus > newItemSus)
-                //     {
-                //         newSusValue = Mathf.Abs(newItemSus) * -2;
-                //     }
-                //     else
-                //     {
-                //         newSusValue = 0;
-                //     }
-                // }
                 GameController.instance.addReportLine("Adicionado item " + name);
-                //UIController.instance.NewUpdateValues(newMoneyValue, newSusValue);
                 UIController.instance.NewUpdateValues(oldItemPrice, oldItemSus, newItemPrice, newItemSus);
                 Destroy(prefab);
                 destroyOriginalItem = true;
