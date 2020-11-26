@@ -69,6 +69,11 @@ public class ItemTemplate : MonoBehaviour
         {
             itemOption = 0;
         }
+
+        if (particleSystem && alreadyChanged)
+        {
+            particleSystem.Play();
+        }
     }
 }
 

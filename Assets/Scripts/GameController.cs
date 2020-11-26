@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using EPOOutline;
 
 [System.Serializable]
 public class ListItems
@@ -104,20 +105,20 @@ public class GameController : MonoBehaviour
             uiItemList[i].gameObject.SetActive(false);
         }
 
-        for (int i = 0; i < prefabsList.Count; i++)
-        {
-            for (int j = 0; j < prefabsList[i].prefabsList.Count; j++)
-            {
-                if (prefabsList[i].prefabsList[j].outlineOrange && prefabsList[i].prefabsList[j].outlineBlue)
-                {
+        // for (int i = 0; i < prefabsList.Count; i++)
+        // {
+        //     for (int j = 0; j < prefabsList[i].prefabsList.Count; j++)
+        //     {
+        //         if (prefabsList[i].prefabsList[j].outlineOrange && prefabsList[i].prefabsList[j].outlineBlue)
+        //         {
 
-                    prefabsList[i].prefabsList[j].outlineOrange.enabled = true;
-                    prefabsList[i].prefabsList[j].outlineBlue.enabled = false;
-                }
+        //             prefabsList[i].prefabsList[j].outlineOrange.enabled = true;
+        //             prefabsList[i].prefabsList[j].outlineBlue.enabled = false;
+        //         }
 
-                prefabsList[i].prefabsList[j].alreadyChanged = false;
-            }
-        }
+        //         prefabsList[i].prefabsList[j].alreadyChanged = false;
+        //     }
+        // }
     }
 
     void Start()
@@ -289,12 +290,17 @@ public class GameController : MonoBehaviour
         int newOption = newPrefab.GetComponent<ItemTemplate>().itemOption;
         float newItemPrice = newPrefab.GetComponent<ItemTemplate>().itemPrice;
         float newItemSus = newPrefab.GetComponent<ItemTemplate>().itemSustainability;
+
         if (itemHolder != null)
         {
             GameObject prefab = itemHolder.transform.GetChild(0).gameObject;
             int optionInScene = prefab.GetComponent<ItemTemplate>().itemOption;
             float oldItemPrice = prefab.GetComponent<ItemTemplate>().itemPrice;
             float oldItemSus = prefab.GetComponent<ItemTemplate>().itemSustainability;
+
+            // Outlinable oldOutline_0 = prefab.GetComponent<ItemTemplate>().outlineOrange;
+            // Outlinable oldOutline_1 = prefab.GetComponent<ItemTemplate>().outlineBlue;
+
             if (newOption != optionInScene)
             {
                 if (Mathf.Abs(newItemPrice) != Mathf.Abs(oldItemPrice))
@@ -349,6 +355,10 @@ public class GameController : MonoBehaviour
                         newSusValue = 0;
                     }
                 }
+
+                // oldOutline_0.enabled = true;
+                // oldOutline_1.enabled = false;
+
                 GameController.instance.addReportLine("Adicionado item " + name);
                 UIController.instance.NewUpdateValues(newMoneyValue, newSusValue);
                 Destroy(prefab);

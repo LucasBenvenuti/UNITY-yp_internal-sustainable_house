@@ -40,8 +40,8 @@ public class SelectItem : MonoBehaviour
 
             if (!itemSelectedTemplate.alreadyChanged)
             {
-                itemSelectedTemplate.outlineOrange.enabled = false;
-                itemSelectedTemplate.outlineBlue.enabled = true;
+                // itemSelectedTemplate.outlineOrange.enabled = false;
+                // itemSelectedTemplate.outlineBlue.enabled = true;
 
                 itemSelectedTemplate.alreadyChanged = true;
             }
@@ -56,10 +56,11 @@ public class SelectItem : MonoBehaviour
             GameController.instance.currentOption = itemSelectedTemplate.itemOption;
             GameController.instance.uiItemList[GameController.instance.currentOption].button.interactable = false;
 
-            itemSelectedTemplate.particleSystem.Play();
 
             GameController.instance.goToObjectShop = true;
             CameraController.instance.LerpToZoomPosition(prefab, itemSelectedTemplate.zoomSize);
+
+            Debug.Log(itemSelectedTemplate.particleSystem);
             // UIController.instance.updateValues = true;
             // UIController.instance.NewUpdateValues(itemPrice, itemSustainability);
         }
