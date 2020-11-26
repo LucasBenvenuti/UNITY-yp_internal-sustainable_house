@@ -7,6 +7,7 @@ public class MainRegister_Manager : MonoBehaviour
 {
     public CanvasGroup registerScreen;
     public CanvasGroup playScreen;
+    public CanvasGroup confirmScreen;
 
     public LeanTweenType easeInOut;
     public float tweenDuration = 0.2f;
@@ -14,7 +15,19 @@ public class MainRegister_Manager : MonoBehaviour
 
     void Awake()
     {
-        playScreen.alpha = 0f;
+        if (PlayerPrefs.GetString("lastScene") == "FromGame")
+        {
+            registerScreen.alpha = 0f;
+        }
+        else
+        {
+            playScreen.alpha = 0f;
+        }
+
+        confirmScreen.alpha = 0;
+        confirmScreen.blocksRaycasts = false;
+        confirmScreen.interactable = false;
+
     }
 
     public void RegisterScreenShow()
@@ -69,6 +82,13 @@ public class MainRegister_Manager : MonoBehaviour
 
     IEnumerator PlayToRegisterCoroutine()
     {
+        if (PlayerPrefs.GetString("lastScene") == "FromGame")
+        {
+            ShowConfirmScreen();
+
+            yield break;
+        }
+
         registerScreen.gameObject.SetActive(true);
 
         PlayScreenHide();
@@ -84,4 +104,30 @@ public class MainRegister_Manager : MonoBehaviour
         playScreen.gameObject.SetActive(false);
     }
 
+    public void ConfirmDeleteProgress()
+    {
+        PlayerPrefs.DeleteAll();
+
+        HideConfirmScreen();
+
+        PlayToRegister();
+    }
+
+    public void ShowConfirmScreen()
+    {
+        LeanTween.alphaCanvas(confirmScreen, 1f, tweenDuration).setEase(easeInOut).setOnStart(() =>
+        {
+            confirmScreen.blocksRaycasts = true;
+            confirmScreen.interactable = true;
+        });
+    }
+
+    public void HideConfirmScreen()
+    {
+        LeanTween.alphaCanvas(confirmScreen, 0f, tweenDuration).setEase(easeInOut).setOnStart(() =>
+        {
+            confirmScreen.blocksRaycasts = false;
+            confirmScreen.interactable = false;
+        });
+    }
 }

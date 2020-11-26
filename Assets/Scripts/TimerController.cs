@@ -12,7 +12,7 @@ public class TimerController : MonoBehaviour
     public float endTweenDuration = 0.3f;
     public LeanTweenType easeInOutEnd;
 
-    public float totalTime; //sets 12 minutes for timer
+    public float totalTime; //sets 10 minutes for timer
     public float actionTimer;
     public float actionBaseTime;
     public TMP_Text timeText;
@@ -92,7 +92,11 @@ public class TimerController : MonoBehaviour
         Debug.Log("Function for wait finish tutorial and start timer");
 
         Tutorial.instance.StartTutorial();
-        // Tutorial.instance.SkipTutorial();
+
+        if (PlayerPrefs.GetString("lastScene") == "FromGame")
+        {
+            Tutorial.instance.SkipTutorial();
+        }
     }
 
     void FinishGame()

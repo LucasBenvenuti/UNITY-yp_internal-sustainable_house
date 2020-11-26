@@ -18,10 +18,22 @@ public class RegisterController : MonoBehaviour
 
     void Awake()
     {
-        // PlayerPrefs.DeleteKey("Player_Name");
+        Debug.Log(PlayerPrefs.GetString("lastScene"));
 
-        RegisterCanvas.SetActive(true);
-        StartMenuCanvas.SetActive(false);
+        if (PlayerPrefs.GetString("lastScene") == "FromGame")
+        {
+            RegisterCanvas.SetActive(false);
+            StartMenuCanvas.SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetString("lastScene", "FromRegister");
+
+            PlayerPrefs.DeleteAll();
+
+            RegisterCanvas.SetActive(true);
+            StartMenuCanvas.SetActive(false);
+        }
     }
 
     void Start()

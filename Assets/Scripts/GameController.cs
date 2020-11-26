@@ -399,5 +399,10 @@ public class GameController : MonoBehaviour
         reportList.Add(reportString);
     }
 
+    public void SetLastScene()
+    {
+        PlayerPrefs.SetString("lastScene", "FromGame");
+    }
+
 }
 
