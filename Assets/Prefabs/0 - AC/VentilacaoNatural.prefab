@@ -193,7 +193,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 7976331039765859088}
   categoryName: "Climatiza\xE7\xE3o"
   zoomSize: 4
-  alreadyChanged: 0
+  alreadyChanged: 1
   outlineOrange: {fileID: 147657675625039557}
   outlineBlue: {fileID: 3075764712920679582}
   particleSystem: {fileID: 6632527130175345038}

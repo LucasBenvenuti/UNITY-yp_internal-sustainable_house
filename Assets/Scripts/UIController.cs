@@ -69,34 +69,18 @@ public class UIController : MonoBehaviour
         controlMoney = newMoney;
     }
 
-    public void NewUpdateValues(float price, float sustainability)
+    public void NewUpdateValues(float oldPrice, float oldSus, float newPrice, float newSus)
     {
         controlMoney = moneySlider.value;
         controlSustainability = sustainabilitySlider.value;
-        Debug.Log("PRICE: " + price);
-        // if (controlMoney < price)
-        // {
-        //     Debug.Log("VOCE NAO TEM DINHEIRO SUFICIENTE");
-        //     return false;
-        // }
-        // else
-        // {
-        GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + (controlMoney + price) + ".");
-        GameController.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + (controlSustainability + sustainability) + ".");
+        float neutralMoney = controlMoney - oldPrice;
+        float neutralSus = controlSustainability - oldSus;
+        float newMoneyValue = neutralMoney + newPrice;
+        float newSusValue = neutralSus + newSus;
 
-        float newSusValue = controlSustainability + sustainability;
-        float newMoneyValue = controlMoney + price;
-        // if (newSusValue < 0)
-        // {
-        //     sustainabilitySlider.value = 0;
-        //     Debug.Log("SUSTENTABILIDADE NEGATIVA");
-        // }
-        // else
-        //{
+        GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + newMoneyValue + ".");
+        GameController.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + newSusValue + ".");
         sustainabilitySlider.value = newSusValue;
         moneySlider.value = newMoneyValue;
-        //}
-        //return true;
     }
 }
-//}

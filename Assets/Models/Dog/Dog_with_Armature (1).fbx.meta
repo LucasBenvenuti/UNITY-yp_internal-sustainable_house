@@ -29,7 +29,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -49,7 +49,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -78,7 +78,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -141,7 +141,117 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Dog_with_Armature (1)(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dog
+      parentName: Dog_with_Armature (1)(Clone)
+      position: {x: 0.00000071525574, y: 0, z: 0.000005722046}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100.00004, y: 100.00004, z: 100.00004}
+    - name: Armature.001
+      parentName: Dog_with_Armature (1)(Clone)
+      position: {x: -1.2162954, y: 23.052694, z: -22.495646}
+      rotation: {x: -0.87743413, y: 0.02040963, z: 0.049999, w: 0.47664765}
+      scale: {x: 1089.6484, y: 1089.6484, z: 1089.6484}
+    - name: Base
+      parentName: Armature.001
+      position: {x: 0.0010734936, y: 0.0007185944, z: 0.0058470336}
+      rotation: {x: 0.9666723, y: 0.00332763, z: -0.000106189385, w: 0.25599545}
+      scale: {x: 1, y: 1.0000006, z: 1.0000961}
+    - name: Spine
+      parentName: Base
+      position: {x: 6.787559e-11, y: 0.0122076655, z: 1.0502191e-10}
+      rotation: {x: -0.060926467, y: -0.00000058990327, z: -0.00006566302, w: 0.99814224}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: Spine
+      position: {x: 7.5833666e-11, y: 0.010545221, z: 4.0287432e-10}
+      rotation: {x: -0.32645488, y: -0.000009486733, z: 0.000060760085, w: 0.94521284}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: L_ear
+      parentName: Neck
+      position: {x: -0.0085997535, y: 0.018096734, z: -0.0044919495}
+      rotation: {x: -0.20851183, y: 0.018723106, z: 0.5626003, w: 0.7997832}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: L_ear_end
+      parentName: L_ear
+      position: {x: -0, y: 0.010549, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_ear
+      parentName: Neck
+      position: {x: 0.009346088, y: 0.017980967, z: -0.004366548}
+      rotation: {x: -0.43752486, y: -0.42587268, z: -0.47889668, w: 0.6307634}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: R_ear_end
+      parentName: R_ear
+      position: {x: -0, y: 0.010854201, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tongue
+      parentName: Neck
+      position: {x: 0.00000012828582, y: 0.017265158, z: 0.012655828}
+      rotation: {x: 0.8594518, y: -0.00001497912, z: -0.000011083016, w: 0.5112169}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: Tongue_end
+      parentName: Tongue
+      position: {x: -0, y: 0.0035554129, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_arm
+      parentName: Base
+      position: {x: -0.008562311, y: 0.023207419, z: 0.017364765}
+      rotation: {x: 0.2494941, y: -0.000003923872, z: -0.000020077438, w: 0.96837634}
+      scale: {x: 1, y: 0.9999999, z: 1.0000001}
+    - name: L_arm_end
+      parentName: L_arm
+      position: {x: -0, y: 0.009342102, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_arm
+      parentName: Base
+      position: {x: 0.00846909, y: 0.018427316, z: 0.018780872}
+      rotation: {x: 0.7744787, y: -0.000014732634, z: -0.00001509325, w: 0.6326001}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: R_arm_end
+      parentName: R_arm
+      position: {x: -0, y: 0.009342102, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tail
+      parentName: Armature.001
+      position: {x: 0.0010734936, y: 0.00071859267, z: 0.0058470336}
+      rotation: {x: 0.084083565, y: -0, z: -0, w: 0.9964587}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Tail_end
+      parentName: Tail
+      position: {x: -0, y: 0.0067045274, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_leg
+      parentName: Armature.001
+      position: {x: -0.0074898144, y: -0.0026349714, z: -0.008766342}
+      rotation: {x: -0.00000015269406, y: 0.85127544, z: -0.5247192, w: 0.00000025981794}
+      scale: {x: 1, y: 0.9999998, z: 0.99999976}
+    - name: L_leg_end
+      parentName: L_leg
+      position: {x: -0, y: 0.013320161, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_leg
+      parentName: Armature.001
+      position: {x: 0.00954177, y: -0.006830497, z: -0.009146972}
+      rotation: {x: -0.009209185, y: -0.8226762, z: 0.56822747, w: -0.015386552}
+      scale: {x: 1, y: 0.99999964, z: 0.99999994}
+    - name: R_leg_end
+      parentName: R_leg
+      position: {x: -0, y: 0.013320161, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -152,13 +262,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
