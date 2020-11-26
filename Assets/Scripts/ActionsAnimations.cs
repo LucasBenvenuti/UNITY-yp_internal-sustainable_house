@@ -115,7 +115,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             yield return null;
         }
-        myAgent.transform.LeanRotateY(-50f, 0.5f);
+        //myAgent.transform.LeanRotateY(-50f, 0.5f);
         animatorTemplate.SetTrigger("TextTrigger");
         yield return new WaitForSeconds(6f);
 
@@ -204,7 +204,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             chargingCellPhone.SetActive(false);
             cellPhone.SetActive(true);
-            myAgent.transform.LeanRotateY(-140f, 1f);
+            myAgent.transform.LeanRotateY(180f, 1f);
         }
         else
         {
@@ -249,17 +249,7 @@ public class ActionsAnimations : MonoBehaviour
                 {
                     animatorWaterLaundry.SetTrigger("FillTrigger");
                 }
-
-                //cloth.SetActive(true);
             }
-        }
-        else if (active == 2)
-        {
-            // else if (cloth)
-            // {
-
-            //     cloth.SetActive(false);
-            // }
         }
         else
         {
