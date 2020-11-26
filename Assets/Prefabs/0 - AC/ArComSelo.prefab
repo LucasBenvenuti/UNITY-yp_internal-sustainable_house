@@ -141,7 +141,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 7976331039765859088}
   categoryName: "Climatiza\xE7\xE3o"
   zoomSize: 7
-  alreadyChanged: 0
+  alreadyChanged: 1
   outlineOrange: {fileID: 3647913917411394670}
   outlineBlue: {fileID: 4693902680327465991}
 --- !u!65 &479407112674011143
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7976331039765859088}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7976331039765859088}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
