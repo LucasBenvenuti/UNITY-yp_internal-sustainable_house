@@ -54,9 +54,18 @@ public class AudioController : MonoBehaviour
             buttonSource.volume = volumeButtons;
             actionsSource.volume = volumeActions;
             changeItemsSource.volume = volumeChangeItem;
-            endTimerSource.volume = volumeEndTimer;
             openFinalScreenSource.volume = volumeOpenFinalScreen;
             menuBackgroundSource.volume = volumeMenuBackground;
+
+            if (TimerController.instance.totalTime > 5f)
+            {
+                endTimerSource.volume = volumeEndTimer;
+            }
+            else
+            {
+                endTimerSource.volume = 0f;
+                endTimerSource.Stop();
+            }
         }
         else
         {

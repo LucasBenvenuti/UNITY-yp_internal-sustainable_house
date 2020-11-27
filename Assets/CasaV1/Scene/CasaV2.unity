@@ -2904,7 +2904,7 @@ MonoBehaviour:
   EndCanvas: {fileID: 6238105324322753638}
   endTweenDuration: 0.3
   easeInOutEnd: 7
-  totalTime: 600
+  totalTime: 10
   actionTimer: 5
   actionBaseTime: 5
   timeText: {fileID: 1803845539545163847}
