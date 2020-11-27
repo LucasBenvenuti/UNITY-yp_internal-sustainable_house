@@ -43,7 +43,7 @@ public class PDF_Generator : MonoBehaviour
             Document doc = new Document(PageSize.LETTER, 10, 10, 30, 5);
 
             DateTime dt = DateTime.Now;
-            fileName = "Report" + "_" + dt.Year + "_" + dt.Month + "_" + dt.Day + "_" + dt.Hour + dt.Minute + dt.Second + ".pdf";
+            fileName = "Report_" + DataStorage.instance.userName + "_" + dt.Year + "_" + dt.Month + "_" + dt.Day + "_" + dt.Hour + dt.Minute + dt.Second + ".pdf";
 
             string pathToInstance = Path.Combine(Application.persistentDataPath, fileName);
 
