@@ -248,9 +248,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.12249988
-  m_TransitionOffset: 0.03612467
-  m_ExitTime: 0.7668137
+  m_TransitionDuration: 0.49366683
+  m_TransitionOffset: 0
+  m_ExitTime: 0.636856
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -351,7 +351,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Armature_002|Washing
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3114073929443386904}
@@ -364,7 +364,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8995074297005995899, guid: db154395403ec0b438ebf7dad7cf5677, type: 3}
+  m_Motion: {fileID: -1543081088765795133, guid: 9774f1f75c98b2f4f9609530a8a5c9b1, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
