@@ -4585,6 +4585,10 @@ PrefabInstance:
       propertyPath: boxCollider
       value: 
       objectReference: {fileID: 503792460}
+    - target: {fileID: 4941376695593843735, guid: 182d85f7b0054d14087696cb04888349, type: 3}
+      propertyPath: haveDoneAction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4941376695643536637, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_Name
       value: ActionAreas
@@ -16540,6 +16544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6277527489736848419, guid: 2f3efdb4ed2ae4d4bb3430f7c01c0a2d, type: 3}
+      propertyPath: soundIcon
+      value: 
+      objectReference: {fileID: 1803845540485715992}
     - target: {fileID: 6277527489736848420, guid: 2f3efdb4ed2ae4d4bb3430f7c01c0a2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -47902,6 +47910,10 @@ PrefabInstance:
     - target: {fileID: 8748960654992443413, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: m_Name
       value: DataStorage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
+      propertyPath: actionsDone.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443415, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: m_LocalPosition.x

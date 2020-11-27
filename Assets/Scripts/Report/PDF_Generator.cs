@@ -22,14 +22,19 @@ public class PDF_Generator : MonoBehaviour
 
     string fileName;
 
+    public MainRegister_Manager mainRegisterManager;
+
     public IEnumerator ClickCoroutine()
     {
         //WAIT UNTIL TAKESCREENSHOT COROUTINE IS FINISHED
-        yield return screenshotGO.TakeScreenShot();
+        if (screenshotGO)
+        {
+            yield return screenshotGO.TakeScreenShot();
 
-        imageByte = screenshotGO.byteTest;
+            imageByte = screenshotGO.byteTest;
 
-        Debug.Log("Ended TakeScreenShot Func");
+            Debug.Log("Ended TakeScreenShot Func");
+        }
 
         try
         {
@@ -60,6 +65,17 @@ public class PDF_Generator : MonoBehaviour
             doc.Close();
 
             StartCoroutine(SendToServer(pathToInstance, fileName));
+
+            DataStorage.instance.DeleteAllData();
+
+            if (mainRegisterManager)
+            {
+                if (mainRegisterManager.gameEnded)
+                {
+                    mainRegisterManager.HideConfirmScreen();
+                    mainRegisterManager.PlayToRegister();
+                }
+            }
         }
         catch (Exception e)
         {
@@ -82,9 +98,7 @@ public class PDF_Generator : MonoBehaviour
 
         yield return ServerRequest(form);
 
-        // Debug.Log("FOIFOI__@");
-
-        DataStorage.instance.DeleteAllData();
+        Debug.Log("Sent DOC to Server!");
     }
 
     IEnumerator ServerRequest(WWWForm form)
@@ -133,22 +147,18 @@ public class PDF_Generator : MonoBehaviour
     //写PDF
     public void WritePdf(Document doc, int logonum, int statusnum, iTextSharp.text.Font bold_18, iTextSharp.text.Font simple_12, iTextSharp.text.Font bold_12)
     {
-        //GET IMAGE FROM CREATED PRINT
-        iTextSharp.text.Image IMG = iTextSharp.text.Image.GetInstance(imageByte);
+        if (screenshotGO)
+        {
+            iTextSharp.text.Image IMG = iTextSharp.text.Image.GetInstance(imageByte);
 
-        iTextSharp.text.pdf.PdfPCell imgCell1 = new iTextSharp.text.pdf.PdfPCell();
-        imgCell1.AddElement(new Chunk(IMG, 0, 0));
-        imgCell1.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
+            iTextSharp.text.pdf.PdfPCell imgCell1 = new iTextSharp.text.pdf.PdfPCell();
+            imgCell1.AddElement(new Chunk(IMG, 0, 0));
+            imgCell1.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
 
-        IMG.ScalePercent(30f);
+            IMG.ScalePercent(30f);
 
-        // IMG.ScalePercent(30f);
-        // IMG.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
-        // IMG.SetAbsolutePosition(doc.PageSize.Width - 500f, 0f);
-
-        doc.Add(IMG);
-
-        // actionsAnimations
+            doc.Add(IMG);
+        }
 
         string reportParagraph = "";
 
@@ -158,63 +168,7 @@ public class PDF_Generator : MonoBehaviour
         }
 
         Paragraph reportTexts = new Paragraph(reportParagraph);
-
-        // Paragraph reportTexts = new Paragraph(GameController.instance.reportList[0] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n" +
-        // reportArray[1] + "\n" +
-        // reportArray[2] + "\n" +
-        // reportArray[3] + "\n" +
-        // reportArray[4] + "\n");
-
         reportTexts.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
-
         doc.Add(reportTexts);
 
         AddBlank(doc);

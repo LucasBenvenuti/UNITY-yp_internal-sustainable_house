@@ -23,8 +23,9 @@ public class AudioController : MonoBehaviour
     public float volumeOpenFinalScreen = 0.1f;
     public float volumeMenuBackground = 0.04f;
 
-    public bool muted = false;
     public bool playedEndGame = false;
+
+    public Animator soundIcon;
 
     // Update is called once per frame
 
@@ -47,18 +48,34 @@ public class AudioController : MonoBehaviour
 
     public void StartSound()
     {
-        backgroundIngameSource.volume = volumeBackgroundInGame;
-        buttonSource.volume = volumeButtons;
-        actionsSource.volume = volumeActions;
-        changeItemsSource.volume = volumeChangeItem;
-        endTimerSource.volume = volumeEndTimer;
-        openFinalScreenSource.volume = volumeOpenFinalScreen;
-        menuBackgroundSource.volume = volumeMenuBackground;
+        if (!DataStorage.instance.soundMuted)
+        {
+            backgroundIngameSource.volume = volumeBackgroundInGame;
+            buttonSource.volume = volumeButtons;
+            actionsSource.volume = volumeActions;
+            changeItemsSource.volume = volumeChangeItem;
+            endTimerSource.volume = volumeEndTimer;
+            openFinalScreenSource.volume = volumeOpenFinalScreen;
+            menuBackgroundSource.volume = volumeMenuBackground;
+        }
+        else
+        {
+            buttonSource.volume = 0f;
+            actionsSource.volume = 0f;
+            changeItemsSource.volume = 0f;
+            endTimerSource.volume = 0f;
+            openFinalScreenSource.volume = 0f;
+            openFinalScreenSource.volume = 0f;
+            menuBackgroundSource.volume = 0f;
+            backgroundIngameSource.volume = 0f;
+
+            soundIcon.SetTrigger("Off");
+        }
     }
 
     public void ToggleBackgroundAudio()
     {
-        if (!muted)
+        if (!DataStorage.instance.soundMuted)
         {
             buttonSource.volume = 0f;
             actionsSource.volume = 0f;
@@ -72,7 +89,7 @@ public class AudioController : MonoBehaviour
                 backgroundIngameSource.volume = flt;
             }).setOnComplete(() =>
             {
-                muted = true;
+                DataStorage.instance.soundMuted = true;
             });
         }
         else
@@ -88,7 +105,7 @@ public class AudioController : MonoBehaviour
                     backgroundIngameSource.volume = flt;
                 }).setOnComplete(() =>
                 {
-                    muted = false;
+                    DataStorage.instance.soundMuted = false;
                 });
         }
     }

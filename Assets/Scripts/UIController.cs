@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour
         sustainabilitySlider.value = sustainabilityBaseValue;
 
         DataStorage.instance.addReportLine("Jogo iniciado.");
-        DataStorage.instance.addReportLine("Recursos iniciais: " + controlMoney + ".");
+        DataStorage.instance.addReportLine("Recursos iniciais: " + moneyBaseValue + ".");
         DataStorage.instance.addReportLine("Sustentabilidade inicial: " + sustainabilityBaseValue + ".");
     }
 

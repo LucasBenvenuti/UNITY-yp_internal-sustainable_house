@@ -29,7 +29,6 @@ public class TimerController : MonoBehaviour
     [HideInInspector]
     public bool inGame = true;
 
-
     private void Awake()
     {
         if (!instance)
@@ -132,17 +131,21 @@ public class TimerController : MonoBehaviour
         }
         else
         {
-            bool controlAction = actions[indexAction].haveDoneAction;
-            if (actionTimer < 0.1f)
+            bool controlAction = DataStorage.instance.actionsDone[indexAction];
+            if (controlAction)
             {
-                actions[indexAction].EnableAction();
-                if (controlAction)
+                actionTimer = actionBaseTime;
+                actions[indexAction].enabled = false;
+                indexAction++;
+            }
+            else
+            {
+                if (actionTimer < 0.1f)
                 {
-                    actionTimer = actionBaseTime;
-                    actions[indexAction].enabled = false;
-                    indexAction++;
+                    actions[indexAction].EnableAction();
                 }
             }
+
         }
     }
 }

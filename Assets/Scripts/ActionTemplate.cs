@@ -35,10 +35,12 @@ public class ActionTemplate : MonoBehaviour
             actionSprite.gameObject.SetActive(false);
             Debug.Log("you finished this action with sucess");
             haveDoneAction = true;
+
+            DataStorage.instance.actionsDone[actionIndex] = true;
         }
         else
         {
-            Debug.Log("u alredy done this action try again next month");
+            Debug.Log("u alredy done this action");
         }
     }
 

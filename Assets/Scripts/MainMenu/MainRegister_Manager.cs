@@ -13,6 +13,10 @@ public class MainRegister_Manager : MonoBehaviour
     public float tweenDuration = 0.2f;
     public float tweenTransitionOffset = 1f;
 
+    public PDF_Generator pdfGenerator;
+
+    public bool gameEnded = false;
+
     void Awake()
     {
         if (DataStorage.instance.hasProgress)
@@ -106,12 +110,17 @@ public class MainRegister_Manager : MonoBehaviour
 
     public void ConfirmDeleteProgress()
     {
+        gameEnded = true;
+
         //GENERATE REPORT BEFORE DELETE ALL DATA
-        DataStorage.instance.DeleteAllData();
+        DataStorage.instance.addReportLine("Fim de Jogo.");
+        DataStorage.instance.addReportLine("Recursos Finais: " + DataStorage.instance.currentMoney + ".");
+        DataStorage.instance.addReportLine("Sustentabilidade Final: " + DataStorage.instance.currentSustainability + ".");
+        pdfGenerator.GeneratePDF();
+        // DataStorage.instance.DeleteAllData();
 
-        HideConfirmScreen();
-
-        PlayToRegister();
+        // HideConfirmScreen();
+        // PlayToRegister();
     }
 
     public void ShowConfirmScreen()

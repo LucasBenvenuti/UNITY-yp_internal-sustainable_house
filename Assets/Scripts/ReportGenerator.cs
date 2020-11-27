@@ -26,6 +26,10 @@ public class ReportGenerator : MonoBehaviour
 
         GameController.instance.closePanel();
 
+        DataStorage.instance.addReportLine("Fim de Jogo.");
+        DataStorage.instance.addReportLine("Recursos Finais: " + UIController.instance.moneySlider.value + ".");
+        DataStorage.instance.addReportLine("Sustentabilidade Final: " + UIController.instance.sustainabilitySlider.value + ".");
+
         LeanTween.move(mainCamera.gameObject.transform.parent.gameObject, printPoint.transform.position, tweenDuration).setEase(easeInOut);
         LeanTween.move(mainCamera.gameObject, printPoint.transform.position, tweenDuration).setEase(easeInOut);
         LeanTween.value(mainCamera.gameObject, mainCamera.orthographicSize, printCameraZoom, tweenDuration).setEase(easeInOut).setOnUpdate((float flt) =>
