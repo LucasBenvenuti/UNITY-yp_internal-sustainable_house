@@ -107,6 +107,12 @@ public class ActionsAnimations : MonoBehaviour
             StartCoroutine(DoBrushingAnimation());
         }
     }
+
+    IEnumerator IdleTransition()
+    {
+        animatorTemplate.SetTrigger("ReturnToIdleTrigger");
+        yield return new WaitForSeconds(0.8f);
+    }
     IEnumerator DoTextingAnimation()
     {
         animatorTemplate.SetTrigger("WalkTrigger");
@@ -116,6 +122,7 @@ public class ActionsAnimations : MonoBehaviour
             yield return null;
         }
         //myAgent.transform.LeanRotateY(-50f, 0.5f);
+        yield return IdleTransition();
         animatorTemplate.SetTrigger("TextTrigger");
         yield return new WaitForSeconds(6f);
 
@@ -152,6 +159,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             yield return null;
         }
+        yield return IdleTransition();
         animatorTemplate.SetTrigger("BrushTrigger");
         yield return new WaitForSeconds(7f);
 
@@ -172,6 +180,7 @@ public class ActionsAnimations : MonoBehaviour
             yield return null;
         }
         myAgent.transform.LeanRotateY(90f, 0.7f);
+        yield return IdleTransition();
         animatorTemplate.SetTrigger("WashTrigger");
         yield return new WaitForSeconds(5f);
 
@@ -183,6 +192,7 @@ public class ActionsAnimations : MonoBehaviour
         CameraController.instance.ReturnToBasePosition();
     }
 
+
     public void CallEndCoroutine()
     {
         StartCoroutine(EndCoroutine());
@@ -190,7 +200,9 @@ public class ActionsAnimations : MonoBehaviour
 
     IEnumerator EndCoroutine()
     {
+        yield return IdleTransition();
         myAgent.SetDestination(basePosition.position);
+        animatorTemplate.SetTrigger("WalkTrigger");
         while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
         {
             yield return null;
@@ -205,12 +217,14 @@ public class ActionsAnimations : MonoBehaviour
             chargingCellPhone.SetActive(false);
             cellPhone.SetActive(true);
             myAgent.transform.LeanRotateY(180f, 1f);
+
         }
         else
         {
             cellPhone.SetActive(false);
         }
     }
+
     public void GrabToothbrush(int active)
     {
         if (active == 1)
@@ -223,6 +237,7 @@ public class ActionsAnimations : MonoBehaviour
             toothbrush.SetActive(false);
         }
     }
+
     public void ReadBook(int active)
     {
 
@@ -232,6 +247,7 @@ public class ActionsAnimations : MonoBehaviour
             book.SetActive(true);
         }
     }
+
     public void Wash(int active)
     {
         if (active == 1)
