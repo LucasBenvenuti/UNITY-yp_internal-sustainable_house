@@ -54,7 +54,7 @@ public class QRCode_Reader : MonoBehaviour
 
     void Awake()
     {
-        PlayerPrefs.DeleteAll();
+        DataStorage.instance.DeleteAllData();
 
         image.material.color = new Color(1f, 1f, 1f, 0f);
 

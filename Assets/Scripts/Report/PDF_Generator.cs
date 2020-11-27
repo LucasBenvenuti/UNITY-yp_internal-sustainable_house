@@ -78,11 +78,13 @@ public class PDF_Generator : MonoBehaviour
         form.AddField("fileBytes", fileNew);
         form.AddField("fileName", fileName);
 
-        Debug.Log("FOIFOI");
+        // Debug.Log("FOIFOI");
 
         yield return ServerRequest(form);
 
-        Debug.Log("FOIFOI__@");
+        // Debug.Log("FOIFOI__@");
+
+        DataStorage.instance.DeleteAllData();
     }
 
     IEnumerator ServerRequest(WWWForm form)
@@ -150,7 +152,7 @@ public class PDF_Generator : MonoBehaviour
 
         string reportParagraph = "";
 
-        foreach (string report in GameController.instance.reportList)
+        foreach (string report in DataStorage.instance.reportList)
         {
             reportParagraph += (report + "\n");
         }

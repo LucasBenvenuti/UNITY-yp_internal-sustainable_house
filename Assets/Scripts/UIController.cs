@@ -42,16 +42,21 @@ public class UIController : MonoBehaviour
     }
     private void Start()
     {
-        CheckBaseValues();
+        if (DataStorage.instance.hasProgress)
+        {
+            return;
+        }
+
+        CheckStartBaseValues();
         moneySlider.value = moneyBaseValue;
         sustainabilitySlider.value = sustainabilityBaseValue;
 
-        GameController.instance.addReportLine("Jogo iniciado.");
-        GameController.instance.addReportLine("Recursos iniciais: " + controlMoney + ".");
-        GameController.instance.addReportLine("Sustentabilidade inicial: " + sustainabilityBaseValue + ".");
+        DataStorage.instance.addReportLine("Jogo iniciado.");
+        DataStorage.instance.addReportLine("Recursos iniciais: " + controlMoney + ".");
+        DataStorage.instance.addReportLine("Sustentabilidade inicial: " + sustainabilityBaseValue + ".");
     }
 
-    public void CheckBaseValues()
+    public void CheckStartBaseValues()
     {
         moneyBaseValue = 0;
         sustainabilityBaseValue = 0;
@@ -61,11 +66,7 @@ public class UIController : MonoBehaviour
             sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
         }
         //amount of money availiable 
-
         float newMoney = moneyMaxValue - moneyBaseValue;
-
-        // GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + newMoney + ".");
-
         controlMoney = newMoney;
     }
 
@@ -78,8 +79,8 @@ public class UIController : MonoBehaviour
         float newMoneyValue = neutralMoney + newPrice;
         float newSusValue = neutralSus + newSus;
 
-        GameController.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + newMoneyValue + ".");
-        GameController.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + newSusValue + ".");
+        DataStorage.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + newMoneyValue + ".");
+        DataStorage.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + newSusValue + ".");
         sustainabilitySlider.value = newSusValue;
         moneySlider.value = newMoneyValue;
     }

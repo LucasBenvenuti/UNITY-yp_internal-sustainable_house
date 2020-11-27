@@ -93,8 +93,10 @@ public class TimerController : MonoBehaviour
 
         Tutorial.instance.StartTutorial();
 
-        if (PlayerPrefs.GetString("lastScene") == "FromGame")
+        if (DataStorage.instance.hasProgress)
         {
+            GameController.instance.GetStorageValues();
+
             Tutorial.instance.SkipTutorial();
         }
     }

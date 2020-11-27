@@ -15,7 +15,7 @@ public class MainRegister_Manager : MonoBehaviour
 
     void Awake()
     {
-        if (PlayerPrefs.GetString("lastScene") == "FromGame")
+        if (DataStorage.instance.hasProgress)
         {
             registerScreen.alpha = 0f;
         }
@@ -82,7 +82,7 @@ public class MainRegister_Manager : MonoBehaviour
 
     IEnumerator PlayToRegisterCoroutine()
     {
-        if (PlayerPrefs.GetString("lastScene") == "FromGame")
+        if (DataStorage.instance.hasProgress)
         {
             ShowConfirmScreen();
 
@@ -106,7 +106,8 @@ public class MainRegister_Manager : MonoBehaviour
 
     public void ConfirmDeleteProgress()
     {
-        PlayerPrefs.DeleteAll();
+        //GENERATE REPORT BEFORE DELETE ALL DATA
+        DataStorage.instance.DeleteAllData();
 
         HideConfirmScreen();
 

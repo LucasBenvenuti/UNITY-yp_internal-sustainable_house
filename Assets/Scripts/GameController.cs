@@ -44,8 +44,6 @@ public class GameController : MonoBehaviour
 
     public ActionsAnimations[] actionsAnimations;
 
-    public List<string> reportList = new List<string>();
-
     public float tweenDuration = 0.3f;
     public LeanTweenType easeInOut;
 
@@ -57,6 +55,7 @@ public class GameController : MonoBehaviour
     public int currentOption;
 
     public bool tvOn = true;
+
     private void Awake()
     {
         if (!instance)
@@ -85,21 +84,6 @@ public class GameController : MonoBehaviour
         {
             uiItemList[i].gameObject.SetActive(false);
         }
-
-        // for (int i = 0; i < prefabsList.Count; i++)
-        // {
-        //     for (int j = 0; j < prefabsList[i].prefabsList.Count; j++)
-        //     {
-        //         if (prefabsList[i].prefabsList[j].outlineOrange && prefabsList[i].prefabsList[j].outlineBlue)
-        //         {
-
-        //             prefabsList[i].prefabsList[j].outlineOrange.enabled = true;
-        //             prefabsList[i].prefabsList[j].outlineBlue.enabled = false;
-        //         }
-
-        //         prefabsList[i].prefabsList[j].alreadyChanged = false;
-        //     }
-        // }
     }
 
     void Start()
@@ -278,12 +262,9 @@ public class GameController : MonoBehaviour
             float oldItemPrice = prefab.GetComponent<ItemTemplate>().itemPrice;
             float oldItemSus = prefab.GetComponent<ItemTemplate>().itemSustainability;
 
-            // Outlinable oldOutline_0 = prefab.GetComponent<ItemTemplate>().outlineOrange;
-            // Outlinable oldOutline_1 = prefab.GetComponent<ItemTemplate>().outlineBlue;
-
             if (newOption != optionInScene)
             {
-                GameController.instance.addReportLine("Adicionado item " + name);
+                DataStorage.instance.addReportLine("Adicionado item " + name);
                 UIController.instance.NewUpdateValues(oldItemPrice, oldItemSus, newItemPrice, newItemSus);
                 Destroy(prefab);
                 destroyOriginalItem = true;
@@ -311,10 +292,6 @@ public class GameController : MonoBehaviour
 
     void DisplayActionTypeUI(GameObject go)
     {
-        // for (int i = 0; i < actionType.Length; i++)
-        // {
-        //     actionType[i].SetActive(false);
-        // }
         if (actionSelected != go.GetComponent<ActionTemplate>())
         {
             actionSelected = go.GetComponent<ActionTemplate>();
@@ -328,11 +305,9 @@ public class GameController : MonoBehaviour
 
         actionSelected.DoneAction();
         int indexSelected = actionSelected.actionIndex;
-        // actionType[indexSelected].SetActive(true);
-        // ActionsAnimations.instance.CallFirstCoroutine();
         actionsAnimations[indexSelected].CallFirstCoroutine(indexSelected);
 
-        GameController.instance.addReportLine("Ação iniciada: " + actionSelected.actionName + ".");
+        DataStorage.instance.addReportLine("Ação iniciada: " + actionSelected.actionName + ".");
     }
 
     public void ChangeRequest(SelectItem item)
@@ -340,7 +315,6 @@ public class GameController : MonoBehaviour
         confirmBtn.onClick.RemoveAllListeners();
         if (confirmBtn != null)
         {
-            // confirmBtn.onClick.AddListener(() => { ChangeItem(item); });
             confirmBox.SetActive(true);
         }
         else
@@ -371,8 +345,6 @@ public class GameController : MonoBehaviour
 
         CameraController.instance.LerpToZoomPosition(actionObject, zoomAction);
         yield return true;
-        // yield return new WaitForSeconds(5f);
-        // CameraController.instance.ReturnToBasePosition();
 
     }
 
@@ -394,15 +366,23 @@ public class GameController : MonoBehaviour
         });
     }
 
-    public void addReportLine(string reportString)
-    {
-        reportList.Add(reportString);
-    }
-
     public void SetLastScene()
     {
-        PlayerPrefs.SetString("lastScene", "FromGame");
+        if (!TimerController.instance.tutorialMode)
+        {
+            DataStorage.instance.hasProgress = true;
+
+            DataStorage.instance.currentTime = TimerController.instance.totalTime;
+            DataStorage.instance.currentMoney = UIController.instance.moneySlider.value;
+            DataStorage.instance.currentSustainability = UIController.instance.sustainabilitySlider.value;
+        }
     }
 
+    public void GetStorageValues()
+    {
+        TimerController.instance.totalTime = DataStorage.instance.currentTime;
+        UIController.instance.moneySlider.value = DataStorage.instance.currentMoney;
+        UIController.instance.sustainabilitySlider.value = DataStorage.instance.currentSustainability;
+    }
 }
 

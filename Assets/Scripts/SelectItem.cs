@@ -2,31 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using EPOOutline;
 
 public class SelectItem : MonoBehaviour
 {
     public GameObject itemPrefab;
     public Transform itemPosition;
     public ItemTemplate itemSelectedTemplate;
-    //public float itemPrice;
-    //public float itemSustainability;
-    //public float itemCostPerMonth;
 
     public string itemName;
-
-    void Awake()
-    {
-        // itemSelectedTemplate = itemPrefab.GetComponent<ItemTemplate>();
-        //itemPrice = itemSelectedTemplate.itemPrice;
-        //itemSustainability = itemSelectedTemplate.itemSustainability;
-    }
 
     public void NewItemInstance()
     {
         Debug.Log("STARTED NEW ITEM INSTANCE");
 
-        // UIController.instance.CheckBaseValues();
         GameController.instance.CheckAndDestroyItem(itemPrefab, itemName);
         if (GameController.instance.destroyOriginalItem)
         {
@@ -36,14 +24,6 @@ public class SelectItem : MonoBehaviour
                 {
                     Tutorial.instance.canContinue = false;
                 }
-            }
-
-            if (!itemSelectedTemplate.alreadyChanged)
-            {
-                // itemSelectedTemplate.outlineOrange.enabled = false;
-                // itemSelectedTemplate.outlineBlue.enabled = true;
-
-                itemSelectedTemplate.alreadyChanged = true;
             }
 
             GameObject prefab = Instantiate(itemPrefab);
@@ -56,13 +36,12 @@ public class SelectItem : MonoBehaviour
             GameController.instance.currentOption = itemSelectedTemplate.itemOption;
             GameController.instance.uiItemList[GameController.instance.currentOption].button.interactable = false;
 
+            DataStorage.instance.sceneObjectsList[itemSelectedTemplate.itemType] = itemSelectedTemplate.itemOption;
 
             GameController.instance.goToObjectShop = true;
             CameraController.instance.LerpToZoomPosition(prefab, itemSelectedTemplate.zoomSize);
 
             Debug.Log(itemSelectedTemplate.particleSystem);
-            // UIController.instance.updateValues = true;
-            // UIController.instance.NewUpdateValues(itemPrice, itemSustainability);
         }
     }
     public void ClickOnItem()

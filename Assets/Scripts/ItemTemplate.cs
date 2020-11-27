@@ -40,12 +40,12 @@ public class ItemTemplate : MonoBehaviour
 
     public float zoomSize = 5f;
 
-    public bool alreadyChanged = false;
-
     public Outlinable outlineOrange;
     public Outlinable outlineBlue;
 
     public ParticleSystem particleSystem;
+
+    public bool hasChanged = true;
 
     void Start()
     {
@@ -70,7 +70,7 @@ public class ItemTemplate : MonoBehaviour
             itemOption = 0;
         }
 
-        if (particleSystem && alreadyChanged)
+        if (particleSystem)
         {
             particleSystem.Play();
         }

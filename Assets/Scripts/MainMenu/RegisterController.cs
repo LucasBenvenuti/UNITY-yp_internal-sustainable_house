@@ -18,18 +18,14 @@ public class RegisterController : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log(PlayerPrefs.GetString("lastScene"));
-
-        if (PlayerPrefs.GetString("lastScene") == "FromGame")
+        if (DataStorage.instance.hasProgress)
         {
             RegisterCanvas.SetActive(false);
             StartMenuCanvas.SetActive(true);
         }
         else
         {
-            PlayerPrefs.SetString("lastScene", "FromRegister");
-
-            PlayerPrefs.DeleteAll();
+            DataStorage.instance.DeleteAllData();
 
             RegisterCanvas.SetActive(true);
             StartMenuCanvas.SetActive(false);
@@ -55,9 +51,7 @@ public class RegisterController : MonoBehaviour
         {
             string fullName = firstNameInput.text + " " + lastNameInput.text;
 
-            PlayerPrefs.SetString("Player_Name", fullName);
-
-            Debug.Log("Saved First Name - " + PlayerPrefs.GetString("Player_Name"));
+            DataStorage.instance.userName = fullName;
 
             mainRegisterManager.RegisterToPlay();
         }
