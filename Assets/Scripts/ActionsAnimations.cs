@@ -30,6 +30,7 @@ public class ActionsAnimations : MonoBehaviour
     int bathroomCounter;
 
     bool tookBrush = false;
+    bool readingControl = false;
     bool canEndCoroutine = false;
 
     void Awake()
@@ -64,6 +65,14 @@ public class ActionsAnimations : MonoBehaviour
     {
         animatorTemplate = gameObject.GetComponent<Animator>();
         myAgent = GetComponent<NavMeshAgent>();
+        if (book)
+        {
+            if (DataStorage.instance.actionsDone[2])
+            {
+                GameController.instance.tvOn = false;
+                animatorTemplate.SetTrigger("ReadTrigger");
+            }
+        }
     }
 
 
@@ -260,11 +269,11 @@ public class ActionsAnimations : MonoBehaviour
 
     public void ReadBook(int active)
     {
-
-        if (active == 1)
+        if (active == 1 && !readingControl)
         {
             Debug.Log("entrou");
             book.SetActive(true);
+            readingControl = true;
         }
     }
 
