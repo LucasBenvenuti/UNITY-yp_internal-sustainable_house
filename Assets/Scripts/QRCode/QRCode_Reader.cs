@@ -54,8 +54,6 @@ public class QRCode_Reader : MonoBehaviour
 
     void Awake()
     {
-        DataStorage.instance.DeleteAllData();
-
         image.material.color = new Color(1f, 1f, 1f, 0f);
 
         canLerp = true;
@@ -63,6 +61,11 @@ public class QRCode_Reader : MonoBehaviour
 
     IEnumerator Start()
     {
+        if (DataStorage.instance)
+        {
+            DataStorage.instance.DeleteAllData();
+        }
+
         if (SceneController.instance)
         {
             SceneController.instance.StartScene();
