@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 59d9964d4927ec4469351d3c9a72e192
+guid: 68858a42e3aae7b45abe0010d9f3aa7a
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
@@ -8,7 +8,7 @@ ModelImporter:
     second: Armature.002|Armature.002|Armature.002|New_Washing|Armature.002|New_Washing
   - first:
       74: -1543081088765795133
-    second: Armature.002|New_WashingNew
+    second: Armature.002|New_WashingNEWLUCAS
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -67,7 +67,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.002|New_WashingNew
+      name: Armature.002|New_WashingNEWLUCAS
       takeName: Armature.002|New_Washing
       internalID: 0
       firstFrame: 0
@@ -572,13 +572,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: CasaSustentavel_CharacterWashing(Clone)
+    - name: CasaSustentavel_CharacterWashing 1(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Armature.002
-      parentName: CasaSustentavel_CharacterWashing(Clone)
+      parentName: CasaSustentavel_CharacterWashing 1(Clone)
       position: {x: -62.700794, y: 0.0633889, z: 13.146529}
       rotation: {x: 0.000000057601174, y: 0.7071067, z: -0.000000057601163, w: 0.7071068}
       scale: {x: 0.037, y: 0.037, z: 0.037}
@@ -1168,7 +1168,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Man_1
-      parentName: CasaSustentavel_CharacterWashing(Clone)
+      parentName: CasaSustentavel_CharacterWashing 1(Clone)
       position: {x: -62.595554, y: 4.546096, z: 13.146529}
       rotation: {x: 0.00000011508688, y: 0.70710677, z: -0.00000011508687, w: 0.7071068}
       scale: {x: 3.7, y: 3.7, z: 3.699998}
