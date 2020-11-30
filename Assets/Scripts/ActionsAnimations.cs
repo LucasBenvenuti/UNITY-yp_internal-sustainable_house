@@ -90,17 +90,20 @@ public class ActionsAnimations : MonoBehaviour
     IEnumerator IdleTransition()
     {
         animatorTemplate.SetTrigger("ReturnToIdleTrigger");
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1f);
     }
     IEnumerator DoTextingAnimation()
     {
         animatorTemplate.SetTrigger("WalkTrigger");
         myAgent.SetDestination(finalPosition.position);
-        while (Vector3.Distance(transform.position, myAgent.destination) >= 1.5f)
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
         {
             yield return null;
         }
-        //myAgent.transform.LeanRotateY(-50f, 0.5f);
+        if (Vector3.Distance(transform.position, myAgent.destination) >= 0.5f)
+        {
+            myAgent.transform.LeanRotateY(-30f, 0.5f);
+        }
         yield return IdleTransition();
         animatorTemplate.SetTrigger("TextTrigger");
         yield return new WaitForSeconds(6f);
@@ -134,7 +137,7 @@ public class ActionsAnimations : MonoBehaviour
         cellPhone.SetActive(false);
         animatorTemplate.SetTrigger("WalkTrigger");
         myAgent.SetDestination(finalPositionBathroom.position);
-        while (Vector3.Distance(transform.position, myAgent.destination) >= 1.5f)
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
         {
             yield return null;
         }
@@ -154,11 +157,21 @@ public class ActionsAnimations : MonoBehaviour
     {
         animatorTemplate.SetTrigger("WalkTrigger");
         myAgent.SetDestination(finalPosition.position);
-        while (Vector3.Distance(transform.position, myAgent.destination) >= 1.5f)
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 0.8f)
         {
             yield return null;
         }
-        myAgent.transform.LeanRotateY(90f, 0.7f);
+        if (Vector3.Distance(transform.position, myAgent.destination) >= 0.5f)
+        {
+            if (waterLaundry)
+            {
+                myAgent.transform.LeanRotateY(90f, 0.4f);
+            }
+            else
+            {
+                myAgent.transform.LeanRotateY(90f, 0.3f);
+            }
+        }
         yield return IdleTransition();
         animatorTemplate.SetTrigger("WashTrigger");
         yield return new WaitForSeconds(5f);
@@ -195,8 +208,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             chargingCellPhone.SetActive(false);
             cellPhone.SetActive(true);
-            myAgent.transform.LeanRotateY(180f, 0.7f);
-
+            //myAgent.transform.LeanRotateY(180f, 0.5f);
         }
         else
         {
