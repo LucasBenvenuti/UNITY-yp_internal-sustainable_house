@@ -701,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inOutType: 7
   centerIcon: {fileID: 1234196846}
-  acceptText: YellowPanda
+  acceptText: game-sua-casa
   SceneToGo: MainMenu
   image: {fileID: 1227376356}
   imageParent: {fileID: 1628968672}
