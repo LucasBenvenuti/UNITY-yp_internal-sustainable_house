@@ -47910,27 +47910,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: hasProgress
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: currentTime
-      value: 60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: actionsDone.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: actionsDone.Array.data[1]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: actionsDone.Array.data[2]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: actionsDone.Array.data[3]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443415, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: m_LocalPosition.x

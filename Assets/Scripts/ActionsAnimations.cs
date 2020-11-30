@@ -97,12 +97,12 @@ public class ActionsAnimations : MonoBehaviour
 
         float newDelay = 1f;
 
-        if(toothbrush)
+        if (toothbrush)
         {
-            if(tookBrush)
+            if (tookBrush)
             {
                 newDelay = 2f;
-            }   
+            }
         }
 
         yield return new WaitForSeconds(newDelay);
@@ -170,7 +170,7 @@ public class ActionsAnimations : MonoBehaviour
         Debug.Log("Idle Transition");
 
         yield return IdleTransition();
-        
+
         myAgent.SetDestination(basePosition.position);
         animatorTemplate.SetTrigger("WalkTrigger");
         while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
@@ -310,9 +310,31 @@ public class ActionsAnimations : MonoBehaviour
         }
     }
 
-    public void callRandomIdle()
+    public void CallRandomIdle()
     {
-        
+        int i = 0;
+        i = Random.Range(0, 10);
+
+        StartCoroutine(WaitRandom());
+
+        if (i > 5 && i < 8)
+        {
+            animatorTemplate.SetTrigger("Idle_2");
+        }
+        else if (i >= 8)
+        {
+            animatorTemplate.SetTrigger("Idle_3");
+        }
+    }
+
+    IEnumerator WaitRandom()
+    {
+        float delay = 0f;
+
+        delay = Random.Range(0f, 3f);
+
+        yield return new WaitForSeconds(delay);
+
     }
 
 }
