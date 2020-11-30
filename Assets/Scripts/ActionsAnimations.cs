@@ -28,18 +28,6 @@ public class ActionsAnimations : MonoBehaviour
     int laundryCounter;
     int kitchenCounter;
 
-    // private void Awake()
-    // {
-    //     if (!instance)
-    //     {
-    //         instance = this;
-    //     }
-    //     if (instance != this)
-    //     {
-    //         Destroy(this);
-    //     }
-    // }
-
     void Awake()
     {
         if (cellPhone && chargingCellPhone)
@@ -58,15 +46,11 @@ public class ActionsAnimations : MonoBehaviour
         }
         if (waterKitchen)
         {
-            // plate.SetActive(false);
-            //bubbleParticles.SetActive(false);
             animatorWaterKitchen = waterKitchen.GetComponent<Animator>();
-            // waterKitchen.SetActive(false);
             kitchenCounter = 0;
         }
         if (waterLaundry)
         {
-            //cloth.SetActive(false);
             animatorWaterLaundry = waterLaundry.GetComponent<Animator>();
             laundryCounter = 0;
         }
@@ -76,13 +60,8 @@ public class ActionsAnimations : MonoBehaviour
     {
         animatorTemplate = gameObject.GetComponent<Animator>();
         myAgent = GetComponent<NavMeshAgent>();
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     public void CallFirstCoroutine(int index)
     {
@@ -117,7 +96,7 @@ public class ActionsAnimations : MonoBehaviour
     {
         animatorTemplate.SetTrigger("WalkTrigger");
         myAgent.SetDestination(finalPosition.position);
-        while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 1.5f)
         {
             yield return null;
         }
@@ -155,7 +134,7 @@ public class ActionsAnimations : MonoBehaviour
         cellPhone.SetActive(false);
         animatorTemplate.SetTrigger("WalkTrigger");
         myAgent.SetDestination(finalPositionBathroom.position);
-        while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 1.5f)
         {
             yield return null;
         }
@@ -175,7 +154,7 @@ public class ActionsAnimations : MonoBehaviour
     {
         animatorTemplate.SetTrigger("WalkTrigger");
         myAgent.SetDestination(finalPosition.position);
-        while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 1.5f)
         {
             yield return null;
         }
@@ -216,7 +195,7 @@ public class ActionsAnimations : MonoBehaviour
         {
             chargingCellPhone.SetActive(false);
             cellPhone.SetActive(true);
-            myAgent.transform.LeanRotateY(180f, 1f);
+            myAgent.transform.LeanRotateY(180f, 0.7f);
 
         }
         else
