@@ -4650,7 +4650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695593843735, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: Lavar os pratos
+      value: "Ensaboar a lou\xE7a com a torneira fechada."
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695593843735, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -4798,7 +4798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695788670349, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: Mexer no celular
+      value: Usar o celular fora do carregador.
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695788670349, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -4890,7 +4890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695862100683, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: Ler um livro
+      value: "Desligar a tv enquanto l\xEA um livro."
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695862100683, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -5026,7 +5026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376697145031125, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: Escovar os dentes
+      value: Escovar os dentes com a torneira fechada.
       objectReference: {fileID: 0}
     - target: {fileID: 4941376697145031125, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -5062,7 +5062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376697214254178, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: Lavar a roupa
+      value: Deixar as roupas de molho e ensaboar com a torneira fechada.
       objectReference: {fileID: 0}
     - target: {fileID: 4941376697214254178, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -25158,7 +25158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.25378126, y: 0.47500002}
-  m_AnchoredPosition: {x: 0, y: -62.00026}
+  m_AnchoredPosition: {x: 0, y: -62.000366}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2362277922999759168
