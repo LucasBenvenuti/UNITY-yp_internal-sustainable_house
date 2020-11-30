@@ -27,6 +27,10 @@ public class ActionsAnimations : MonoBehaviour
 
     int laundryCounter;
     int kitchenCounter;
+    int bathroomCounter;
+
+    bool tookBrush = false;
+    bool canEndCoroutine = false;
 
     void Awake()
     {
@@ -90,7 +94,18 @@ public class ActionsAnimations : MonoBehaviour
     IEnumerator IdleTransition()
     {
         animatorTemplate.SetTrigger("ReturnToIdleTrigger");
-        yield return new WaitForSeconds(1f);
+
+        float newDelay = 1f;
+
+        if(toothbrush)
+        {
+            if(tookBrush)
+            {
+                newDelay = 2f;
+            }   
+        }
+
+        yield return new WaitForSeconds(newDelay);
     }
     IEnumerator DoTextingAnimation()
     {
@@ -128,9 +143,7 @@ public class ActionsAnimations : MonoBehaviour
         LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
 
         CameraController.instance.ReturnToBasePosition();
-
     }
-
 
     IEnumerator DoBrushingAnimation()
     {
@@ -152,6 +165,20 @@ public class ActionsAnimations : MonoBehaviour
 
         CameraController.instance.ReturnToBasePosition();
 
+        yield return new WaitForSeconds(5f);
+
+        Debug.Log("Idle Transition");
+
+        yield return IdleTransition();
+        
+        myAgent.SetDestination(basePosition.position);
+        animatorTemplate.SetTrigger("WalkTrigger");
+        while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
+        {
+            yield return null;
+        }
+
+        animatorTemplate.SetTrigger("ReturnToIdleTrigger");
     }
     IEnumerator DoWashingAnimation()
     {
@@ -183,7 +210,6 @@ public class ActionsAnimations : MonoBehaviour
 
         CameraController.instance.ReturnToBasePosition();
     }
-
 
     public void CallEndCoroutine()
     {
@@ -218,14 +244,17 @@ public class ActionsAnimations : MonoBehaviour
 
     public void GrabToothbrush(int active)
     {
-        if (active == 1)
+        if (active == 1 && !tookBrush)
         {
             sinkToothbrush.SetActive(false);
             toothbrush.SetActive(true);
+
+            tookBrush = true;
         }
         else
         {
             toothbrush.SetActive(false);
+            sinkToothbrush.SetActive(true);
         }
     }
 
@@ -279,6 +308,11 @@ public class ActionsAnimations : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void callRandomIdle()
+    {
+        
     }
 
 }
