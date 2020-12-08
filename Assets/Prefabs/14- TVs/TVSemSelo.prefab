@@ -96,7 +96,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d0d7947038ce372499ba5b9d49098b73, type: 2}
-  - {fileID: 2100000, guid: f1f84c35b7706044588e50a4c8b1ddf0, type: 2}
+  - {fileID: 2100000, guid: 5852f3da6bc457b468db3491d7abe10d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,10 +142,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 6366219437627164390}
   categoryName: "Televis\xE3o"
   zoomSize: 5
-  alreadyChanged: 0
   outlineOrange: {fileID: -3319809552001743849}
   outlineBlue: {fileID: -4700915117734350299}
   particleSystem: {fileID: 3595646120041963976}
+  hasChanged: 1
 --- !u!65 &-5754917040789484030
 BoxCollider:
   m_ObjectHideFlags: 0
