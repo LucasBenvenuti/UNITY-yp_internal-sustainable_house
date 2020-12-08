@@ -111,10 +111,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 1148297527425814428}
   categoryName: Descarga
   zoomSize: 5
-  alreadyChanged: 0
   outlineOrange: {fileID: 8522287635788260442}
   outlineBlue: {fileID: 2853806076928141356}
   particleSystem: {fileID: 3275368405383631649}
+  hasChanged: 1
 --- !u!114 &8522287635788260442
 MonoBehaviour:
   m_ObjectHideFlags: 0

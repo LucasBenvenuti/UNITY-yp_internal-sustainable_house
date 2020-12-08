@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 1
+  itemOption: 0
   itemName: Ventilador
   itemType: 0
   itemPrice: -2

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 1
+  itemOption: 0
   itemName: "Chuveiro El\xE9trico"
   itemType: 7
   itemPrice: -2
@@ -144,10 +144,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 6601088719713024001}
   categoryName: Chuveiro
   zoomSize: 3
-  alreadyChanged: 0
   outlineOrange: {fileID: 1680682052437509650}
   outlineBlue: {fileID: 6621725548847812300}
   particleSystem: {fileID: 540059420199092377}
+  hasChanged: 1
 --- !u!65 &3137340671816236129
 BoxCollider:
   m_ObjectHideFlags: 0

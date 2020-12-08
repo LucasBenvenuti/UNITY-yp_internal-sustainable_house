@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 0
+  itemOption: 1
   itemName: "Vaso simples com descarga de parede de press\xE3o"
   itemType: 8
   itemPrice: -2
@@ -111,10 +111,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 3932224250795877432}
   categoryName: Descarga
   zoomSize: 5
-  alreadyChanged: 0
   outlineOrange: {fileID: -1920785664867219080}
   outlineBlue: {fileID: 2604629421873955203}
   particleSystem: {fileID: 7365036641867001805}
+  hasChanged: 1
 --- !u!65 &-7738610981427464122
 BoxCollider:
   m_ObjectHideFlags: 0

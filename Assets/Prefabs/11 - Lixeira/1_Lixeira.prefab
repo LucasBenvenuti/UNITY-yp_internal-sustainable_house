@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 0
+  itemOption: 1
   itemName: "1 lixeira sem separa\xE7\xE3o de res\xEDduos"
   itemType: 11
   itemPrice: 0
@@ -141,10 +141,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 6608858806894403009}
   categoryName: Lixeiras
   zoomSize: 8
-  alreadyChanged: 0
   outlineOrange: {fileID: -6341754690452831669}
   outlineBlue: {fileID: -1916220674344715284}
   particleSystem: {fileID: 331427298238365509}
+  hasChanged: 1
 --- !u!65 &8895141413681419125
 BoxCollider:
   m_ObjectHideFlags: 0

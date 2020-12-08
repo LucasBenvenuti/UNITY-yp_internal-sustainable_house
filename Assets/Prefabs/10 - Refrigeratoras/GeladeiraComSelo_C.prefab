@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 1
-  itemName: Geladeira com Selo Procel C
+  itemOption: 0
+  itemName: Geladeira com selo Procel C
   itemType: 10
   itemPrice: 1
   itemSustainability: 2
