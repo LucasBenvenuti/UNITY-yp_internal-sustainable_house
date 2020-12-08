@@ -40,7 +40,10 @@ public class PDF_Generator : MonoBehaviour
         {
             BaseFont bold_text = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, false);
 
-            Document doc = new Document(PageSize.LETTER, 10, 10, 30, 5);
+            //PORTRAIT
+            Document doc = new Document(PageSize.A4, 10, 10, 30, 5);
+            //LANDSCAPE
+            // Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 30, 5);
 
             DateTime dt = DateTime.Now;
             fileName = "Report_" + DataStorage.instance.userName + "_" + dt.Year + "_" + dt.Month + "_" + dt.Day + "_" + dt.Hour + dt.Minute + dt.Second + ".pdf";
