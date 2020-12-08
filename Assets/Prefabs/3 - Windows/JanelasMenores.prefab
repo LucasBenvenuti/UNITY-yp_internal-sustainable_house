@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 0
+  itemOption: 1
   itemName: Janelas Menores
   itemType: 3
   itemPrice: 0
@@ -195,10 +195,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 4730414292951724179}
   categoryName: Janelas
   zoomSize: 6
-  alreadyChanged: 0
   outlineOrange: {fileID: 3911719471494964656}
   outlineBlue: {fileID: 3615888527494698426}
   particleSystem: {fileID: 6919688101494061782}
+  hasChanged: 1
 --- !u!65 &-8206426470185295746
 BoxCollider:
   m_ObjectHideFlags: 0

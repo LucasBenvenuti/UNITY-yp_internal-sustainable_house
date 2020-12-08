@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 0
+  itemOption: 1
   itemName: Geladeira com selo Procel E
   itemType: 10
   itemPrice: -2
@@ -141,10 +141,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 9091698868730459904}
   categoryName: Geladeira
   zoomSize: 10
-  alreadyChanged: 0
   outlineOrange: {fileID: -2031729329343359173}
   outlineBlue: {fileID: 2340975471556033236}
   particleSystem: {fileID: 6053034267511464820}
+  hasChanged: 1
 --- !u!65 &-3955932503189815290
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 1
+  itemOption: 0
   itemName: 2 lixeiras sendo uma com reciclagem
   itemType: 11
   itemPrice: 0
@@ -141,10 +141,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 5640501105643705140}
   categoryName: Lixeiras
   zoomSize: 8
-  alreadyChanged: 0
   outlineOrange: {fileID: -5965057967516889092}
   outlineBlue: {fileID: 252253372563077768}
   particleSystem: {fileID: 9193554012186272252}
+  hasChanged: 1
 --- !u!65 &-857837362436275521
 BoxCollider:
   m_ObjectHideFlags: 0

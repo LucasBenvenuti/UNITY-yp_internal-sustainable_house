@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 0
+  itemOption: 1
   itemName: "M\xE1quina de abertura superior sem selo Procel"
   itemType: 12
   itemPrice: -2
@@ -112,10 +112,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 373086131806046513}
   categoryName: "M\xE1quina de Lavar"
   zoomSize: 7
-  alreadyChanged: 0
   outlineOrange: {fileID: 4402407772724846589}
   outlineBlue: {fileID: 2690900104309498911}
   particleSystem: {fileID: 2654785631085111637}
+  hasChanged: 1
 --- !u!114 &4402407772724846589
 MonoBehaviour:
   m_ObjectHideFlags: 0

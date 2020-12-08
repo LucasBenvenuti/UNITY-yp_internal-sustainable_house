@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelectable: 1
-  itemOption: 1
+  itemOption: 0
   itemName: "Vaso com caixa acoplada e descarga de acionamento \xFAnico"
   itemType: 8
   itemPrice: -1
@@ -111,10 +111,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 91438792828735440}
   categoryName: Descarga
   zoomSize: 5
-  alreadyChanged: 0
   outlineOrange: {fileID: -3847135639523855119}
   outlineBlue: {fileID: 4620121309249792470}
   particleSystem: {fileID: 3858923903077815201}
+  hasChanged: 1
 --- !u!65 &-1958854383320305305
 BoxCollider:
   m_ObjectHideFlags: 0
