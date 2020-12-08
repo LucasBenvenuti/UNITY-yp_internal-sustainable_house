@@ -75,7 +75,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9091698868730459904}
-  m_Mesh: {fileID: 2067983987548091829, guid: bf8be975313c4244098286fbcf2edba5, type: 3}
+  m_Mesh: {fileID: 2067983987548091829, guid: b16e9a5fe8e4b1b42a0f592ef154cd0a, type: 3}
 --- !u!23 &2363547832853428642
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -95,7 +95,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d0d7947038ce372499ba5b9d49098b73, type: 2}
+  - {fileID: 2100000, guid: 0966f0e89b59c304896f437cde73a590, type: 2}
+  - {fileID: -8072498210058488740, guid: 9a56a7442c91eea49a2582a4452c831a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,10 +142,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 9091698868730459904}
   categoryName: Geladeira
   zoomSize: 10
-  alreadyChanged: 0
   outlineOrange: {fileID: -2031729329343359173}
   outlineBlue: {fileID: 2340975471556033236}
   particleSystem: {fileID: 6053034267511464820}
+  hasChanged: 1
 --- !u!65 &-3955932503189815290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -156,8 +157,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02533698, y: 0.026187059, z: 0.06479748}
-  m_Center: {x: 0.0006829817, y: 0.012990998, z: 0.032380488}
+  m_Size: {x: 0.027, y: 0.028, z: 0.066}
+  m_Center: {x: -0.0002, y: 0.0055, z: 0.032380488}
 --- !u!114 &-2031729329343359173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,11 +278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0123
+      value: 0.0052
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0354
+      value: 0.0462
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalRotation.x

@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6459365192191024844}
-  m_Mesh: {fileID: 2544115029800353282, guid: bf8be975313c4244098286fbcf2edba5, type: 3}
+  m_Mesh: {fileID: 2544115029800353282, guid: 9a56a7442c91eea49a2582a4452c831a, type: 3}
 --- !u!23 &5956451054515978695
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -65,8 +65,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d0d7947038ce372499ba5b9d49098b73, type: 2}
-  - {fileID: 2100000, guid: 22322551884cb6c4f8d463b35b8d7b78, type: 2}
+  - {fileID: 2100000, guid: 51fedac538935d146b1b67638429e920, type: 2}
+  - {fileID: -8072498210058488740, guid: 9a56a7442c91eea49a2582a4452c831a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,14 +108,14 @@ MonoBehaviour:
   itemSustainability: 6
   basePrice: 2
   baseSustainability: 3
-  itemSprite: {fileID: 21300000, guid: 52659d0607769394ca4c13a4f72a278e, type: 3}
+  itemSprite: {fileID: 21300000, guid: 0144060732ec872479a787def77f4c46, type: 3}
   itemPrefab: {fileID: 6459365192191024844}
   categoryName: Geladeira
   zoomSize: 10
-  alreadyChanged: 0
   outlineOrange: {fileID: 8120325714432467077}
   outlineBlue: {fileID: -624408114187765162}
   particleSystem: {fileID: 3474065142090681114}
+  hasChanged: 1
 --- !u!65 &7089837241214216452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,8 +127,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0414823, y: 0.021145176, z: 0.06411884}
-  m_Center: {x: 0.00014088396, y: 0.010574179, z: 0.03205942}
+  m_Size: {x: 0.027, y: 0.028, z: 0.066}
+  m_Center: {x: -0.0002, y: 0.0055, z: 0.03205942}
 --- !u!114 &8120325714432467077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,11 +300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0123
+      value: 0.0056
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0354
+      value: 0.0521
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalRotation.x
@@ -352,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292805, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 1.3
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292805, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar

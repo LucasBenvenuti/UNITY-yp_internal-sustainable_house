@@ -75,7 +75,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7173833715149749110}
-  m_Mesh: {fileID: -6884537941869310842, guid: bf8be975313c4244098286fbcf2edba5, type: 3}
+  m_Mesh: {fileID: -6884537941869310842, guid: b39ff921acf34c1418fd21b799d8505a, type: 3}
 --- !u!23 &3762121532780017493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -95,8 +95,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d0d7947038ce372499ba5b9d49098b73, type: 2}
-  - {fileID: 2100000, guid: 22322551884cb6c4f8d463b35b8d7b78, type: 2}
+  - {fileID: 2100000, guid: da510acd7c48521408303b197fe1b898, type: 2}
+  - {fileID: -8072498210058488740, guid: 9a56a7442c91eea49a2582a4452c831a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,20 +132,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 1
-  itemName: Geladeira com selo Procel C
+  itemName: Geladeira com Selo Procel C
   itemType: 10
   itemPrice: 1
   itemSustainability: 2
   basePrice: 1
   baseSustainability: 1
-  itemSprite: {fileID: 21300000, guid: 9dd106cba218ed645b3858cda01db1e1, type: 3}
+  itemSprite: {fileID: 21300000, guid: 88d081abcb86a594689ee271d5b5dea5, type: 3}
   itemPrefab: {fileID: 7173833715149749110}
   categoryName: Geladeira
   zoomSize: 10
-  alreadyChanged: 0
   outlineOrange: {fileID: 8396638766479100792}
   outlineBlue: {fileID: 8388696807393302798}
   particleSystem: {fileID: 3354133978371108032}
+  hasChanged: 1
 --- !u!114 &8396638766479100792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,8 +219,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.027555482, y: 0.02428193, z: 0.06438258}
-  m_Center: {x: -0.000020797364, y: 0.0121409595, z: 0.03219129}
+  m_Size: {x: 0.02716493, y: 0.028171536, z: 0.06438258}
+  m_Center: {x: -0.0002160716, y: 0.0055857687, z: 0.03219129}
 --- !u!114 &8388696807393302798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,11 +300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0123
+      value: 0.0043
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0354
+      value: 0.0512
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292803, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: m_LocalRotation.x
@@ -372,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292805, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 1.1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 2554841195860292805, guid: 5a1bbe9c7af4d274eb8adb68418bd769, type: 3}
       propertyPath: ShapeModule.m_Scale.y
