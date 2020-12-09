@@ -29720,9 +29720,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Voce deseja confirmar a troca?
-
-'
+  m_text: "Se voc\xEA prosseguir, substituir\xE1 seu item antigo pelo novo selecionado.\n\nTem
+    certeza que deseja continuar?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}
