@@ -10,6 +10,7 @@ public class SelectItem : MonoBehaviour
     public ItemTemplate itemSelectedTemplate;
 
     public string itemName;
+    public int itemOption;
 
     public void NewItemInstance()
     {

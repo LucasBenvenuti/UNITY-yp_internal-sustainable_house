@@ -31,8 +31,8 @@ public class GameController : MonoBehaviour
 
     public GameObject panelAction;
     public GameObject itemHolder;
-    public GameObject confirmBox;
-    public Button confirmBtn;
+    public CanvasGroup confirmBox;
+    public Button[] confirmBtn;
     public int indexItemType;
     public bool destroyOriginalItem;
     public bool itemPanelActive;
@@ -79,6 +79,10 @@ public class GameController : MonoBehaviour
         inGameTutorial.alpha = 0;
         inGameTutorial.interactable = false;
         inGameTutorial.blocksRaycasts = false;
+
+        confirmBox.alpha = 0;
+        confirmBox.interactable = false;
+        confirmBox.blocksRaycasts = false;
 
         for (int i = 0; i < uiItemList.Count; i++)
         {
@@ -205,6 +209,7 @@ public class GameController : MonoBehaviour
 
             uiItemList[i].selectItem.itemPrefab = prefabsList[item.itemType].prefabsList[i].gameObject;
             uiItemList[i].selectItem.itemName = prefabsList[item.itemType].prefabsList[i].itemName;
+            uiItemList[i].selectItem.itemOption = prefabsList[item.itemType].prefabsList[i].itemOption;
             uiItemList[i].selectItem.itemPosition = item.transform.parent;
 
             uiItemList[i].selectItem.itemSelectedTemplate = prefabsList[item.itemType].prefabsList[i];
@@ -278,7 +283,7 @@ public class GameController : MonoBehaviour
 
     public void SelectAction(GameObject hitAction)
     {
-        AudioController.instance.PlayActionsAudio();
+        AudioController.instance.PlayActionsAudio();  
         DisplayActionTypeUI(hitAction);
         StartCoroutine(ZoomToActionAndReturn(hitAction));
     }
@@ -312,15 +317,25 @@ public class GameController : MonoBehaviour
 
     public void ChangeRequest(SelectItem item)
     {
-        confirmBtn.onClick.RemoveAllListeners();
-        if (confirmBtn != null)
+         Debug.Log("this is selected item:" + item.itemName);
+        //confirmBtn.onClick.RemoveAllListeners();
+        if (confirmBox != null)
         {
-            confirmBox.SetActive(true);
+            //confirmBtn.onClick.AddListener(delegate {ChangeItem(item); });
+            //confirmBtn.onClick.AddListener(() => { ChangeItem(item); });
+            //confirmBox.SetActive(true);
+
+            ShowConfirmBox();
+            for(int i = 0; i <= 3; i++){
+                confirmBtn[i].gameObject.SetActive(false);
+            }
+            confirmBtn[item.itemOption].gameObject.SetActive(true);
         }
         else
         {
             Debug.Log("Need to set Confirm Button on Select Item");
         }
+     
     }
     public void ChangeItem(SelectItem item)
     {
@@ -383,6 +398,24 @@ public class GameController : MonoBehaviour
         TimerController.instance.totalTime = DataStorage.instance.currentTime;
         UIController.instance.moneySlider.value = DataStorage.instance.currentMoney;
         UIController.instance.sustainabilitySlider.value = DataStorage.instance.currentSustainability;
+    }
+
+    public void ShowConfirmBox()
+    {
+        LeanTween.alphaCanvas(confirmBox, 1f, tweenDuration).setEase(easeInOut).setOnStart(() =>
+        {
+            confirmBox.blocksRaycasts = true;
+            confirmBox.interactable = true;
+        });
+    }
+
+    public void HideConfirmBox()
+    {
+        LeanTween.alphaCanvas(confirmBox, 0f, tweenDuration).setEase(easeInOut).setOnStart(() =>
+        {
+            confirmBox.blocksRaycasts = false;
+            confirmBox.interactable = false;
+        });
     }
 }
 
