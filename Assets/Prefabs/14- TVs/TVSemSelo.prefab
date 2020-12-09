@@ -142,10 +142,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 6366219437627164390}
   categoryName: "Televis\xE3o"
   zoomSize: 5
-  outlineOrange: {fileID: -3319809552001743849}
-  outlineBlue: {fileID: -4700915117734350299}
   particleSystem: {fileID: 3595646120041963976}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 9193545288433842385}
 --- !u!65 &-5754917040789484030
 BoxCollider:
   m_ObjectHideFlags: 0

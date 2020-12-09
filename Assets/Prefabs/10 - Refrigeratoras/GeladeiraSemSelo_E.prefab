@@ -142,10 +142,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 9091698868730459904}
   categoryName: Geladeira
   zoomSize: 10
-  outlineOrange: {fileID: -2031729329343359173}
-  outlineBlue: {fileID: 2340975471556033236}
   particleSystem: {fileID: 6053034267511464820}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 2363547832853428642}
 --- !u!65 &-3955932503189815290
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -141,10 +141,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 7460106646142409091}
   categoryName: "Abastecimento de \xE1gua"
   zoomSize: 7
-  alreadyChanged: 0
-  outlineOrange: {fileID: 7369982869014145167}
-  outlineBlue: {fileID: 4990260358533659172}
   particleSystem: {fileID: 5210889373517520944}
+  hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 50251580008848414}
 --- !u!65 &5123827188644426504
 BoxCollider:
   m_ObjectHideFlags: 0

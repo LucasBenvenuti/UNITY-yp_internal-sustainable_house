@@ -298,10 +298,15 @@ MonoBehaviour:
   itemPrefab: {fileID: 7342282037617019599}
   categoryName: "Abastecimento de energia el\xE9trica"
   zoomSize: 11
-  alreadyChanged: 0
-  outlineOrange: {fileID: 5619048008263066333}
-  outlineBlue: {fileID: -4510144778927468611}
   particleSystem: {fileID: 1868531762311168795}
+  hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 3254318605274688484}
+  - {fileID: 1684785079623653703}
+  - {fileID: 4101990953051563622}
 --- !u!65 &5319822910982117241
 BoxCollider:
   m_ObjectHideFlags: 0

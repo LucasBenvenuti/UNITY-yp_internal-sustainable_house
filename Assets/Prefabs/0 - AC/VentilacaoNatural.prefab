@@ -193,10 +193,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 7976331039765859088}
   categoryName: "Climatiza\xE7\xE3o"
   zoomSize: 4
-  outlineOrange: {fileID: 147657675625039557}
-  outlineBlue: {fileID: 3075764712920679582}
   particleSystem: {fileID: 6632527130175345038}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5294118, b: 1, a: 1}
+  objectMat:
+  - {fileID: 2311537819086252910}
 --- !u!65 &479407112674011143
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -255,7 +258,7 @@ MonoBehaviour:
       serializedProperties: []
   frontParameters:
     enabled: 1
-    color: {r: 1, g: 0.3813261, b: 0, a: 1}
+    color: {r: 1, g: 0.38039216, b: 0, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:

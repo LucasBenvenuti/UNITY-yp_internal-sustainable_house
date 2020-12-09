@@ -195,10 +195,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 4730414292951724179}
   categoryName: Janelas
   zoomSize: 6
-  outlineOrange: {fileID: 3911719471494964656}
-  outlineBlue: {fileID: 3615888527494698426}
   particleSystem: {fileID: 6919688101494061782}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 8581325126794281331}
 --- !u!65 &-8206426470185295746
 BoxCollider:
   m_ObjectHideFlags: 0

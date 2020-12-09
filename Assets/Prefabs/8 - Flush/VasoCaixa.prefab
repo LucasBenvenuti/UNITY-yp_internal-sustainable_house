@@ -111,10 +111,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 91438792828735440}
   categoryName: Descarga
   zoomSize: 5
-  outlineOrange: {fileID: -3847135639523855119}
-  outlineBlue: {fileID: 4620121309249792470}
   particleSystem: {fileID: 3858923903077815201}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 7829867140283393526}
 --- !u!65 &-1958854383320305305
 BoxCollider:
   m_ObjectHideFlags: 0

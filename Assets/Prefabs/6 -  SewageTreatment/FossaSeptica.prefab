@@ -250,10 +250,14 @@ MonoBehaviour:
   itemPrefab: {fileID: 4539997603219644121}
   categoryName: "Esgotamento Sanit\xE1rio"
   zoomSize: 10
-  alreadyChanged: 0
-  outlineOrange: {fileID: -355392859068390714}
-  outlineBlue: {fileID: -143159205280916870}
   particleSystem: {fileID: 6048779344338218595}
+  hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 6927771423347535017}
+  - {fileID: 457223273852792549}
 --- !u!114 &-355392859068390714
 MonoBehaviour:
   m_ObjectHideFlags: 0

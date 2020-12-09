@@ -253,10 +253,14 @@ MonoBehaviour:
   itemPrefab: {fileID: 1013804435115272870}
   categoryName: "Climatiza\xE7\xE3o"
   zoomSize: 6
-  outlineOrange: {fileID: -3934311770835681313}
-  outlineBlue: {fileID: 387156017886959227}
   particleSystem: {fileID: 9214257847825625902}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 7614202114738738747}
+  - {fileID: 515804882159158860}
 --- !u!114 &-3934311770835681313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,12 +317,18 @@ MonoBehaviour:
       serializedProperties: []
   frontParameters:
     enabled: 1
-    color: {r: 1, g: 0.3813261, b: 0, a: 1}
+    color: {r: 1, g: 0.38039216, b: 0, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
+      shader: {fileID: 4800000, guid: 213090e563021044c92d1c27258b93f0, type: 3}
+      serializedProperties:
+      - PropertyName: _PublicColor
+        Property:
+          ColorValue: {r: 1, g: 0.3803922, b: 0, a: 0}
+          FloatValue: 0
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 0
 --- !u!114 &387156017886959227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,15 +382,141 @@ MonoBehaviour:
     blurShift: 1
     fillPass:
       shader: {fileID: 0}
-      serializedProperties: []
+      serializedProperties:
+      - PropertyName: _PublicColor
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 0.2}
+          FloatValue: 0
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 0
   frontParameters:
     enabled: 1
     color: {r: 0, g: 0.25490198, b: 1, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
+      shader: {fileID: 4800000, guid: 213090e563021044c92d1c27258b93f0, type: 3}
+      serializedProperties:
+      - PropertyName: _PublicOuterColor
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 0
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 0
+      - PropertyName: _PublicInnerColor
+        Property:
+          ColorValue: {r: 0, g: 1, b: 0, a: 1}
+          FloatValue: 0
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 0
+      - PropertyName: _PublicFresnelPower
+        Property:
+          ColorValue: {r: 0, g: 1, b: 0, a: 1}
+          FloatValue: 2
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 2
+      - PropertyName: _PublicFresnelMultiplier
+        Property:
+          ColorValue: {r: 0, g: 1, b: 0, a: 1}
+          FloatValue: 1
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 2
+      - PropertyName: _PublicColor
+        Property:
+          ColorValue: {r: 0, g: 0.19215687, b: 0.7490196, a: 0}
+          FloatValue: 1
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 0
+      - PropertyName: _PublicHorizontalSize
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 1
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 2
+      - PropertyName: _PublicVerticalSize
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 1
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 2
+      - PropertyName: _PublicHorizontalGapSize
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 0.5
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 3
+      - PropertyName: _PublicVerticalGapSize
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 0.5
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 3
+      - PropertyName: _PublicHorizontalSoftness
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 0.2
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 3
+      - PropertyName: _PublicVerticalSoftness
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 0.2
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 3
+      - PropertyName: _PublicHorizontalSpeed
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 1
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 2
+      - PropertyName: _PublicVerticalSpeed
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 1
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 2
+      - PropertyName: _PublicAngle
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 79
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 3
+      - PropertyName: _PublicSecondaryAlpha
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 1}
+          FloatValue: 0.2
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 3
+      - PropertyName: _PublicGapColor
+        Property:
+          ColorValue: {r: 1351.1758, g: 1351.1758, b: 1351.1758, a: 1}
+          FloatValue: 0.2
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 0
+      - PropertyName: _PublicSize
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 0.2}
+          FloatValue: 10
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 2
+      - PropertyName: _PublicGapSize
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 0.2}
+          FloatValue: 0
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 3
+      - PropertyName: _PublicSoftness
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 0.2}
+          FloatValue: 0.63
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 3
+      - PropertyName: _PublicSpeed
+        Property:
+          ColorValue: {r: 1, g: 0, b: 0, a: 0.2}
+          FloatValue: 50
+          VectorValue: {x: 0, y: 0, z: 0, w: 0}
+          PropertyType: 2
 --- !u!1 &5663206551303538606
 GameObject:
   m_ObjectHideFlags: 0

@@ -111,10 +111,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 1482583528791053590}
   categoryName: Lixeiras
   zoomSize: 8
-  outlineOrange: {fileID: 4755148276168522675}
-  outlineBlue: {fileID: -431573729148419336}
   particleSystem: {fileID: 4616487606178997105}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 3697681749069718885}
 --- !u!114 &4755148276168522675
 MonoBehaviour:
   m_ObjectHideFlags: 0

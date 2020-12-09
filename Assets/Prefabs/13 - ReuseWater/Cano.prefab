@@ -111,10 +111,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 6512354355215967309}
   categoryName: "\xC1gua de Reuso"
   zoomSize: 4
-  alreadyChanged: 0
-  outlineOrange: {fileID: -8901815575018293431}
-  outlineBlue: {fileID: 886922614124006835}
   particleSystem: {fileID: 4205556413271020326}
+  hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 4567649342265124}
 --- !u!65 &1051927766187942541
 BoxCollider:
   m_ObjectHideFlags: 0

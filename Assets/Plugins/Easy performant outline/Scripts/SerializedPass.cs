@@ -64,8 +64,8 @@ namespace EPOOutline
         [SerializeField]
         private List<SerializedPropertyKeyValuePair> serializedProperties = new List<SerializedPropertyKeyValuePair>();
 
-        private Dictionary<int,     SerializedPassProperty> propertiesById      = new Dictionary<int, SerializedPassProperty>();
-        private Dictionary<string,  SerializedPassProperty> propertiesByName    = new Dictionary<string, SerializedPassProperty>();
+        private Dictionary<int, SerializedPassProperty> propertiesById = new Dictionary<int, SerializedPassProperty>();
+        private Dictionary<string, SerializedPassProperty> propertiesByName = new Dictionary<string, SerializedPassProperty>();
 
         private Material material;
 

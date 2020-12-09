@@ -221,10 +221,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 2350546846085701635}
   categoryName: Secagem de roupa
   zoomSize: 6
-  outlineOrange: {fileID: 4122938720764627321}
-  outlineBlue: {fileID: 3923125660148459012}
   particleSystem: {fileID: 5310562369756357927}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 1737954638496978066}
 --- !u!114 &4122938720764627321
 MonoBehaviour:
   m_ObjectHideFlags: 0

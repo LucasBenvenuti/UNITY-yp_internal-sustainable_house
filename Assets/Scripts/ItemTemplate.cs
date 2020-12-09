@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using EPOOutline;
 
 public class ItemTemplate : MonoBehaviour
 {
@@ -40,12 +39,18 @@ public class ItemTemplate : MonoBehaviour
 
     public float zoomSize = 5f;
 
-    public Outlinable outlineOrange;
-    public Outlinable outlineBlue;
-
     public ParticleSystem particleSystem;
 
     public bool hasChanged = true;
+
+    public LeanTweenType materialEaseInOut;
+    public float materialTweenDuration = 1f;
+
+    public Color startMatColor;
+    public Renderer[] objectMat;
+
+    private Color firstTweenColor;
+    private Color firstBaseColor;
 
     void Start()
     {
@@ -61,10 +66,7 @@ public class ItemTemplate : MonoBehaviour
         {
             itemType = 0;
         }
-        // if (itemSustainability < -5.1)
-        // {
-        //     itemSustainability = -5;
-        // }
+
         if (itemOption < 0)
         {
             itemOption = 0;
@@ -73,6 +75,28 @@ public class ItemTemplate : MonoBehaviour
         if (particleSystem)
         {
             particleSystem.Play();
+        }
+
+        float waitTime = 0f;
+
+        if (OutlineAnimationController.isGoing)
+        {
+            waitTime = (1f - OutlineAnimationController.curTimeValue) + 1f;
+        }
+        else
+        {
+            waitTime = (OutlineAnimationController.curTimeValue);
+        }
+
+        foreach (Renderer render in objectMat)
+        {
+            LeanTween.value(this.gameObject, 0f, 1f, waitTime).setEase(materialEaseInOut).setOnComplete(() =>
+            {
+                LeanTween.value(this.gameObject, new Color(1f, 1f, 1f, 1f), startMatColor, materialTweenDuration).setEase(materialEaseInOut).setOnUpdate((Color flt) =>
+                {
+                    render.material.color = flt;
+                }).setLoopPingPong();
+            });
         }
     }
 }

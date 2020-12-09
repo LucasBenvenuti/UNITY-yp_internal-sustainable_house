@@ -226,10 +226,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 6967943392402169520}
   categoryName: Torneira
   zoomSize: 3
-  alreadyChanged: 0
-  outlineOrange: {fileID: 1195011687243683848}
-  outlineBlue: {fileID: -4024485265907994369}
   particleSystem: {fileID: 1237749359592601922}
+  hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 919626845072637080}
 --- !u!65 &8981376109979220253
 BoxCollider:
   m_ObjectHideFlags: 0

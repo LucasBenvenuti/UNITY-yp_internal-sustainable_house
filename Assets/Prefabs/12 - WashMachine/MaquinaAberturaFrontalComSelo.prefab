@@ -112,10 +112,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 121966439491313772}
   categoryName: "M\xE1quina de Lavar"
   zoomSize: 7
-  alreadyChanged: 0
-  outlineOrange: {fileID: 8301825776064278811}
-  outlineBlue: {fileID: 2371374013645379196}
   particleSystem: {fileID: 1742883486150371549}
+  hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 362329659377900075}
 --- !u!114 &8301825776064278811
 MonoBehaviour:
   m_ObjectHideFlags: 0

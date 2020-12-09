@@ -141,10 +141,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 3462223690305140257}
   categoryName: "L\xE2mpadas"
   zoomSize: 3
-  outlineOrange: {fileID: 4586244830413211460}
-  outlineBlue: {fileID: 3049757814952955277}
   particleSystem: {fileID: 5463101549475061400}
   hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 710509639126696118}
 --- !u!64 &5144431054151530306
 MeshCollider:
   m_ObjectHideFlags: 0

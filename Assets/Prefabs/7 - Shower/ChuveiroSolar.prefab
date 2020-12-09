@@ -114,10 +114,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 449225763651215128}
   categoryName: Chuveiro
   zoomSize: 3
-  alreadyChanged: 0
-  outlineOrange: {fileID: -9117319704099233121}
-  outlineBlue: {fileID: -7286530956834561614}
   particleSystem: {fileID: 126954972301940724}
+  hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 2978256330936660531}
 --- !u!114 &-9117319704099233121
 MonoBehaviour:
   m_ObjectHideFlags: 0

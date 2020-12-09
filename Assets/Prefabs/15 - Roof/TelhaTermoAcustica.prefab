@@ -141,10 +141,13 @@ MonoBehaviour:
   itemPrefab: {fileID: 4218060639931505882}
   categoryName: Telhado
   zoomSize: 8
-  alreadyChanged: 0
-  outlineOrange: {fileID: 6367904465623160988}
-  outlineBlue: {fileID: 4024669098027359998}
   particleSystem: {fileID: 6631414504329899390}
+  hasChanged: 1
+  materialEaseInOut: 1
+  materialTweenDuration: 1
+  startMatColor: {r: 0, g: 0.5411765, b: 1, a: 1}
+  objectMat:
+  - {fileID: 886767250776590055}
 --- !u!65 &1377919968176462503
 BoxCollider:
   m_ObjectHideFlags: 0
