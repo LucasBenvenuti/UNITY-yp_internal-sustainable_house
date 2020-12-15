@@ -3375,7 +3375,7 @@ MonoBehaviour:
   EndCanvas: {fileID: 6238105324322753638}
   endTweenDuration: 0.3
   easeInOutEnd: 7
-  totalTime: 600
+  totalTime: 420
   actionTimer: 5
   actionBaseTime: 5
   timeText: {fileID: 1803845539545163847}
@@ -22071,7 +22071,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10:00
+  m_text: 7:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}

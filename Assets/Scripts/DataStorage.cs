@@ -6,6 +6,7 @@ public class DataStorage : MonoBehaviour
 {
     public static DataStorage instance;
 
+    public string ipAddress;
     public bool soundMuted = false;
     public string userName;
     public bool hasProgress = false;

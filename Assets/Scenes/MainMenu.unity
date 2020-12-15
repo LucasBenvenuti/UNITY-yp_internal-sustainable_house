@@ -2851,6 +2851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConfirmScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 2391565191585655948, guid: 95dc3d400eeb7b94f8a2fae8a3a2d159, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2391565191585655951, guid: 95dc3d400eeb7b94f8a2fae8a3a2d159, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
