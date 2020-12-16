@@ -172,10 +172,14 @@ public class GameController : MonoBehaviour
         {
             if (currentOption == i)
             {
+                uiItemList[i].ownImage.color = GameController.instance.uiItemList[GameController.instance.currentOption].outlineColor;
+                uiItemList[i].outlineCanvas.alpha = 1;
                 uiItemList[i].button.interactable = false;
             }
             else
             {
+                uiItemList[i].outlineCanvas.alpha = 0;
+                uiItemList[i].ownImage.color = new Color(1f, 1f, 1f, 1f);
                 uiItemList[i].button.interactable = true;
             }
 
@@ -283,7 +287,7 @@ public class GameController : MonoBehaviour
 
     public void SelectAction(GameObject hitAction)
     {
-        AudioController.instance.PlayActionsAudio();  
+        AudioController.instance.PlayActionsAudio();
         DisplayActionTypeUI(hitAction);
         StartCoroutine(ZoomToActionAndReturn(hitAction));
     }
@@ -317,7 +321,7 @@ public class GameController : MonoBehaviour
 
     public void ChangeRequest(SelectItem item)
     {
-         Debug.Log("this is selected item:" + item.itemName);
+        Debug.Log("this is selected item:" + item.itemName);
         //confirmBtn.onClick.RemoveAllListeners();
         if (confirmBox != null)
         {
@@ -326,7 +330,8 @@ public class GameController : MonoBehaviour
             //confirmBox.SetActive(true);
 
             ShowConfirmBox();
-            for(int i = 0; i <= 3; i++){
+            for (int i = 0; i <= 3; i++)
+            {
                 confirmBtn[i].gameObject.SetActive(false);
             }
             confirmBtn[item.itemOption].gameObject.SetActive(true);
@@ -335,7 +340,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Need to set Confirm Button on Select Item");
         }
-     
+
     }
     public void ChangeItem(SelectItem item)
     {

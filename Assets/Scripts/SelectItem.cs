@@ -33,9 +33,13 @@ public class SelectItem : MonoBehaviour
             prefab.transform.position = itemPosition.position;
             GameController.instance.destroyOriginalItem = false;
 
+            GameController.instance.uiItemList[GameController.instance.currentOption].outlineCanvas.alpha = 0;
             GameController.instance.uiItemList[GameController.instance.currentOption].button.interactable = true;
+            GameController.instance.uiItemList[GameController.instance.currentOption].ownImage.color = new Color(1f, 1f, 1f, 1f);
             GameController.instance.currentOption = itemSelectedTemplate.itemOption;
+            GameController.instance.uiItemList[GameController.instance.currentOption].outlineCanvas.alpha = 1;
             GameController.instance.uiItemList[GameController.instance.currentOption].button.interactable = false;
+            GameController.instance.uiItemList[GameController.instance.currentOption].ownImage.color = GameController.instance.uiItemList[GameController.instance.currentOption].outlineColor;
 
             DataStorage.instance.sceneObjectsList[itemSelectedTemplate.itemType] = itemSelectedTemplate.itemOption;
 

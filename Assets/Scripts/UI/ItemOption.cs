@@ -7,6 +7,7 @@ using TMPro;
 public class ItemOption : MonoBehaviour
 {
     public Image icon;
+    public Image ownImage;
     public TMP_Text itemName;
     public Slider itemCostPos;
     public Slider itemCostNeg;
@@ -15,4 +16,7 @@ public class ItemOption : MonoBehaviour
     public Button button;
 
     public SelectItem selectItem;
+
+    public Color outlineColor;
+    public CanvasGroup outlineCanvas;
 }
