@@ -64,6 +64,9 @@ public class UIController : MonoBehaviour
         DataStorage.instance.addReportLine("Jogo iniciado.");
         DataStorage.instance.addReportLine("Recursos iniciais: " + moneyBaseValue + ".");
         DataStorage.instance.addReportLine("Sustentabilidade inicial: " + sustainabilityBaseValue + ".");
+
+        DataStorage.instance.startSus = sustainabilityBaseValue;
+        DataStorage.instance.startResources = moneyBaseValue;
     }
 
     public void CheckStartBaseValues()
@@ -89,7 +92,7 @@ public class UIController : MonoBehaviour
         float newMoneyValue = neutralMoney + newPrice;
         float newSusValue = neutralSus + newSus;
 
-        if(newPrice >= 0)
+        if (newPrice >= 0)
         {
             moneyHelperText.text = "+" + newPrice.ToString();
             moneyHelperText.color = new Color32(44, 201, 130, 255);
@@ -99,16 +102,16 @@ public class UIController : MonoBehaviour
         }
         else
         {
-             moneyHelperText.text = newPrice.ToString();
+            moneyHelperText.text = newPrice.ToString();
             moneyHelperText.color = new Color32(227, 36, 98, 255);
             moneyHelperIcon[1].SetActive(true);
             moneyHelperIcon[0].SetActive(false);
             moneyHelperAnimator.SetTrigger("DecreaseMoney");
         }
-        if(newSus >= 0)
+        if (newSus >= 0)
         {
             sustainabilityHelperText.text = "+" + newSus.ToString();
-            sustainabilityHelperText.color =  new Color32(178, 108, 215, 255);
+            sustainabilityHelperText.color = new Color32(178, 108, 215, 255);
             sustainabilityHelperIcon[0].SetActive(true);
             sustainabilityHelperIcon[1].SetActive(false);
             sustainabilityHelperAnimator.SetTrigger("IncreaseSustainability");
@@ -124,6 +127,7 @@ public class UIController : MonoBehaviour
 
         DataStorage.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + newMoneyValue + ".");
         DataStorage.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + newSusValue + ".");
+
         sustainabilitySlider.value = newSusValue;
         moneySlider.value = newMoneyValue;
     }

@@ -9,6 +9,10 @@ public class TimerController : MonoBehaviour
     public static TimerController instance;
 
     public CanvasGroup EndCanvas;
+    public GameObject highText;
+    public GameObject lowText;
+    public GameObject highGirl;
+    public GameObject lowGirl;
     public float endTweenDuration = 0.3f;
     public LeanTweenType easeInOutEnd;
 
@@ -44,6 +48,11 @@ public class TimerController : MonoBehaviour
         EndCanvas.alpha = 0;
         EndCanvas.interactable = false;
         EndCanvas.blocksRaycasts = false;
+
+        highText.SetActive(false);
+        lowText.SetActive(false);
+        highGirl.SetActive(false);
+        lowGirl.SetActive(false);
     }
     void Start()
     {
@@ -112,6 +121,18 @@ public class TimerController : MonoBehaviour
 
         Debug.Log("Function called when the timer is over for finish the game");
         timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
+
+        if (UIController.instance.sustainabilitySlider.value <= DataStorage.instance.startSus)
+        {
+            lowGirl.SetActive(true);
+            lowText.SetActive(true);
+        }
+        else
+        {
+            highGirl.SetActive(true);
+            highText.SetActive(true);
+        }
+
         yield return new WaitForSeconds(2f);
         AudioController.instance.PlayOpenFinalScreenAudio();
 

@@ -17,6 +17,9 @@ public class DataStorage : MonoBehaviour
     public List<string> reportList;
     public List<bool> actionsDone;
 
+    public float startSus;
+    public float startResources;
+
     void Awake()
     {
         if (!instance)
