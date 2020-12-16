@@ -12,14 +12,16 @@ public class Billboard : MonoBehaviour
     public bool repeatable;
     public float speed;
     public float duration;
+    public float maxAlpha;
+    public float minAlpha;
 
     IEnumerator Start()
     {
         minScale = sprite.transform.localScale;
         while (repeatable)
         {
-            yield return RepeatLerp(minScale, maxScale, duration);
-            yield return RepeatLerp(maxScale, minScale, duration);
+            yield return RepeatLerp(minScale, maxScale, duration, maxAlpha);
+            yield return RepeatLerp(maxScale, minScale, duration, minAlpha);
         }
     }
 
@@ -29,17 +31,18 @@ public class Billboard : MonoBehaviour
         // transform.LookAt(Camera.main.transform.position, Vector3.up);
     }
 
-    IEnumerator RepeatLerp(Vector3 a, Vector3 b, float time)
+    IEnumerator RepeatLerp(Vector3 a, Vector3 b, float time, float alpha)
     {
+        LeanTween.alpha(this.gameObject, alpha, 1.34f);
         float i = 0.0f;
         float rate = (1.0f / time) * speed;
         while (i < 1.0f)
         {
             i += Time.deltaTime * rate;
+
             transform.localScale = Vector3.Lerp(a, b, i);
             yield return null;
         }
-
     }
 
 
