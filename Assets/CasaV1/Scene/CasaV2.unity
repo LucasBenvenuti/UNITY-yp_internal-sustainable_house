@@ -2501,12 +2501,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 900413900}
-  maxScale: {x: 0.3, y: 0.3, z: 0.3}
+  maxScale: {x: 0.35, y: 0.35, z: 0.35}
   repeatable: 1
   speed: 4
   duration: 3
-  maxAlpha: 0
-  minAlpha: 0
+  maxAlpha: 1
+  minAlpha: 0.6
 --- !u!1 &940648999
 GameObject:
   m_ObjectHideFlags: 0
@@ -4216,12 +4216,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1275223056}
-  maxScale: {x: 0.3, y: 0.3, z: 0.3}
+  maxScale: {x: 0.35, y: 0.35, z: 0.35}
   repeatable: 1
   speed: 4
   duration: 3
-  maxAlpha: 0
-  minAlpha: 0
+  maxAlpha: 1
+  minAlpha: 0.6
 --- !u!114 &1284887115 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6539128471643725576, guid: 801f6b2bbf9571a459140d4735a8b81d, type: 3}
@@ -4447,12 +4447,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1368595268}
-  maxScale: {x: 0.3, y: 0.3, z: 0.3}
+  maxScale: {x: 0.35, y: 0.35, z: 0.35}
   repeatable: 1
   speed: 4
   duration: 3
-  maxAlpha: 0
-  minAlpha: 0
+  maxAlpha: 1
+  minAlpha: 0.6
 --- !u!4 &1383603498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3228681898086498969, guid: 1a618bce8790c3e41ae596ac62524c36, type: 3}
@@ -5911,15 +5911,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695486483819, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695486483819, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695486483819, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695486483819, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6051,15 +6051,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695691423099, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695691423099, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695691423099, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695691423099, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6135,15 +6135,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695800333904, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695800333904, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695800333904, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695800333904, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6239,15 +6239,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695913225659, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695913225659, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695913225659, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695913225659, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6275,15 +6275,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376696600759746, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376696600759746, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376696600759746, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4941376696600759746, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7301,12 +7301,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1934431009}
-  maxScale: {x: 0.3, y: 0.3, z: 0.3}
+  maxScale: {x: 0.35, y: 0.35, z: 0.35}
   repeatable: 1
   speed: 4
   duration: 3
-  maxAlpha: 0
-  minAlpha: 0
+  maxAlpha: 1
+  minAlpha: 0.6
 --- !u!1 &1935763792
 GameObject:
   m_ObjectHideFlags: 0
@@ -7873,12 +7873,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 2006540820}
-  maxScale: {x: 0.3, y: 0.3, z: 0.3}
+  maxScale: {x: 0.35, y: 0.35, z: 0.35}
   repeatable: 1
   speed: 4
   duration: 3
-  maxAlpha: 0
-  minAlpha: 0
+  maxAlpha: 1
+  minAlpha: 0.6
 --- !u!65 &2038075803 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 4941376695862100676, guid: 182d85f7b0054d14087696cb04888349, type: 3}
