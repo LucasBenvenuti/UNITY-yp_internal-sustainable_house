@@ -13,10 +13,12 @@ public class ActionsAnimations : MonoBehaviour
     public NavMeshAgent myAgent;
     public Transform finalPosition;
     public Transform finalPositionBathroom;
+    public Transform finalCellphoneBathroom;
     public Transform basePosition;
 
     public GameObject cellPhone;
     public GameObject chargingCellPhone;
+    public GameObject charger;
     public GameObject toothbrush;
     public GameObject sinkToothbrush;
     public GameObject book;
@@ -35,9 +37,10 @@ public class ActionsAnimations : MonoBehaviour
 
     void Awake()
     {
-        if (cellPhone && chargingCellPhone)
+        if (cellPhone && chargingCellPhone && charger)
         {
             cellPhone.SetActive(false);
+            charger.SetActive(false);
         }
         if (toothbrush && sinkToothbrush)
         {
@@ -126,7 +129,7 @@ public class ActionsAnimations : MonoBehaviour
         }
         if (Vector3.Distance(transform.position, myAgent.destination) >= 0.5f)
         {
-            myAgent.transform.LeanRotateY(-30f, 0.5f);
+            myAgent.transform.LeanRotateY(0f, 0.5f);
         }
         yield return IdleTransition();
         animatorTemplate.SetTrigger("TextTrigger");
@@ -344,6 +347,42 @@ public class ActionsAnimations : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
+    }
+
+    public void PlaceCharger(int active)
+    {
+        if (active == 1)
+        {
+            charger.SetActive(true);
+        }
+    }
+
+    public void CallFinalCellphoneAnimation(){
+        StartCoroutine(FinalCellphoneAnimation());
+    }
+
+  IEnumerator FinalCellphoneAnimation()
+    {
+        if(cellPhone)
+        {
+            animatorTemplate.SetTrigger("WalkTrigger");
+            myAgent.SetDestination(finalCellphoneBathroom.position);
+            while (Vector3.Distance(transform.position, myAgent.destination) >= 1f)
+            {
+                yield return null;
+            }
+            if (Vector3.Distance(transform.position, myAgent.destination) >= 0.5f)
+            {
+                myAgent.transform.LeanRotateY(-30f, 0.5f);
+            }
+            yield return IdleTransition();
+            animatorTemplate.SetTrigger("FinalCellphoneTrigger");
+        }
+    }
+
+    public void CallRotateCharacter(){
+        myAgent.transform.LeanRotateY(-20f, 0.5f);
+        animatorTemplate.SetTrigger("PickingTrigger");
     }
 
 }
