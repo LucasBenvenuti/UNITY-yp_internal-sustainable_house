@@ -109,7 +109,7 @@ public class TimerController : MonoBehaviour
         }
     }
 
-    void FinishGame()
+    public void FinishGame()
     {
         StartCoroutine(ReportCoroutine());
     }

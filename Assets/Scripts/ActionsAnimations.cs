@@ -140,7 +140,10 @@ public class ActionsAnimations : MonoBehaviour
         GameController.instance.actionCanvas.blocksRaycasts = false;
         LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
 
-        CameraController.instance.ReturnToBasePosition();
+        if (TimerController.instance.inGame)
+        {
+            CameraController.instance.ReturnToBasePosition();
+        }
 
     }
     IEnumerator DoReadingAnimation()
@@ -154,7 +157,10 @@ public class ActionsAnimations : MonoBehaviour
         GameController.instance.actionCanvas.blocksRaycasts = false;
         LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
 
-        CameraController.instance.ReturnToBasePosition();
+        if (TimerController.instance.inGame)
+        {
+            CameraController.instance.ReturnToBasePosition();
+        }
     }
 
     IEnumerator DoBrushingAnimation()
@@ -175,7 +181,10 @@ public class ActionsAnimations : MonoBehaviour
         GameController.instance.actionCanvas.blocksRaycasts = false;
         LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
 
-        CameraController.instance.ReturnToBasePosition();
+        if (TimerController.instance.inGame)
+        {
+            CameraController.instance.ReturnToBasePosition();
+        }
 
         yield return new WaitForSeconds(5f);
 
@@ -220,7 +229,10 @@ public class ActionsAnimations : MonoBehaviour
         GameController.instance.actionCanvas.blocksRaycasts = false;
         LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, GameController.instance.actionTweenDuration).setEase(GameController.instance.actionEaseInOut);
 
-        CameraController.instance.ReturnToBasePosition();
+        if (TimerController.instance.inGame)
+        {
+            CameraController.instance.ReturnToBasePosition();
+        }
     }
 
     public void CallEndCoroutine()
@@ -357,13 +369,14 @@ public class ActionsAnimations : MonoBehaviour
         }
     }
 
-    public void CallFinalCellphoneAnimation(){
+    public void CallFinalCellphoneAnimation()
+    {
         StartCoroutine(FinalCellphoneAnimation());
     }
 
-  IEnumerator FinalCellphoneAnimation()
+    IEnumerator FinalCellphoneAnimation()
     {
-        if(cellPhone)
+        if (cellPhone)
         {
             animatorTemplate.SetTrigger("WalkTrigger");
             myAgent.SetDestination(finalCellphoneBathroom.position);
@@ -380,7 +393,8 @@ public class ActionsAnimations : MonoBehaviour
         }
     }
 
-    public void CallRotateCharacter(){
+    public void CallRotateCharacter()
+    {
         myAgent.transform.LeanRotateY(-20f, 0.5f);
         animatorTemplate.SetTrigger("PickingTrigger");
     }
