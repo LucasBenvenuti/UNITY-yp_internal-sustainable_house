@@ -20,6 +20,11 @@ public class DataStorage : MonoBehaviour
     public float startSus;
     public float startResources;
 
+    [HideInInspector]
+    public int interactedObjectsQuantity;
+    [HideInInspector]
+    public int doneActionsQuantity;
+
     void Awake()
     {
         if (!instance)
@@ -56,5 +61,38 @@ public class DataStorage : MonoBehaviour
         }
 
         reportList.Clear();
+    }
+
+    public void UpdateTaskValues(string type)
+    {
+        if (type == "actions")
+        {
+            int qty = 0;
+
+            foreach (bool doneAction in actionsDone)
+            {
+                if (doneAction)
+                {
+                    qty++;
+                }
+            }
+
+            doneActionsQuantity = qty;
+        }
+        else if (type == "objects")
+        {
+            int qty = 0;
+
+            foreach (int changedObjects in sceneObjectsList)
+            {
+                if (changedObjects != -1)
+                {
+                    qty++;
+                }
+            }
+
+            interactedObjectsQuantity = qty;
+        }
+
     }
 }
