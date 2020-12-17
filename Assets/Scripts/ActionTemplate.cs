@@ -37,6 +37,8 @@ public class ActionTemplate : MonoBehaviour
             haveDoneAction = true;
 
             DataStorage.instance.actionsDone[actionIndex] = true;
+
+            DataStorage.instance.UpdateTaskValues("actions");
         }
         else
         {

@@ -95,7 +95,7 @@ public class UIController : MonoBehaviour
         if (newPrice >= 0)
         {
             moneyHelperText.text = "+" + newPrice.ToString();
-            moneyHelperText.color = new Color32(44, 201, 130, 255);
+            moneyHelperText.color = new Color32(252, 199, 63, 255);
             moneyHelperIcon[0].SetActive(true);
             moneyHelperIcon[1].SetActive(false);
             moneyHelperAnimator.SetTrigger("IncreaseMoney");
@@ -111,7 +111,7 @@ public class UIController : MonoBehaviour
         if (newSus >= 0)
         {
             sustainabilityHelperText.text = "+" + newSus.ToString();
-            sustainabilityHelperText.color = new Color32(178, 108, 215, 255);
+            sustainabilityHelperText.color = new Color32(44, 201, 130, 255);
             sustainabilityHelperIcon[0].SetActive(true);
             sustainabilityHelperIcon[1].SetActive(false);
             sustainabilityHelperAnimator.SetTrigger("IncreaseSustainability");
