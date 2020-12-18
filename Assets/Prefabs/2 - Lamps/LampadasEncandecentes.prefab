@@ -44,7 +44,10 @@ GameObject:
   - component: {fileID: 5643269965381157638}
   - component: {fileID: 8017321371687355215}
   - component: {fileID: 4433133890671884498}
-  - component: {fileID: 8392363448464699682}
+  - component: {fileID: 5070247794609802951}
+  - component: {fileID: 2163744561894785849}
+  - component: {fileID: 2522693222652575823}
+  - component: {fileID: 7066108531662290678}
   m_Layer: 0
   m_Name: LampadasEncandecentes
   m_TagString: Item
@@ -250,8 +253,8 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
---- !u!64 &8392363448464699682
-MeshCollider:
+--- !u!65 &5070247794609802951
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -260,10 +263,48 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1529281209035921602, guid: fa5bbc97f54e1bd4683e41ffc4c94cc4, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.0070818136, y: 0.01582458, z: 0.010142516}
+  m_Center: {x: -0.18799716, y: -0.19090797, z: -0.0014565003}
+--- !u!65 &2163744561894785849
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169157142092954306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.014755859, y: 0.006795757, z: 0.010142516}
+  m_Center: {x: 0.09392422, y: -0.10043262, z: -0.0014565004}
+--- !u!65 &2522693222652575823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169157142092954306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.013764343, y: 0.0055391868, z: 0.010142516}
+  m_Center: {x: 0.18311794, y: 0.19563529, z: -0.0014565004}
+--- !u!65 &7066108531662290678
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169157142092954306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.014764804, y: 0.006274431, z: 0.010142516}
+  m_Center: {x: 0.09375645, y: 0.098650254, z: -0.0014565003}
 --- !u!1001 &8585359639834525621
 PrefabInstance:
   m_ObjectHideFlags: 0
