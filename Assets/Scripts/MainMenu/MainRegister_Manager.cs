@@ -34,6 +34,14 @@ public class MainRegister_Manager : MonoBehaviour
 
     }
 
+    void Start()
+    {
+        if (DataStorage.instance.gameFinished)
+        {
+            DataStorage.instance.DeleteAllData();
+        }
+    }
+
     public void RegisterScreenShow()
     {
         LeanTween.alphaCanvas(registerScreen, 1f, tweenDuration).setEase(easeInOut);

@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5161059445810844190, guid: a79b7b7030de8d7498b5944cc5df25cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a79b7b7030de8d7498b5944cc5df25cb, type: 3}
@@ -1592,6 +1592,14 @@ PrefabInstance:
     - target: {fileID: 8748960654992443413, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: m_Name
       value: DataStorage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
+      propertyPath: soundMuted
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
+      propertyPath: getJSON
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443415, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: m_LocalPosition.x

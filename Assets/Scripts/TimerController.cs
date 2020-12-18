@@ -119,6 +119,8 @@ public class TimerController : MonoBehaviour
         inGame = false;
         report.GenerateReport();
 
+        DataStorage.instance.gameFinished = true;
+
         Debug.Log("Function called when the timer is over for finish the game");
         timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
 
