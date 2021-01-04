@@ -11,6 +11,13 @@ public class UIController : MonoBehaviour
     //sliders
     public Slider moneySlider;
     public Slider sustainabilitySlider;
+    public Slider moneyPositiveSlider;
+    public Slider sustainabilityPositiveSlider;
+    public Slider moneyNegativeSlider;
+    public Slider sustainabilityNegativeSlider;
+
+    public float moneyBaseSliderValue;
+    public float sustainabilityBaseSliderValue;
     //bools to control actions for update values and receive month salary
     public bool updateValues;
     //floats to set the max values
@@ -85,8 +92,8 @@ public class UIController : MonoBehaviour
 
     public void NewUpdateValues(float oldPrice, float oldSus, float newPrice, float newSus)
     {
-        controlMoney = moneySlider.value;
-        controlSustainability = sustainabilitySlider.value;
+        controlMoney = moneyBaseSliderValue;
+        controlSustainability = sustainabilityBaseSliderValue;
         float neutralMoney = controlMoney - oldPrice;
         float neutralSus = controlSustainability - oldSus;
         float newMoneyValue = neutralMoney + newPrice;
@@ -130,5 +137,45 @@ public class UIController : MonoBehaviour
 
         sustainabilitySlider.value = newSusValue;
         moneySlider.value = newMoneyValue;
+
+        moneyPositiveSlider.value = newMoneyValue;
+        moneyNegativeSlider.value = newMoneyValue;
+        sustainabilityPositiveSlider.value = newSusValue;
+        sustainabilityNegativeSlider.value = newSusValue;
     }
+
+    public void SimulateNewMoneyValues(float difference)
+    {
+        if(difference >= 0)
+        {
+            moneySlider.value = moneyBaseSliderValue;
+            moneyPositiveSlider.value = moneyBaseSliderValue + difference;
+        }
+        else
+        {
+            moneyPositiveSlider.value = moneyBaseSliderValue;
+            moneySlider.value = moneyBaseSliderValue + difference;
+        }
+    }
+    
+    public void SimulateNewSustainabilityValues(float difference)
+    { 
+        if(difference >= 0)
+        {
+            sustainabilitySlider.value = sustainabilityBaseSliderValue;
+            sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue + difference;
+        }
+        else
+        {
+            sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue;
+            sustainabilitySlider.value = sustainabilityBaseSliderValue + difference;
+        }
+    }
+
+    public void CheckBaseSliderValues(){
+        sustainabilityBaseSliderValue = sustainabilitySlider.value; 
+        moneyBaseSliderValue = moneySlider.value; 
+    }
+
+    
 }
