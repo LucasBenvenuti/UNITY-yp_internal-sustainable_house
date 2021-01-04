@@ -569,7 +569,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37894488}
   m_CullTransparentMesh: 0
---- !u!1 &49734607
+--- !u!23 &295190691 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7992067548228329565, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+  m_PrefabInstance: {fileID: 226716101375867283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &315117574
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18914,6 +18919,74 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2088144784}
     m_Modifications:
+    - target: {fileID: 668016766126366476, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668016766126366476, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209122309981616880, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: outlineTargets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: frontParameters.fillPass.serializedProperties.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: outlineTargets.Array.data[1].edgeDilateAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: outlineTargets.Array.data[1].frontEdgeDilateAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: outlineTargets.Array.data[1].backEdgeDilateAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: outlineTargets.Array.data[1].CutoutThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: outlineTargets.Array.data[1].Renderer
+      value: 
+      objectReference: {fileID: 295190691}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: outlineTargets.Array.data[1].CullMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: frontParameters.fillPass.shader
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].PropertyName
+      value: _PublicColor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.a
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: frontParameters.fillPass.serializedProperties.Array.data[0].Property.ColorValue.g
+      value: 0.3813261
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418913002632748970, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: outlineTargets.Array.data[1].ForceRecalculateBounds
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5403567023333587529, guid: ac5b476e0d8008140a3617554e496416, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -18961,6 +19034,30 @@ PrefabInstance:
     - target: {fileID: 5403567023333587530, guid: ac5b476e0d8008140a3617554e496416, type: 3}
       propertyPath: m_Name
       value: SelectablesArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467250590113515780, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467250590113515780, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467250590113515780, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467250590113515780, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467250590113515780, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467250590113515780, guid: ac5b476e0d8008140a3617554e496416, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac5b476e0d8008140a3617554e496416, type: 3}
@@ -43098,7 +43195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &5171596292575724234
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55555,15 +55652,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: actionsDone.Array.data[0]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: actionsDone.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: actionsDone.Array.data[2]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: actionsDone.Array.data[3]
