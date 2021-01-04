@@ -206,7 +206,6 @@ public class DataStorage : MonoBehaviour
             completeURL = ipAddress;
         }
 
-
         var www = new UnityWebRequest(completeURL, "POST");
 
         if (getJSON)
@@ -223,6 +222,12 @@ public class DataStorage : MonoBehaviour
 
         if (www.isNetworkError || www.isHttpError)
         {
+            ConfigIP configIP = FindObjectOfType<ConfigIP>();
+            if (configIP)
+            {
+                configIP.invalidIPText.SetActive(true);
+            }
+
             Debug.Log(www.error);
         }
         else
