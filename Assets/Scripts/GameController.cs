@@ -31,8 +31,9 @@ public class GameController : MonoBehaviour
 
     public GameObject panelAction;
     public GameObject itemHolder;
-    public CanvasGroup confirmBox;
+    public CanvasGroup[] confirmBox;
     public Button[] confirmBtn;
+    public int confirmBoxIndex;
     public int indexItemType;
     public bool destroyOriginalItem;
     public bool itemPanelActive;
@@ -55,6 +56,8 @@ public class GameController : MonoBehaviour
     public int currentOption;
 
     public bool tvOn = true;
+
+    public bool simulateChange = false;
 
     private void Awake()
     {
@@ -80,9 +83,9 @@ public class GameController : MonoBehaviour
         inGameTutorial.interactable = false;
         inGameTutorial.blocksRaycasts = false;
 
-        confirmBox.alpha = 0;
-        confirmBox.interactable = false;
-        confirmBox.blocksRaycasts = false;
+        // confirmBox.alpha = 0;
+        // confirmBox.interactable = false;
+        // confirmBox.blocksRaycasts = false;
 
         for (int i = 0; i < uiItemList.Count; i++)
         {
@@ -334,20 +337,25 @@ public class GameController : MonoBehaviour
 
     public void ChangeRequest(SelectItem item)
     {
-        Debug.Log("this is selected item:" + item.itemName);
+        Debug.Log("this is selected item:" + item.itemSelectedTemplate.itemPrice);
         //confirmBtn.onClick.RemoveAllListeners();
-        if (confirmBox != null)
+        if(!simulateChange){
+            UIController.instance.CheckBaseSliderValues();
+            simulateChange = true;
+        }
+        UIController.instance.SimulateNewSustainabilityValues(item.itemSelectedTemplate.itemSustainability);
+        UIController.instance.SimulateNewMoneyValues(item.itemSelectedTemplate.itemPrice);
+        if (confirmBox[item.itemOption] != null)
         {
+            for (int i = 0; i <= 3; i++)
+            {
+                confirmBox[i].gameObject.SetActive(false);
+            }
+            ShowConfirmBox(item.itemOption);
             //confirmBtn.onClick.AddListener(delegate {ChangeItem(item); });
             //confirmBtn.onClick.AddListener(() => { ChangeItem(item); });
             //confirmBox.SetActive(true);
-
-            ShowConfirmBox();
-            for (int i = 0; i <= 3; i++)
-            {
-                confirmBtn[i].gameObject.SetActive(false);
-            }
-            confirmBtn[item.itemOption].gameObject.SetActive(true);
+            // confirmBtn[item.itemOption].gameObject.SetActive(true);
         }
         else
         {
@@ -358,6 +366,7 @@ public class GameController : MonoBehaviour
     public void ChangeItem(SelectItem item)
     {
         item.NewItemInstance();
+        simulateChange = false;
     }
 
     public void changeScene(string changeSceneName)
@@ -418,22 +427,29 @@ public class GameController : MonoBehaviour
         UIController.instance.sustainabilitySlider.value = DataStorage.instance.currentSustainability;
     }
 
-    public void ShowConfirmBox()
+    public void ShowConfirmBox(int index)
     {
-        LeanTween.alphaCanvas(confirmBox, 1f, tweenDuration).setEase(easeInOut).setOnStart(() =>
+        confirmBox[index].gameObject.SetActive(true);
+        confirmBoxIndex = index;
+        LeanTween.alphaCanvas(confirmBox[index], 1f, tweenDuration).setEase(easeInOut).setOnStart(() =>
         {
-            confirmBox.blocksRaycasts = true;
-            confirmBox.interactable = true;
+            confirmBox[index].blocksRaycasts = true;
+            confirmBox[index].interactable = true;
         });
     }
 
     public void HideConfirmBox()
     {
-        LeanTween.alphaCanvas(confirmBox, 0f, tweenDuration).setEase(easeInOut).setOnStart(() =>
+        confirmBox[confirmBoxIndex].gameObject.SetActive(false);
+        LeanTween.alphaCanvas(confirmBox[confirmBoxIndex], 0f, tweenDuration).setEase(easeInOut).setOnStart(() =>
         {
-            confirmBox.blocksRaycasts = false;
-            confirmBox.interactable = false;
+            confirmBox[confirmBoxIndex].blocksRaycasts = false;
+            confirmBox[confirmBoxIndex].interactable = false;
         });
+
+        if(simulateChange){
+            simulateChange = false;
+        }
     }
 }
 

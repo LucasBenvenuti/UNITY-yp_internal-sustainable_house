@@ -53,4 +53,8 @@ public class SelectItem : MonoBehaviour
     {
         GameController.instance.ChangeRequest(this);
     }
+
+    // public void SimulateChanges(){
+    //     UIController.instance.SimulateNewValues(itemSelectedTemplate)
+    // }
 }
