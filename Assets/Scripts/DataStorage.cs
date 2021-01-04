@@ -60,6 +60,7 @@ public class DataStorage : MonoBehaviour
     public float currentMoney;
     public float currentSustainability;
     public List<int> sceneObjectsList;
+    public List<bool> openedObjectsMenu;
     public List<string> reportList;
     public List<bool> actionsDone;
 
@@ -133,9 +134,9 @@ public class DataStorage : MonoBehaviour
         {
             int qty = 0;
 
-            foreach (int changedObjects in sceneObjectsList)
+            foreach (bool changedObjects in openedObjectsMenu)
             {
-                if (changedObjects != -1)
+                if (changedObjects)
                 {
                     qty++;
                 }

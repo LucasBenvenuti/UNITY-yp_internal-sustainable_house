@@ -162,6 +162,19 @@ public class GameController : MonoBehaviour
         showPanel(hitItem);
         CameraController.instance.LerpToZoomPosition(hitObject, zoomValue);
 
+        DataStorage.instance.openedObjectsMenu[hitItem.itemType] = true;
+
+        DataStorage.instance.UpdateTaskValues("objects");
+
+        if (DataStorage.instance.doneActionsQuantity == DataStorage.instance.actionsDone.Count && DataStorage.instance.interactedObjectsQuantity == DataStorage.instance.sceneObjectsList.Count)
+        {
+            TaskList taskList = FindObjectOfType<TaskList>();
+
+            taskList.actionsObjective.alpha = 0.7f;
+            taskList.objectsObjective.alpha = 0.7f;
+
+            taskList.ShowFinishButton();
+        }
     }
 
     public void showPanel(ItemTemplate item)

@@ -47,18 +47,6 @@ public class SelectItem : MonoBehaviour
             CameraController.instance.LerpToZoomPosition(prefab, itemSelectedTemplate.zoomSize);
 
             Debug.Log(itemSelectedTemplate.particleSystem);
-
-            DataStorage.instance.UpdateTaskValues("objects");
-
-            if (DataStorage.instance.doneActionsQuantity == DataStorage.instance.actionsDone.Count && DataStorage.instance.interactedObjectsQuantity == DataStorage.instance.sceneObjectsList.Count)
-            {
-                TaskList taskList = FindObjectOfType<TaskList>();
-
-                taskList.actionsObjective.alpha = 0.7f;
-                taskList.objectsObjective.alpha = 0.7f;
-
-                taskList.ShowFinishButton();
-            }
         }
     }
     public void ClickOnItem()
