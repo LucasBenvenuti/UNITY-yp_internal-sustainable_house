@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 0
-  itemName: "Poste de rede p\xFAblica"
+  itemName: "Rede p\xFAblica de energia el\xE9trica apenas"
   itemType: 4
   itemPrice: -2
   itemSustainability: 0

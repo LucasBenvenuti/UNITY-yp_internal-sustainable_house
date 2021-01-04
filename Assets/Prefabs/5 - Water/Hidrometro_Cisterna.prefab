@@ -103,8 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 1
-  itemName: "Hidr\xF4metro de rede p\xFAblica + cisterna para a capta\xE7\xE3o de
-    \xE1gua da chuva"
+  itemName: "Capta\xE7\xE3o de \xE1gua da chuva em cisternas + rede p\xFAblica de
+    \xE1gua"
   itemType: 5
   itemPrice: 4
   itemSustainability: 10

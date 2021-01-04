@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 2
-  itemName: "Telha termo ac\xFAstica"
+  itemName: "Telha termoac\xFAstica"
   itemType: 15
   itemPrice: 1
   itemSustainability: 3

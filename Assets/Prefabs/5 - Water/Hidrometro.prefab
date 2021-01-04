@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 0
-  itemName: "Hidr\xF4metro de rede p\xFAblica"
+  itemName: "Rede p\xFAblica de \xE1gua apenas"
   itemType: 5
   itemPrice: -4
   itemSustainability: 0

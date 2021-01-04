@@ -288,8 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 2
-  itemName: "Hidr\xF4metro de rede p\xFAblica + baldes para a capta\xE7\xE3o de \xE1gua
-    da chuva"
+  itemName: "Capta\xE7\xE3o de \xE1gua da chuva em baldes  + rede p\xFAblica de \xE1gua"
   itemType: 5
   itemPrice: 2
   itemSustainability: 6

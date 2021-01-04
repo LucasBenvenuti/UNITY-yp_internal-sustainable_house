@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 1
-  itemName: "Vaso simples com descarga de parede de press\xE3o"
+  itemName: "Vaso simples com descarga de parede de acionamento \xFAnico"
   itemType: 8
   itemPrice: -2
   itemSustainability: -6

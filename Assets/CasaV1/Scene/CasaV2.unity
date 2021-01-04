@@ -5148,7 +5148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- Realize a\xE7\xF5es na cena."
+  m_text: "- Realize a\xE7\xF5es de uso consciente."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}
@@ -6137,7 +6137,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Parab\xE9ns! Sua sele\xE7\xE3o com certeza te ajudaria a ter uma vida
     mais sustent\xE1vel. Escolhas mais sustent\xE1veis podem ter pre\xE7os maiores
-    a primeira vista, mas compensam por conta da economia que trazom ao longo de
+    a primeira vista, mas compensam por conta da economia que trazem ao longo de
     seu uso.\n\nQue tal colocar isso em pr\xE1tica e adotar tamb\xE9m h\xE1bitos
     de consumo consciente para aumentar os impactos positivos dessas escolhas? Sempre
     h\xE1 espa\xE7o para melhorar!"
@@ -7662,7 +7662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695593843735, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: "Ensaboar a lou\xE7a com a torneira fechada."
+      value: "Ensaboe a lou\xE7a com a torneira fechada."
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695593843735, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -7810,7 +7810,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695788670349, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: "Deixe o carregador fora da tomada, quando n\xE3o estiver usando."
+      value: "Deixe o carregador do celular fora da tomada quando n\xE3o estiver
+        usando."
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695788670349, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -7902,7 +7903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695862100683, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: "Desligar a tv enquanto l\xEA um livro."
+      value: Desligue a TV e aproveite para ler um livro.
       objectReference: {fileID: 0}
     - target: {fileID: 4941376695862100683, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -8038,7 +8039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376697145031125, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: Escovar os dentes com a torneira fechada.
+      value: 'Escove os dentes com a torneira fechada. '
       objectReference: {fileID: 0}
     - target: {fileID: 4941376697145031125, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -8074,7 +8075,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941376697214254178, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionName
-      value: Deixar as roupas de molho e ensaboar com a torneira fechada.
+      value: 'Feche a torneira do tanque para ensaboar as roupas ou deixa-las de
+        molho. '
       objectReference: {fileID: 0}
     - target: {fileID: 4941376697214254178, guid: 182d85f7b0054d14087696cb04888349, type: 3}
       propertyPath: actionIndex
@@ -9613,7 +9615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Interaja com objetos em cena.'
+  m_text: "- Escolha solu\xE7\xF5es para Sua Casa."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}
@@ -13848,7 +13850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Selecione o item que deseja adquirir
+  m_text: "Selecione a solu\xE7\xE3o desejada"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}
@@ -28305,9 +28307,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Para trocar algum item, basta observar o valor de investimento e o qu\xE3o
-    sustent\xE1vel ele \xE9. Analise se as informa\xE7\xF5es fazem sentido dentro
-    dos seus planos."
+  m_text: "Para trocar algum item, basta observar seu indicador de sustentabilidade,
+    na barra superior do cart\xE3o, e o financeiro (custo inicial da compra e economia
+    ou gasto com o uso), na barra inferior do cart\xE3o. Analise se as altera\xE7\xF5es
+    fazem sentido dentro de seus planos.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}
@@ -28447,8 +28450,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ao TOCAR nos OBJETOS COM CONTORNO, uma loja \xE9 aberta para que voc\xEA
-    escolha um dos itens dispon\xEDveis."
+  m_text: "Ao TOCAR nos OBJETOS COM CONTORNO, um menu \xE9 aberto para que voc\xEA
+    escolha uma das solu\xE7\xF5es dispon\xEDveis.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}
@@ -28899,7 +28902,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Voc\xEA pode TOCAR nas BOLINHAS AZUIS que est\xE3o nos c\xF4modos da casa
-    para que os personagens realizem a\xE7\xF5es sustent\xE1veis!"
+    para que os moradores realizem a\xE7\xF5es de consumo consciente.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}
@@ -29319,7 +29322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Assim que tiver escolhido o melhor objeto, TOQUE no CART\xC3O correspondente
+  m_text: "Assim que tiver escolhido a melhor solu\xE7\xE3o, TOQUE no CART\xC3O correspondente
     e veja o impacto da sua a\xE7\xE3o nas BARRAS localizadas na parte inferior da
     tela."
   m_isRightToLeft: 0
@@ -29670,8 +29673,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Se ainda tiver alguma d\xFAvida, voc\xEA pode tocar no \xEDcone ( ? )
-    localizado no menu sempre que quiser.\r\n\nBom jogo!"
+  m_text: "Na lateral direita, voc\xEA vai encontrar uma seta, que mostra sua lista
+    de tarefas, e um menu, que traz um tutorial simplificado em caso de d\xFAvidas.\r\nDivirta-se
+    e bom jogo!\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}
@@ -30021,8 +30025,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Acho que j\xE1 te dei todas as informa\xE7\xF5es para que voc\xEA consiga
-    tornar essa casa o mais sustent\xE1vel poss\xEDvel!"
+  m_text: "Acho que j\xE1 te contei tudo que precisava para que voc\xEA reflita e
+    consiga fazer escolhas que ajudem todos os moradores da casa a adotar um estilo
+    de vida mais sustent\xE1vel.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f8c5797651823a47a981c2811099092, type: 2}
   m_sharedMaterial: {fileID: 6736880103420781527, guid: 3f8c5797651823a47a981c2811099092, type: 2}

@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 0
-  itemName: "Rede P\xFAblica"
+  itemName: "Rede p\xFAblica de esgoto"
   itemType: 6
   itemPrice: -1
   itemSustainability: 0

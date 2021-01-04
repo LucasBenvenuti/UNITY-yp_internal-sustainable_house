@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 2
-  itemName: "Fossa S\xE9ptica"
+  itemName: "Fossa s\xE9ptica comum"
   itemType: 6
   itemPrice: 2
   itemSustainability: -1

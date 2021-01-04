@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 1
-  itemName: "Poste de rede p\xFAblica + pain\xE9is solares"
+  itemName: "Pain\xE9is solares + rede p\xFAblica de energia el\xE9trica"
   itemType: 4
   itemPrice: 2
   itemSustainability: 6

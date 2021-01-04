@@ -318,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelectable: 1
   itemOption: 1
-  itemName: "Esta\xE7\xE3o de tratamento de esgoto"
+  itemName: "Esta\xE7\xE3o de tratamento de esgoto dom\xE9stica"
   itemType: 6
   itemPrice: 1
   itemSustainability: 3
