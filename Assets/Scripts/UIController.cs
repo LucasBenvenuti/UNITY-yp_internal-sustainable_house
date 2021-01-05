@@ -199,5 +199,16 @@ public class UIController : MonoBehaviour
             moneySlider.value = newMoneyValue;
         }
     }
+
+
+public void CancelSimulate(){
+    sustainabilitySlider.value = sustainabilityBaseSliderValue;
+    moneySlider.value = moneyBaseSliderValue;
+    moneyPositiveSlider.value = moneyBaseSliderValue;
+    moneyNegativeSlider.value = moneyBaseSliderValue;
+    sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue;
+    sustainabilityNegativeSlider.value = sustainabilityBaseSliderValue;
+
+}
     
 }
