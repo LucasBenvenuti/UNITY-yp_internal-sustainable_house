@@ -34,12 +34,12 @@ public class OutlineAnimationController : MonoBehaviour
             if (curTimeValue == 1f)
             {
                 isGoing = false;
-                Debug.Log(isGoing);
+               // Debug.Log(isGoing);
             }
             else if (curTimeValue == 0f)
             {
                 isGoing = true;
-                Debug.Log(isGoing);
+                //Debug.Log(isGoing);
             }
 
         }).setLoopPingPong();

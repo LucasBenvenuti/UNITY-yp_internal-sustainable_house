@@ -92,8 +92,15 @@ public class UIController : MonoBehaviour
 
     public void NewUpdateValues(float oldPrice, float oldSus, float newPrice, float newSus)
     {
+        Debug.Log("oldPrice:" + oldPrice);
+        Debug.Log("oldSus:" + oldSus);
+        Debug.Log("newPrice:" + newPrice);
+        Debug.Log("newSus:" + newSus);
+
         controlMoney = moneyBaseSliderValue;
         controlSustainability = sustainabilityBaseSliderValue;
+        Debug.Log("controlMoney:" + controlMoney);
+        Debug.Log("controlSus:" + controlSustainability);
         float neutralMoney = controlMoney - oldPrice;
         float neutralSus = controlSustainability - oldSus;
         float newMoneyValue = neutralMoney + newPrice;
@@ -137,6 +144,8 @@ public class UIController : MonoBehaviour
 
         sustainabilitySlider.value = newSusValue;
         moneySlider.value = newMoneyValue;
+        Debug.Log("newSusValue:" + newSusValue);
+        Debug.Log("newMoneyValue:" + newMoneyValue);
 
         moneyPositiveSlider.value = newMoneyValue;
         moneyNegativeSlider.value = newMoneyValue;
@@ -144,38 +153,51 @@ public class UIController : MonoBehaviour
         sustainabilityNegativeSlider.value = newSusValue;
     }
 
-    public void SimulateNewMoneyValues(float difference)
-    {
-        if(difference >= 0)
-        {
-            moneySlider.value = moneyBaseSliderValue;
-            moneyPositiveSlider.value = moneyBaseSliderValue + difference;
-        }
-        else
-        {
-            moneyPositiveSlider.value = moneyBaseSliderValue;
-            moneySlider.value = moneyBaseSliderValue + difference;
-        }
-    }
-    
-    public void SimulateNewSustainabilityValues(float difference)
-    { 
-        if(difference >= 0)
-        {
-            sustainabilitySlider.value = sustainabilityBaseSliderValue;
-            sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue + difference;
-        }
-        else
-        {
-            sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue;
-            sustainabilitySlider.value = sustainabilityBaseSliderValue + difference;
-        }
-    }
-
     public void CheckBaseSliderValues(){
+
         sustainabilityBaseSliderValue = sustainabilitySlider.value; 
         moneyBaseSliderValue = moneySlider.value; 
+        Debug.Log("baseslider sus:" + sustainabilityBaseSliderValue);
+        Debug.Log("baseslider money:" + moneyBaseSliderValue);
     }
 
+ public void SimulateUpdateValues(float oldPrice, float oldSus, float newPrice, float newSus)
+    {
+        Debug.Log("oldPrice:" + oldPrice);
+        Debug.Log("oldSus:" + oldSus);
+        Debug.Log("newPrice:" + newPrice);
+        Debug.Log("newSus:" + newSus);
+
+        controlMoney = moneyBaseSliderValue;
+        controlSustainability = sustainabilityBaseSliderValue;
+        Debug.Log("controlMoney:" + controlMoney);
+        Debug.Log("controlSus:" + controlSustainability);
+        float neutralMoney = controlMoney - oldPrice;
+        float neutralSus = controlSustainability - oldSus;
+        float newMoneyValue = neutralMoney + newPrice;
+        float newSusValue = neutralSus + newSus;
+
+        if(newSusValue >= controlSustainability)
+        {
+            sustainabilityPositiveSlider.gameObject.SetActive(true);
+            sustainabilityPositiveSlider.value = newSusValue;
+        }
+        else
+        {
+            sustainabilityPositiveSlider.gameObject.SetActive(false);
+            sustainabilitySlider.value = newSusValue;
+        }
+            
+        if(newMoneyValue >= controlMoney)
+        {
+            moneyPositiveSlider.gameObject.SetActive(true);
+            moneyPositiveSlider.value = newMoneyValue;
+        }
+        else
+        {
+            moneyPositiveSlider.gameObject.SetActive(false);
+            moneySlider.value = newMoneyValue;
+        }
+    }
     
 }

@@ -59,6 +59,11 @@ public class GameController : MonoBehaviour
 
     public bool simulateChange = false;
 
+    [HideInInspector]
+    float simulateOldItemPrice;
+    float simulateOldItemSus;
+
+
     private void Awake()
     {
         if (!instance)
@@ -337,14 +342,21 @@ public class GameController : MonoBehaviour
 
     public void ChangeRequest(SelectItem item)
     {
-        Debug.Log("this is selected item:" + item.itemSelectedTemplate.itemPrice);
-        //confirmBtn.onClick.RemoveAllListeners();
+        Debug.Log("this is selected item:" + item.itemSelectedTemplate.itemName);
+        Debug.Log("this is selected itemprice:" + item.itemSelectedTemplate.itemPrice);
+        Debug.Log("this is selected itemsus:" + item.itemSelectedTemplate.itemSustainability);
         if(!simulateChange){
             UIController.instance.CheckBaseSliderValues();
             simulateChange = true;
         }
-        UIController.instance.SimulateNewSustainabilityValues(item.itemSelectedTemplate.itemSustainability);
-        UIController.instance.SimulateNewMoneyValues(item.itemSelectedTemplate.itemPrice);
+        if (itemHolder != null)
+        {
+            GameObject prefab = itemHolder.transform.GetChild(0).gameObject;
+            Debug.Log("itemHolder:" + prefab);
+            simulateOldItemPrice = prefab.GetComponent<ItemTemplate>().itemPrice;
+            simulateOldItemSus = prefab.GetComponent<ItemTemplate>().itemSustainability;
+        }
+        UIController.instance.SimulateUpdateValues(simulateOldItemPrice, simulateOldItemSus, item.itemSelectedTemplate.itemPrice, item.itemSelectedTemplate.itemSustainability);
         if (confirmBox[item.itemOption] != null)
         {
             for (int i = 0; i <= 3; i++)
@@ -352,16 +364,11 @@ public class GameController : MonoBehaviour
                 confirmBox[i].gameObject.SetActive(false);
             }
             ShowConfirmBox(item.itemOption);
-            //confirmBtn.onClick.AddListener(delegate {ChangeItem(item); });
-            //confirmBtn.onClick.AddListener(() => { ChangeItem(item); });
-            //confirmBox.SetActive(true);
-            // confirmBtn[item.itemOption].gameObject.SetActive(true);
         }
         else
         {
             Debug.Log("Need to set Confirm Button on Select Item");
         }
-
     }
     public void ChangeItem(SelectItem item)
     {
