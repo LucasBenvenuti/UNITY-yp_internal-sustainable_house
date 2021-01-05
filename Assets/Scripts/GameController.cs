@@ -113,6 +113,10 @@ public class GameController : MonoBehaviour
 
     public void onTap()
     {
+        var fingers = Lean.Touch.LeanTouch.Fingers;
+
+        Debug.Log("There are currently " + fingers.Count + " fingers touching the screen.");
+
         if (canGoToObject && TimerController.instance.inGame)
         {
             RaycastHit hit;
@@ -345,7 +349,8 @@ public class GameController : MonoBehaviour
         Debug.Log("this is selected item:" + item.itemSelectedTemplate.itemName);
         Debug.Log("this is selected itemprice:" + item.itemSelectedTemplate.itemPrice);
         Debug.Log("this is selected itemsus:" + item.itemSelectedTemplate.itemSustainability);
-        if(!simulateChange){
+        if (!simulateChange)
+        {
             UIController.instance.CheckBaseSliderValues();
             simulateChange = true;
         }
@@ -454,7 +459,8 @@ public class GameController : MonoBehaviour
             confirmBox[confirmBoxIndex].interactable = false;
         });
 
-        if(simulateChange){
+        if (simulateChange)
+        {
             simulateChange = false;
         }
     }

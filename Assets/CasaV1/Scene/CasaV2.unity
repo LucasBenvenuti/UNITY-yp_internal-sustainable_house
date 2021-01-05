@@ -25954,7 +25954,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a47819b0354a30849b72f851564a16ba, type: 2}
+  - {fileID: 2100000, guid: d0d7947038ce372499ba5b9d49098b73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32823,7 +32823,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2237794048666560667}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccbeb146a97fd79458dbfd62255e3348, type: 3}
   m_Name: 
@@ -34570,6 +34570,7 @@ MonoBehaviour:
   currentTutorial: 
   leanPinch: {fileID: 2237794047769113649}
   leanDrag: {fileID: 2237794048666560656}
+  leanTap: {fileID: 2237794047769113800}
   initialDelta: {x: 0, y: 0, z: 0}
   finalDelta: {x: 0, y: 0, z: 0}
   numberOfFingers: 0

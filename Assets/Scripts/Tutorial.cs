@@ -31,6 +31,7 @@ public class Tutorial : MonoBehaviour
     public string currentTutorial;
     public LeanPinchCamera leanPinch;
     public LeanDragCamera leanDrag;
+    public LeanFingerTap leanTap;
 
     float storedDragSensivity;
 
@@ -76,11 +77,15 @@ public class Tutorial : MonoBehaviour
 
         storedDragSensivity = leanDrag.Sensitivity;
 
+        leanDrag.Use.RequiredFingerCount = 1;
         leanDrag.Sensitivity = 0f;
         leanDrag.enabled = false;
         storedCameraSize = mainCamera.orthographicSize;
 
+        leanPinch.Use.RequiredFingerCount = 2;
         leanPinch.enabled = false;
+
+        leanTap.enabled = false;
 
         tutorialButton.enabled = false;
 
@@ -108,11 +113,18 @@ public class Tutorial : MonoBehaviour
 
         closeStoreBtn.enabled = true;
 
+        leanDrag.Use.RequiredFingerCount = 1;
         leanDrag.Sensitivity = storedDragSensivity;
         leanDrag.enabled = true;
+
+        leanTap.enabled = true;
+
         mainCamera.orthographicSize = storedCameraSize;
 
         leanPinch.enabled = true;
+
+        leanPinch.Use.RequiredFingerCount = 2;
+
         currentTutorial = "final_1";
     }
 
@@ -167,6 +179,8 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitUntil(() => canContinue == false);
 
+        leanDrag.Use.RequiredFingerCount = 50;
+
         // 3 - PINCH
 
         yield return new WaitForSeconds(delayToShow);
@@ -186,9 +200,12 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitUntil(() => canContinue == false);
 
+        leanPinch.Use.RequiredFingerCount = 50;
+
         // 4 - INTERACT
 
         yield return new WaitForSeconds(delayToShow);
+
 
         TutorialBoxShow(true);
 
@@ -210,6 +227,8 @@ public class Tutorial : MonoBehaviour
         LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
 
         yield return new WaitUntil(() => canContinue == false);
+
+        leanTap.enabled = false;
 
         // 5 - STORE 0
 
@@ -356,6 +375,7 @@ public class Tutorial : MonoBehaviour
                 if (currentTutorial == "interact")
                 {
                     leanPinch.enabled = false;
+                    leanTap.enabled = true;
 
                     LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
                 }
@@ -471,6 +491,9 @@ public class Tutorial : MonoBehaviour
         {
             if (numberOfFingers == 2 && pinched)
             {
+                canContinue = false;
+
+                Debug.Log("Can Continue - " + canContinue);
                 Debug.Log("Pinched");
 
                 Lean.Touch.LeanTouch.OnFingerUp -= HandleFingerUp;
@@ -478,7 +501,6 @@ public class Tutorial : MonoBehaviour
 
                 // leanPinch.enabled = false;
 
-                canContinue = false;
             }
 
             numberOfFingers = 0;
