@@ -202,13 +202,15 @@ public class UIController : MonoBehaviour
 
 
 public void CancelSimulate(){
-    sustainabilitySlider.value = sustainabilityBaseSliderValue;
-    moneySlider.value = moneyBaseSliderValue;
-    moneyPositiveSlider.value = moneyBaseSliderValue;
-    moneyNegativeSlider.value = moneyBaseSliderValue;
-    sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue;
-    sustainabilityNegativeSlider.value = sustainabilityBaseSliderValue;
-
+    if(GameController.instance.simulateChange)
+    {
+        sustainabilitySlider.value = sustainabilityBaseSliderValue;
+        moneySlider.value = moneyBaseSliderValue;
+        moneyPositiveSlider.value = moneyBaseSliderValue;
+        moneyNegativeSlider.value = moneyBaseSliderValue;
+        sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue;
+        sustainabilityNegativeSlider.value = sustainabilityBaseSliderValue;
+    }
 }
     
 }

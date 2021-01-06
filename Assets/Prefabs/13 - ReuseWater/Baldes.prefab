@@ -133,7 +133,7 @@ MonoBehaviour:
   itemOption: 2
   itemName: "Baldes para armazenar \xE1gua de reuso"
   itemType: 13
-  itemPrice: 0
+  itemPrice: 1
   itemSustainability: 3
   basePrice: 1
   baseSustainability: 3

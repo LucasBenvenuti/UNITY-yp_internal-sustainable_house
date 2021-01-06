@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
     public GameObject panelAction;
     public GameObject itemHolder;
     public CanvasGroup[] confirmBox;
-    public Button[] confirmBtn;
+    public Button[] itemUIBtn;
     public int confirmBoxIndex;
     public int indexItemType;
     public bool destroyOriginalItem;
@@ -346,18 +346,16 @@ public class GameController : MonoBehaviour
 
     public void ChangeRequest(SelectItem item)
     {
-        Debug.Log("this is selected item:" + item.itemSelectedTemplate.itemName);
-        Debug.Log("this is selected itemprice:" + item.itemSelectedTemplate.itemPrice);
-        Debug.Log("this is selected itemsus:" + item.itemSelectedTemplate.itemSustainability);
+        //SAVE CURRENT VALUES BEFORE SIMULATE
         if (!simulateChange)
         {
             UIController.instance.CheckBaseSliderValues();
             simulateChange = true;
         }
+
         if (itemHolder != null)
         {
             GameObject prefab = itemHolder.transform.GetChild(0).gameObject;
-            Debug.Log("itemHolder:" + prefab);
             simulateOldItemPrice = prefab.GetComponent<ItemTemplate>().itemPrice;
             simulateOldItemSus = prefab.GetComponent<ItemTemplate>().itemSustainability;
         }
@@ -446,6 +444,7 @@ public class GameController : MonoBehaviour
     public void ShowConfirmBox(int index)
     {
         confirmBox[index].gameObject.SetActive(true);
+        itemUIBtn[index].interactable = false;
         confirmBoxIndex = index;
         LeanTween.alphaCanvas(confirmBox[index], 1f, tweenDuration).setEase(easeInOut).setOnStart(() =>
         {
@@ -457,6 +456,7 @@ public class GameController : MonoBehaviour
     public void HideConfirmBox()
     {
         confirmBox[confirmBoxIndex].gameObject.SetActive(false);
+        itemUIBtn[confirmBoxIndex].interactable = true;
         LeanTween.alphaCanvas(confirmBox[confirmBoxIndex], 0f, tweenDuration).setEase(easeInOut).setOnStart(() =>
         {
             confirmBox[confirmBoxIndex].blocksRaycasts = false;
