@@ -52,6 +52,9 @@ public class ReportGenerator : MonoBehaviour
 
         DataStorage.instance.image = Convert.ToBase64String(pdfGenerator.screenshotGO.byteTest);
 
+        Debug.Log("NOVA IMAGEM - " + DataStorage.instance.image);
+
         //CALL HERE JSON CHANGE FUNCTION!!!
+        StartCoroutine(DataStorage.instance.Upload(null));
     }
 }

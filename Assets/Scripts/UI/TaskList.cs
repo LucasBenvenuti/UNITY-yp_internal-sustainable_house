@@ -6,6 +6,8 @@ using TMPro;
 
 public class TaskList : MonoBehaviour
 {
+    public static TaskList instance;
+
     [HideInInspector]
     public bool opened = false;
     public Animator animator;
@@ -115,6 +117,11 @@ public class TaskList : MonoBehaviour
 
     public void HideFinishButton()
     {
+        if (finishButton.interactable = false)
+        {
+            return;
+        }
+
         if (GameController.instance.actionCanvas.alpha == 1f)
         {
             LeanTween.alphaCanvas(GameController.instance.actionCanvas, 0f, tweenDuration).setEase(easeInOut).setOnComplete(() =>

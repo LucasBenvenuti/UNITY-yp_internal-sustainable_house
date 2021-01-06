@@ -11,11 +11,20 @@ public class ScreenShotHighRes : MonoBehaviour
     public PDF_Generator MainGO;
 
     public Camera mainCamera;
+    public Canvas BarCanvas;
     private Texture2D _screenShot;
     public Image canvasImage;
 
     [HideInInspector]
     public byte[] byteTest;
+
+    void Start()
+    {
+        if (BarCanvas)
+        {
+            BarCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        }
+    }
 
     public static string ScreenShotName(int width, int height)
     {
@@ -27,6 +36,11 @@ public class ScreenShotHighRes : MonoBehaviour
 
     public IEnumerator TakeScreenShot()
     {
+        if (BarCanvas)
+        {
+            BarCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        }
+
         yield return new WaitForEndOfFrame();
 
         RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
@@ -58,5 +72,10 @@ public class ScreenShotHighRes : MonoBehaviour
         }
 
         Debug.Log("Ended TAKESCREENSHOT");
+
+        if (BarCanvas)
+        {
+            BarCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        }
     }
 }

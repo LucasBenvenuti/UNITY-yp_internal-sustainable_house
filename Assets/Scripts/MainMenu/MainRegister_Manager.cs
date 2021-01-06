@@ -94,7 +94,7 @@ public class MainRegister_Manager : MonoBehaviour
 
     IEnumerator PlayToRegisterCoroutine()
     {
-        if (DataStorage.instance.hasProgress)
+        if (DataStorage.instance.hasProgress && !gameEnded)
         {
             ShowConfirmScreen();
 
@@ -114,6 +114,8 @@ public class MainRegister_Manager : MonoBehaviour
         yield return new WaitForSeconds(tweenDuration - resultFloat);
 
         playScreen.gameObject.SetActive(false);
+
+        gameEnded = false;
     }
 
     public void ConfirmDeleteProgress()
@@ -121,6 +123,9 @@ public class MainRegister_Manager : MonoBehaviour
         gameEnded = true;
 
         StartCoroutine(DataStorage.instance.SendLastData());
+
+        HideConfirmScreen();
+        PlayToRegister();
     }
 
     public void ShowConfirmScreen()

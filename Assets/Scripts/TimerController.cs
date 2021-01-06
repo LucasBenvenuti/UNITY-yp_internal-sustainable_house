@@ -8,6 +8,8 @@ public class TimerController : MonoBehaviour
 {
     public static TimerController instance;
 
+    public TaskList taskList;
+
     public CanvasGroup EndCanvas;
     public GameObject highText;
     public GameObject lowText;
@@ -30,7 +32,7 @@ public class TimerController : MonoBehaviour
 
     [HideInInspector]
     public bool tutorialMode;
-    [HideInInspector]
+    // [HideInInspector]
     public bool inGame = true;
 
     private void Awake()
@@ -111,6 +113,10 @@ public class TimerController : MonoBehaviour
 
     public void FinishGame()
     {
+        taskList.HideFinishButton();
+
+        taskList.CloseTaskList();
+
         StartCoroutine(ReportCoroutine());
     }
 

@@ -113,10 +113,6 @@ public class GameController : MonoBehaviour
 
     public void onTap()
     {
-        var fingers = Lean.Touch.LeanTouch.Fingers;
-
-        Debug.Log("There are currently " + fingers.Count + " fingers touching the screen.");
-
         if (canGoToObject && TimerController.instance.inGame)
         {
             RaycastHit hit;
@@ -339,8 +335,12 @@ public class GameController : MonoBehaviour
         });
 
         actionSelected.DoneAction();
+
         int indexSelected = actionSelected.actionIndex;
         actionsAnimations[indexSelected].CallFirstCoroutine(indexSelected);
+
+        //CALL HERE JSON CHANGE FUNCTION!!!
+        StartCoroutine(DataStorage.instance.Upload(null));
 
         // DataStorage.instance.addReportLine("Ação iniciada: " + actionSelected.actionName + ".");
     }
@@ -366,11 +366,12 @@ public class GameController : MonoBehaviour
             for (int i = 0; i <= 3; i++)
             {
                 confirmBox[i].gameObject.SetActive(false);
-                if(i != currentOption)
+                if (i != currentOption)
                 {
-                    Debug.Log("item option: "+ currentOption);
+                    Debug.Log("item option: " + currentOption);
                     itemUIBtn[i].interactable = true;
-                }else
+                }
+                else
                 {
                     itemUIBtn[i].interactable = false;
                 }
@@ -465,10 +466,10 @@ public class GameController : MonoBehaviour
     public void HideConfirmBox()
     {
         for (int i = 0; i <= 3; i++)
-        {   
-            if(i != currentOption)
+        {
+            if (i != currentOption)
             {
-                Debug.Log("item option: "+ currentOption);
+                Debug.Log("item option: " + currentOption);
                 itemUIBtn[i].interactable = true;
             }
             else

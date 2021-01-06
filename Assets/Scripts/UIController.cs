@@ -88,7 +88,8 @@ public class UIController : MonoBehaviour
             DataStorage.instance.objectNames[i] = itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemName;
         }
 
-        //CHAMAR FUNÇÃO DE JSON INICIAL AQUI!!!
+        //CALL HERE JSON CHANGE FUNCTION!!!
+        StartCoroutine(DataStorage.instance.Upload(null));
 
         //amount of money availiable 
         float newMoney = moneyMaxValue - moneyBaseValue;

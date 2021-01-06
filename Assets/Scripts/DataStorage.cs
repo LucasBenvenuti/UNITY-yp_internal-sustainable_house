@@ -102,6 +102,10 @@ public class DataStorage : MonoBehaviour
     {
         DataStorage.instance.gameFinished = false;
 
+        image = defaultImage;
+
+        JSON_File = "";
+
         userName = "";
         hasProgress = false;
         currentTime = 0;
@@ -115,6 +119,10 @@ public class DataStorage : MonoBehaviour
         for (int i = 0; i < actionsDone.Count; i++)
         {
             actionsDone[i] = false;
+        }
+        for (int i = 0; i < objectNames.Count; i++)
+        {
+            objectNames[i] = "";
         }
 
         reportList.Clear();
@@ -159,26 +167,26 @@ public class DataStorage : MonoBehaviour
 
         FormJSON formJSON = new FormJSON();
 
-        formJSON.school = "Teste Escola";
+        formJSON.school = "Escola";
         formJSON.user = userName;
         formJSON.finished = gameFinished;
         formJSON.image = image;
-        formJSON.chooses.Add(new ChoosesJSON("Climatização", "Ventilador"));
-        formJSON.chooses.Add(new ChoosesJSON("Secagem de Roupa", "Secadora"));
-        formJSON.chooses.Add(new ChoosesJSON("Lâmpadas", "LED"));
-        formJSON.chooses.Add(new ChoosesJSON("Janelas", "Janelas Maiores"));
-        formJSON.chooses.Add(new ChoosesJSON("Abastecimento de energia elétrica", "Poste de rede pública"));
-        formJSON.chooses.Add(new ChoosesJSON("Abastecimento de água", "Hidrômetro de rede pública"));
-        formJSON.chooses.Add(new ChoosesJSON("Esgotamento Sanitário", "Rede Pública"));
-        formJSON.chooses.Add(new ChoosesJSON("Chuveiro", "Chuveiro Elétrico"));
-        formJSON.chooses.Add(new ChoosesJSON("Descarga", "Vaso com caixa acoplada e descarga de acionamento único"));
-        formJSON.chooses.Add(new ChoosesJSON("Torneira", "Torneira Convencional"));
-        formJSON.chooses.Add(new ChoosesJSON("Geladeira", "Geladeira com selo Procel C"));
-        formJSON.chooses.Add(new ChoosesJSON("Lixeiras", "2 lixeiras sendo uma com reciclagem"));
-        formJSON.chooses.Add(new ChoosesJSON("Máquina de Lavar", "Máquina de abertura superior com selo Procel"));
-        formJSON.chooses.Add(new ChoosesJSON("Água de Reuso", "Sem coleta de água de reuso"));
-        formJSON.chooses.Add(new ChoosesJSON("Televisão", "Televisão de tela plana sem selo Procel"));
-        formJSON.chooses.Add(new ChoosesJSON("Telhado", "Telha de cerâmica"));
+        formJSON.chooses.Add(new ChoosesJSON("Climatização", objectNames[0]));
+        formJSON.chooses.Add(new ChoosesJSON("Secagem de Roupa", objectNames[1]));
+        formJSON.chooses.Add(new ChoosesJSON("Lâmpadas", objectNames[2]));
+        formJSON.chooses.Add(new ChoosesJSON("Janelas", objectNames[3]));
+        formJSON.chooses.Add(new ChoosesJSON("Abastecimento de energia elétrica", objectNames[4]));
+        formJSON.chooses.Add(new ChoosesJSON("Abastecimento de água", objectNames[5]));
+        formJSON.chooses.Add(new ChoosesJSON("Esgotamento Sanitário", objectNames[6]));
+        formJSON.chooses.Add(new ChoosesJSON("Chuveiro", objectNames[7]));
+        formJSON.chooses.Add(new ChoosesJSON("Descarga", objectNames[8]));
+        formJSON.chooses.Add(new ChoosesJSON("Torneira", objectNames[9]));
+        formJSON.chooses.Add(new ChoosesJSON("Geladeira", objectNames[10]));
+        formJSON.chooses.Add(new ChoosesJSON("Lixeiras", objectNames[11]));
+        formJSON.chooses.Add(new ChoosesJSON("Máquina de Lavar", objectNames[12]));
+        formJSON.chooses.Add(new ChoosesJSON("Água de Reuso", objectNames[13]));
+        formJSON.chooses.Add(new ChoosesJSON("Televisão", objectNames[14]));
+        formJSON.chooses.Add(new ChoosesJSON("Telhado", objectNames[15]));
 
         formJSON.actions.Add(new ActionsJSON("Lavar Louça", actionsDone[0]));
         formJSON.actions.Add(new ActionsJSON("Celular fora da tomada", actionsDone[1]));
@@ -210,6 +218,11 @@ public class DataStorage : MonoBehaviour
         else
         {
             completeURL = ipAddress;
+        }
+
+        if (completeURL == "")
+        {
+            yield break;
         }
 
         var www = new UnityWebRequest(completeURL, "POST");
@@ -260,8 +273,8 @@ public class DataStorage : MonoBehaviour
 
     public IEnumerator SendLastData()
     {
-        yield return DataStorage.instance.Upload(null);
+        yield return Upload(null);
 
-        DataStorage.instance.DeleteAllData();
+        DeleteAllData();
     }
 }
