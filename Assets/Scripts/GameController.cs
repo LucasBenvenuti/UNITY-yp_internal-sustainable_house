@@ -437,6 +437,10 @@ public class GameController : MonoBehaviour
         TimerController.instance.totalTime = DataStorage.instance.currentTime;
         UIController.instance.moneySlider.value = DataStorage.instance.currentMoney;
         UIController.instance.sustainabilitySlider.value = DataStorage.instance.currentSustainability;
+        UIController.instance.moneyPositiveSlider.value = DataStorage.instance.currentMoney;
+        UIController.instance.sustainabilityPositiveSlider.value = DataStorage.instance.currentSustainability;
+        UIController.instance.moneyNegativeSlider.value = DataStorage.instance.currentMoney;
+        UIController.instance.sustainabilityNegativeSlider.value = DataStorage.instance.currentSustainability;
     }
 
     public void ShowConfirmBox(int index)
