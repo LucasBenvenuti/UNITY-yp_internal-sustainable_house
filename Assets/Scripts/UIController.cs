@@ -92,15 +92,8 @@ public class UIController : MonoBehaviour
 
     public void NewUpdateValues(float oldPrice, float oldSus, float newPrice, float newSus)
     {
-        Debug.Log("oldPrice:" + oldPrice);
-        Debug.Log("oldSus:" + oldSus);
-        Debug.Log("newPrice:" + newPrice);
-        Debug.Log("newSus:" + newSus);
-
         controlMoney = moneyBaseSliderValue;
         controlSustainability = sustainabilityBaseSliderValue;
-        Debug.Log("controlMoney:" + controlMoney);
-        Debug.Log("controlSus:" + controlSustainability);
         float neutralMoney = controlMoney - oldPrice;
         float neutralSus = controlSustainability - oldSus;
         float newMoneyValue = neutralMoney + newPrice;
@@ -163,15 +156,9 @@ public class UIController : MonoBehaviour
 
  public void SimulateUpdateValues(float oldPrice, float oldSus, float newPrice, float newSus)
     {
-        Debug.Log("oldPrice:" + oldPrice);
-        Debug.Log("oldSus:" + oldSus);
-        Debug.Log("newPrice:" + newPrice);
-        Debug.Log("newSus:" + newSus);
 
         controlMoney = moneyBaseSliderValue;
         controlSustainability = sustainabilityBaseSliderValue;
-        Debug.Log("controlMoney:" + controlMoney);
-        Debug.Log("controlSus:" + controlSustainability);
         float neutralMoney = controlMoney - oldPrice;
         float neutralSus = controlSustainability - oldSus;
         float newMoneyValue = neutralMoney + newPrice;

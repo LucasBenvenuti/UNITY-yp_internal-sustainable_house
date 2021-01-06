@@ -282,6 +282,7 @@ public class GameController : MonoBehaviour
         indexItemType = itemSelected.itemType;
         itemType[indexItemType].SetActive(true);
     }
+
     public void CheckAndDestroyItem(GameObject newPrefab, string name)
     {
 
@@ -365,6 +366,14 @@ public class GameController : MonoBehaviour
             for (int i = 0; i <= 3; i++)
             {
                 confirmBox[i].gameObject.SetActive(false);
+                if(i != currentOption)
+                {
+                    Debug.Log("item option: "+ currentOption);
+                    itemUIBtn[i].interactable = true;
+                }else
+                {
+                    itemUIBtn[i].interactable = false;
+                }
             }
             ShowConfirmBox(item.itemOption);
         }
@@ -455,8 +464,19 @@ public class GameController : MonoBehaviour
 
     public void HideConfirmBox()
     {
+        for (int i = 0; i <= 3; i++)
+        {   
+            if(i != currentOption)
+            {
+                Debug.Log("item option: "+ currentOption);
+                itemUIBtn[i].interactable = true;
+            }
+            else
+            {
+                itemUIBtn[i].interactable = false;
+            }
+        }
         confirmBox[confirmBoxIndex].gameObject.SetActive(false);
-        itemUIBtn[confirmBoxIndex].interactable = true;
         LeanTween.alphaCanvas(confirmBox[confirmBoxIndex], 0f, tweenDuration).setEase(easeInOut).setOnStart(() =>
         {
             confirmBox[confirmBoxIndex].blocksRaycasts = false;
