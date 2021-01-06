@@ -1,4 +1,5 @@
 using Lean.Touch;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,9 +27,9 @@ public class ReportGenerator : MonoBehaviour
 
         GameController.instance.closePanel();
 
-        DataStorage.instance.addReportLine("Fim de Jogo.");
-        DataStorage.instance.addReportLine("Recursos Finais: " + UIController.instance.moneySlider.value + ".");
-        DataStorage.instance.addReportLine("Sustentabilidade Final: " + UIController.instance.sustainabilitySlider.value + ".");
+        // DataStorage.instance.addReportLine("Fim de Jogo.");
+        // DataStorage.instance.addReportLine("Recursos Finais: " + UIController.instance.moneySlider.value + ".");
+        // DataStorage.instance.addReportLine("Sustentabilidade Final: " + UIController.instance.sustainabilitySlider.value + ".");
 
         LeanTween.move(mainCamera.gameObject.transform.parent.gameObject, printPoint.transform.position, tweenDuration).setEase(easeInOut);
         LeanTween.move(mainCamera.gameObject, printPoint.transform.position, tweenDuration).setEase(easeInOut);
@@ -42,6 +43,15 @@ public class ReportGenerator : MonoBehaviour
                 {
                     leanPinch.Zoom = flt;
                 }
-            }).setOnComplete(() => { pdfGenerator.GeneratePDF(); });
+            }).setOnComplete(() => { StartCoroutine(LastStep()); });
+    }
+
+    public IEnumerator LastStep()
+    {
+        yield return pdfGenerator.screenshotGO.TakeScreenShot();
+
+        DataStorage.instance.image = Convert.ToBase64String(pdfGenerator.screenshotGO.byteTest);
+
+        //CALL HERE JSON CHANGE FUNCTION!!!
     }
 }

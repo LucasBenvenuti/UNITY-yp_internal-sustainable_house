@@ -14,8 +14,6 @@ public class SelectItem : MonoBehaviour
 
     public void NewItemInstance()
     {
-        Debug.Log("STARTED NEW ITEM INSTANCE");
-
         GameController.instance.CheckAndDestroyItem(itemPrefab, itemName);
         if (GameController.instance.destroyOriginalItem)
         {
@@ -42,13 +40,15 @@ public class SelectItem : MonoBehaviour
             GameController.instance.uiItemList[GameController.instance.currentOption].ownImage.color = GameController.instance.uiItemList[GameController.instance.currentOption].outlineColor;
 
             DataStorage.instance.sceneObjectsList[itemSelectedTemplate.itemType] = itemSelectedTemplate.itemOption;
+            DataStorage.instance.objectNames[itemSelectedTemplate.itemType] = itemSelectedTemplate.itemName;
 
             GameController.instance.goToObjectShop = true;
             CameraController.instance.LerpToZoomPosition(prefab, itemSelectedTemplate.zoomSize);
 
-            Debug.Log(itemSelectedTemplate.particleSystem);
+            //CALL HERE JSON CHANGE FUNCTION!!!
         }
     }
+
     public void ClickOnItem()
     {
         GameController.instance.ChangeRequest(this);

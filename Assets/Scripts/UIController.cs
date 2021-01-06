@@ -66,11 +66,11 @@ public class UIController : MonoBehaviour
         moneySlider.value = moneyBaseValue;
         sustainabilitySlider.value = sustainabilityBaseValue;
 
-        DataStorage.instance.addReportLine("Nome de usuário: " + DataStorage.instance.userName + ".");
+        // DataStorage.instance.addReportLine("Nome de usuário: " + DataStorage.instance.userName + ".");
 
-        DataStorage.instance.addReportLine("Jogo iniciado.");
-        DataStorage.instance.addReportLine("Recursos iniciais: " + moneyBaseValue + ".");
-        DataStorage.instance.addReportLine("Sustentabilidade inicial: " + sustainabilityBaseValue + ".");
+        // DataStorage.instance.addReportLine("Jogo iniciado.");
+        // DataStorage.instance.addReportLine("Recursos iniciais: " + moneyBaseValue + ".");
+        // DataStorage.instance.addReportLine("Sustentabilidade inicial: " + sustainabilityBaseValue + ".");
 
         DataStorage.instance.startSus = sustainabilityBaseValue;
         DataStorage.instance.startResources = moneyBaseValue;
@@ -84,7 +84,12 @@ public class UIController : MonoBehaviour
         {
             moneyBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemPrice);
             sustainabilityBaseValue += (itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemSustainability);
+
+            DataStorage.instance.objectNames[i] = itemsSelectables[i].GetComponentInChildren<ItemTemplate>().itemName;
         }
+
+        //CHAMAR FUNÇÃO DE JSON INICIAL AQUI!!!
+
         //amount of money availiable 
         float newMoney = moneyMaxValue - moneyBaseValue;
         controlMoney = newMoney;
@@ -139,8 +144,8 @@ public class UIController : MonoBehaviour
             sustainabilityHelperAnimator.SetTrigger("DecreaseSustainability");
         }
 
-        DataStorage.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + newMoneyValue + ".");
-        DataStorage.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + newSusValue + ".");
+        // DataStorage.instance.addReportLine("Recursos anteriores: " + controlMoney + ". Novos Recursos: " + newMoneyValue + ".");
+        // DataStorage.instance.addReportLine("Sustentabilidade anterior: " + controlSustainability + ". Nova Sustentabilidade: " + newSusValue + ".");
 
         sustainabilitySlider.value = newSusValue;
         moneySlider.value = newMoneyValue;
@@ -153,15 +158,16 @@ public class UIController : MonoBehaviour
         sustainabilityNegativeSlider.value = newSusValue;
     }
 
-    public void CheckBaseSliderValues(){
+    public void CheckBaseSliderValues()
+    {
 
-        sustainabilityBaseSliderValue = sustainabilitySlider.value; 
-        moneyBaseSliderValue = moneySlider.value; 
+        sustainabilityBaseSliderValue = sustainabilitySlider.value;
+        moneyBaseSliderValue = moneySlider.value;
         Debug.Log("baseslider sus:" + sustainabilityBaseSliderValue);
         Debug.Log("baseslider money:" + moneyBaseSliderValue);
     }
 
- public void SimulateUpdateValues(float oldPrice, float oldSus, float newPrice, float newSus)
+    public void SimulateUpdateValues(float oldPrice, float oldSus, float newPrice, float newSus)
     {
         Debug.Log("oldPrice:" + oldPrice);
         Debug.Log("oldSus:" + oldSus);
@@ -177,7 +183,7 @@ public class UIController : MonoBehaviour
         float newMoneyValue = neutralMoney + newPrice;
         float newSusValue = neutralSus + newSus;
 
-        if(newSusValue >= controlSustainability)
+        if (newSusValue >= controlSustainability)
         {
             sustainabilityPositiveSlider.gameObject.SetActive(true);
             sustainabilityPositiveSlider.value = newSusValue;
@@ -187,8 +193,8 @@ public class UIController : MonoBehaviour
             sustainabilityPositiveSlider.gameObject.SetActive(false);
             sustainabilitySlider.value = newSusValue;
         }
-            
-        if(newMoneyValue >= controlMoney)
+
+        if (newMoneyValue >= controlMoney)
         {
             moneyPositiveSlider.gameObject.SetActive(true);
             moneyPositiveSlider.value = newMoneyValue;
@@ -201,16 +207,17 @@ public class UIController : MonoBehaviour
     }
 
 
-public void CancelSimulate(){
-    if(GameController.instance.simulateChange)
+    public void CancelSimulate()
     {
-        sustainabilitySlider.value = sustainabilityBaseSliderValue;
-        moneySlider.value = moneyBaseSliderValue;
-        moneyPositiveSlider.value = moneyBaseSliderValue;
-        moneyNegativeSlider.value = moneyBaseSliderValue;
-        sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue;
-        sustainabilityNegativeSlider.value = sustainabilityBaseSliderValue;
+        if (GameController.instance.simulateChange)
+        {
+            sustainabilitySlider.value = sustainabilityBaseSliderValue;
+            moneySlider.value = moneyBaseSliderValue;
+            moneyPositiveSlider.value = moneyBaseSliderValue;
+            moneyNegativeSlider.value = moneyBaseSliderValue;
+            sustainabilityPositiveSlider.value = sustainabilityBaseSliderValue;
+            sustainabilityNegativeSlider.value = sustainabilityBaseSliderValue;
+        }
     }
-}
-    
+
 }

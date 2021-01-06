@@ -298,7 +298,7 @@ public class GameController : MonoBehaviour
 
             if (newOption != optionInScene)
             {
-                DataStorage.instance.addReportLine("Adicionado item " + name);
+                // DataStorage.instance.addReportLine("Adicionado item " + name);
                 UIController.instance.NewUpdateValues(oldItemPrice, oldItemSus, newItemPrice, newItemSus);
                 Destroy(prefab);
                 destroyOriginalItem = true;
@@ -341,7 +341,7 @@ public class GameController : MonoBehaviour
         int indexSelected = actionSelected.actionIndex;
         actionsAnimations[indexSelected].CallFirstCoroutine(indexSelected);
 
-        DataStorage.instance.addReportLine("Ação iniciada: " + actionSelected.actionName + ".");
+        // DataStorage.instance.addReportLine("Ação iniciada: " + actionSelected.actionName + ".");
     }
 
     public void ChangeRequest(SelectItem item)

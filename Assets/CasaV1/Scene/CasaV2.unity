@@ -9408,7 +9408,7 @@ MonoBehaviour:
   lowGirl: {fileID: 1829126294}
   endTweenDuration: 0.3
   easeInOutEnd: 7
-  totalTime: 420
+  totalTime: 5
   actionTimer: 5
   actionBaseTime: 5
   timeText: {fileID: 1803845539545163847}
@@ -60313,6 +60313,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
       propertyPath: openedObjectsMenu.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}
+      propertyPath: objectNames.Array.size
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8748960654992443414, guid: c29d435f4174061469d2a8e97bf4161c, type: 3}

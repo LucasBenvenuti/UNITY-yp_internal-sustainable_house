@@ -120,15 +120,7 @@ public class MainRegister_Manager : MonoBehaviour
     {
         gameEnded = true;
 
-        //GENERATE REPORT BEFORE DELETE ALL DATA
-        DataStorage.instance.addReportLine("Fim de Jogo.");
-        DataStorage.instance.addReportLine("Recursos Finais: " + DataStorage.instance.currentMoney + ".");
-        DataStorage.instance.addReportLine("Sustentabilidade Final: " + DataStorage.instance.currentSustainability + ".");
-        pdfGenerator.GeneratePDF();
-        // DataStorage.instance.DeleteAllData();
-
-        // HideConfirmScreen();
-        // PlayToRegister();
+        StartCoroutine(DataStorage.instance.SendLastData());
     }
 
     public void ShowConfirmScreen()

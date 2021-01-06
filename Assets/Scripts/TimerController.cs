@@ -117,9 +117,10 @@ public class TimerController : MonoBehaviour
     IEnumerator ReportCoroutine()
     {
         inGame = false;
-        report.GenerateReport();
 
         DataStorage.instance.gameFinished = true;
+
+        StartCoroutine(report.PrintFunc());
 
         Debug.Log("Function called when the timer is over for finish the game");
         timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
@@ -134,6 +135,8 @@ public class TimerController : MonoBehaviour
             highGirl.SetActive(true);
             highText.SetActive(true);
         }
+
+        // yield return report.PrintFunc();
 
         yield return new WaitForSeconds(2f);
         AudioController.instance.PlayOpenFinalScreenAudio();
