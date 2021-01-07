@@ -340,7 +340,8 @@ public class GameController : MonoBehaviour
         actionsAnimations[indexSelected].CallFirstCoroutine(indexSelected);
 
         //CALL HERE JSON CHANGE FUNCTION!!!
-        StartCoroutine(DataStorage.instance.Upload(null));
+        // StartCoroutine(DataStorage.instance.Upload(null));
+        StartCoroutine(DataStorage.instance.UploadChange("action", actionSelected.actionIndex.ToString(), null));
 
         // DataStorage.instance.addReportLine("Ação iniciada: " + actionSelected.actionName + ".");
     }

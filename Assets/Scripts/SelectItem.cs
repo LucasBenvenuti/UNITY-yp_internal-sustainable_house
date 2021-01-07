@@ -46,7 +46,7 @@ public class SelectItem : MonoBehaviour
             CameraController.instance.LerpToZoomPosition(prefab, itemSelectedTemplate.zoomSize);
 
             //CALL HERE JSON CHANGE FUNCTION!!!
-            StartCoroutine(DataStorage.instance.Upload(null));
+            StartCoroutine(DataStorage.instance.UploadChange("item", itemSelectedTemplate.categoryName, itemSelectedTemplate.itemName));
         }
     }
 

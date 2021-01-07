@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
 
@@ -10,6 +11,8 @@ public class ConfigIP : MonoBehaviour
 {
     public TMP_InputField inputField;
     public GameObject invalidIPText;
+
+    public Button okButton;
 
     void Start()
     {
@@ -27,6 +30,8 @@ public class ConfigIP : MonoBehaviour
 
     public void SendIP()
     {
+        okButton.interactable = false;
+
         IPAddress ip;
 
         Debug.Log("Check IP here!");
@@ -45,6 +50,7 @@ public class ConfigIP : MonoBehaviour
             Debug.Log("Ip is not valid!");
 
             invalidIPText.SetActive(true);
+            okButton.interactable = true;
         }
     }
 }

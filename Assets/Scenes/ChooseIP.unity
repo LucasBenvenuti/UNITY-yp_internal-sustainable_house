@@ -831,6 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputField: {fileID: 696447171}
   invalidIPText: {fileID: 1572131237}
+  okButton: {fileID: 887439495}
 --- !u!1 &887439493
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +972,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887439493}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5efee5566fef6bb4baa9f67b4788002b, type: 2}
   m_CullingMode: 0

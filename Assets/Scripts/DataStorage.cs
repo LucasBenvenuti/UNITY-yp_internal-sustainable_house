@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.Networking;
 
 [System.Serializable]
 public class FormJSON
 {
     public string school;
+    public Int64 uniqueID;
     public string user;
     public bool finished;
     public string image;
@@ -46,6 +48,7 @@ public class DataStorage : MonoBehaviour
     public static DataStorage instance;
 
     public string ipAddress;
+    public Int64 uniqueID;
     public string JSON_File;
     public bool getJSON = false;
 
@@ -61,12 +64,12 @@ public class DataStorage : MonoBehaviour
     public float currentTime;
     public float currentMoney;
     public float currentSustainability;
+    public List<string> reportList;
     public List<int> sceneObjectsList;
     public List<bool> openedObjectsMenu;
-    public List<string> reportList;
     public List<bool> actionsDone;
-
     public List<string> objectNames;
+    public List<string> actionsName;
 
     public float startSus;
     public float startResources;
@@ -104,6 +107,8 @@ public class DataStorage : MonoBehaviour
 
         image = defaultImage;
 
+        uniqueID = 0;
+
         JSON_File = "";
 
         userName = "";
@@ -115,6 +120,10 @@ public class DataStorage : MonoBehaviour
         for (int i = 0; i < sceneObjectsList.Count; i++)
         {
             sceneObjectsList[i] = -1;
+        }
+        for (int i = 0; i < openedObjectsMenu.Count; i++)
+        {
+            openedObjectsMenu[i] = false;
         }
         for (int i = 0; i < actionsDone.Count; i++)
         {
@@ -168,6 +177,7 @@ public class DataStorage : MonoBehaviour
         FormJSON formJSON = new FormJSON();
 
         formJSON.school = "Escola";
+        formJSON.uniqueID = uniqueID;
         formJSON.user = userName;
         formJSON.finished = gameFinished;
         formJSON.image = image;
@@ -188,11 +198,62 @@ public class DataStorage : MonoBehaviour
         formJSON.chooses.Add(new ChoosesJSON("Televisão", objectNames[14]));
         formJSON.chooses.Add(new ChoosesJSON("Telhado", objectNames[15]));
 
-        formJSON.actions.Add(new ActionsJSON("Lavar Louça", actionsDone[0]));
-        formJSON.actions.Add(new ActionsJSON("Celular fora da tomada", actionsDone[1]));
-        formJSON.actions.Add(new ActionsJSON("Ler livro com TV desligada", actionsDone[2]));
-        formJSON.actions.Add(new ActionsJSON("Lavar Roupa", actionsDone[3]));
-        formJSON.actions.Add(new ActionsJSON("Escovar os dentes", actionsDone[4]));
+        formJSON.actions.Add(new ActionsJSON(actionsName[0], actionsDone[0]));
+        formJSON.actions.Add(new ActionsJSON(actionsName[1], actionsDone[1]));
+        formJSON.actions.Add(new ActionsJSON(actionsName[2], actionsDone[2]));
+        formJSON.actions.Add(new ActionsJSON(actionsName[3], actionsDone[3]));
+        formJSON.actions.Add(new ActionsJSON(actionsName[4], actionsDone[4]));
+
+        JSON_File = JsonUtility.ToJson(formJSON);
+
+        Debug.Log(JSON_File);
+    }
+
+    public IEnumerator UpdateChangeJSON(string type, string category, string name)
+    {
+        yield return null;
+
+        FormJSON formJSON = new FormJSON();
+
+        formJSON.school = "Escola";
+        formJSON.uniqueID = uniqueID;
+        formJSON.user = userName;
+        formJSON.finished = gameFinished;
+        // formJSON.image = image;
+
+        if (type == "item")
+        {
+            formJSON.chooses.Add(new ChoosesJSON(category, name));
+        }
+        else if (type == "action")
+        {
+            int categoryID = Convert.ToInt32(category);
+
+            formJSON.actions.Add(new ActionsJSON(actionsName[categoryID], true));
+        }
+
+        // formJSON.chooses.Add(new ChoosesJSON(category, name);
+        // formJSON.chooses.Add(new ChoosesJSON("Secagem de Roupa", objectNames[1]));
+        // formJSON.chooses.Add(new ChoosesJSON("Lâmpadas", objectNames[2]));
+        // formJSON.chooses.Add(new ChoosesJSON("Janelas", objectNames[3]));
+        // formJSON.chooses.Add(new ChoosesJSON("Abastecimento de energia elétrica", objectNames[4]));
+        // formJSON.chooses.Add(new ChoosesJSON("Abastecimento de água", objectNames[5]));
+        // formJSON.chooses.Add(new ChoosesJSON("Esgotamento Sanitário", objectNames[6]));
+        // formJSON.chooses.Add(new ChoosesJSON("Chuveiro", objectNames[7]));
+        // formJSON.chooses.Add(new ChoosesJSON("Descarga", objectNames[8]));
+        // formJSON.chooses.Add(new ChoosesJSON("Torneira", objectNames[9]));
+        // formJSON.chooses.Add(new ChoosesJSON("Geladeira", objectNames[10]));
+        // formJSON.chooses.Add(new ChoosesJSON("Lixeiras", objectNames[11]));
+        // formJSON.chooses.Add(new ChoosesJSON("Máquina de Lavar", objectNames[12]));
+        // formJSON.chooses.Add(new ChoosesJSON("Água de Reuso", objectNames[13]));
+        // formJSON.chooses.Add(new ChoosesJSON("Televisão", objectNames[14]));
+        // formJSON.chooses.Add(new ChoosesJSON("Telhado", objectNames[15]));
+
+        // formJSON.actions.Add(new ActionsJSON("Lavar Louça", actionsDone[0]));
+        // formJSON.actions.Add(new ActionsJSON("Celular fora da tomada", actionsDone[1]));
+        // formJSON.actions.Add(new ActionsJSON("Ler livro com TV desligada", actionsDone[2]));
+        // formJSON.actions.Add(new ActionsJSON("Lavar Roupa", actionsDone[3]));
+        // formJSON.actions.Add(new ActionsJSON("Escovar os dentes", actionsDone[4]));
 
         JSON_File = JsonUtility.ToJson(formJSON);
 
@@ -207,11 +268,16 @@ public class DataStorage : MonoBehaviour
         }
     }
 
+    public void UploadJSON(string type, string category, string name)
+    {
+        StartCoroutine(UploadChange(type, category, name));
+    }
+
     public IEnumerator Upload(string url)
     {
         string completeURL = "";
 
-        if (url != null)
+        if (url != null && url != "update")
         {
             completeURL = "http://" + url + ":2433/events/ivTkLsSh5B2OvvAKjYL1/reports";
         }
@@ -245,6 +311,7 @@ public class DataStorage : MonoBehaviour
             if (configIP)
             {
                 configIP.invalidIPText.SetActive(true);
+                configIP.okButton.interactable = true;
             }
 
             Debug.Log(www.error);
@@ -268,6 +335,48 @@ public class DataStorage : MonoBehaviour
                     Debug.Log("Scene Controller doesnt exist on current scene or it is disabled.");
                 }
             }
+        }
+    }
+
+    public IEnumerator UploadChange(string type, string category, string name)
+    {
+        string completeURL = "";
+
+        completeURL = ipAddress;
+
+        if (completeURL == "")
+        {
+            yield break;
+        }
+
+        var www = new UnityWebRequest(completeURL, "POST");
+
+        if (getJSON)
+        {
+            yield return UpdateChangeJSON(type, category, name);
+
+            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(JSON_File);
+            www.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+            www.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+            www.SetRequestHeader("Content-Type", "application/json");
+        }
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            ConfigIP configIP = FindObjectOfType<ConfigIP>();
+            if (configIP)
+            {
+                configIP.invalidIPText.SetActive(true);
+                configIP.okButton.interactable = true;
+            }
+
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log("Upload Change complete!");
         }
     }
 

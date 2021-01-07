@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -78,6 +79,12 @@ public class UIController : MonoBehaviour
 
     public void CheckStartBaseValues()
     {
+        Int64 d = Int64.Parse(DateTime.Now.ToString("yyyyMMddhhmmss"));
+
+        Debug.Log(d);
+
+        DataStorage.instance.uniqueID = d;
+
         moneyBaseValue = 0;
         sustainabilityBaseValue = 0;
         for (int i = 0; i < itemsSelectables.Length; i++)

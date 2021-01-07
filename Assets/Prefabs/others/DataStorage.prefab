@@ -58,6 +58,12 @@ MonoBehaviour:
   openedObjectsMenu: 00000000000000000000000000000000
   reportList: []
   actionsDone: 0000000000
+  actionsName:
+  - "Lavar Lou\xE7a"
+  - Celular fora da tomada
+  - Ler livro com TV desligada
+  - Lavar Roupa
+  - Escovar os dentes
   objectNames:
   - 
   - 
