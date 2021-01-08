@@ -3439,7 +3439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.112, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.850067, y: -0.000015258789}
+  m_AnchoredPosition: {x: 9.850037, y: 0}
   m_SizeDelta: {x: 20.299868, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &392420647
@@ -7480,7 +7480,7 @@ RectTransform:
   m_Children:
   - {fileID: 493760075}
   m_Father: {fileID: 2362277923087496708}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.87043756, y: 0.90000004}
   m_AnchorMax: {x: 0.99700004, y: 0.975}
@@ -36508,17 +36508,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2362277922864365692}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2362277923087496708}
-  m_RootOrder: 0
+  m_Father: {fileID: 2362277923304779766}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.25378126, y: 0.47500002}
-  m_AnchoredPosition: {x: 0, y: -62.000244}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -217.17857, y: 54.690773}
+  m_SizeDelta: {x: 160.60295, y: 257.42377}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2362277922999759168
 CanvasGroup:
@@ -36571,7 +36571,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2362277923087496708}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.34343755, y: 0.46250227}
   m_AnchorMax: {x: 0.65615624, y: 0.53874886}
@@ -36847,7 +36847,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2362277922864365693}
   - {fileID: 2362277923304779766}
   - {fileID: 2362277922999759180}
   - {fileID: 780291502}
@@ -36884,15 +36883,15 @@ GameObject:
   - component: {fileID: 2362277923087496731}
   - component: {fileID: 2362277923087496730}
   - component: {fileID: 2362277923087496729}
-  - component: {fileID: 2362277923087496728}
+  - component: {fileID: 2362277923087496712}
   m_Layer: 5
   m_Name: Tutorial
-  m_TagString: Untagged
+  m_TagString: Touch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2362277923087496728
+--- !u!114 &2362277923087496712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36937,7 +36936,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2362277923087496729}
         m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
-        m_MethodName: ContinueTouch
+        m_MethodName: NewContinueTouch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36989,11 +36988,11 @@ MonoBehaviour:
   handCanvas: {fileID: 1067601771}
   maskCircleCanvas: {fileID: 708851641}
   closeStoreBtn: {fileID: 1040084475373272149}
-  tutorialButton: {fileID: 2362277923087496728}
+  tutorialButton: {fileID: 2362277923087496712}
   tweenDuration: 0.3
   easeInOut: 7
   canContinue: 0
-  currentTutorial: 
+  currentTutorial: 0
   leanPinch: {fileID: 2237794047769113649}
   leanDrag: {fileID: 2237794048666560656}
   leanTap: {fileID: 2237794047769113800}
@@ -37383,8 +37382,9 @@ RectTransform:
   - {fileID: 2362277922624544038}
   - {fileID: 2362277923377095247}
   - {fileID: 2362277923159223304}
+  - {fileID: 2362277922864365693}
   m_Father: {fileID: 2362277923087496708}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23240627, y: 0.015000001}
   m_AnchorMax: {x: 0.73800004, y: 0.33874518}

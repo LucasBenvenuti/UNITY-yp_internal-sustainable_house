@@ -19,7 +19,8 @@ public class SelectItem : MonoBehaviour
         {
             if (TimerController.instance.tutorialMode)
             {
-                if (Tutorial.instance.currentTutorial == "choose")
+                // if (Tutorial.instance.currentTutorial == "choose")
+                if (Tutorial.instance.textIndex == 5)
                 {
                     Tutorial.instance.canContinue = false;
                 }

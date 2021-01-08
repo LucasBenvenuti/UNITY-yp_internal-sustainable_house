@@ -23,12 +23,12 @@ public class Tutorial : MonoBehaviour
     public float tweenDuration = 0.3f;
     public LeanTweenType easeInOut;
 
-    int textIndex = 0;
+    public int textIndex = 0;
     [HideInInspector]
     public bool canContinue = false;
     bool showUI = true;
 
-    public string currentTutorial;
+    public int currentTutorial;
     public LeanPinchCamera leanPinch;
     public LeanDragCamera leanDrag;
     public LeanFingerTap leanTap;
@@ -43,6 +43,7 @@ public class Tutorial : MonoBehaviour
     public Vector3 finalDelta;
 
     public int numberOfFingers;
+    public float checkZoom;
 
     bool tapped = false;
     bool pinched = false;
@@ -83,13 +84,14 @@ public class Tutorial : MonoBehaviour
         storedCameraSize = mainCamera.orthographicSize;
 
         leanPinch.Use.RequiredFingerCount = 2;
+        checkZoom = mainCamera.orthographicSize;
         leanPinch.enabled = false;
 
         leanTap.enabled = false;
 
         tutorialButton.enabled = false;
 
-        currentTutorial = "start";
+        currentTutorial = 0;
 
         numberOfFingers = 0;
 
@@ -106,10 +108,10 @@ public class Tutorial : MonoBehaviour
 
         TimerController.instance.tutorialMode = false;
 
-        Coroutine startCoroutine = null;
-        startCoroutine = StartCoroutine(TutorialCoroutine());
+        // Coroutine startCoroutine = null;
+        // startCoroutine = StartCoroutine(NewTutorialCoroutine());
 
-        StopCoroutine(startCoroutine);
+        // StopCoroutine(startCoroutine);
 
         closeStoreBtn.enabled = true;
 
@@ -125,25 +127,19 @@ public class Tutorial : MonoBehaviour
 
         leanPinch.Use.RequiredFingerCount = 2;
 
-        currentTutorial = "final_1";
+        currentTutorial = textList.Length - 1;
     }
 
     public void StartTutorial()
     {
         TimerController.instance.tutorialMode = true;
 
-        StartCoroutine(TutorialCoroutine());
+        StartCoroutine(NewTutorialCoroutine());
     }
 
-    IEnumerator TutorialCoroutine()
+    IEnumerator NewTutorialCoroutine()
     {
-        yield return new WaitUntil(() => canContinue == false);
-
-        // 1 - START
-
         LeanTouch.OnGesture += HandleGesture;
-
-        yield return new WaitForSeconds(delayToShow);
 
         if (!TimerController.instance.tutorialMode)
         {
@@ -152,261 +148,116 @@ public class Tutorial : MonoBehaviour
 
         TutorialBoxShow(true);
 
-        Debug.Log("First TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
-
-        yield return new WaitUntil(() => canContinue == false);
-
-        // 2 - DRAG
-
-        yield return new WaitForSeconds(delayToShow);
-
-        Debug.Log("Second TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        currentTutorial = "drag";
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        showUI = false;
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
-
-        yield return new WaitUntil(() => canContinue == false);
-
-        leanDrag.Use.RequiredFingerCount = 50;
-
-        // 3 - PINCH
-
-        yield return new WaitForSeconds(delayToShow);
-
-        TutorialBoxShow(true);
-
-        Debug.Log("Third TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        currentTutorial = "pinch";
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        showUI = false;
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
-
-        yield return new WaitUntil(() => canContinue == false);
-
-        leanPinch.Use.RequiredFingerCount = 50;
-
-        // 4 - INTERACT
-
-        yield return new WaitForSeconds(delayToShow);
-
-
-        TutorialBoxShow(true);
-
-        Debug.Log("Fourth TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        goToObject();
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        LeanTween.alphaCanvas(handCanvas, 1f, tweenDuration).setEase(easeInOut);
-        LeanTween.alphaCanvas(maskCircleCanvas, 0.6f, tweenDuration).setEase(easeInOut).setOnComplete(() =>
+        for (int i = 0; i < textList.Length; i++)
         {
-            currentTutorial = "interact";
-        });
+            yield return new WaitUntil(() => canContinue == false);
+            yield return new WaitForSeconds(delayToShow);
 
-        showUI = false;
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
+            if (i == 2 || i == 3 || i == 4 || i == 5 || i == 6)
+            {
+                TutorialBoxShow(true);
 
-        yield return new WaitUntil(() => canContinue == false);
+                if (i == 2)
+                {
+                    leanDrag.enabled = false;
+                }
+                if (i == 3)
+                {
+                    leanPinch.enabled = false;
+                    leanTap.enabled = true;
+                }
+            }
 
-        leanTap.enabled = false;
+            if (i == 3)
+            {
+                leanPinch.enabled = true;
 
-        // 5 - STORE 0
+                goToObject();
+            }
+            else if (i == 4)
+            {
+                leanTap.enabled = false;
+            }
+            else if (i == 8)
+            {
+                GameController.instance.closePanel();
+                CameraController.instance.ReturnToBasePosition();
+            }
 
-        yield return new WaitForSeconds(delayToShow);
+            Debug.Log(textList[i]);
+            canContinue = true;
+            currentTutorial = i;
+            textIndex = i;
+            LeanTween.alphaCanvas(textList[i], 1f, tweenDuration).setEase(easeInOut);
 
-        TutorialBoxShow(true);
+            yield return new WaitForSeconds(delaysToShowContinue[i]);
 
-        Debug.Log("Fifth TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
+            if (i == 3)
+            {
+                LeanTween.alphaCanvas(handCanvas, 1f, tweenDuration).setEase(easeInOut);
+                LeanTween.alphaCanvas(maskCircleCanvas, 0.6f, tweenDuration).setEase(easeInOut);
+            }
 
-        currentTutorial = "read";
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        showUI = true;
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
-
-        yield return new WaitUntil(() => canContinue == false);
-
-        // 6 - STORE 1
-
-        yield return new WaitForSeconds(delayToShow);
-
-        Debug.Log("Sixth TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        currentTutorial = "choose";
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        showUI = false;
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
-
-        yield return new WaitUntil(() => canContinue == false);
-
-        // 7 - STORE 2
-
-        yield return new WaitForSeconds(delayToShow);
-
-        TutorialBoxShow(true);
-
-        Debug.Log("Seventh TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        currentTutorial = "confirmation";
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        showUI = true;
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
-
-        yield return new WaitUntil(() => canContinue == false);
-
-        // 8 - BONUS
-
-        yield return new WaitForSeconds(delayToShow);
-
-        Debug.Log("Eigth TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        currentTutorial = "bonus";
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
-
-        yield return new WaitUntil(() => canContinue == false);
-
-        // 9 - FINAL 0
-
-        yield return new WaitForSeconds(delayToShow);
-
-        Debug.Log("Nineth TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        GameController.instance.closePanel();
-        CameraController.instance.ReturnToBasePosition();
-
-        currentTutorial = "final_0";
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
-
-        yield return new WaitUntil(() => canContinue == false);
-
-        // 10 - FINAL 1
-
-        yield return new WaitForSeconds(delayToShow);
-
-        Debug.Log("Tenth TEXT");
-        LeanTween.alphaCanvas(textList[textIndex], 1f, tweenDuration).setEase(easeInOut);
-
-        currentTutorial = "final_1";
-
-        yield return new WaitForSeconds(delaysToShowContinue[textIndex]);
-
-        canContinue = true;
-        LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
+            LeanTween.alphaCanvas(continueCanvas, 1f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialButton.enabled = true; });
+        }
     }
 
-    public void ContinueTouch()
+    public void NewContinueTouch()
     {
-        if (canContinue)
+        StopCoroutine(NewContinueTouchCoroutine());
+        StartCoroutine(NewContinueTouchCoroutine());
+    }
+
+    public IEnumerator NewContinueTouchCoroutine()
+    {
+        if (numberOfFingers == 1)
         {
+            Debug.Log("Touched");
+
             tutorialButton.enabled = false;
 
-            if (!showUI)
+            if (textIndex == 1 || textIndex == 2 || textIndex == 3 || textIndex == 5)
             {
-                if (currentTutorial != "final_1")
-                {
-                    TutorialBoxShow(false);
-                }
+                TutorialBoxShow(false);
 
-                if (currentTutorial == "drag")
+                LeanTween.alphaCanvas(continueCanvas, 0f, tweenDuration).setEase(easeInOut);
+
+                LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
+
+                yield return new WaitForSeconds(tweenDuration);
+                yield return new WaitForSeconds(0.25f);
+
+                if (textIndex == 1)
                 {
                     leanDrag.Sensitivity = storedDragSensivity;
                     leanDrag.enabled = true;
 
                     Lean.Touch.LeanTouch.OnFingerTap += HandleFingerTap;
-                    Lean.Touch.LeanTouch.OnFingerDown += HandleFingerDown;
                     Lean.Touch.LeanTouch.OnFingerUp += HandleFingerUp;
-
-                    LeanTween.alphaCanvas(continueCanvas, 0f, tweenDuration).setEase(easeInOut);
-                    LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
                 }
-
-                if (currentTutorial == "pinch")
+                else if (textIndex == 2)
                 {
-                    leanDrag.Sensitivity = 0;
-                    leanDrag.enabled = false;
-
                     leanPinch.enabled = true;
 
-                    LeanTween.alphaCanvas(continueCanvas, 0f, tweenDuration).setEase(easeInOut);
-                    LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
+                    Lean.Touch.LeanTouch.OnFingerTap += HandleFingerTap;
+                    Lean.Touch.LeanTouch.OnFingerUp += HandleFingerUp;
                 }
 
-                if (currentTutorial == "interact")
-                {
-                    leanPinch.enabled = false;
-                    leanTap.enabled = true;
-
-                    LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
-                }
-
-                if (currentTutorial == "choose")
-                {
-                    LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
-                }
-
+                yield break;
             }
-            else
+
+            if (textIndex == 9)
             {
-                if (currentTutorial == "final_1")
-                {
-                    // EndTutorial();
-                    SkipTutorial();
-
-                    return;
-                }
-
-                Debug.Log("Continue Touched");
-                canContinue = false;
-
-                LeanTween.alphaCanvas(continueCanvas, 0f, tweenDuration).setEase(easeInOut);
-
-                LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
+                SkipTutorial();
+                Debug.Log("<size='14'><color='green'><b>Ended Tutorial</b></color></size>");
             }
 
-            textIndex++;
-        }
+            Debug.Log("<size='12'><color='red'><b>Continue</b></color></size>");
 
+            LeanTween.alphaCanvas(continueCanvas, 0f, tweenDuration).setEase(easeInOut);
+
+            LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut).setOnComplete(() => { canContinue = false; });
+        }
     }
 
     public void TutorialBoxShow(bool show)
@@ -429,36 +280,22 @@ public class Tutorial : MonoBehaviour
     {
         tapped = true;
     }
-
-    void HandleFingerDown(Lean.Touch.LeanFinger finger)
-    {
-        getInitialDelta(finger.ScreenPosition);
-    }
     void HandleFingerUp(Lean.Touch.LeanFinger finger)
     {
-        getFinalDelta(finger.ScreenPosition);
-
-        Debug.Log(pinched);
-
-        checkPinch();
-    }
-
-    public void getInitialDelta(Vector3 vector)
-    {
-        if (currentTutorial == "drag")
+        if (textIndex == 1)
         {
-            initialDelta = vector;
+            getFinalDelta(finger.ScreenPosition);
+        }
+
+        if (textIndex == 2)
+        {
+            checkPinch();
         }
     }
 
     public void getFinalDelta(Vector3 vector)
     {
-        if (currentTutorial == "drag")
-        {
-            finalDelta = vector;
-
-            compareDeltas();
-        }
+        compareDeltas();
     }
 
     public void compareDeltas()
@@ -470,8 +307,10 @@ public class Tutorial : MonoBehaviour
                 Debug.Log("Dragged");
 
                 Lean.Touch.LeanTouch.OnFingerTap -= HandleFingerTap;
-                Lean.Touch.LeanTouch.OnFingerDown -= HandleFingerDown;
-                // Lean.Touch.LeanTouch.OnFingerUp -= HandleFingerUp;
+                Lean.Touch.LeanTouch.OnFingerUp -= HandleFingerUp;
+
+                leanDrag.Sensitivity = 0;
+                leanDrag.Use.RequiredFingerCount = 50;
 
                 canContinue = false;
             }
@@ -487,43 +326,37 @@ public class Tutorial : MonoBehaviour
 
     public void checkPinch()
     {
-        if (currentTutorial == "pinch")
+        if (!tapped)
         {
-            if (numberOfFingers == 2 && pinched)
+            Debug.Log(mainCamera.orthographicSize);
+
+            if (numberOfFingers == 2 && mainCamera.orthographicSize != checkZoom)
             {
-                canContinue = false;
+                Debug.Log("Pinched - " + pinched);
 
-                Debug.Log("Can Continue - " + canContinue);
-                Debug.Log("Pinched");
+                leanPinch.Use.RequiredFingerCount = 50;
 
+                Lean.Touch.LeanTouch.OnFingerTap -= HandleFingerTap;
                 Lean.Touch.LeanTouch.OnFingerUp -= HandleFingerUp;
-                LeanTouch.OnGesture -= HandleGesture;
 
-                // leanPinch.enabled = false;
-
+                canContinue = false;
             }
-
-            numberOfFingers = 0;
         }
+        else
+        {
+            tapped = false;
+        }
+
+        numberOfFingers = 0;
     }
 
     public void HandleGesture(List<Lean.Touch.LeanFinger> fingers)
     {
         numberOfFingers = fingers.Count;
-
-        if (currentTutorial == "pinch")
-        {
-            if (numberOfFingers == 2 && LeanGesture.GetPinchScale(fingers) != 1)
-            {
-                pinched = true;
-            }
-        }
     }
 
     public void goToObject()
     {
-        // leanPinch.enabled = false;
-
         float animDuration = tweenDuration * 3;
 
         LeanTween.move(mainCamera.gameObject.transform.parent.gameObject, goToObjectPosition.position, animDuration).setEase(easeInOut);
@@ -533,25 +366,5 @@ public class Tutorial : MonoBehaviour
                 Debug.Log(flt);
                 Debug.Log(mainCamera.orthographicSize);
             });
-    }
-
-    public void EndTutorial()
-    {
-        StopCoroutine(TutorialCoroutine());
-
-        Debug.Log("FIM CONTINUE BUTTON");
-
-        LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut).setOnComplete(() =>
-        {
-            leanDrag.Sensitivity = storedDragSensivity;
-            // leanDrag.enabled = true;
-            // leanPinch.enabled = true;
-
-            closeStoreBtn.enabled = true;
-
-            TimerController.instance.tutorialMode = false;
-        });
-
-        LeanTween.alphaCanvas(tutorialCanvas, 0f, tweenDuration).setEase(easeInOut).setOnComplete(() => { tutorialCanvas.blocksRaycasts = false; tutorialCanvas.interactable = false; Debug.Log("Ended Tutorial fade out!"); });
     }
 }

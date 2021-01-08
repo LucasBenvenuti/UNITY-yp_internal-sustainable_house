@@ -7,6 +7,7 @@ TagManager:
   - Item
   - Action
   - BlockRaycast
+  - Touch
   layers:
   - Default
   - TransparentFX

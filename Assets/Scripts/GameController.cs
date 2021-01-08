@@ -148,7 +148,8 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                if (Tutorial.instance.currentTutorial == "interact")
+                // if (Tutorial.instance.currentTutorial == "interact")
+                if (Tutorial.instance.textIndex == 3)
                 {
                     LeanTween.alphaCanvas(Tutorial.instance.handCanvas, 0f, Tutorial.instance.tweenDuration).setEase(Tutorial.instance.easeInOut);
                     LeanTween.alphaCanvas(Tutorial.instance.maskCircleCanvas, 0f, Tutorial.instance.tweenDuration).setEase(Tutorial.instance.easeInOut);
