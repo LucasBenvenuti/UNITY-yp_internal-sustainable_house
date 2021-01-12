@@ -37,7 +37,6 @@ public class ActionTemplate : MonoBehaviour
             haveDoneAction = true;
 
             DataStorage.instance.actionsDone[actionIndex] = true;
-
             DataStorage.instance.UpdateTaskValues("actions");
 
             if (DataStorage.instance.doneActionsQuantity == DataStorage.instance.actionsDone.Count && DataStorage.instance.interactedObjectsQuantity == DataStorage.instance.sceneObjectsList.Count)
@@ -48,6 +47,14 @@ public class ActionTemplate : MonoBehaviour
                 taskList.objectsObjective.alpha = 0.7f;
 
                 taskList.ShowFinishButton();
+            }
+
+            if (TimerController.instance.tutorialMode)
+            {
+                Tutorial.instance.leanTap.enabled = false;
+
+                LeanTween.alphaCanvas(Tutorial.instance.handCanvas, 0f, Tutorial.instance.tweenDuration).setEase(Tutorial.instance.easeInOut);
+                LeanTween.alphaCanvas(Tutorial.instance.maskCircleCanvas, 0f, Tutorial.instance.tweenDuration).setEase(Tutorial.instance.easeInOut);
             }
         }
         else

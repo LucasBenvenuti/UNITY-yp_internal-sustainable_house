@@ -125,6 +125,7 @@ public class TimerController : MonoBehaviour
         inGame = false;
 
         DataStorage.instance.gameFinished = true;
+        DataStorage.instance.hasProgress = false;
 
         StartCoroutine(report.PrintFunc());
 
@@ -156,6 +157,13 @@ public class TimerController : MonoBehaviour
 
     public void ActionsDisplay()
     {
+        if (tutorialMode)
+        {
+            actions[indexAction].EnableAction();
+
+            return;
+        }
+
         actionTimer -= Time.deltaTime;
         if (indexAction == actions.Length)
         {

@@ -233,6 +233,15 @@ public class ActionsAnimations : MonoBehaviour
         {
             CameraController.instance.ReturnToBasePosition();
         }
+
+        if (TimerController.instance.tutorialMode)
+        {
+            yield return CameraController.instance.ReturnToBasePositionNew();
+
+            Tutorial.instance.canContinue = false;
+
+            Tutorial.instance.TutorialBoxShow(true);
+        }
     }
 
     public void CallEndCoroutine()

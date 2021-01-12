@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 public class FormJSON
 {
     public string school;
-    public Int64 uniqueID;
+    public Int64 id;
     public string user;
     public bool finished;
     public string image;
@@ -177,7 +177,7 @@ public class DataStorage : MonoBehaviour
         FormJSON formJSON = new FormJSON();
 
         formJSON.school = "Escola";
-        formJSON.uniqueID = uniqueID;
+        formJSON.id = uniqueID;
         formJSON.user = userName;
         formJSON.finished = gameFinished;
         formJSON.image = image;
@@ -216,7 +216,7 @@ public class DataStorage : MonoBehaviour
         FormJSON formJSON = new FormJSON();
 
         formJSON.school = "Escola";
-        formJSON.uniqueID = uniqueID;
+        formJSON.id = uniqueID;
         formJSON.user = userName;
         formJSON.finished = gameFinished;
         // formJSON.image = image;
@@ -312,6 +312,7 @@ public class DataStorage : MonoBehaviour
             {
                 configIP.invalidIPText.SetActive(true);
                 configIP.okButton.interactable = true;
+                configIP.inputField.interactable = true;
             }
 
             Debug.Log(www.error);
@@ -354,6 +355,7 @@ public class DataStorage : MonoBehaviour
         if (getJSON)
         {
             yield return UpdateChangeJSON(type, category, name);
+            // yield return UpdateJSON();
 
             byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(JSON_File);
             www.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
@@ -370,6 +372,7 @@ public class DataStorage : MonoBehaviour
             {
                 configIP.invalidIPText.SetActive(true);
                 configIP.okButton.interactable = true;
+                configIP.inputField.interactable = true;
             }
 
             Debug.Log(www.error);

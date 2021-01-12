@@ -49,6 +49,7 @@ public class Tutorial : MonoBehaviour
     bool pinched = false;
 
     public Transform goToObjectPosition;
+    public Transform goToActionPosition;
 
     int tutorialCanvasLean;
 
@@ -106,12 +107,11 @@ public class Tutorial : MonoBehaviour
 
         TutorialBoxShow(false);
 
+        GameController.instance.closePanel();
+
         TimerController.instance.tutorialMode = false;
 
-        // Coroutine startCoroutine = null;
-        // startCoroutine = StartCoroutine(NewTutorialCoroutine());
-
-        // StopCoroutine(startCoroutine);
+        GameController.instance.canGoToObject = true;
 
         closeStoreBtn.enabled = true;
 
@@ -153,7 +153,7 @@ public class Tutorial : MonoBehaviour
             yield return new WaitUntil(() => canContinue == false);
             yield return new WaitForSeconds(delayToShow);
 
-            if (i == 2 || i == 3 || i == 4 || i == 5 || i == 6)
+            if (i == 2 || i == 3 || i == 4 || i == 5 || i == 6 || i == 7)
             {
                 TutorialBoxShow(true);
 
@@ -178,10 +178,18 @@ public class Tutorial : MonoBehaviour
             {
                 leanTap.enabled = false;
             }
-            else if (i == 8)
+            else if (i == 6)
             {
                 GameController.instance.closePanel();
-                CameraController.instance.ReturnToBasePosition();
+            }
+            else if (i == 7)
+            {
+                goToAction();
+                TimerController.instance.ActionsDisplay();
+            }
+            else if (i == 8)
+            {
+                leanPinch.enabled = false;
             }
 
             Debug.Log(textList[i]);
@@ -192,7 +200,7 @@ public class Tutorial : MonoBehaviour
 
             yield return new WaitForSeconds(delaysToShowContinue[i]);
 
-            if (i == 3)
+            if (i == 3 || i == 7)
             {
                 LeanTween.alphaCanvas(handCanvas, 1f, tweenDuration).setEase(easeInOut);
                 LeanTween.alphaCanvas(maskCircleCanvas, 0.6f, tweenDuration).setEase(easeInOut);
@@ -216,13 +224,15 @@ public class Tutorial : MonoBehaviour
 
             tutorialButton.enabled = false;
 
-            if (textIndex == 1 || textIndex == 2 || textIndex == 3 || textIndex == 5)
+            if (textIndex == 1 || textIndex == 2 || textIndex == 3 || textIndex == 5 || textIndex == 6 || textIndex == 7)
             {
                 TutorialBoxShow(false);
 
-                LeanTween.alphaCanvas(continueCanvas, 0f, tweenDuration).setEase(easeInOut);
-
-                LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
+                if (textIndex != 6)
+                {
+                    LeanTween.alphaCanvas(continueCanvas, 0f, tweenDuration).setEase(easeInOut);
+                    LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut);
+                }
 
                 yield return new WaitForSeconds(tweenDuration);
                 yield return new WaitForSeconds(0.25f);
@@ -241,6 +251,22 @@ public class Tutorial : MonoBehaviour
 
                     Lean.Touch.LeanTouch.OnFingerTap += HandleFingerTap;
                     Lean.Touch.LeanTouch.OnFingerUp += HandleFingerUp;
+                }
+                else if (textIndex == 6)
+                {
+                    LeanTween.alphaCanvas(continueCanvas, 0f, tweenDuration).setEase(easeInOut);
+                    LeanTween.alphaCanvas(textList[textIndex], 0f, tweenDuration).setEase(easeInOut).setOnComplete(() => { canContinue = false; });
+
+                    yield return CameraController.instance.ReturnToBasePositionNew();
+
+                    yield return new WaitForSeconds(1f);
+
+                    Debug.Log("Returned!");
+                }
+                else if (textIndex == 7)
+                {
+                    leanTap.enabled = true;
+                    leanPinch.enabled = true;
                 }
 
                 yield break;
@@ -361,6 +387,19 @@ public class Tutorial : MonoBehaviour
 
         LeanTween.move(mainCamera.gameObject.transform.parent.gameObject, goToObjectPosition.position, animDuration).setEase(easeInOut);
         LeanTween.value(mainCamera.gameObject, mainCamera.orthographicSize, 7f, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
+            {
+                leanPinch.Zoom = flt;
+                Debug.Log(flt);
+                Debug.Log(mainCamera.orthographicSize);
+            });
+    }
+
+    public void goToAction()
+    {
+        float animDuration = tweenDuration * 3;
+
+        LeanTween.move(mainCamera.gameObject.transform.parent.gameObject, goToActionPosition.position, animDuration).setEase(easeInOut);
+        LeanTween.value(mainCamera.gameObject, mainCamera.orthographicSize, 10f, animDuration).setEase(easeInOut).setOnUpdate((float flt) =>
             {
                 leanPinch.Zoom = flt;
                 Debug.Log(flt);

@@ -7,6 +7,10 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
 
+#if PLATFORM_ANDROID
+using UnityEngine.Android;
+#endif
+
 public class ConfigIP : MonoBehaviour
 {
     public TMP_InputField inputField;
@@ -14,11 +18,35 @@ public class ConfigIP : MonoBehaviour
 
     public Button okButton;
 
-    void Start()
+    public bool PermissionBool;
+
+    IEnumerator Start()
     {
+        inputField.interactable = false;
+        okButton.interactable = false;
+
+        yield return null;
+
+#if PLATFORM_ANDROID
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+        }
+
+        while (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            yield return new WaitForSeconds(1f);
+
+            Debug.Log("Waiting for Permission");
+        }
+#endif
+
         if (SceneController.instance)
         {
             SceneController.instance.StartScene();
+
+            inputField.interactable = true;
+            okButton.interactable = true;
         }
         else
         {
@@ -31,6 +59,7 @@ public class ConfigIP : MonoBehaviour
     public void SendIP()
     {
         okButton.interactable = false;
+        inputField.interactable = false;
 
         IPAddress ip;
 
@@ -51,6 +80,7 @@ public class ConfigIP : MonoBehaviour
 
             invalidIPText.SetActive(true);
             okButton.interactable = true;
+            inputField.interactable = false;
         }
     }
 }

@@ -77,6 +77,8 @@ public class QRCode_Reader : MonoBehaviour
 
         while (!Application.HasUserAuthorization(UserAuthorization.WebCam))
         {
+            Debug.Log("Webcam Not Authorized!");
+
             yield return null;
         }
         // Check for device cameras
