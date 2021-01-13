@@ -192,8 +192,8 @@ public class DataStorage : MonoBehaviour
         formJSON.chooses.Add(new ChoosesJSON("Descarga", objectNames[8]));
         formJSON.chooses.Add(new ChoosesJSON("Torneira", objectNames[9]));
         formJSON.chooses.Add(new ChoosesJSON("Geladeira", objectNames[10]));
-        formJSON.chooses.Add(new ChoosesJSON("Lixeiras", objectNames[11]));
-        formJSON.chooses.Add(new ChoosesJSON("Máquina de Lavar", objectNames[12]));
+        formJSON.chooses.Add(new ChoosesJSON("Separação e destinação dos resíduos", objectNames[11]));
+        formJSON.chooses.Add(new ChoosesJSON("Máquina de Lavar Roupa", objectNames[12]));
         formJSON.chooses.Add(new ChoosesJSON("Água de Reuso", objectNames[13]));
         formJSON.chooses.Add(new ChoosesJSON("Televisão", objectNames[14]));
         formJSON.chooses.Add(new ChoosesJSON("Telhado", objectNames[15]));
