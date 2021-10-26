@@ -54,6 +54,20 @@ public class ConfigIP : MonoBehaviour
         }
 
         invalidIPText.SetActive(false);
+
+        Debug.Log(PlayerPrefs.GetString("savedIP"));
+
+        if(PlayerPrefs.GetString("savedIP") != "")
+        {
+            inputField.text = PlayerPrefs.GetString("savedIP");
+
+            okButton.interactable = false;
+            inputField.interactable = false;
+
+            yield return new WaitForSeconds(1f);
+
+            SendIP();
+        }
     }
 
     public void SendIP()
@@ -61,8 +75,23 @@ public class ConfigIP : MonoBehaviour
         okButton.interactable = false;
         inputField.interactable = false;
 
-        IPAddress ip;
+        string finalIP = "";
 
+        if(PlayerPrefs.GetString("savedIP") != "")
+        {
+            finalIP = PlayerPrefs.GetString("savedIP");
+
+            Debug.Log("From PLAYERPREFS - " + finalIP);
+
+            inputField.text = finalIP;
+        }
+        else
+        {
+            finalIP = inputField.text;
+        }
+
+        IPAddress ip;
+        
         Debug.Log("Check IP here!");
         Debug.Log("Current IP to test - " + inputField.text);
 
@@ -72,6 +101,10 @@ public class ConfigIP : MonoBehaviour
         {
             invalidIPText.SetActive(false);
 
+            PlayerPrefs.SetString("savedIP", finalIP);
+            
+            Debug.Log(PlayerPrefs.GetString("savedIP"));
+
             StartCoroutine(DataStorage.instance.Upload(inputField.text));
         }
         else
@@ -80,7 +113,7 @@ public class ConfigIP : MonoBehaviour
 
             invalidIPText.SetActive(true);
             okButton.interactable = true;
-            inputField.interactable = false;
+            inputField.interactable = true;
         }
     }
 }
