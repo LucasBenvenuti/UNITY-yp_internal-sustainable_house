@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6462295808076454348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6462295808076454350}
+  - component: {fileID: 6462295808076454349}
+  - component: {fileID: 6462295808076454351}
+  m_Layer: 0
+  m_Name: Game Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6462295808076454350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462295808076454348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5856943, y: 8.664345, z: -32.055565}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6462295808076454349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462295808076454348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83188fe6695c11a4480551409af8c21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSelected: {fileID: 0}
+  refrigerator:
+  - {fileID: 1139687706688619286, guid: 9f30d4b6c8724404db81b9f7e4e24fc9, type: 3}
+  - {fileID: 9132401522252491217, guid: 13d42f38e1e675f4eac092a8425240f4, type: 3}
+  acs:
+  - {fileID: 0}
+  - {fileID: 3562119595242231362, guid: c9e7b510be107874bb3ce60ce9da63df, type: 3}
+  tvs:
+  - {fileID: 5823702903725919063, guid: f3304b3b1c0aa6a40bfb3a89ad0a7bd9, type: 3}
+  - {fileID: 321791889288796614, guid: 56dfaaebf8ad11b4eaa503744b2f2b0e, type: 3}
+  itemType:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  panelItem: {fileID: 0}
+  itemHolder: {fileID: 0}
+  backBtn: {fileID: 0}
+  indexItemType: 0
+  destroyOriginalItem: 0
+  itemPanelActive: 0
+  itemSelectedPrice: 0
+--- !u!114 &6462295808076454351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462295808076454348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d811dc37e2beef47b495fc345cbeef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillMoneyImage: {fileID: 0}
+  fillSustainabilityImage: {fileID: 0}
+  fillSustainabilityText: {fileID: 0}
+  fillMoneyText: {fileID: 0}
+  moneyBaseValue: 0
+  sustainabilityBaseValue: 0
+  updateValues: 0
+  itemsSelectables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

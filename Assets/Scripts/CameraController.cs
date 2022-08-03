@@ -1,15 +1,37 @@
-﻿using System.Collections;
+﻿using Lean.Touch;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public LeanTweenType inOutType;
+
+    [HideInInspector]
     public static CameraController instance;
-    public Transform cameraTransform;
+
+    [HideInInspector]
     public Transform itemZoomPosition;
-    public Vector3 itemZoomOffset;
+    [HideInInspector]
     public Vector3 cameraBasePosition;
-    public bool zoomControl;
+
+    public Camera mainCamera;
+    float cameraBaseSize;
+
+    public LeanPitchYaw leanTwist;
+    public LeanPinchCamera leanPinch;
+    public LeanDragCamera leanDrag;
+
+    [HideInInspector]
+    public float yawAngle;
+    [HideInInspector]
+    public float yawSensitivity;
+    [HideInInspector]
+    public float rotationDampening;
+    [HideInInspector]
+    public float dragSensitivity;
+
+    public float tweenDuration = 0.5f;
 
     private void Awake()
     {
@@ -26,33 +48,101 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        cameraBasePosition = cameraTransform.position;
+        cameraBasePosition = this.gameObject.transform.position;
     }
 
-    private void LateUpdate()
+    public void LerpToZoomPosition(GameObject itemSelected, float cameraZoom)
     {
-        if (zoomControl)
+        if (!GameController.instance.canGoToObject)
         {
-            LerpToZoomPosition(GameController.instance.itemHolder);
+            if (GameController.instance.goToObjectShop)
+            {
+                int childCountShop = itemSelected.transform.childCount;
+                Vector3 itemZoomPositionShop = new Vector3(0, 0, 0);
+                itemZoomPositionShop = itemSelected.transform.GetChild(childCountShop - 1).position;
+                LeanTween.move(this.gameObject, itemZoomPositionShop, tweenDuration).setEase(inOutType);
+                LeanTween.value(this.gameObject, mainCamera.orthographicSize, cameraZoom, tweenDuration).setEase(inOutType).setOnUpdate((float flt) =>
+                {
+                    mainCamera.orthographicSize = flt;
+                });
+                GameController.instance.goToObjectShop = false;
+            }
+            return;
+        }
+
+        cameraBasePosition = this.gameObject.transform.position;
+        cameraBaseSize = mainCamera.orthographicSize;
+        GameController.instance.canGoToObject = false;
+
+        dragSensitivity = leanDrag.Sensitivity;
+        yawSensitivity = leanTwist.YawSensitivity;
+        rotationDampening = leanTwist.Dampening;
+        yawAngle = this.transform.parent.eulerAngles.y;
+
+        leanTwist.Dampening = 7f;
+        leanDrag.Sensitivity = 0f;
+        leanTwist.YawSensitivity = 0f;
+        leanTwist.SetYaw(45);
+
+        leanDrag.enabled = false;
+        leanPinch.enabled = false;
+
+        int childCount = itemSelected.transform.childCount;
+        Vector3 itemZoomPosition = new Vector3(0, 0, 0);
+
+        if (childCount > 0)
+        {
+            //GET FIRST CHILD POSITION - CAMERA POINT
+            itemZoomPosition = itemSelected.transform.GetChild(childCount - 1).position;
+            LeanTween.move(this.gameObject, itemZoomPosition, tweenDuration).setEase(inOutType);
+            LeanTween.value(this.gameObject, mainCamera.orthographicSize, cameraZoom, tweenDuration).setEase(inOutType).setOnUpdate((float flt) =>
+            {
+                mainCamera.orthographicSize = flt;
+            });
         }
         else
         {
-            ReturnToBasePosition();
+            tweenDuration = tweenDuration * 1.3f;
+
+            itemZoomPosition = itemSelected.transform.position;
+            LeanTween.move(this.gameObject.transform.parent.gameObject, itemZoomPosition, tweenDuration).setEase(inOutType);
         }
-    }
-    public void LerpToZoomPosition(GameObject itemSelected)
-    {
-        Vector3 itemZoomPosition = itemSelected.transform.position + itemZoomOffset;
-        cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, itemZoomPosition, Time.deltaTime * 5);
     }
     public void ReturnToBasePosition()
     {
-        cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, cameraBasePosition, Time.deltaTime * 5);
-        GameController.instance.panelItem.SetActive(false);
+        StartCoroutine(ReturnToBasePositionNew());
     }
 
-    public void ChangeZoomControl()
+    public IEnumerator ReturnToBasePositionNew()
     {
-        zoomControl = !zoomControl;
+        leanTwist.SetYaw(yawAngle);
+        leanTwist.Dampening = rotationDampening;
+
+        LeanTween.move(this.gameObject, cameraBasePosition, tweenDuration / 1f).setEase(inOutType);
+
+        if (TimerController.instance.inGame)
+        {
+            Debug.Log("OPA");
+
+            LeanTween.value(this.gameObject, mainCamera.orthographicSize, cameraBaseSize, tweenDuration).setEase(inOutType).setOnUpdate((float flt) =>
+                {
+                    mainCamera.orthographicSize = flt;
+                }).setOnComplete(() =>
+                {
+                    leanTwist.Dampening = rotationDampening;
+
+                    leanDrag.Sensitivity = dragSensitivity;
+                    leanTwist.YawSensitivity = yawSensitivity;
+
+                    leanDrag.enabled = true;
+                    leanPinch.enabled = true;
+
+                    GameController.instance.canGoToObject = true;
+                });
+        }
+
+        yield return null;
     }
+
+
 }

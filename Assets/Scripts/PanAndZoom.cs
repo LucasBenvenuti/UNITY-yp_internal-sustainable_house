@@ -34,4 +34,9 @@ public class PanAndZoom : MonoBehaviour
         }
 
     }
+
+    //void NewPinchZoom()
+    //{
+    //    Lean.Touch.LeanGesture.
+    //}
 }
